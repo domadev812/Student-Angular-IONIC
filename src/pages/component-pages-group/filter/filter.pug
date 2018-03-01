@@ -1,0 +1,8 @@
+#page-filter
+  .filter-mobile-header(*ngIf="!isPopover")
+    .kts-header-mobile
+      | Select Filters
+    .filter-done-btn((click)="done()")
+      | Done
+  .spacer-25
+  filter-scholarships()

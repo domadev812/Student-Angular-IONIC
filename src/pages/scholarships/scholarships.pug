@@ -1,1 +1,19 @@
 .page-wrapper
+  .filter-list-page-wrapper
+    ion-col.web-filter-col(col-4)
+      filter-scholarships
+    ion-col.lp-list-col(col-12 col-md-8)
+      ion-searchbar.kts-searchbar( (ionInput)="searchScholarships($event)" [debounce]="400" placeholder="Search all scholarships..." mode="ios")
+      ion-content.lp-list
+        .lp-item( *ngFor="let scholarship of scholarshipsList; let i = index" )
+          .lp-item-image
+            img(src="https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg")
+          .lp-item-info-col
+            .lp-item-title
+              | {{scholarship.title}}
+            .lp-item-value
+              | ${{scholarship.amount}}
+            .lp-item-description
+              | {{scholarship.description}}
+  .floating-filter-btn((click)="presentModal()")
+    | Refine

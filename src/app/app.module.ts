@@ -35,7 +35,9 @@ import { MyApp } from './app.component';
     Services.AuthService,
     Services.CurrentUserService,
     Services.NavigationService,
-    Services.MultiselectService
+    Services.MultiselectService,
+    Services.FilterService,
+    Services.ScholarshipsService
   ]
 })
 export class AppModule {}

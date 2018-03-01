@@ -1,19 +1,11 @@
 page-my-kts {
-  .page-wrapper{
-    background-image: url("../assets/imgs/Background.svg");
-    height: 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-  }
   .content-wrapper{
     margin: 10px 0 0 0;
     width: 1080px;
     max-width: 1080px;
     display: flex;
     flex-direction: column;
+    z-index: 2;
     @include md{
       flex-direction: row;
     }

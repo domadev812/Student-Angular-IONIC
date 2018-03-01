@@ -31,6 +31,11 @@ input:-webkit-autofill {
   background: initial !important;
 }
 
+//overrides background color white of ion-content
+.content {
+  background-color: transparent;
+}
+
 
 // Style overrides for angular2-multiselect-dropdown 
 .kts-multiselect {
@@ -74,6 +79,16 @@ input:-webkit-autofill {
     background: #596577 !important;
   }
 }
+
+.filter-select {
+  .c-btn {
+    border: 2px solid #E9E9F0 !important;
+    border-radius: 6px !important;
+  }
+  .fa {
+    color: #E9E9F0;
+  }
+}
 // end of style overrides for angular2-multiselect-dropdown
 
 
@@ -90,3 +105,20 @@ input:-webkit-autofill {
 }
 //end of popover styles
 
+
+.kts-searchbar {
+  background: transparent;
+  border: none;
+  .searchbar-input {
+    background-color: #E9E9F0;
+    border-radius: 17.5px;
+    height: 35px;
+  }
+  .searchbar-search-icon {
+    background-size: 15px;
+    left: 11px;
+    top: 11px;
+    //TODO: change background image for search icon
+    // background-image: url('https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg');
+  }
+}

@@ -1,0 +1,74 @@
+notifications-widget {
+  .notifications-widget-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 24px 20px 0 20px;
+    @include md{
+      padding: 24px 40px 0 40px;
+    }
+    display: flex;
+    background: white;
+    border-radius: 8px;
+    @include md{
+      border-radius: 6px;
+    }
+    // height: 60px;
+    box-shadow: 0 0 10px 5px $color-shadow;
+    @include md{
+      box-shadow: 0 0 4px 2px $color-shadow;
+    }
+  }
+  .notifications-title-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    height: 53px;
+  }
+  .notifications-header{
+    font-size: 24px;
+    @include md{
+      font-size: 28px;
+    }
+    font-weight: 300;
+    margin: 0 0 0 0;
+  }
+  .notifications-link{
+    font-size: 14px;
+    @include md{
+      font-size: 18px;
+    }
+    color: $color-primary;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  .notificaitons-items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    margin: 0 0 8px 0;
+  }
+  .notifications-data{
+    width: 80%;
+  }
+  h2, h3{
+    margin: 0;
+  }
+  .single-notification-header{
+    font-size: 14px;
+    @include md{
+      font-size: 18px;
+    }
+    font-weight: 400;
+    color: $color-text-primary;
+  }
+  .single-notification-organization{
+    font-size: 11px;
+    @include md{
+      font-size: 13px;
+    }
+    font-weight: 400;
+    color: $color-sub-header;
+  }
+}

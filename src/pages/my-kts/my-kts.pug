@@ -1,0 +1,25 @@
+.page-wrapper
+  .content-wrapper
+    .single-column
+      progress-widget
+      notifications-widget.notifications-mobile
+      a.about-KTS.kts-link((click)="goToPage('AboutUsPage')")
+        | About KTS
+        img.link-arrow(src="../../assets/icon/link-arrow.svg")
+      a.contact-us.kts-link((click)="goToPage('ContactUsPage')")
+        | Contact Us
+        img.link-arrow(src="../../assets/icon/link-arrow.svg")
+      a.my-careers.kts-link((click)="goToPage('CareersPage')")
+        | My Careers
+        img.link-arrow(src="../../assets/icon/link-arrow.svg")
+      .social-media
+        h2.social-media-header
+          | Check out Keys to Success on these platforms! 
+        a.socmed-icon(href="")
+          img(src="../../assets/icon/facebook_icon.svg", alt="facebook")
+        a.socmed-icon(href="")
+          img(src="../../assets/icon/instagram_icon.svg", alt="instagram")
+        a.socmed-icon(href="")
+          img(src="../../assets/icon/twitter_icon.svg", alt="twitter")        
+    .right-column
+      notifications-widget.notifications-desktop

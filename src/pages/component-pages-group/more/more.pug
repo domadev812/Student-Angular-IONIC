@@ -1,0 +1,25 @@
+#page-more([ngClass]="{'more-web-view': isPopover}")
+  .more-mobile-header(*ngIf="!isPopover")
+    .kts-header-mobile
+      | Menu
+    .more-close-btn((click)="close()")
+      | Close
+  ion-row
+    ion-col.more-item(col-12 (click)="goToPage('NotificationsPage', $event)")
+      | Notifications
+      ion-icon.arrow-icon(ios="ios-arrow-forward" md="ios-arrow-forward")
+    ion-col.more-item(col-12 (click)="goToPage('ProgressTrackerPage', $event)")
+      | Progress
+      ion-icon.arrow-icon(ios="ios-arrow-forward" md="ios-arrow-forward")
+    ion-col.more-item(col-12 (click)="goToPage('ToolsPage', $event)")
+      | Tools
+      ion-icon.arrow-icon(ios="ios-arrow-forward" md="ios-arrow-forward")
+    .more-spacer
+    ion-col.more-item(col-12 (click)="goToPage('AccountSettingsPage', $event)")
+      | Account Settings
+      ion-icon.arrow-icon(ios="ios-arrow-forward" md="ios-arrow-forward")
+    ion-col.more-item(col-12 (click)="goToPage('MyCareersPage', $event)" )
+      | My Careers
+      ion-icon.arrow-icon(ios="ios-arrow-forward" md="ios-arrow-forward")
+    ion-col.more-item(col-12 (click)="logout()")
+      | Logout

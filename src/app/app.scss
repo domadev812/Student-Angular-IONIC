@@ -1,0 +1,92 @@
+body {
+  box-sizing: border-box!important;
+}
+//this will prevent validation border from showing on item inputs
+.item-inner {
+  box-shadow: none !important;
+  border-bottom: none!important;
+}
+.item-input {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+//end
+
+//this will prevent alert content from having a unecessary scrollbar
+.alert-message {
+  overflow-y: auto;
+}
+//this will prevent any ion-content from having a unecessary scrollbar
+.scroll-content {
+  overflow-y: auto;
+}
+
+//this will change the ugly yellow autofill highlight that browsers add
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 50px white inset;
+}
+
+// removes black background on refresh when on ios
+.nav-decor {
+  background: initial !important;
+}
+
+
+// Style overrides for angular2-multiselect-dropdown 
+.kts-multiselect {
+  font-family: $font-stack;
+  .c-btn {
+    box-shadow: none !important;
+    @extend .kts-input;
+    min-height: 36px;
+    height: auto;
+    border: 1px solid #E9E9F0 !important;
+  }
+  .c-token{
+    @extend .center-y;
+    height: 25px;
+    border-radius: 18px!important;
+    background: #596577 !important;
+    .c-label {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 14px;
+      margin: 0 8px 0 5px;
+    }
+    .fa {
+      &.fa-remove {
+        color: transparent;
+        &::after {
+          color: #fff;
+          font-family: $font-stack;
+          margin-right: 3px;
+          content: 'X';
+        }
+      }
+    }
+  }
+  .pure-checkbox {
+    label::before {
+      border-color: #596577 !important;
+    }
+  }
+  .pure-checkbox[_ngcontent-c0] input[type="checkbox"][_ngcontent-c0]:checked + label[_ngcontent-c0]:before {
+    background: #596577 !important;
+  }
+}
+// end of style overrides for angular2-multiselect-dropdown
+
+
+
+//begin popover styles - these are to position the popover and need to be on a global level
+.more-web-nav-popover {
+  
+  .popover-content {
+    position: absolute;
+    top: $nav-height!important;
+    border-radius: 5px;
+    width: 190px;
+  }
+}
+//end of popover styles
+

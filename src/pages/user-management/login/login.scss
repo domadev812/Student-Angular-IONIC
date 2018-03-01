@@ -1,0 +1,51 @@
+page-login {
+  .split-page-wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(235, 49, 96, 1) 0%, rgba(191, 99, 164, 1) 100%);
+    .split-page-wrapper-inner {
+      width: 100%;
+      display: flex;
+      .split-page {
+        @extend .center-x;
+        width: 100%;
+        height: 100%;
+        &--left {
+          align-items: center;
+        }
+        &--right {
+        }
+      }
+    }
+  }
+  .split-page-background-image{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(235, 49, 96, .5) 0%, rgba(191, 99, 164, 0.5) 100%), url(../../assets/imgs/kts-login-bk.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+
+  @include xs {
+    .split-left, .split-page-background-image {
+      display: none;
+    }
+    .split-page--right {
+      // margin-top: 100px;
+    }
+
+  }
+  @include md {
+    .split-left, .split-page-background-image {
+      display: flex;
+    }
+    .split-page--right {
+      // margin-top: 200px;
+    }
+  }
+}

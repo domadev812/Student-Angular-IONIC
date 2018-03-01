@@ -1,0 +1,1 @@
+export * from '../_validators/password.validator';

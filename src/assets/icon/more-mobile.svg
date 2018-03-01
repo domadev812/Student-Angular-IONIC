@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="15px" viewBox="0 0 20 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>MoreMenu</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="20" height="1" rx="0.5"></rect>
+        <rect id="path-2" x="0" y="7" width="20" height="1" rx="0.5"></rect>
+        <rect id="path-3" x="0" y="14" width="20" height="1" rx="0.5"></rect>
+    </defs>
+    <g id="My-KTS-with-Message" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-280.000000, -843.000000)">
+        <g id="Bottom-Nav" transform="translate(0.000000, 831.000000)">
+            <g id="More-Menu" transform="translate(279.000000, 12.000000)">
+                <g id="MoreMenu" transform="translate(1.000000, 0.000000)">
+                    <g id="Rectangle-20">
+                        <use fill="#3E403F" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <rect stroke="#3E4040" stroke-width="1" x="0.5" y="0.5" width="19" height="1" rx="0.5"></rect>
+                    </g>
+                    <g id="Rectangle-20">
+                        <use fill="#3E403F" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        <rect stroke="#3E4040" stroke-width="1" x="0.5" y="7.5" width="19" height="1" rx="0.5"></rect>
+                    </g>
+                    <g id="Rectangle-20">
+                        <use fill="#3E403F" fill-rule="evenodd" xlink:href="#path-3"></use>
+                        <rect stroke="#3E4040" stroke-width="1" x="0.5" y="14.5" width="19" height="1" rx="0.5"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

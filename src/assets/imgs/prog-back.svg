@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="351px" height="203px" viewBox="0 0 351 203" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>prog-back</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#EE2F55" offset="0%"></stop>
+            <stop stop-color="#BE65A6" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-4.30869106%" y1="109.099589%" x2="100%" y2="16.4681725%" id="linearGradient-2">
+            <stop stop-color="#3DC3EE" offset="0%"></stop>
+            <stop stop-color="#E91373" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-35.4587564%" y1="166.601651%" x2="156.638888%" y2="27.8493453%" id="linearGradient-3">
+            <stop stop-color="#3DC3EE" offset="0%"></stop>
+            <stop stop-color="#E91373" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="71.3159198%" y1="68.5024226%" x2="129.48384%" y2="36.1023782%" id="linearGradient-4">
+            <stop stop-color="#3DC3EE" offset="0%"></stop>
+            <stop stop-color="#E91373" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="prog-back">
+            <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="351" height="203"></rect>
+            <polygon id="Rectangle-9" fill="url(#linearGradient-2)" opacity="0.399999976" points="289.863735 84.2348337 351 13 351 203 12 203 205.040864 137.245115"></polygon>
+            <polygon id="Rectangle-9" fill="url(#linearGradient-3)" opacity="0.399999976" points="140.609456 178.446236 272.607166 124.4669 351 63 351 203 12 203"></polygon>
+            <polygon id="Rectangle-9" fill="url(#linearGradient-4)" opacity="0.25" points="187.113353 184.750398 299.646915 148.867137 351 105 351 203 42 203"></polygon>
+        </g>
+    </g>
+</svg>

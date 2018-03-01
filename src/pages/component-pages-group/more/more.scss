@@ -1,0 +1,48 @@
+page-more {
+  background: linear-gradient(180deg, rgba(227,234,239,0.35) 0%, rgba(238,222,231,0.35) 100%);
+  .more-item {
+    background: #fff;
+    @extend .center-y;
+    justify-content: space-between;
+    padding: 5px 10px 5px 10px;
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #F0F1F6;
+    cursor: pointer;
+    font-size: 22px;
+    .arrow-icon {
+      color: #CFD2E6;
+    }
+  }
+  .more-spacer {
+    height: 12px;
+    width: 100%;
+    border-bottom: 1px solid #F0F1F6;
+  }
+  .more-mobile-header {
+    @extend .center-y;
+    justify-content: space-between;
+    padding: 10px 10px 25px;
+    border-bottom: 1px solid #F0F1F6;
+    .more-close-btn {
+      color: $color-primary;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+
+  .more-web-view {
+    background: transparent;
+    height: 100%;
+    .more-item {
+      height: 32px;
+      font-size: 14px;
+      line-height: 17px;
+      padding: 5px 10px;
+    }
+  }
+
+}
+
+

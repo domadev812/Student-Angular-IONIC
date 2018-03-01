@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="970px" viewBox="0 0 1440 970" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Background</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-9.30296458%" y1="11.4882045%" x2="104.393713%" y2="87.4124754%" id="linearGradient-1">
+            <stop stop-color="#3DC3EE" offset="0%"></stop>
+            <stop stop-color="#E91373" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="48.7659285%" y1="-20.6999085%" x2="49.4052766%" y2="117.102792%" id="linearGradient-2">
+            <stop stop-color="#3DC3EE" offset="0%"></stop>
+            <stop stop-color="#E91373" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="28.9332744%" x2="50%" y2="91.7649371%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="My-Careers---Empty-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(0.000000, -54.000000)">
+        <g id="Background" transform="translate(-1.000000, 54.000000)">
+            <rect id="Rectangle-40" fill="#FFFFFF" x="1" y="3" width="1440" height="973"></rect>
+            <path d="M814.861084,1008.95259 L1,206.120241 L1,36.1543293 L1441,36.1543293 L1441,1008.95259 L814.861084,1008.95259 Z" id="Combined-Shape" fill="url(#linearGradient-1)" opacity="0.100000001"></path>
+            <path d="M482.346386,976 L0,976 L0,2 L1445,2 L1445,668.303941 L482.346386,976 Z" id="Combined-Shape" fill="url(#linearGradient-2)" opacity="0.0799999982"></path>
+            <rect id="Rectangle-4" fill="url(#linearGradient-3)" x="1" y="0" width="1467" height="162"></rect>
+        </g>
+    </g>
+</svg>

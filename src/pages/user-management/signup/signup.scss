@@ -1,0 +1,10 @@
+page-signup {
+  @extend page-login;
+  overflow: auto;
+  @include md {
+   overflow: hidden;
+  }
+  .split-page-wrapper-inner {
+    background: #fff;
+  }
+}

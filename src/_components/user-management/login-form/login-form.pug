@@ -1,0 +1,16 @@
+.kts-header.login-header
+  | Login
+ion-label.kts-input-label.kts-input-label.login-input-label(stacked)
+  | EMAIL
+ion-input.kts-input( [(ngModel)]="email" type="email" )
+ion-label.kts-input-label.login-input-label.password-label(stacked)
+  .label-left PASSWORD
+  .label-right forgot password?
+ion-input.kts-input( [(ngModel)]="password" type="password" )
+button.kts-primary-btn.login-button( (click)="login()" ) Login
+.onboarding-bottom-section.login-bottom-section
+  .bottom-question
+    | Don't have an account?
+  .bottom-link([navPush]="'SignupPage'")
+    | Sign Up
+    //- TODO: ADD SVG ICON

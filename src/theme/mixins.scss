@@ -1,0 +1,64 @@
+//Standard screen sizes mixins
+
+@mixin xs {
+  @media (min-width: 0px) {
+    @content
+  }
+};
+
+@mixin mobile {
+  @media (min-width: 400px) {
+    @content
+  }
+};
+
+@mixin sm {
+  @media (min-width: 576px) {
+    @content
+  }
+};
+@mixin md {
+  @media (min-width: 768px) {
+    @content
+  }
+};
+@mixin lg {
+  @media (min-width: 992px) {
+    @content
+  }
+};
+@mixin xl {
+  @media (min-width: 1200px) {
+    @content
+  }
+};
+
+@mixin md-max{
+  @media (max-width: 767px) {
+    @content
+  }
+}  
+
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin text-ellipsis() {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}

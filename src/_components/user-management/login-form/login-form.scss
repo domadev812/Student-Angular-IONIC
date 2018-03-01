@@ -1,0 +1,32 @@
+login-form {
+  color: #FFFFFF;
+  width: 75%;
+  max-width: 500px;
+  margin-top: 100px;
+  .login-header {
+    margin-bottom: 30px;
+  }
+  .login-input-label {
+    &.password-label {
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      margin-right: 0;
+      .label-right {
+        cursor: pointer;
+      }
+    }
+  }
+  .login-button {
+    margin-top: 30px;
+    background-color: #EC305E;
+    width: 50%;
+  }
+  .login-bottom-section {
+    margin-top: 70px;
+  }
+  @include md {
+    margin-top: 150px;
+  }
+  
+}

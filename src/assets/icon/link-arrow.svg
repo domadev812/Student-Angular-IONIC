@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="My-KTS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-492.000000, -384.000000)">
+        <g id="Group" transform="translate(181.000000, 76.000000)">
+            <g id="About-KTS" transform="translate(1.000000, 302.000000)">
+                <g id="Group-2" transform="translate(310.000000, 6.000000)">
+                    <circle id="Oval-3" fill="#F0F1F6" cx="12.5" cy="12.5" r="12.5"></circle>
+                    <g id="right-arrow" transform="translate(6.034483, 8.620690)" fill="#E41C3D" fill-rule="nonzero">
+                        <path d="M8.70760833,0.129649068 C8.53144403,-0.0432163559 8.2382475,-0.0432163559 8.05592361,0.129649068 C7.87975931,0.296674443 7.87975931,0.574660732 8.05592361,0.741296771 L11.3603388,3.8742879 L0.456220366,3.8742879 C0.202034581,3.87467724 0,4.06623082 0,4.30723014 C0,4.54822945 0.202034581,4.74601242 0.456220366,4.74601242 L11.3603388,4.74601242 L8.05592361,7.8731635 C7.87975931,8.04602892 7.87975931,8.32440455 8.05592361,8.49104059 C8.2382475,8.66390601 8.53185467,8.66390601 8.70760833,8.49104059 L12.7942916,4.61636335 C12.9766155,4.44933797 12.9766155,4.17135168 12.7942916,4.00471564 L8.70760833,0.129649068 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

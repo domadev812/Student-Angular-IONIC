@@ -1,0 +1,16 @@
+.progress-tracker
+  .progress-title-row
+    h1.progress-title
+      | progress
+    a.progress-link((click)="goToProgress()")
+      | View details
+  .progress-info-row
+    section.indicator
+      h3 Prizes
+      h4 {{ prizesAmount }}
+    section.indicator
+      h3 Opporturnities
+      h4 {{ opportunitiesAmount }}
+    section.indicator
+      h3 Scholarships
+      h4 {{ scholarshipsAmount }}

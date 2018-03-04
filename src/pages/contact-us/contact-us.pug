@@ -7,11 +7,35 @@
         .button-group
             button.send-button(type="submit")
               | Send
-      .form-content
+      .form-content.scroll-content
         .item-info
           .input-label
             | FULL NAME
             .invalid-validation([hidden]="fullname.valid || (fullname.pristine && !contactForm.submitted)")
               | Full name is required
-          input.kts-input(type="text" name="fullname" [(ngModel)]="fullName" (ngModelChange)="onChange($event)" #fullname="ngModel" required) 
+          input.kts-input(type="text" name="fullname" [(ngModel)]="fullName" #fullname="ngModel" required) 
+        .item-info
+          .input-label
+            | PHONE NUMBER
+            .invalid-validation([hidden]="phone.valid || (phone.pristine && !contactForm.submitted)")
+              | Phone number is required
+          input.kts-input(type="text" name="phone" [(ngModel)]="phoneNumber" #phone="ngModel" required) 
+        .item-info
+          .input-label
+            | CATEGORY OF INQUIRY
+            .invalid-validation([hidden]="!contactForm.submitted")
+              | Category is required
+          angular2-multiselect(
+            name = 'category'
+            [data]='categoryList'
+            [(ngModel)]='selectedCategory'
+            [settings]='ktsSelectSettings'
+            (onSelect)='onCategorySelect($event)'            
+          )
+        .item-info
+          .input-label
+            | MESSAGE
+            .invalid-validation([hidden]="message_content.valid || (message_content.pristine && !contactForm.submitted)")
+              | Message is required
+          textarea.kts-textarea(rows='10' name="message_content" [(ngModel)]="message" #message_content="ngModel" required)          
           

@@ -30,6 +30,7 @@ page-contact-us {
     }            
   }
   .content-wrapper {
+    position: relative;
     z-index: 2;
     width: 1080px;
     max-width: 1080px;
@@ -39,17 +40,30 @@ page-contact-us {
     }
   }
   .form-content {
-    margin-top: 30px;
-    @include md{
-      margin-top: 22px;
-    }
+    overflow-y: auto;
+    margin-top: 70px;
+  }
+  .item-info {
+    margin-bottom: 15px;
   }
   .input-label {
     @extend .input-label;
     @extend .center-y;
+    color: #232d3b;
+    font-weight: 300;
+    font-size: 12px;
+    padding-left: 2px;
   }
   .kts-input {
     @extend .kts-input;
     width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .kts-textarea {
+    @extend .kts-input;
+    height: auto;
+    resize: none;
   }
 }

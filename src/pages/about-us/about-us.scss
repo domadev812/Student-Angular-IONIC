@@ -1,3 +1,52 @@
 page-about-us {
-
+  .page-wrapper {
+    background-image: none;
+  }  
+  .about-wrapper {
+    z-index: 2;
+    width: 1080px;
+    max-width: 1080px;
+    margin: 10px 15px 10px 15px;    
+  }
+  .about-title {
+    font-size: 24px;
+    @include md{
+      font-size: 36px;
+    }
+  }
+  .about-section {
+    margin-top: 24px;
+    @include md{
+      margin-top: 45px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      @include md{
+        font-size: 24px;
+      }
+    } 
+    .section-content {
+      font-size: 14px;
+      margin-top: 3px;
+      @include md{
+        font-size: 20px;
+        margin-top: 10px;
+      }
+      ol {
+        margin: 3px 0;        
+        padding-left: 20px;
+        @include md{
+          margin: 10px 0; 
+          padding-left: 30px;      
+        }
+        li {
+          margin-top: 3px;
+          @include md{ 
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
 }

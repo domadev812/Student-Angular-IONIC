@@ -1,27 +1,37 @@
+@import "../../theme/variables.scss";
 page-about-us {
-  .page-wrapper {
-    background-image: none;
+  .header-nav {  
+    @extend .space-between;
+    flex-wrap: wrap; 
+    align-items: center;
+    .headers {
+      font-size: 24px;
+      margin: 0;
+      @include md{
+        font-size: 36px;
+      }
+    }
   }  
   .about-wrapper {
+    position: relative;
     z-index: 2;
     width: 1080px;
     max-width: 1080px;
-    margin: 10px 15px 10px 15px;    
+    margin: 10px 15px;    
     @include md{
-      margin: 20px 15px 20px 15px;    
+      margin: 20px 15px;    
     }
   }
-  .about-title {
-    font-size: 24px;
-    margin-top: 0;
+  .about-content {
+    margin-top: 40px;
     @include md{
-      font-size: 36px;
+      margin-top: 50px;
     }
   }
   .about-section {
-    margin-top: 24px;
+    margin-top: 20px;
     @include md{
-      margin-top: 45px;
+      margin-top: 35px;
     }
     .section-title {
       font-size: 18px;

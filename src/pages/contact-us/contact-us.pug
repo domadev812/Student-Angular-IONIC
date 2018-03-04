@@ -1,0 +1,17 @@
+.page-wrapper
+  .content-wrapper
+    form.form-group(#contactForm="ngForm" (ngSubmit)="sendMessage(contactForm.valid)" novalidate)
+      .header-nav
+        h1.headers
+          | Contact Us
+        .button-group
+            button.send-button(type="submit")
+              | Send
+      .form-content
+        .item-info
+          .input-label
+            | FULL NAME
+            .invalid-validation([hidden]="fullname.valid || (fullname.pristine && !contactForm.submitted)")
+              | Full name is required
+          input.kts-input(type="text" name="fullname" [(ngModel)]="fullName" (ngModelChange)="onChange($event)" #fullname="ngModel" required) 
+          

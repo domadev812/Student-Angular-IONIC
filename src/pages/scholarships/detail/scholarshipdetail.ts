@@ -25,10 +25,11 @@ export class ScholarshipDetailPage {
   }
 
   ngOnInit() {        
-    this.scholarshipId = this.navParams.get('scholarshipId');        
-    this.scholarshipsService.getScholarship(this.scholarshipId).subscribe((res: Model.Scholarship) => {
-      this.scholarship = res;
-      console.log(res);
-    }, err => console.log('There was an error', err));
+    // this.scholarshipId = this.navParams.get('scholarshipId');        
+    // this.scholarshipId = '8';
+    // this.scholarshipsService.getScholarship(this.scholarshipId).subscribe((res: Model.Scholarship) => {
+    //   this.scholarship = res;
+    //   console.log(res);
+    // }, err => console.log('There was an error', err));
   }
 }

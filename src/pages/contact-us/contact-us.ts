@@ -11,8 +11,13 @@ export class ContactUsPage {
   fullName: string;
   phoneNumber: string;
   message: string;
-  categoryList: Object[] = [{ itemName: 'Category1', id: 1 }, 
-                            { itemName: 'Category2', id: 2 }];
+  categoryList: Object[] = [{ itemName: 'Prize Problems', id: 1 }, 
+                            { itemName: 'Scholarships', id: 2 },
+                            { itemName: 'Internships', id: 3 },
+                            { itemName: 'Opportunities', id: 4 },
+                            { itemName: 'Sponsorship', id: 5 },
+                            { itemName: 'General KTS Questions', id: 6 },
+                            { itemName: 'Other', id: 7 }];
   selectedCategory: Object[] = [];
   ktsSelectSettings: Object = {};
   constructor(public navCtrl: NavController, 

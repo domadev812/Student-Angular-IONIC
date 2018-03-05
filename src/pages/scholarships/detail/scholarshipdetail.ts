@@ -9,12 +9,14 @@ import { Model } from '../../../app/app.models';
   templateUrl: 'scholarshipdetail.html',
 })
 export class ScholarshipDetailPage {  
+  public scholarshipId: string;
+  public scholarship: Model.Scholarship;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,     
-    public scholarshipsService: ScholarshipsService
+    public scholarshipsService: ScholarshipsService,    
   ) {
   }
 
@@ -22,11 +24,11 @@ export class ScholarshipDetailPage {
     this.navService.currentPage = 'ScholarshipDetailPage';
   }
 
-  ngOnInit() {    
-    const scholarshipId = this.navParams.get('scholarshipId');
-    console.log(scholarshipId);
-    // this.scholarshipsService.getScholarships().subscribe((res: Model.Scholarship[]) => {
-    //   this.scholarshipsList = res;
-    // }, err => console.log('There was an error', err));
+  ngOnInit() {        
+    this.scholarshipId = this.navParams.get('scholarshipId');        
+    this.scholarshipsService.getScholarship(this.scholarshipId).subscribe((res: Model.Scholarship) => {
+      this.scholarship = res;
+      console.log(res);
+    }, err => console.log('There was an error', err));
   }
 }

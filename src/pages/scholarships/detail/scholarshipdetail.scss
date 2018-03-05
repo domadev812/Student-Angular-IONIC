@@ -1,25 +1,30 @@
 @import "../../../theme/variables.scss";
 page-contact-us {
-  .header-nav {  
-    @extend .space-between;
-    flex-wrap: wrap; 
-    align-items: center;
-    .headers {
-      font-size: 24px;
-      margin: 0;
-      @include md{
-        font-size: 36px;
-      }
-    }           
-  }
-  .content-wrapper {
-    position: relative;
-    z-index: 2;
+  .content-wrapper{
+    margin: 10px 0 0 0;
     width: 1080px;
     max-width: 1080px;
-    margin: 10px 25px;    
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
     @include md{
-      margin: 20px 15px;    
+      flex-direction: row;
+    }
+  }
+  .left-column{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @include md{
+      width: 33%;
+    }
+  }
+  .right-column{
+    display: flex;
+    margin-left: 1%;
+    width: 100%;    
+    @include md{      
+      width: 66%;
     }
   }
 }

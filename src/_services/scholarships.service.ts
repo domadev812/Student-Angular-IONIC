@@ -14,7 +14,7 @@ export class ScholarshipsService {
     if (search.length > 0)  search = '&search=' + search;
     return this.http.get('/scholarships?offset=' + offset + '&limit=' + limit + search)
       .map((response: Response) => {
-        const json = response.json();
+        const json = response.json();        
         if (json && json.data) {
           return Model.initializeArray(json.data, 'Scholarship');
         } else {
@@ -23,5 +23,15 @@ export class ScholarshipsService {
       });
   }
 
-
+  getScholarship(id: any): Observable<Model.Scholarship> {     
+    return this.http.get('/scholarships/' + id)
+      .map((response: Response) => {
+        const json = response.json();
+        if (json && json.data) {
+          return new Model.Scholarship(json.data);          
+        } else {
+          Observable.throw({ message: 'Internal Server Error' });
+        }
+      });
+  }
 }

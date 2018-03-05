@@ -13,19 +13,16 @@ page-contact-us {
     }
     .send-button {         
       @extend .kts-primary-btn; 
-      font-size: 16px;
-      color: $color-primary;       
-      background: none;
-      box-shadow: none;
-      font-weight: normal;                  
-      @include md{              
-        width: 135px;
-        height: 35px;
-        font-size: 18px;
-        color: #FFF;
-        background: $color-primary;
-        box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.35);
-        font-weight: bold;
+      width: 135px;
+      height: 35px;
+      font-size: 18px;                     
+      @include md-max{  
+        width: auto;            
+        font-size: 16px;
+        color: $color-primary;       
+        background: none;
+        box-shadow: none;
+        font-weight: normal;  
       }
     }            
   }

@@ -23,7 +23,7 @@
         .item-info
           .input-label
             | CATEGORY OF INQUIRY
-            .invalid-validation([hidden]="!contactForm.submitted")
+            .invalid-validation([hidden]="selectedCategory.length > 0 ||!contactForm.submitted")
               | Category is required
           angular2-multiselect(
             name = 'category'

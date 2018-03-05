@@ -88,4 +88,31 @@ page-scholarshipdetail {
       margin: 18px 0;
     }       
   }
+  .description {
+    background-color: #FFF;
+    height: auto;
+    padding: 25px 23px;
+    @include md{
+      padding: 25px 43px;
+      box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35); 
+      border-radius: 7px;
+    }
+  }
+  .description-title {
+    font-size: 11px;
+    font-weight: 800;
+    @include md{
+      font-size: 18px;      
+    }
+  }
+  .description-content {
+    font-size: 12px;
+    line-height: 17px;
+    margin-top: 2px;
+    @include md{
+      font-size: 16px;
+      line-height: 30px;
+      margin-top: 10px;
+    }
+  }
 }

@@ -1,0 +1,68 @@
+@import "../../theme/variables.scss";
+page-earn-more {
+  .header-nav {  
+    @extend .space-between;
+    flex-wrap: wrap; 
+    align-items: center;    
+    .headers {
+      font-size: 24px;
+      font-weight: normal;
+      margin: 0;
+      @include md{
+        font-size: 36px;
+        display: none;
+      }
+    }
+  }  
+  .earn-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 500px;
+    max-width: 500px;
+    margin: 10px 15px;    
+    @include md{
+      margin: 20px 15px;    
+    }
+  }
+  .earn-more-content {
+    margin-top: 40px;
+    @include md{
+      margin-top: 10px;
+    }
+  }
+  .comment {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-style: italic;
+    @include md{
+      font-size: 22px;
+      margin-bottom: 30px;      
+    }
+  }
+  .section {
+    margin-bottom: 30px;
+    @include md{
+      margin-bottom: 40px;
+    }
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: $color-primary;
+    line-height: 22px;
+    margin-bottom: 5px;
+    @include md{
+      font-size: 24px;
+      line-height: 29px;      
+    }
+  }
+  .section-content {
+    font-size: 14px;
+    line-height: 26px;
+    @include md{
+      font-size: 22px;
+      line-height: 34px;
+    }
+  }
+}

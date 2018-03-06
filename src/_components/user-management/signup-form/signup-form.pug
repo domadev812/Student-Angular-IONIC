@@ -1,8 +1,8 @@
 .signup-header-wrapper
   .kts-header
     | Signup
-  button.kts-primary-btn.next-button(*ngIf="!formOneDone" (click)="next(signupForm.valid)") Next
-  button.kts-primary-btn.next-button(*ngIf="formOneDone" (click)="signup(signupForm.valid)") Submit
+  button.kts-primary-btn.next-button(*ngIf="!formOneDone", (click)="next(signupForm.valid)") Next
+  button.kts-primary-btn.next-button(*ngIf="formOneDone", (click)="signup(signupForm.valid)") Submit
 form(*ngIf="!formOneDone" [formGroup]="signupForm" )
   
 
@@ -11,7 +11,7 @@ form(*ngIf="!formOneDone" [formGroup]="signupForm" )
     .invalid-validation(*ngIf="invalid(signupForm.controls.username)")
       | Please enter a valid username
     .valid-validation(*ngIf="valid(signupForm.controls.username)")
-      ion-icon(ios="md-checkmark" md="md-checkmark")
+      ion-icon(ios="md-checkmark", md="md-checkmark")
   ion-input.kts-input( formControlName="username" [(ngModel)]="user.username" type="text" )
   
 
@@ -20,7 +20,7 @@ form(*ngIf="!formOneDone" [formGroup]="signupForm" )
     .invalid-validation(*ngIf="invalid(signupForm.controls.password)")
       | Please enter a valid password
     .valid-validation(*ngIf="valid(signupForm.controls.password)")
-      ion-icon(ios="md-checkmark" md="md-checkmark")
+      ion-icon(ios="md-checkmark", md="md-checkmark")
   ion-input.kts-input( formControlName="password" [(ngModel)]="user.password" type="password" )
   
 
@@ -29,7 +29,7 @@ form(*ngIf="!formOneDone" [formGroup]="signupForm" )
     .invalid-validation(*ngIf="invalid(signupForm.controls.first_name)")
       | First Name is required
     .valid-validation(*ngIf="valid(signupForm.controls.first_name)")
-      ion-icon(ios="md-checkmark" md="md-checkmark")
+      ion-icon(ios="md-checkmark", md="md-checkmark")
   ion-input.kts-input( formControlName="first_name" [(ngModel)]="user.first_name" type="text" )
   
 
@@ -38,7 +38,7 @@ form(*ngIf="!formOneDone" [formGroup]="signupForm" )
     .invalid-validation(*ngIf="invalid(signupForm.controls.last_name)")
       | Last Name is required
     .valid-validation(*ngIf="valid(signupForm.controls.last_name)")
-      ion-icon(ios="md-checkmark" md="md-checkmark")
+      ion-icon(ios="md-checkmark", md="md-checkmark")
   ion-input.kts-input( formControlName="last_name" [(ngModel)]="user.last_name" type="text" )
   
   
@@ -47,7 +47,7 @@ form(*ngIf="!formOneDone" [formGroup]="signupForm" )
     .invalid-validation(*ngIf="invalid(signupForm.controls.email)")
       | Please enter a valid email address
     .valid-validation(*ngIf="valid(signupForm.controls.email)")
-      ion-icon(ios="md-checkmark" md="md-checkmark")
+      ion-icon(ios="md-checkmark", md="md-checkmark")
   ion-input.kts-input(  formControlName="email" [(ngModel)]="user.email"  type="email" email )
   
   
@@ -56,11 +56,11 @@ form(*ngIf="!formOneDone" [formGroup]="signupForm" )
     .invalid-validation(*ngIf="invalid(signupForm.controls.school)")
       | Please choose a school
     .valid-validation(*ngIf="valid(signupForm.controls.school)")
-      ion-icon(ios="md-checkmark" md="md-checkmark")
-  angular2-multiselect( formControlName="school"
-                        [data]="schoolList" 
-                        [(ngModel)]="selectedSchool" 
-                        [settings]="ktsSelectSettings" 
+      ion-icon(ios="md-checkmark", md="md-checkmark")
+  angular2-multiselect( formControlName="school",
+                        [data]="schoolList", 
+                        [(ngModel)]="selectedSchool", 
+                        [settings]="ktsSelectSettings", 
                         (onSelect)="onSchoolSelect($event)"
                       )
 
@@ -70,11 +70,11 @@ form(*ngIf="!formOneDone" [formGroup]="signupForm" )
     .invalid-validation(*ngIf="invalid(signupForm.controls.graduation_year)")
       | Please choose a graduation year
     .valid-validation(*ngIf="valid(signupForm.controls.graduation_year)")
-      ion-icon(ios="md-checkmark" md="md-checkmark")
-  angular2-multiselect( formControlName="graduation_year"
-                        [data]="yearList" 
-                        [(ngModel)]="selectedYear" 
-                        [settings]="ktsSelectSettings" 
+      ion-icon(ios="md-checkmark", md="md-checkmark")
+  angular2-multiselect( formControlName="graduation_year",
+                        [data]="yearList", 
+                        [(ngModel)]="selectedYear", 
+                        [settings]="ktsSelectSettings", 
                       )
 
 
@@ -85,21 +85,21 @@ form(*ngIf="!formOneDone" [formGroup]="signupForm" )
 form(*ngIf="formOneDone" [formGroup]="signupForm2")
   ion-label.kts-input-label.kts-input-label(stacked)
     | BIRTHDAY
-  my-date-picker( formControlName="birthday" [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)" [(ngModel)]="startBirthday")
+  my-date-picker( formControlName="birthday", [options]="myDatePickerOptions", (dateChanged)="onDateChanged($event)", [(ngModel)]="startBirthday")
   ion-label.kts-input-label.kts-input-label(stacked)
     | ETHNICITY
-  angular2-multiselect( formControlName="ethnicity"
-                        [data]="ethnicityList" 
-                        [(ngModel)]="selectedEthnicity"
-                        (onSelect)="onEthnicitySelect($event)"
+  angular2-multiselect( formControlName="ethnicity",
+                        [data]="ethnicityList", 
+                        [(ngModel)]="selectedEthnicity",
+                        (onSelect)="onEthnicitySelect($event)",
                         [settings]="ktsSelectSettings" 
                       )
   ion-label.kts-input-label.kts-input-label(stacked)
     | GENDER
-  angular2-multiselect( formControlName="gender"
-                        [data]="genderList" 
-                        [(ngModel)]="selectedGender"
-                        (onSelect)="onGenderSelect($event)"
+  angular2-multiselect( formControlName="gender",
+                        [data]="genderList", 
+                        [(ngModel)]="selectedGender",
+                        (onSelect)="onGenderSelect($event)",
                         [settings]="ktsSelectSettings" 
                       )
 .onboarding-bottom-section.signup-bottom-section

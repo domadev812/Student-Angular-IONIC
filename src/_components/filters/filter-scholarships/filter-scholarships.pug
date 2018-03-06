@@ -3,12 +3,12 @@
 .filter-item
   .filter-item-header
     | MY SCHOLARSHIPS
-  ion-toggle.filter-toggle([(ngModel)]="myScholarships" (ionChange)="myScholarshipsToggle(myScholarships)" checked="false" mode="ios")
+  ion-toggle.filter-toggle([(ngModel)]="myScholarships", (ionChange)="myScholarshipsToggle(myScholarships)", checked="false", mode="ios")
 .filter-select
   ion-label.kts-input-label(stacked)
     | SELECT A UNIVERSITY
-  angular2-multiselect( [data]="universityList" 
-                        [(ngModel)]="selectedUniversity" 
-                        [settings]="ktsSelectSettings"
+  angular2-multiselect( [data]="universityList", 
+                        [(ngModel)]="selectedUniversity", 
+                        [settings]="ktsSelectSettings",
                         (onSelect)="onUniversitySelect($event)"
                       )

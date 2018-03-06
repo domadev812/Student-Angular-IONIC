@@ -1,1 +1,34 @@
 .page-wrapper
+  .filter-list-page-wrapper
+    ion-col.web-filter-col(col-4)
+      filter-internships(*ngIf="pageToggle")
+      filter-opportunities(*ngIf="!pageToggle")
+    ion-col.lp-list-col(col-12 col-md-8)
+      .mobile-header-wrapper
+        .kts-header-mobile
+          | Careers
+        .points-btn()
+          | 35pts
+      ion-searchbar.kts-searchbar(*ngIf="pageToggle", (ionInput)="search('Internship', $event)", [debounce]="400", placeholder="Search Internships...", mode="ios")
+      ion-searchbar.kts-searchbar(*ngIf="!pageToggle", (ionInput)="search('Other', $event)", [debounce]="400", placeholder="Search opportunities...", mode="ios")
+      .lp-tabs-wrapper
+        .lp-tab.lp-tab--left((click)="toggle(true)", [ngClass]="{'active-tab': pageToggle}")
+          | INTERSHIPS
+        .lp-tab.lp-tab--right((click)="toggle(false)", [ngClass]="{'active-tab': !pageToggle}")
+          | OTHER OPPORTUNITIES
+      ion-content.lp-list
+        .lp-item(*ngFor="let opportunity of opportunitiesList; let i = index")
+          .lp-item-image
+            img(src="https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg")
+          .lp-item-info-col
+            .lp-item-title
+              | {{opportunity.title}}
+            .lp-item-value
+              | {{opportunity.organization.name}}
+            .lp-item-description
+              | {{opportunity.details}}
+        ion-infinite-scroll((ionInfinite)="doInfinite($event)" )
+          ion-infinite-scroll-content
+            ion-spinner(name="ios")
+  .floating-filter-btn((click)="openFilterModal()")
+    | Refine

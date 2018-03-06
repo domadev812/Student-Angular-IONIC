@@ -16,6 +16,7 @@ export class ScholarshipsService {
       .map((response: Response) => {
         const json = response.json();        
         if (json && json.data) {
+          console.log('this is scholarship', json.data);
           return Model.initializeArray(json.data, 'Scholarship');
         } else {
           Observable.throw({ message: 'Internal Server Error' });

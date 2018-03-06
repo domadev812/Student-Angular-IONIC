@@ -15,5 +15,8 @@
               | ${{scholarship.amount}}
             .lp-item-description
               | {{scholarship.description}}
+        ion-infinite-scroll((ionInfinite)="doInfinite($event)" )
+          ion-infinite-scroll-content
+            ion-spinner(name="ios")
   .floating-filter-btn((click)="presentModal()")
     | Refine

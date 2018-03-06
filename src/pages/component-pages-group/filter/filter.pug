@@ -5,4 +5,6 @@
     .filter-done-btn((click)="done()")
       | Done
   .spacer-25
-  filter-scholarships()
+  filter-scholarships(*ngIf="filter === 'scholarships'")
+  filter-internships(*ngIf="filter === 'internships'")
+  filter-opportunities(*ngIf="filter === 'opportunities'")

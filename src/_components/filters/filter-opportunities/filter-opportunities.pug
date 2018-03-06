@@ -1,0 +1,6 @@
+.filter-header
+  | Filter Opportunities
+.filter-item
+  .filter-item-header
+    | MY OPPORTUNITIES
+  ion-toggle.filter-toggle([(ngModel)]="myOpportunities", (ionChange)="myOpportunitiesToggle(myOpportunities)", checked="false", mode="ios")

@@ -3,11 +3,15 @@ import { IonicModule } from 'ionic-angular';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterScholarshipsComponent } from './filter-scholarships/filter-scholarships.component';
+import { FilterOpportunitiesComponent } from './filter-opportunities/filter-opportunities.component';
+import { FilterInternshipsComponent } from './filter-internships/filter-internships.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
 @NgModule({
     declarations: [
-      FilterScholarshipsComponent
+      FilterScholarshipsComponent,
+      FilterOpportunitiesComponent,
+      FilterInternshipsComponent
     ],
     imports: [
       IonicModule,
@@ -16,7 +20,9 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2
       AngularMultiSelectModule     
     ],
     exports: [
-      FilterScholarshipsComponent
+      FilterScholarshipsComponent,
+      FilterOpportunitiesComponent,
+      FilterInternshipsComponent
     ]
   })
   export class FiltersModule {}

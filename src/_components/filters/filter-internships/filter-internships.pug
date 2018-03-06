@@ -1,0 +1,6 @@
+.filter-header
+  | Filter Internships
+.filter-item
+  .filter-item-header
+    | MY INTERNSHIPS
+  ion-toggle.filter-toggle([(ngModel)]="myInternships", (ionChange)="myInternshipsToggle(myInternships)", checked="false", mode="ios")

@@ -8,6 +8,7 @@ import { NavigationService } from '../../../app/app.services.list';
   templateUrl: 'filter.html',
 })
 export class FilterPage {
+  filter: string;
 
   constructor(
     public navCtrl: NavController,
@@ -18,6 +19,10 @@ export class FilterPage {
 
   ionViewCanEnter() {
     this.navService.currentPage = 'FilterPage';
+  }
+
+  ionViewDidEnter() {
+    this.filter = this.navParams.get('filter');
   }
 
   goToPage(page: string, event: any): void {

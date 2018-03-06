@@ -10,6 +10,11 @@ import { Model } from '../../app/app.models';
 })
 export class ScholarshipsPage {
   scholarshipsList: Model.Scholarship[];
+  limit = 20;
+  offset = 0;
+  input = '';
+  infinite: any;
+
 
   constructor(
     public navCtrl: NavController,
@@ -27,14 +32,13 @@ export class ScholarshipsPage {
 
   ngOnInit() {
     this.filterService.newScholarshipEvent.subscribe(event => this.onFilterChange(event));
-    this.scholarshipsService.getScholarships().subscribe((res: Model.Scholarship[]) => {
-      this.scholarshipsList = res;
-    }, err => console.log('There was an error', err));
+    this.getScholarships();
   }
 
 
   onFilterChange(event): void {
     //TODO: CALL API WITH FILTER WHEN BACKEND IS READY
+    // this.reset();
     console.log('got filters', event);
   }
 
@@ -43,10 +47,37 @@ export class ScholarshipsPage {
     modal.present();
   }
 
-  searchScholarships(event) {
-    const input = event.target.value;
-    this.scholarshipsService.getScholarships(input).subscribe((res: Model.Scholarship[]) => {
+  reset(): void {
+    this.limit = 20;
+    this.offset = 0;
+    this.input = '';
+    if (this.infinite) this.infinite.enable(true);
+  }
+
+  getScholarships(): void {
+    this.reset();
+    this.scholarshipsService.getScholarships().subscribe((res: Model.Scholarship[]) => {
       this.scholarshipsList = res;
+      this.offset = res.length;
+    }, err => console.log('There was an error', err));
+  }
+
+  searchScholarships(event): void {
+    this.reset();
+    this.input = event.target.value;
+    this.scholarshipsService.getScholarships(this.input).subscribe((res: Model.Scholarship[]) => {
+      this.scholarshipsList = res;
+      this.offset = res.length;
+    }, err => console.log('There was an error', err));
+  }
+
+
+  doInfinite(infiniteScroll: any): void {
+    this.scholarshipsService.getScholarships(this.input, this.offset, this.limit).subscribe((res: Model.Scholarship[]) => {
+      this.scholarshipsList = this.scholarshipsList.concat(res);
+        this.infinite = infiniteScroll;
+        infiniteScroll.complete();
+        if (res.length < this.limit) infiniteScroll.enable(false);
     }, err => console.log('There was an error', err));
   }
 

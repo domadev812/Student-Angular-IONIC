@@ -50,4 +50,7 @@ export class ScholarshipsPage {
     }, err => console.log('There was an error', err));
   }
 
+  goToDetailPage(scholarshipId: string): void {    
+    this.navCtrl.push('ScholarshipDetailPage', {scholarshipId: scholarshipId});
+  }
 }

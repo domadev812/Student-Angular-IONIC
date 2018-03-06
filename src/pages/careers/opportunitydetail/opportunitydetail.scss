@@ -1,5 +1,5 @@
 @import "../../../theme/variables.scss";
-page-scholarshipdetail {
+page-opportunitydetail {
   .page-wrapper {
     @include md-max{  
       background: none;
@@ -69,7 +69,7 @@ page-scholarshipdetail {
       margin-top: 40px;
     }
   }
-  .price {
+  .organization-name {
     text-align: center;
     font-size: 16px;
     color: rgb(143, 158, 179);
@@ -78,7 +78,7 @@ page-scholarshipdetail {
       margin-top: 5px;
     }
   }
-  .apply-button {
+  .interested-button {
     @extend .kts-primary-btn; 
     width: 100%;
     height: 45px;  

@@ -39,7 +39,8 @@ import { MyApp } from './app.component';
     Services.FilterService,
     Services.ScholarshipsService,
     Services.ContactUsService,
-    Services.NotificationsService
+    Services.NotificationsService,
+    Services.CareersService,
   ]
 })
 export class AppModule { }

@@ -24,11 +24,18 @@ export class OpportunityDetailPage {
     this.navService.currentPage = 'OpportunityDetailPage';
   }
 
-  ngOnInit() {        
+  ngOnInit() { 
+    this.opportunity = new Model.Opportunity();       
     this.opportunityId = this.navParams.get('opportunityId');        
     this.opportunityId = '180';
     this.careersService.getOpportunity(this.opportunityId).subscribe((res: Model.Opportunity) => {
       this.opportunity = res;      
+    }, err => console.log('There was an error', err));
+  }
+
+  applyOpportunity() {
+    this.careersService.applyOpportunity(this.opportunityId).subscribe((res: boolean) => {
+      alert('Opportunity is applied successfully');     
     }, err => console.log('There was an error', err));
   }
 }

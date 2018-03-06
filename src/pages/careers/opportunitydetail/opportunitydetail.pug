@@ -4,11 +4,11 @@
       .organization
         img.logo(src="https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg")
         .title
-          | University of Utah Alumni
-        .price
-          | $30000.00
-        button.apply-button
-          | Apply
+          | {{opportunity.title}}
+        .organization-name
+          | {{opportunity.organization_name}}
+        button.interested-button((click)="applyOpportunity()")
+          | Interested
     .right-column
       .description
         .description-title

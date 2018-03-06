@@ -6,7 +6,7 @@ page-scholarshipdetail {
     }
   }
   .content-wrapper{
-    margin: 10px 0 0 0;
+    margin: 10px 0;
     width: 1080px;
     max-width: 1080px;
     display: flex;
@@ -14,6 +14,7 @@ page-scholarshipdetail {
     z-index: 2;
     @include md{
       flex-direction: row;
+      margin: 10px 25px;
     }
   }
   .left-column{
@@ -42,7 +43,7 @@ page-scholarshipdetail {
     background-color: #FFF;    
     padding: 0 23px;
     @include md{ 
-      height: 360px;        
+      height: min-content;        
       box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35); 
       border-radius: 7px;
       padding: 0 26px;
@@ -50,12 +51,10 @@ page-scholarshipdetail {
   }
   .logo {
     width: 72px;
-    height: 72px;
     margin: 0 auto;    
     margin-top: 30px;
     @include md{
-      width: 184px;
-      height: 127px;
+      width: 184px;      
       margin-top: 56px;  
     }
   }

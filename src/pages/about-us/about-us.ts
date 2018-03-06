@@ -9,7 +9,7 @@ import { NavigationService } from '../../app/app.services.list';
 })
 export class AboutUsPage {
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService
   ) {

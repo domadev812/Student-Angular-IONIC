@@ -2,7 +2,7 @@
 export module NavUtil {
   export const HOME = 'ProfilePage';
   export const LOGIN = 'LoginPage';
-  
+
   export const NO_NAVBAR_PAGES = {
     'LoginPage': true,
     'SignupPage': true,
@@ -18,7 +18,7 @@ export module NavUtil {
     'progress-tracker',
     'tools'
   ];
-  
+
   export function getActiveLink(page: string): string {
     let link = location.hash.split('/')[1];
     let isMore: boolean = page === 'more' && this.isMorePage();

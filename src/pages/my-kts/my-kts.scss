@@ -1,31 +1,36 @@
 page-my-kts {
   .content-wrapper{
-    margin: 10px 0 0 0;
+    padding: 10px 0 0 0;
     width: 1080px;
     max-width: 1080px;
     display: flex;
     flex-direction: column;
     z-index: 2;
     @include md{
+      margin: 10px 10px 0 0;
       flex-direction: row;
     }
   }
   .single-column{
+    overflow: scroll;
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 100%;
     @include md{
+      padding: 10px 0 0 0;
       width: 33%;
+      position: relative;
     }
   }
 
-
   // Links
+
   .kts-link{
     background: white;
     color: $color-text-primary;
     cursor: pointer;
-    height: 37px;
+    min-height: 37px;
     border-radius: 6px;
     display: flex;
     justify-content: space-between;
@@ -63,8 +68,9 @@ page-my-kts {
     }
   }
   .notifications-desktop{
-    margin: 0 5px 10px 5px;
+    padding: 10px 5px;
     width: 100%;
+    overflow: scroll;
   }
 
 

@@ -31,13 +31,15 @@ import { MyApp } from './app.component';
     },
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     Services.AuthService,
     Services.CurrentUserService,
     Services.NavigationService,
     Services.MultiselectService,
     Services.FilterService,
-    Services.ScholarshipsService
+    Services.ScholarshipsService,
+    Services.ContactUsService,
+    Services.NotificationsService
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -5,7 +5,7 @@ import { FiltersModule } from '../../_components/filters/filters.group.module';
 
 @NgModule({
   declarations: [
-    ScholarshipsPage,    
+    ScholarshipsPage,
   ],
   imports: [
     IonicPageModule.forChild(ScholarshipsPage),

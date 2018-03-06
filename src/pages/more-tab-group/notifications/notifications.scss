@@ -1,3 +1,88 @@
 page-notifications {
+  .notifications-page-wrapper{
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+    .kts-card-wrapper{
+      display: flex;
+      flex-direction: column;
+      max-width: 715px;
+      width: auto;
+      padding: 30px;
+      margin: 0 15px;
+      @include md{
+        box-shadow: 0 0 4px 2px $color-shadow;
+        border-radius: 6px;
+        padding: 24px 40px 0 40px;
+        margin: 0 60px;
+      }
+      display: flex;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px 5px $color-shadow;
+    }
+    .kts-card-title-row{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      height: 53px;
+    }
+    .kts-card-header{
+      font-size: 24px;
+      line-height: 24px;
+      @include md{
+        font-size: 28px;
+        line-height: 29px;
+      }
+      font-weight: 300;
+      margin: 0 0 0 0;
+    }
+    .kts-card-link{
+      font-size: 14px;
+      line-height: 17px;
+      @include md{
+        font-size: 18px;
+        line-height: 19px;
+      }
+      color: $color-primary;
+      text-decoration: none;
+      font-weight: 400;
+    }
+    .kts-card-item{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      cursor: pointer;
+      margin: 0 0 20px 0;
+    }
+    .kts-card-data{
+      width: 80%;
+    }
+    h2, h3{
+      margin: 0;
+    }
+    .kts-card-item-header{
+      font-size: 14px;
+      @include md{
+        font-size: 24px;
+      }
+      font-weight: 400;
+      color: $color-text-primary;
+    }
+    .kts-card-item-info{
+      font-size: 11px;
+      @include md{
+        font-size: 20px;
+      }
+      font-weight: 400;
+      color: $color-sub-header;
+    }
+    .link {
+      text-decoration: none;
+    }
 
+
+  }
 }

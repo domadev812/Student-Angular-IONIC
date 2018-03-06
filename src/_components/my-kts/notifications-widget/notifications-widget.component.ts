@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Content } from 'ionic-angular';
 
 @Component({
   selector: 'notifications-widget',

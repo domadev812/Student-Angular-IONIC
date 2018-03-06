@@ -6,22 +6,20 @@ import 'rxjs/add/observable/throw';
 import { Model } from '../app/app.models';
 
 @Injectable()
-export class ScholarshipsService {
+export class ContactUsService {
 
   constructor(private http: Http) { }
   
-  getScholarships(search: string = '', offset = 0, limit = 20): Observable<Model.Scholarship[]> {
-    if (search.length > 0)  search = '&search=' + search;
-    return this.http.get('/scholarships?offset=' + offset + '&limit=' + limit + search)
+  sendData(data: Object): Observable<boolean> {        
+    return this.http
+      .post('https://script.google.com/macros/s/AKfycbxjBom6n-uPxjMyVsdH8BNb9J_Ev92CmwmsciOitSeYi98rEtAu/exec', data, null)
       .map((response: Response) => {
-        const json = response.json();
-        if (json && json.data) {
-          return Model.initializeArray(json.data, 'Scholarship');
+        const json = response.json();        
+        if (json && json.result === 'success') {
+          return true;
         } else {
           Observable.throw({ message: 'Internal Server Error' });
         }
       });
   }
-
-
 }

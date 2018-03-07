@@ -12,13 +12,10 @@ export class ScholarshipApplyPage {
   fullName: string;
   phoneNumber: string;
   comment: string;
-  gradeList: Object[] = [{ itemName: 'Prize Problems', id: 1 }, 
-                            { itemName: 'Scholarships', id: 2 },
-                            { itemName: 'Internships', id: 3 },
-                            { itemName: 'Opportunities', id: 4 },
-                            { itemName: 'Sponsorship', id: 5 },
-                            { itemName: 'General KTS Questions', id: 6 },
-                            { itemName: 'Other', id: 7 }];
+  gradeList: Object[] = [{ itemName: 'Senior', id: 1 }, 
+                            { itemName: 'Junior', id: 2 },
+                            { itemName: 'Expert', id: 3 },
+                            { itemName: 'Beginner', id: 4 }];
   selectedGrade: Object[] = [];
   ktsSelectSettings: Object = {};
   universityList: Object[] = [];

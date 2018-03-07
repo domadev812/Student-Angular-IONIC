@@ -1,7 +1,7 @@
 .page-wrapper
   .content-wrapper
     .balance-points
-      | Balance: 35 points
+      | Balance: {{balancePoints}} points
     ion-content.lp-list
       ion-row(wrap)
         ion-col.prize-col(col-6 col-md-3 *ngFor="let prize of prizesList; let i = index")

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, PrizesService } from '../../app/app.services.list';
+import { NavigationService, PrizesService, AuthService, CurrentUserService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
 @IonicPage()
 @Component({
@@ -12,6 +12,7 @@ export class PrizesPage {
   limit = 20;
   offset = 0;
   infinite: any;
+  balancePoints = 0;
   imageTest = ['https://image.ibb.co/b8di2n/logo1.png',
                'https://image.ibb.co/itpsTS/logo2.png',
                'https://image.ibb.co/iGWZa7/logo3.png'];
@@ -19,7 +20,9 @@ export class PrizesPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,
-    public prizesService: PrizesService
+    public prizesService: PrizesService,    
+    public authProvider: AuthService,    
+    public currentUserService: CurrentUserService, 
   ) {
   }
 
@@ -28,6 +31,7 @@ export class PrizesPage {
   }
 
   ngOnInit() {
+    this.getCurrentUser();
     this.getPrizes();
   }
 
@@ -37,12 +41,18 @@ export class PrizesPage {
     if (this.infinite) this.infinite.enable(true);
   }
 
+  getCurrentUser(): void {
+    this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
+      this.balancePoints = res.points;
+    });
+
+  }
+
   getPrizes(): void {
     this.reset();
     this.prizesService.getPrizes().subscribe((res: Model.Prize[]) => {
       this.prizesList = res;
-      this.offset = res.length;
-      console.log(res.length);
+      this.offset = res.length;      
     }, err => console.log('There was an error', err));
   }
 

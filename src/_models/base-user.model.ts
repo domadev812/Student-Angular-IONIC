@@ -17,7 +17,7 @@ export class BaseUser {
   reset_pass_token: string;
   roles: string[];
   fullName: Function;
-
+  points: number;
   constructor() {
     
   }
@@ -38,6 +38,7 @@ export class BaseUser {
     this.reset_pass_exp = data.reset_pass_exp || this.reset_pass_exp;
     this.reset_pass_token = data.reset_pass_token || this.reset_pass_token;
     this.roles = data.roles || this.roles;
+    this.points = data.points || this.points;
   }
 
   getName(): string | undefined {

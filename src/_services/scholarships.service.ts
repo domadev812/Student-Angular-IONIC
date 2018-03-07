@@ -35,4 +35,16 @@ export class ScholarshipsService {
         }
       });
   }
+
+  applyScholarship(id: any, data: Object): Observable<boolean> {     
+    return this.http.post('/scholarships/' + id + '/apply', data)
+      .map((response: Response) => {
+        const json = response.json();
+        if (json && json.data) {
+          return true;         
+        } else {
+          Observable.throw({ message: 'Internal Server Error' });
+        }
+      });
+  }
 }

@@ -27,7 +27,14 @@ export class OrderFormPage {
     this.navService.currentPage = 'OrderFormPage';
   }
 
+  validationPhone(): boolean {
+    let regPattern = /^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/; //USA Phone number
+    //^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$   All Country
+    return regPattern.test(this.phoneNumber);
+  }
+
   gotoNext(valid: boolean): void {
+    console.log(this.validationPhone());
     // if (!valid || this.selectedCategory.length === 0) {
     //   return;
     // }

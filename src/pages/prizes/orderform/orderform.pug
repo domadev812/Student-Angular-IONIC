@@ -19,6 +19,8 @@
             | PHONE NUMBER
             .invalid-validation([hidden]="phone.valid || (phone.pristine && !orderForm.submitted)")
               | Phone number is required
+            .invalid-validation([hidden]="!phoneNumber || phoneNumber === '' || validationPhone() || (phone.pristine && !orderForm.submitted)")
+                | Phone number link is not correct
           input.kts-input(type="text" name="phone" [(ngModel)]="phoneNumber" #phone="ngModel" required) 
         .item-info
           .input-label

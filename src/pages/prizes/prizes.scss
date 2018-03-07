@@ -4,11 +4,32 @@ page-prizes {
     z-index: 2;
     width: 1080px;
     max-width: 1080px;
-    margin: 10px 25px;    
+    margin: 10px 5px;    
     @include md{
       margin: 20px 15px;    
     }
   }
+  .balance-points {
+    margin-left: 20px;
+    font-size: 14px;
+    color: #E21E3E;
+    @include md{
+      font-size: 24px;
+    }
+  }
+  .lp-list {    
+    margin-top: 0px;
+    @include md{
+      margin-top: 5px;
+    }
+    .scroll-content {
+      padding: 0px;
+      padding-bottom: 50px;
+      @include md{
+        padding-bottom: 100px;
+      }
+    }
+  }  
   .prize-col {
     padding: 9px 7px !important;    
   }
@@ -28,8 +49,11 @@ page-prizes {
   .logo {
     width: 80%;
     padding-top: 80%; 
-    margin: auto;
-    background: #F00;   
+    margin: auto;    
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 3;  
   }
   .title {
     padding-left: 10px;

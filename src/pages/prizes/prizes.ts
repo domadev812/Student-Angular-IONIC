@@ -12,7 +12,9 @@ export class PrizesPage {
   limit = 20;
   offset = 0;
   infinite: any;
-
+  imageTest = ['https://image.ibb.co/b8di2n/logo1.png',
+               'https://image.ibb.co/itpsTS/logo2.png',
+               'https://image.ibb.co/iGWZa7/logo3.png'];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -41,6 +43,15 @@ export class PrizesPage {
       this.prizesList = res;
       this.offset = res.length;
       console.log(res.length);
+    }, err => console.log('There was an error', err));
+  }
+
+  doInfinite(infiniteScroll: any): void {
+    this.prizesService.getPrizes(this.offset, this.limit).subscribe((res: Model.Prize[]) => {
+      this.prizesList = this.prizesList.concat(res);
+        this.infinite = infiniteScroll;
+        infiniteScroll.complete();
+        if (res.length < this.limit) infiniteScroll.enable(false);
     }, err => console.log('There was an error', err));
   }
 }

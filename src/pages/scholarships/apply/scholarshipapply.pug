@@ -1,0 +1,47 @@
+.page-wrapper
+  .content-wrapper
+    form.form-group(#contactForm="ngForm" (ngSubmit)="sendMessage(contactForm.valid)" novalidate)
+      .header-nav
+        h1.headers
+          | Apply
+        .button-group
+            button.kts-primary-btn.send-button(type="submit")
+              | Submit
+      .form-content.scroll-content
+        .item-info
+          .input-label
+            | FULL NAME
+            .invalid-validation([hidden]="fullname.valid || (fullname.pristine && !contactForm.submitted)")
+              | Full name is required
+          input.kts-input(type="text" name="fullname" [(ngModel)]="fullName" #fullname="ngModel" required)         
+        .item-info
+          .input-label
+            | GRADE
+            .invalid-validation([hidden]="selectedGrade.length > 0 ||!contactForm.submitted")
+              | Grade is required
+          angular2-multiselect(
+            name = 'grade'
+            [data]='gradeList'
+            [(ngModel)]='selectedGrade'
+            [settings]='ktsSelectSettings'
+            (onSelect)='onGradeSelect($event)'            
+          )
+        .item-info
+          .input-label
+            | SCHOOL
+            .invalid-validation([hidden]="selectedUniversity.length > 0 ||!contactForm.submitted")
+              | School is required
+          angular2-multiselect( 
+            name = 'university',
+            [data]="universityList", 
+            [(ngModel)]="selectedUniversity", 
+            [settings]="ktsSelectSettings",
+            (onSelect)="onUniversitySelect($event)"
+          )
+        .item-info
+          .input-label-comment
+            | Create a 200-300 word explanation of how Keys to Success has affected your academic performance.
+            .invalid-validation([hidden]="comment_content.valid || (comment_content.pristine && !contactForm.submitted)")
+              | Comment is required
+          textarea.kts-textarea(rows='10' name="comment_content" [(ngModel)]="comment" #comment_content="ngModel" required)          
+          

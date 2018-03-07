@@ -4,7 +4,7 @@
       | Balance: {{balancePoints}} points
     ion-content.lp-list
       ion-row(wrap)
-        ion-col.prize-col(col-6 col-md-3 *ngFor="let prize of prizesList; let i = index")
+        ion-col.prize-col(col-6 col-md-3 *ngFor="let prize of prizesList; let i = index" (click)="goToDetailPage(prize.id)")
           .prize
             .logo([ngStyle]="{'background-image': 'url(' + imageTest[i % 3] + ')'}")
             hr

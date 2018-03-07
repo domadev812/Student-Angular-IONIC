@@ -1,0 +1,68 @@
+@import "../../../theme/variables.scss";
+page-orderform {
+  .page-wrapper {
+    background: none;
+    &:before {
+      background-image: linear-gradient(to bottom, #E3EAEF , #EEDEE7);
+      opacity: .4;
+    }
+  }
+  .header-nav {  
+    @extend .space-between;
+    flex-wrap: wrap; 
+    align-items: center;
+    .headers {
+      font-size: 24px;
+      margin: 0;
+      font-weight: normal;
+      @include md{
+        font-size: 36px;
+      }
+    }
+    .next-button {               
+      width: 135px;
+      height: 35px;
+      font-size: 18px;                     
+      @include md-max{  
+        width: auto;            
+        font-size: 16px;
+        color: $color-primary;       
+        background: none;
+        box-shadow: none;
+        font-weight: normal;  
+      }
+    }            
+  }
+  .content-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 1080px;
+    max-width: 1080px;
+    margin: 10px 25px;    
+    @include md{
+      margin: 20px 15px;    
+    }
+  }
+  .form-content {
+    overflow-y: auto;
+    margin-top: 70px;
+  }
+  .item-info {
+    margin-bottom: 15px;
+  }
+  .input-label {
+    @extend .input-label;
+    @extend .center-y;
+    color: #232d3b;
+    font-weight: 300;
+    font-size: 12px;
+    padding-left: 2px;
+  }
+  .kts-input {
+    @extend .kts-input;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

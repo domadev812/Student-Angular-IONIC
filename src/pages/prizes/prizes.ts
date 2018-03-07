@@ -64,4 +64,8 @@ export class PrizesPage {
         if (res.length < this.limit) infiniteScroll.enable(false);
     }, err => console.log('There was an error', err));
   }
+
+  goToDetailPage(prizeId: string): void {    
+    this.navCtrl.push('OrderFormPage', {prizeId: prizeId});
+  }
 }

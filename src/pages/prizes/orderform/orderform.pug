@@ -1,0 +1,47 @@
+.page-wrapper
+  .content-wrapper
+    form.form-group(#orderForm="ngForm" (ngSubmit)="gotoNext(orderForm.valid)" novalidate)
+      .header-nav
+        h1.headers
+          | Order Form
+        .button-group
+            button.kts-primary-btn.next-button(type="submit")
+              | Next
+      .form-content.scroll-content
+        .item-info
+          .input-label
+            | FULL NAME
+            .invalid-validation([hidden]="fullname.valid || (fullname.pristine && !orderForm.submitted)")
+              | Full name is required
+          input.kts-input(type="text" name="fullname" [(ngModel)]="fullName" #fullname="ngModel" required) 
+        .item-info
+          .input-label
+            | PHONE NUMBER
+            .invalid-validation([hidden]="phone.valid || (phone.pristine && !orderForm.submitted)")
+              | Phone number is required
+          input.kts-input(type="text" name="phone" [(ngModel)]="phoneNumber" #phone="ngModel" required) 
+        .item-info
+          .input-label
+            | STREET ADDRESS
+            .invalid-validation([hidden]="street.valid || (street.pristine && !orderForm.submitted)")
+              | Street address is required
+          input.kts-input(type="text" name="street" [(ngModel)]="streetAddress" #street="ngModel" required)
+        .item-info
+          .input-label
+            | CITY
+            .invalid-validation([hidden]="city.valid || (city.pristine && !orderForm.submitted)")
+              | City is required
+          input.kts-input(type="text" name="city" [(ngModel)]="cityName" #city="ngModel" required)      
+        .item-info
+          .input-label
+            | STATE
+            .invalid-validation([hidden]="state.valid || (state.pristine && !orderForm.submitted)")
+              | State is required
+          input.kts-input(type="text" name="state" [(ngModel)]="stateName" #state="ngModel" required)
+        .item-info
+          .input-label
+            | ZIP CODE
+            .invalid-validation([hidden]="zipcode.valid || (zipcode.pristine && !orderForm.submitted)")
+              | Zip code is required
+          input.kts-input(type="text" name="zipcode" [(ngModel)]="zipCode" #zipcode="ngModel" required)  
+          

@@ -45,7 +45,20 @@ page-scholarshipapply {
   }
   .form-content {
     overflow-y: auto;
-    margin-top: 70px;
+    margin-top: 50px;
+    @include md{
+      margin-top: 70px;
+    }
+  }
+  .notify-comment {
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    color: #949ead;  
+    margin-bottom: 20px;
+    @include md{
+      display: none;
+    }  
   }
   .item-info {
     margin-bottom: 15px;
@@ -61,8 +74,21 @@ page-scholarshipapply {
   .input-label-comment {
     @extend .input-label;
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 20px;
     font-weight: normal;
+    flex-direction: column;
+    align-items: left !important;
+    .invalid-validation {
+      margin-left: 0;
+      @include md{
+        margin-left: 10px;
+      }
+    }
+    @include md{
+      margin-top: 30px;
+      flex-direction: unset;      
+      align-items: center !important;
+    }
   }
   .kts-input {
     @extend .kts-input;

@@ -1,6 +1,6 @@
 .page-wrapper
   .content-wrapper
-    form.form-group(#contactForm="ngForm" (ngSubmit)="sendMessage(contactForm.valid)" novalidate)
+    form.form-group(#contactForm="ngForm" (ngSubmit)="applyScholarship(contactForm.valid)" novalidate)
       .header-nav
         h1.headers
           | Apply
@@ -8,6 +8,8 @@
             button.kts-primary-btn.send-button(type="submit")
               | Submit
       .form-content.scroll-content
+        .notify-comment
+          | You may also access this application on a computer.
         .item-info
           .input-label
             | FULL NAME
@@ -43,5 +45,5 @@
             | Create a 200-300 word explanation of how Keys to Success has affected your academic performance.
             .invalid-validation([hidden]="comment_content.valid || (comment_content.pristine && !contactForm.submitted)")
               | Comment is required
-          textarea.kts-textarea(rows='10' name="comment_content" [(ngModel)]="comment" #comment_content="ngModel" required)          
+          textarea.kts-textarea(rows='15' name="comment_content" [(ngModel)]="comment" #comment_content="ngModel" required)          
           

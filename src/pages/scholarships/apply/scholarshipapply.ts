@@ -46,10 +46,10 @@ export class ScholarshipApplyPage {
     this.navService.currentPage = 'ScholarshipApplyPage';
   }
 
-  sendMessage(valid: boolean): void {
-    // if (!valid || this.selectedCategory.length === 0) {
-    //   return;
-    // }
+  applyScholarship(valid: boolean): void {
+    if (!valid || this.selectedGrade.length === 0 || this.selectedUniversity.length === 0) {
+      return;
+    }
     // let data = {
     //   name : this.fullName,
     //   phone_number: this.phoneNumber,

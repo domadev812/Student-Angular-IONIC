@@ -1,3 +1,57 @@
 page-prizes {
-
+  .content-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 1080px;
+    max-width: 1080px;
+    margin: 10px 25px;    
+    @include md{
+      margin: 20px 15px;    
+    }
+  }
+  .prize-col {
+    padding: 9px 7px !important;    
+  }
+  .prize {
+    background-color: #FFFFFF;
+    border-radius: 7px;
+    box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35);        
+    padding: 10px 0;
+  }
+  hr {
+    background-color: #ebebeb;
+    margin: 10px 5px 5px 5px;
+    @include md{
+      margin: 10px;
+    }
+  }
+  .logo {
+    width: 80%;
+    padding-top: 80%; 
+    margin: auto;
+    background: #F00;   
+  }
+  .title {
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #232d3b;
+    line-height: 14px;
+    @include md{
+      font-size: 18px;
+      line-height: 22px;      
+    }
+  }
+  .points{
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #8a9099;
+    line-height: 14px;
+    @include md{
+      font-size: 16px;
+      line-height: 19px;
+      margin-top: 3px;
+    }
+  }
 }

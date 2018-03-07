@@ -10,8 +10,8 @@ export class PrizesService {
 
   constructor(private http: Http) { }
   
-  getPrizes(offset = 0, limit = 12): Observable<Model.Prize[]> {    
-    return this.http.get('/prizes?offset=' + offset + '&limit=' + limit)
+  getPrizes(offset = 0, limit = 24): Observable<Model.Prize[]> {    
+    return this.http.get('/prizes/available?offset=' + offset + '&limit=' + limit)
       .map((response: Response) => {
         const json = response.json();        
         if (json && json.data) {          

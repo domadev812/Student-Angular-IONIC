@@ -39,11 +39,12 @@ page-prizes {
     box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35);        
     padding: 10px 0;
   }
-  hr {
-    background-color: #ebebeb;
-    margin: 10px 5px 5px 5px;
+  .line {
+    background-color: #ebebeb;    
+    height: 1px;
+    margin: 0 5px 5px 5px;
     @include md{
-      margin: 10px;
+      margin: 0 10px 10px 10px;
     }
   }
   .logo {
@@ -62,6 +63,7 @@ page-prizes {
     color: #232d3b;
     line-height: 14px;
     @include md{
+      padding-left: 13px;
       font-size: 18px;
       line-height: 22px;      
     }
@@ -72,10 +74,11 @@ page-prizes {
     font-weight: 500;
     color: #8a9099;
     line-height: 14px;
-    @include md{
+    @include md{      
       font-size: 16px;
       line-height: 19px;
       margin-top: 3px;
+      padding-left: 13px;
     }
   }
 }

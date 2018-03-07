@@ -9,7 +9,7 @@ import { Model } from '../../app/app.models';
 })
 export class PrizesPage {
   prizesList: Model.Prize[];
-  limit = 20;
+  limit = 24;
   offset = 0;
   infinite: any;
   balancePoints = 0;
@@ -63,9 +63,5 @@ export class PrizesPage {
         infiniteScroll.complete();
         if (res.length < this.limit) infiniteScroll.enable(false);
     }, err => console.log('There was an error', err));
-  }
-
-  goToDetailPage(prizeId: string): void {    
-    this.navCtrl.push('OrderFormPage', {prizeId: prizeId});
   }
 }

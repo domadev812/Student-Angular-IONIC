@@ -20,6 +20,7 @@ page-contact-us {
       }
     }
     .send-button {         
+      @extend .kts-primary-btn; 
       width: 135px;
       height: 35px;
       font-size: 18px;                     

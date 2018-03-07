@@ -40,7 +40,8 @@ import { MyApp } from './app.component';
     Services.ScholarshipsService,
     Services.ContactUsService,
     Services.NotificationsService,
-    Services.OpportunitiesService
+    Services.OpportunitiesService,
+    Services.PrizesService
   ]
 })
 export class AppModule { }

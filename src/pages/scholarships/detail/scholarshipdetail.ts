@@ -31,11 +31,4 @@ export class ScholarshipDetailPage {
       this.scholarship = res;      
     }, err => console.log('There was an error', err));
   }
-
-  applyScholarship() {
-    this.scholarshipsService.applyScholarship(this.scholarshipId).subscribe((res: boolean) => {
-      alert('Opportunity is applied successfully');     
-    }, err => console.log('There was an error', err));
-  }
-
 }

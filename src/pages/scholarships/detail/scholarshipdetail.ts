@@ -31,4 +31,14 @@ export class ScholarshipDetailPage {
       this.scholarship = res;      
     }, err => console.log('There was an error', err));
   }
+
+  applyScholarship(): void {
+    if (this.scholarship.in_app) {
+      this.navCtrl.push('ScholarshipApplyPage', {scholarshipId: this.scholarshipId});
+    } else {
+      this.scholarshipsService.applyScholarship(this.scholarshipId, {}).subscribe((res: boolean) => {
+        alert('Opportunity is applied successfully');     
+      }, err => console.log('There was an error', err));
+    }
+  }
 }

@@ -8,6 +8,7 @@ export class BaseUser {
   id: string;
   password: string;
   organization_id: number;
+  organization_name: string;
   birthday: Date;
   ethnicity_id: string;
   gender: string;
@@ -17,7 +18,7 @@ export class BaseUser {
   reset_pass_token: string;
   roles: string[];
   fullName: Function;
-  points: number;
+  graduation_year: number;
   constructor() {
     
   }
@@ -30,6 +31,7 @@ export class BaseUser {
     this.id = data.id || this.id;
     this.password = data.password || this.password;
     this.organization_id = data.organization_id || this.organization_id;
+    this.organization_name = data.organization_name || this.organization_name;
     this.birthday = data.birthday || this.birthday;
     this.ethnicity_id = data.ethnicity_id || this.ethnicity_id;
     this.gender = data.gender || this.gender;
@@ -38,7 +40,7 @@ export class BaseUser {
     this.reset_pass_exp = data.reset_pass_exp || this.reset_pass_exp;
     this.reset_pass_token = data.reset_pass_token || this.reset_pass_token;
     this.roles = data.roles || this.roles;
-    this.points = data.points || this.points;
+    this.graduation_year = data.graduation_year || this.graduation_year;
   }
 
   getName(): string | undefined {

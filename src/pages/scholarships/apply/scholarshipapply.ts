@@ -13,8 +13,8 @@ import { Model } from '../../../app/app.models';
 export class ScholarshipApplyPage {
   scholarshipId: string;
   fullName: string;
-  grade: string;
-  school: string;
+  gradeYear: number;
+  organizationName: string;
   essay: string;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -33,19 +33,13 @@ export class ScholarshipApplyPage {
 
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
       this.fullName = res.getName();
-      this.grade = 'Senior';
-      this.getOrganizationName(res.organization_id);
+      this.gradeYear = res.graduation_year;      
+      this.organizationName = res.organization_name;      
     });
   }
 
   ionViewCanEnter() {
     this.navService.currentPage = 'ScholarshipApplyPage';
-  }
-
-  getOrganizationName(id) {
-    this.organizationService.getOrganization(id).subscribe((res: Model.Organization) => {
-      this.school = res.name;
-    }, err => console.log('There was an error', err));
   }
 
   applyScholarship(valid: boolean): void {

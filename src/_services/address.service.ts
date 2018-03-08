@@ -22,6 +22,18 @@ export class AddressService {
       });
   }
 
+  updateAddress(address: Object): Observable<Model.Address> {    
+    return this.http.patch('/address', address)
+      .map((response: Response) => {
+        const json = response.json();        
+        if (json) {          
+          return new Model.Address(json);
+        } else {
+          Observable.throw({ messages: 'Internal Server Error', response });
+        }
+      });
+  }
+
   getAddress(offset = 0, limit = 20): Observable<Model.Address[]> {    
     return this.http.get('/address?offset=' + offset + '&limit=' + limit)
       .map((response: Response) => {

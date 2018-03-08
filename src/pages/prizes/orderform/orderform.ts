@@ -126,10 +126,15 @@ export class OrderFormPage {
     }    
     this.address.state = this.selectedState[0]['state'];
     this.address.address_two = '';    
-    this.address.id = null;    
-    this.addressService.createAddress(this.address).subscribe((res: Model.Address) => {      
-      alert('Address is created successfully.');      
-    }, err => console.log('There was an error', err));    
+    if (!this.address.id) {
+      this.addressService.createAddress(this.address).subscribe((res: Model.Address) => {      
+        alert('Address is created successfully.');      
+      }, err => console.log('There was an error', err));    
+    } else {
+      this.addressService.updateAddress(this.address).subscribe((res: Model.Address) => {      
+        alert('Address is updated successfully.');      
+      }, err => console.log('There was an error', err));    
+    }
   }
 
   onStateSelect(item): void {    

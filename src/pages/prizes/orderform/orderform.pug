@@ -20,7 +20,7 @@
             .invalid-validation([hidden]="phone.valid || (phone.pristine && !orderForm.submitted)")
               | Phone number is required
             .invalid-validation([hidden]="!phoneNumber || phoneNumber === '' || validationPhone() || (phone.pristine && !orderForm.submitted)")
-                | Phone number link is not correct
+                | Phone number is not correct
           input.kts-input(type="text" name="phone" [(ngModel)]="phoneNumber" #phone="ngModel" required) 
         .item-info
           .input-label
@@ -33,17 +33,26 @@
             | CITY
             .invalid-validation([hidden]="city.valid || (city.pristine && !orderForm.submitted)")
               | City is required
-          input.kts-input(type="text" name="city" [(ngModel)]="cityName" #city="ngModel" required)      
-        .item-info
-          .input-label
-            | STATE
-            .invalid-validation([hidden]="state.valid || (state.pristine && !orderForm.submitted)")
-              | State is required
-          input.kts-input(type="text" name="state" [(ngModel)]="stateName" #state="ngModel" required)
-        .item-info
-          .input-label
-            | ZIP CODE
-            .invalid-validation([hidden]="zipcode.valid || (zipcode.pristine && !orderForm.submitted)")
-              | Zip code is required
-          input.kts-input(type="text" name="zipcode" [(ngModel)]="zipCode" #zipcode="ngModel" required)  
+          input.kts-input(type="text" name="city" [(ngModel)]="cityName" #city="ngModel" required) 
+        .row-state-zip     
+          .item-info
+            .input-label
+              | STATE
+              .invalid-validation([hidden]="selectedState.length > 0 ||!orderForm.submitted")
+                | State is required
+            angular2-multiselect(
+              name = 'state'
+              [data]='stateList'
+              [(ngModel)]='selectedState'
+              [settings]='ktsSelectSettings'
+              (onSelect)='onStateSelect($event)'            
+            )
+          .item-info
+            .input-label
+              | ZIP CODE
+              .invalid-validation([hidden]="zipcode.valid || selectedState.length === 0 || (zipcode.pristine && !orderForm.submitted)")
+                | Zip code is required
+              .invalid-validation([hidden]="!zipCode || zipCode === '' || selectedState.length === 0 || validationZipCode() || (zipcode.pristine && !orderForm.submitted)")
+                | Zip code is not correct.
+            input.kts-input(type="text" name="zipcode" [(ngModel)]="zipCode" #zipcode="ngModel" [disabled]="this.selectedState.length === 0" required)  
           

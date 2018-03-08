@@ -50,6 +50,18 @@ page-orderform {
   .item-info {
     margin-bottom: 15px;
   }
+  .row-state-zip {
+    display: block;
+    @include md{
+      display: flex;
+      justify-content: space-between;
+    }
+    .item-info {      
+      @include md{
+        flex: 0.49;        
+      }
+    }  
+  }
   .input-label {
     @extend .input-label;
     @extend .center-y;

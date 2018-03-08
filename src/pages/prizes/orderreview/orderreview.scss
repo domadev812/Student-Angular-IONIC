@@ -5,16 +5,37 @@ page-orderreview {
       background: none;
     }
   }
+  .header-nav {  
+    @extend .space-between;
+    flex-wrap: wrap; 
+    align-items: center;
+    .headers {
+      font-size: 24px;
+      font-weight: normal;
+      margin: 0;
+      @include md{
+        font-size: 36px;
+      }
+    }
+  }
   .content-wrapper{
-    margin: 10px 0;
+    margin: 10px 25px;
     width: 1080px;
     max-width: 1080px;
+    display: flex;    
+    z-index: 2;
+    flex-direction: column;
+    @include md{      
+      margin: 20px 15px;    
+    }
+  }
+  .review-content {
     display: flex;
     flex-direction: column;
-    z-index: 2;
+    margin-top: 25px;
     @include md{
       flex-direction: row;
-      margin: 10px 25px;
+      margin-top: 20px;
     }
   }
   .left-column{
@@ -29,10 +50,11 @@ page-orderreview {
   .right-column{
     display: flex;
     flex-direction: column;
-    margin-left: 1%;
+    margin-left: 0;
     width: 100%;    
     @include md{      
       width: 66%;
+      margin-left: 1%;
     }
   }
   .organization {    
@@ -41,7 +63,7 @@ page-orderreview {
     display: flex;
     flex-direction: column;    
     background-color: #FFF;    
-    padding: 0 23px;
+    padding: 0;
     @include md{ 
       height: min-content;        
       box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35); 
@@ -50,12 +72,11 @@ page-orderreview {
     }
   }
   .logo {
-    width: 80%;
-    margin: 0 auto;    
-    margin-top: 30px;
-    @include md{
-      width: 184px;      
-      margin-top: 56px;  
+    width: 40%;
+    margin: 0 auto;        
+    @include md{     
+      margin-top: 30px;  
+      width: 90%;
     }
   }
   .title {
@@ -66,25 +87,69 @@ page-orderreview {
     margin-top: 10px;
     @include md{
       font-size: 24px;
-      margin-top: 40px;
+      margin: 40px 0;
+    }
+  }  
+  .review-detail {
+    background-color: #FFF;
+    height: auto;
+    padding-top: 30px;
+    @include md{
+      padding: 28px 30px;
+      box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35); 
+      border-radius: 7px;
+    }
+  }
+  .comment {
+    font-size: 14px;
+    font-weight: 800;
+    color: #232d3b;
+    margin-bottom: 10px;
+    @include md{
+      font-size: 18px;      
+    }
+  }
+  .detail-item {
+    display: flex;
+    .detail-title, .detail-points {
+      width: 160px;
+      font-size: 18px;
+      line-height: 22px;
+      padding: 5px 0;
+      @include md{
+        width: 210px;
+        font-size: 24px;
+        line-height: 29px;
+        padding: 5px 0;
+      }
+    }
+    .detail-points {
+      width: auto;
+      margin-left: 60px;
+    }    
+  }
+  .remaining-balance {
+    font-weight: 500;
+  }
+  .mailing-detail {
+    margin-top: 35px;
+    .address {
+      color: #232d3b;
+      font-size: 18px;
+      line-height: 28px;
+      @include md{
+        font-size: 24px;
+        line-height: 35px;
+      }
     }
   }
   .place-order-button {    
     width: 100%;
     height: 45px;  
-    margin: 15px 0;
+    margin: 50px 0 20px;
     @include md{
-      margin: 18px 0;
+      width: 50%;
+      margin: 50px 0 0;
     }       
-  }
-  .description {
-    background-color: #FFF;
-    height: auto;
-    padding: 25px 23px;
-    @include md{
-      padding: 25px 43px;
-      box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35); 
-      border-radius: 7px;
-    }
   }  
 }

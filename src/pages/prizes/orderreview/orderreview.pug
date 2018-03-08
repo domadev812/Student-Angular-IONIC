@@ -1,15 +1,42 @@
 .page-wrapper
   .content-wrapper
-    .left-column    
-      .organization
-        img.logo(src="https://image.ibb.co/b8di2n/logo1.png")
-        .title
-          | University of Utah Alumni
-        button.kts-primary-btn.place-order-button
-          | Place Order
-    .right-column
-      .description
-        .description-title
-          | Description
-        .description-content
-          | Remaining balance:          
+    .header-nav
+      h1.headers
+        | Order Review
+    .review-content
+      .left-column    
+        .organization
+          img.logo(src="https://image.ibb.co/b8di2n/logo1.png")
+          .title
+            | University of Utah Alumni          
+      .right-column
+        .review-detail
+          .transaction-detail
+            .comment
+              | Transaction Details
+            .detail-item
+              .detail-title
+                | Your balance:
+              .detail-points
+                | 35 points
+            .detail-item
+              .detail-title
+                | Cost:
+              .detail-points
+                | 20 points
+            .detail-item.remaining-balance
+              .detail-title
+                | Remaining balance:
+              .detail-points
+                | 15 points
+          .mailing-detail
+            .comment
+              | Mailing Details        
+            .address
+              | John Thermond
+              br
+              | 1292 Dalmeny St.
+              br
+              | Lehi, UT 84041
+          button.kts-primary-btn.place-order-button
+            | Place Order

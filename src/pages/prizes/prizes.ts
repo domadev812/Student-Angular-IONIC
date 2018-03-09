@@ -45,7 +45,6 @@ export class PrizesPage {
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
       this.balancePoints = res.points;
     });
-
   }
 
   getPrizes(): void {
@@ -63,5 +62,9 @@ export class PrizesPage {
         infiniteScroll.complete();
         if (res.length < this.limit) infiniteScroll.enable(false);
     }, err => console.log('There was an error', err));
+  }
+
+  goToDetailPage(prizeId: string, points: number): void {    
+    this.navCtrl.push('OrderFormPage', {prizeId: prizeId, prize_points: points, user_balance: this.balancePoints});
   }
 }

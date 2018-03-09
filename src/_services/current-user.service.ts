@@ -92,16 +92,16 @@ export class CurrentUserService {
 
   updateUser(params: Model.User, id: string): Observable<Model.User> {
     return this.http.patch('/users/' + id, params)
-    .map((response: Response) => {
-      const json = response.json();
+      .map((response: Response) => {
+        const json = response.json();
 
-      if (json && json.data) {
-        this.currentUser = new Model.User(json.data);
-        return new Model.User(json.data);
-      } else {
-        Observable.throw({ message: 'Internal Server Error' , response });
-      }
-    });
+        if (json && json.data) {
+          this.currentUser = new Model.User(json.data);
+          return new Model.User(json.data);
+        } else {
+          Observable.throw({ message: 'Internal Server Error', response });
+        }
+      });
   }
 
   public emitUpdate() {
@@ -110,38 +110,38 @@ export class CurrentUserService {
 
   public getUserProgress(): Observable<Model.UserProgress> {
     return this.http.get('/users/progress')
-    .map((response: Response) => {
-      const json = response.json();
-      if (json && json.data) {
-        return new Model.UserProgress(json.data);
-      } else {
-        Observable.throw({ message: 'Internal Server error', response });
-      }
-    });
+      .map((response: Response) => {
+        const json = response.json();
+        if (json && json.data) {
+          return new Model.UserProgress(json.data);
+        } else {
+          Observable.throw({ message: 'Internal Server error', response });
+        }
+      });
   }
 
-  changePassword(params: {password: string, password_confirmation: string, current_password: string}) {
+  changePassword(params: { password: string, password_confirmation: string, current_password: string }) {
     return this.http.patch(`/users/${this.currentUser.id}/change-password`, params)
-    .map((response: Response) => {
-      const json = response.json();
-      if (json) {
-        return json;
-      } else {
-        Observable.throw({ message: 'Internal Server Error' , response });
-      }
-    });
+      .map((response: Response) => {
+        const json = response.json();
+        if (json) {
+          return json;
+        } else {
+          Observable.throw({ message: 'Internal Server Error', response });
+        }
+      });
   }
 
   cancelAccount() {
     return this.http.delete(`/users/${this.currentUser.id}`, {})
-    .map((response: Response) => {
-      const json = response.json();
-      if (json && json.data) {
-        return json;
-      } else {
-        Observable.throw({ message: 'Internal Server Error' , response });
-      }
-    });
-  }  
+      .map((response: Response) => {
+        const json = response.json();
+        if (json && json.data) {
+          return json;
+        } else {
+          Observable.throw({ message: 'Internal Server Error', response });
+        }
+      });
+  }
 }
 

@@ -10,7 +10,7 @@ export class AddressService {
 
   constructor(private http: Http) { }
   
-  createAddress(address: Object): Observable<Model.Address> {    
+  createAddress(address: Model.Address): Observable<Model.Address> {    
     return this.http.post('/address', address)
       .map((response: Response) => {
         const json = response.json();        
@@ -22,8 +22,8 @@ export class AddressService {
       });
   }
 
-  updateAddress(address: Object): Observable<Model.Address> {    
-    return this.http.patch('/address', address)
+  updateAddress(address: Model.Address): Observable<Model.Address> {    
+    return this.http.patch('/address/' + address.id, address)
       .map((response: Response) => {
         const json = response.json();        
         if (json) {          

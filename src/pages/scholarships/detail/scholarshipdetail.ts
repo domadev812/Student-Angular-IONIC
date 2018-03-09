@@ -24,11 +24,13 @@ export class ScholarshipDetailPage {
     this.navService.currentPage = 'ScholarshipDetailPage';
   }
 
-  ngOnInit() {        
+  ngOnInit() {
+    this.scholarship = new Model.Scholarship(null);        
     this.scholarshipId = this.navParams.get('scholarshipId');        
     this.scholarshipId = '8';
     this.scholarshipsService.getScholarship(this.scholarshipId).subscribe((res: Model.Scholarship) => {
-      this.scholarship = res;      
+      this.scholarship = res;    
+      console.log(this.scholarship);  
     }, err => console.log('There was an error', err));
   }
 

@@ -1,17 +1,20 @@
+import { Model } from '../app/app.models';
+
+
 export class UserProgress {
-  prizes: Array<string>;
-  scholarships: Array<string>;
-  internships: Array<string>;
-  other_opportunities: Array<string>;
+  prizes: Array<Model.Prize>;
+  scholarships: Array<Model.Scholarship>;
+  internships: Array<Model.Opportunity>;
+  other_opportunities: Array<Model.Opportunity>;
 
   constructor(data) {
     this.setData(data);
   }
 
   setData(data) {
-    this.prizes = data.prizes || this.prizes;
-    this.scholarships = data.scholarships || this.scholarships;
-    this.internships = data.internships || this.internships;
-    this.other_opportunities = data.other_opportunities || this.other_opportunities;
+    this.prizes = Model.initializeArray(data.prizes, 'Prize') || this.prizes;
+    this.scholarships = Model.initializeArray(data.scholarships, 'Scholarship') || this.scholarships;
+    this.internships = Model.initializeArray(data.internships, 'Opportunity') || this.internships;
+    this.other_opportunities = Model.initializeArray(data.other_opportunities, 'Opportunity') || this.other_opportunities;
   }
 }

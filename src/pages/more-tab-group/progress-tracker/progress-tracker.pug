@@ -1,0 +1,60 @@
+ion-content.page-wrapper
+  .progress-tracker-wrapper
+      .progress-page-title
+        | Progress
+      .progress-tracker-page-wrapper
+        ion-row.progress-row
+          ion-col.progress-col-1(col-12 col-md-6)
+            .progress-card-wrapper
+              .progress-title-row
+                h1.progress-card-header.count 
+                  | {{prizes.length}}   
+                h1.progress-card-header  
+                  | Prizes received
+              a.progress-card-item(*ngFor="let prize of prizes", (click)="goToPage($event)")
+                .progress-card-data
+                  h2.progress-card-item-header
+                    | {{prize.title}}
+                  h3.progress-card-item-info
+                    | {{prize.organization_name}}
+                img.link-arow(src="../../assets/icon/link-arrow.svg") 
+            .progress-card-wrapper
+              .progress-title-row
+                h1.progress-card-header.count 
+                  | {{internships.length}} 
+                h1.progress-card-header
+                  | Internships applied for
+              a.progress-card-item( *ngFor="let internship of internships", (click)="goToPage($event)")
+                .progress-card-data
+                  h2.progress-card-item-header
+                    | {{internship.title}}
+                  h3.progress-card-item-info
+                    | {{internship.organization_name}}
+                img.link-arow(src="../../assets/icon/link-arrow.svg") 
+          ion-col.progress-col-2(col-12 col-md-6)       
+            .progress-card-wrapper
+              .progress-title-row
+                h1.progress-card-header.count
+                  | {{scholarships.length}} 
+                h1.progress-card-header 
+                  | Scholarships applied for
+              a.progress-card-item( *ngFor="let scholarship of scholarships", (click)="goToPage($event)")
+                .progress-card-data
+                  h2.progress-card-item-header
+                    | {{scholarship.title}}
+                  h3.progress-card-item-info
+                    | {{scholarship.organization_name}}
+                img.link-arow(src="../../assets/icon/link-arrow.svg") 
+            .progress-card-wrapper
+              .progress-title-row
+                h1.progress-card-header.count 
+                  | {{opportunities.length}} 
+                h1.progress-card-header 
+                  | Opportunites pursued
+              a.progress-card-item( *ngFor="let opportunity of opportunities", (click)="goToPage($event)")
+                .progress-card-data
+                  h2.progress-card-item-header
+                    | {{opportunity.title}}
+                  h3.progress-card-item-info
+                    | {{opportunity.organization_name}}
+                img.link-arow(src="../../assets/icon/link-arrow.svg") 

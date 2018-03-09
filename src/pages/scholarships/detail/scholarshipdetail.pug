@@ -4,9 +4,9 @@
       .organization
         img.logo(src="https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg")
         .title
-          | University of Utah Alumni
+          | {{scholarship.title}}
         .price
-          | $30000.00
+          | ${{scholarship.amount}}
         button.apply-button((click)="applyScholarship()")
           | Apply
     .right-column

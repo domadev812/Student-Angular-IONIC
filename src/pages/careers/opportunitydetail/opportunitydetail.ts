@@ -20,22 +20,22 @@ export class OpportunityDetailPage {
   ) {
   }
 
-  ionViewCanEnter() {
+  ionViewCanEnter(): void {
     this.navService.currentPage = 'OpportunityDetailPage';
   }
 
-  ngOnInit() { 
+  ngOnInit(): void { 
     this.opportunity = new Model.Opportunity();       
     this.opportunityId = this.navParams.get('opportunityId');        
     this.opportunityId = '180';
     this.opportunitiesService.getOpportunity(this.opportunityId).subscribe((res: Model.Opportunity) => {
-      this.opportunity = res;      
+      this.opportunity = res;  
     }, err => console.log('There was an error', err));
   }
 
-  applyOpportunity() {
+  applyOpportunity(): void {
     this.opportunitiesService.applyOpportunity(this.opportunityId).subscribe((res: boolean) => {
-      alert('Opportunity is applied successfully');     
+      alert('Opportunity was applied successfully');     
     }, err => console.log('There was an error', err));
   }
 }

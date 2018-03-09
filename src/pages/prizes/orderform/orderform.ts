@@ -10,6 +10,7 @@ import { Model } from '../../../app/app.models';
   templateUrl: 'orderform.html',
 })
 export class OrderFormPage {  
+  prizeId: string;
   stateList: Object[] = [{ itemName: 'AL - Alabama', state: 'AL', id: 1 }, 
                          { itemName: 'AK - Alaska', state: 'AK', id: 2 },
                          { itemName: 'AZ - Arizona', state: 'AZ', id: 3 },
@@ -76,6 +77,7 @@ export class OrderFormPage {
 
   ngOnInit() {       
     this.ktsSelectSettings = MultiSelectUtil.selectOptions({text: 'Select State'});
+    this.prizeId = this.navParams.get('prizeId');            
     this.address = new Model.Address(null);
     this.getCurrentUser();
     this.getAddress();
@@ -125,14 +127,20 @@ export class OrderFormPage {
       return;
     }    
     this.address.state = this.selectedState[0]['state'];
-    this.address.address_two = '';    
+    this.address.address_two = '';
+    let prizePoints = this.navParams.get('prize_points');    
+    let balancePoints = this.navParams.get('user_balance');
     if (!this.address.id) {
       this.addressService.createAddress(this.address).subscribe((res: Model.Address) => {      
-        alert('Address is created successfully.');      
+        alert('Address is created successfully.');
+        this.navCtrl.push('OrderReviewPage', { prizeId: this.prizeId, address: this.address, 
+                                               prize_points: prizePoints, user_balance: balancePoints });
       }, err => console.log('There was an error', err));    
     } else {
       this.addressService.updateAddress(this.address).subscribe((res: Model.Address) => {      
-        alert('Address is updated successfully.');      
+        alert('Address is updated successfully.'); 
+        this.navCtrl.push('OrderReviewPage', { prizeId: this.prizeId, address: this.address, 
+                                               prize_points: prizePoints, user_balance: balancePoints });
       }, err => console.log('There was an error', err));    
     }
   }

@@ -1,3 +1,162 @@
 page-progress-tracker {
+    width: 100vw;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+    .progress-row {
+      .progress-col-1 {
+        @include md {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        }
+      }
+      .progress-col-2 {
+        margin-top: -9px;
+        @include md {
+          margin-top: 0px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          }
+      }
+    }
+  .progress-tracker-wrapper {
+      width: 100vw;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      @extend .center-x;
+      
+      .progress-page-title {
+        display: none;
+        @include md {
+          padding-top: 10px;
+          display: block;
+          z-index: 1;
+          font-size: 36px;
+          width: 725px;
+          @include lg {
+            padding-top: 10px;
+            width: 930px;
+            display: block;
+            position: absolute;
+          }
+          @include xl {
+            width: 1086px;
+            display: block;
+            position: absolute;
+          }
+        }
+      }
+  }
+.progress-tracker-page-wrapper{
+    padding: 0px;
+  @include md{
+    padding-top: 10px;
+    @include lg{
+      padding-top: 60px;
+    }
 
-}
+  }
+    .progress-card-wrapper {
+      display: flex;
+      flex-direction: column;
+      max-width: 715px;
+      width: auto;
+      padding: 15px 29px 0px 23px;
+      margin: 17px 20px 3px 9px;
+      @include md{
+        box-shadow: 0 0 4px 2px $color-shadow;
+        border-radius: 6px;
+        padding: 24px 40px 17px 40px;
+        margin: 10px 6px;
+        width: 350px;
+      }
+      @include lg {
+        width: 450px;
+      }
+      @include xl {
+        width: 530px;
+      }
+      display: flex;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px 5px $color-shadow;
+    }
+    .progress-title-row{
+      display: flex;
+      margin-left: -8px;
+      .count {
+        padding-right: 15px;
+        font-weight: 600 !important;
+      }
+    }
+    .progress-card-link {
+      @extend .kts-card-item;
+    }
+    .progress-card-header{
+      @extend .kts-card-header;
+      font-size: 22px !important;
+      font-weight: 400 !important;
+      margin-bottom: 13px !important;
+      @include lg {
+      font-size: 32px !important;
+      line-height: 46px !important;
+      font-weight: 400 !important;
+      margin-bottom: 25px !important;
+      }
+      @include xl {
+      font-size: 38px !important;
+      line-height: 46px !important;
+      font-weight: 400 !important;
+      margin-bottom: 25px !important;
+      }
+    }
+    .progress-card-item{
+      @extend .kts-card-item;
+    }
+    .progress-card-data{
+      @extend .kts-card-data;
+    }
+    h2, h3{
+      margin: 0;
+    }
+    .progress-card-item-header{
+      font-size: 14px;
+      @include md{
+        font-size: 18px;
+      }
+      @include lg{
+        font-size: 22px;
+      }
+      @include xl{
+        font-size: 24px;
+      }
+      font-weight: 400;
+      color: $color-text-primary;
+    }
+    
+    }
+    .progress-card-item-info{
+      font-size: 11px;
+      @include md{
+        font-size: 14px;
+    }
+      @include lg{
+        font-size: 18px;
+    }
+      @include xl {
+        font-size: 20px;
+    }
+    font-weight: 400;
+    color: $color-sub-header;
+   
+    }
+    .link-arow {
+      width: 17px;
+      @include md {
+        width: 25px;
+      }
+    }
+  }

@@ -2,8 +2,11 @@ import { User as ApiUser } from '../_models/user.model';
 import { UserProgress as ApiUserProgress } from '../_models/user-progress.model';
 import { Scholarship as ApiScholarship } from '../_models/scholarship.model';
 import { Notifications as ApiNotifications } from '../_models/notifications.model';
-import { Opportunity as ApiOpportunity } from '../_models/opportunity.model';
 import { Prize as ApiPrize } from '../_models/prize.model';
+import { Opportunity as ApiOpportunity } from '../_models/opportunity.model';
+import { Organization as ApiOrganization } from '../_models/organization.model';
+import { Address as ApiAddress } from '../_models/address.model';
+
 
 export module Model {
     export type User = ApiUser;
@@ -14,11 +17,15 @@ export module Model {
     export const Scholarship = ApiScholarship;
     export type Notifications = ApiNotifications;
     export const Notifications = ApiNotifications;
-
-    export type Opportunity = ApiOpportunity;
-    export const Opportunity = ApiOpportunity;
+    export type Organization = ApiOrganization;
+    export const Organization = ApiOrganization;
     export type Prize = ApiPrize;
     export const Prize = ApiPrize;
+    export type Address = ApiAddress;
+    export const Address = ApiAddress;
+    export type Opportunity = ApiOpportunity;
+    export const Opportunity = ApiOpportunity;
+
     export function initializeArray<T>(array: T[], type: string): any[] {
         let newArray: T[] = [];
         if (array) {

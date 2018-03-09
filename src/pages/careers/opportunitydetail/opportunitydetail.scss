@@ -81,7 +81,7 @@ page-opportunitydetail {
   .interested-button {
     @extend .kts-primary-btn; 
     width: 100%;
-    height: 45px;  
+    height: 45px!important;  
     margin: 15px 0;
     @include md{
       margin: 18px 0;

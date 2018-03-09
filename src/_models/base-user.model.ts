@@ -19,6 +19,7 @@ export class BaseUser {
   roles: string[];
   fullName: Function;
   graduation_year: number;
+  points: number;
   constructor() {
     
   }
@@ -41,6 +42,7 @@ export class BaseUser {
     this.reset_pass_token = data.reset_pass_token || this.reset_pass_token;
     this.roles = data.roles || this.roles;
     this.graduation_year = data.graduation_year || this.graduation_year;
+    this.points = data.points || this.points;
   }
 
   getName(): string | undefined {

@@ -18,25 +18,25 @@
               .detail-title
                 | Your balance:
               .detail-points
-                | 35 points
+                | {{balancePoints}} points
             .detail-item
               .detail-title
                 | Cost:
               .detail-points
-                | 20 points
+                | {{prizePoints}} points
             .detail-item.remaining-balance
               .detail-title
                 | Remaining balance:
               .detail-points
-                | 15 points
+                | {{redeemedPoints}} points
           .mailing-detail
             .comment
               | Mailing Details        
             .address
-              | John Thermond
+              | {{address.full_name}}
               br
-              | 1292 Dalmeny St.
+              | {{address.address_one}}
               br
-              | Lehi, UT 84041
-          button.kts-primary-btn.place-order-button
+              | {{address.city}}, {{address.state}} {{address.zip_code}}
+          button.kts-primary-btn.place-order-button((click)="placeOrder()")
             | Place Order

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService } from '../../../app/app.services.list';
+import { NavigationService, PrizesService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 
 @IonicPage()
@@ -19,6 +19,7 @@ export class OrderReviewPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,    
+    public prizesService: PrizesService,
   ) {
   }
 
@@ -41,6 +42,12 @@ export class OrderReviewPage {
   }
 
   placeOrder(): void {
-
+    this.prizesService.redeemPrize(this.prizeId).subscribe((res: boolean) => {
+      alert('Prize is redeemed successfully'); 
+      this.navCtrl.push('PrizesPage');    
+    }, err => {      
+      alert(err.response);
+      this.navCtrl.push('PrizesPage');    
+    });
   }
 }

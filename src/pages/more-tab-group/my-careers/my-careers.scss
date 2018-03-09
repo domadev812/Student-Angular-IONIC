@@ -9,7 +9,7 @@ page-my-careers {
     z-index: 2;
     @include md{
       flex-direction: row;
-      margin: 10px 25px;
+      margin: 20px 25px;
     }
   }
   .left-column{
@@ -56,20 +56,32 @@ page-my-careers {
     padding: 10px 17px;
     box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35); 
     border-radius: 7px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     @include md{ 
-      height: min-content;                    
+      height: min-content;
+      margin-bottom: 15px;                    
+    }
+  }
+  .search {
+    @include md-max{ 
+      padding: 0;
+      background: none;
+      box-shadow: none;
     }
   }
   .search-comment {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     font-style: italic;
+    text-align: center;
+    @include md{ 
+      font-size: 14px;
+    }
   }
   .button-group {
     display: flex;
     justify-content: space-between;
-    margin-top: 0;
+    margin-top: 3px;
     @include md{ 
       margin-top: 15px;
     }
@@ -87,6 +99,7 @@ page-my-careers {
     font-weight: 500;
     color: rgba(35, 45, 59, 1);    
     text-align: left;
+    margin-bottom: 15px; 
     @include md{
       font-size: 24px;  
       margin-bottom: 5px;         

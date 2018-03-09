@@ -1,7 +1,17 @@
 .my-carrers-wrapper
-  .content-title
-    | My Careers
-  .content-comment
-    | Careers Selected
-  .carrers-count
-    | 0/5
+  .no-careers(*ngIf="length === 0")
+    .content-title.mobile-version
+      | My Careers
+    img.no-prize(src='../../assets/imgs/no_prize.svg')
+    .content-comment
+      | Careers Selected
+    .carrers-count
+      | 0/5
+  .exist-careers(*ngIf="length > 0")  
+    .content-title
+      | My Careers
+    .career-list      
+      ol
+        li.career-item(*ngFor="let career of _careers")
+          | {{career.name}}
+

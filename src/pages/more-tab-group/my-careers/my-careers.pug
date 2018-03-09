@@ -1,7 +1,7 @@
 .page-wrapper
   .content-wrapper
     .left-column
-      .select-careers
+      .select-careers.search(*ngIf="currentUser.careers && currentUser.careers.length > 0")
         .search-comment 
           | You have selected careers! Now you can search:
         .button-group
@@ -14,7 +14,7 @@
         .title
           | Start selecting careers
         a.kts-card-item.career-type
-          .progress-card-data
+          .type-name
             | Select based on personality traits.
           img.link-arow(src="../../assets/icon/link-arrow.svg") 
         a.kts-card-item.career-type
@@ -22,4 +22,4 @@
             | Select based on career categories
           img.link-arow(src="../../assets/icon/link-arrow.svg") 
     .right-column      
-      selected-careers-widget.desktop-version        
+      selected-careers-widget.desktop-version([careers]="currentUser.careers")        

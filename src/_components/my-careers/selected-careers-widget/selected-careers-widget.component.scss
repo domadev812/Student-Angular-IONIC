@@ -1,0 +1,37 @@
+selected-careers-widget {
+  .my-carrers-wrapper {
+    background-color: #FFF;
+    height: auto;
+    padding: 15px 23px 20px;
+    box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35); 
+    border-radius: 7px;
+    @include md{
+      padding: 25px 43px;     
+    }
+
+    .content-title {
+      font-size: 22px;
+      @include md{
+        font-size: 36px;
+        display: none;
+      }
+    }
+    .content-comment {
+      font-size: 18px;
+      color: #232D3B;
+      text-align: center;
+      @include md{
+          font-size: 26px;
+      }
+    }
+    .carrers-count {
+      font-size: 18px;
+      font-weight: bold;
+      color: #232D3B;
+      text-align: center;
+      @include md{
+        font-size: 48px;
+      }
+    }
+  }
+}

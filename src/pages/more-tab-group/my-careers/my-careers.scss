@@ -1,3 +1,123 @@
+@import "../../../theme/variables.scss";
 page-my-careers {
-
+  .content-wrapper{
+    margin: 10px 0;
+    width: 1080px;
+    max-width: 1080px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    @include md{
+      flex-direction: row;
+      margin: 10px 25px;
+    }
+  }
+  .left-column{
+    display: flex;
+    justify-content: center;
+    width: 100%;       
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 10px; 
+    @include md{
+      width: 33%;
+      max-width: 350px;            
+    }
+  }
+  .right-column{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1%;
+    width: 100%;    
+    @include md{      
+      width: 66%;
+    }
+  }
+  // Notifications
+  .mobile-version{  
+    margin-bottom: 10px;  
+    @include md{
+      display: none;
+    }
+  }
+  .desktop-version{    
+    width: 100%;  
+    display: none;
+    @include md{
+      display: block;
+    }  
+  }
+  .select-careers {    
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;    
+    background-color: #FFF;    
+    padding: 10px 17px;
+    box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35); 
+    border-radius: 7px;
+    margin-bottom: 10px;
+    @include md{ 
+      height: min-content;                    
+    }
+  }
+  .search-comment {
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+  }
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0;
+    @include md{ 
+      margin-top: 15px;
+    }
+    .category-button {
+      flex: 0.48;
+      font-size: 12px;
+      text-align: center;
+      height: 35px;
+      line-height: 35px;
+    }
+  }
+  .title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(35, 45, 59, 1);    
+    text-align: left;
+    @include md{
+      font-size: 24px;  
+      margin-bottom: 5px;         
+    }
+  }
+  .career-type {
+    align-items: center;
+    margin: 0 0 15px;
+    color: #232D3B;
+  }
+  .link-arow {
+    width: 17px;
+    @include md {
+      width: 20px;
+    }
+  }
+  .description-title {
+    font-size: 11px;
+    font-weight: 800;
+    @include md{
+      font-size: 18px;      
+    }
+  }
+  .description-content {
+    font-size: 12px;
+    line-height: 17px;
+    margin-top: 2px;
+    @include md{
+      font-size: 16px;
+      line-height: 30px;
+      margin-top: 10px;
+    }
+  }
 }

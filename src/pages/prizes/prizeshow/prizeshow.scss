@@ -1,0 +1,247 @@
+page-prizeshow { 
+  .prize-page-wrapper {
+    width: 100vw;
+  }
+    .prizes-page-background {
+      display: flex;
+      justify-content: center;
+      height: 120px;
+      width: 100%;
+      z-index: 1;
+      background-image: url('../../assets/imgs/Gift Background.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      @include md{
+        width: 100vw;
+        height: 227px;
+        position: absolute;
+      }
+    }
+
+    .prizes-page-prize-image{
+      margin-top: 9px;
+      background-image: url('../../assets/imgs/Present Icon.svg');
+      width: 135px;
+      height: 120px;
+      position: absolute;
+      background-size: cover;
+      @include md {
+        margin-top: 15px;
+        width: 230px;
+        height: 180px;
+      }
+      @include lg {
+        margin: 25px 0px 0 -307px;
+        width: 230px;
+        height: 180px;
+      }
+      @include xl {
+        margin: 25px 0px 0px -365px;
+      }
+    }
+    .prizes-page-prize-wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 100vw;
+      
+      @include lg {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        height: 510px;
+      }
+      background-color: transparent;
+      .prizes-page-prize-logo {
+        @extend .center;
+        flex-direction: column;
+        height: 371px;
+        width: 372px;
+        border-radius: 11px;
+        margin: -30px 0 0 0;
+        background-color: #FFFFFF;	
+        box-shadow: 0 0 5px 0 rgba(65,65,65,0.35);
+        z-index: 2;
+        @include md{
+          margin: 150px 0px 0 0;
+          height: 500px;
+          width: 500px;
+        }
+        @include lg {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          height: 350px;
+          width: 350px;
+        }
+        .prizes-org-image {
+        height: 330px;
+        width: 170px;
+        margin-top: -100px;
+        object-fit: contain;
+        @include md {
+          width: 245px;
+          margin-top: -158px;
+        }
+        @include lg {
+        margin-top: -10px !important;
+        }
+      }
+    }
+    .prizes-page-content-button-wrapper {
+      margin-top: -120px;
+      @include md {
+        margin-top: -205px;
+      }
+      @include lg{
+        padding: 18px;
+      }
+      @include xl {
+        padding: 0px 0 1px 18px;
+      }
+      
+      .prize-page-content-wrapper {
+        @extend .center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 5;
+        width: 400px;
+        @include md {
+          height: 205px;
+          width: 650px;
+          border-radius: 7px;
+          padding: 25px 0px 0 0;
+          background-color: transparent;
+        }
+        @include lg {
+          height: 180px;
+          width: 570px;
+          padding: 20px 20px 20px 25px;
+          background-color: #FFFFFF;	
+          box-shadow: 0 0 5px 0 rgba(64,64,64,0.5);
+        }
+        @include xl {
+          height: 205px;
+          width: 713px;
+          padding: 25px 0px 0 30px;	
+        }
+        .prizes-page-prize-title {
+          z-index: 3;
+          font-size: 24px;	
+          font-weight: bold;	
+          line-height: 29px;
+          margin-bottom: 5px;
+          width: 100%;
+          @extend .center;
+          @include md{
+          font-size: 36px;
+          font-weight: bold;
+          width: 100%;
+          }
+          @include lg {
+            display: flex !important;
+            justify-content: flex-start !important;
+            font-size: 31px;
+          }
+          @include xl {
+            font-size: 36px;	
+          }
+        }
+        .prizes-page-prize-org {
+          @extend .center;
+            font-size: 18px;	
+            line-height: 22px;
+            margin-bottom: 10px;
+            color: #8F9EB3;
+            width: 100%;
+          @include md{
+            font-size: 24px;
+            line-height: 29px;
+            padding-bottom: 5px;
+          }
+          @include lg {
+            font-size: 20px;
+            display: flex !important;
+            justify-content: flex-start !important;
+      
+          }
+          @include xl {
+            font-size: 24px;
+          }
+        }
+        .line-div {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          @include md {
+            display: flex !important;
+            justify-content: center !important;
+          }
+          @include lg {
+            display: flex !important;
+            justify-content: flex-start !important;
+          }
+      
+          justify-content: center;
+          .prizes-page-break-line {
+            width: 70%;	
+            box-sizing: border-box;	
+            height: 2px;	
+            border: 1px solid #EBEBEB;
+            margin-bottom: 10px;
+            @include md{
+              width: 60%;
+            }
+            @include lg {
+              width: 90%;
+              display: flex !important;
+              justify-content: flex-start !important;
+            }
+            @include xl {
+            }
+          }
+        }
+        .prizes-page-prize-points {
+          @extend .center;
+            font-size: 20px;	
+            font-weight: 800;
+            width: 100%;
+          @include md {
+            font-size: 30px;	
+            font-weight: 800;	
+            line-height: 36px;
+            padding-bottom: 15px;
+          }
+          @include lg {
+            font-size: 25px;
+            display: flex !important;
+            justify-content: flex-start !important;
+            padding-bottom: 0px
+            }
+          @include xl {
+            font-size: 30px;
+            padding-bottom: 15px;
+            }
+        }
+      }
+      .select-prize {
+        margin-top: 30px;
+        @extend .center;
+          height: 45px;	
+          width: 372px;
+          margin-left: 15px;
+        @include md{
+          height: 45px;
+          width: 500px;
+          margin: 15px 0 -36px 78px;
+        }
+        @include lg{
+        height: 45px;
+        width: 350px;
+        margin: 11px 0 0px 0px;
+        }
+      }
+    }
+  }
+}

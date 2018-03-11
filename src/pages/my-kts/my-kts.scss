@@ -12,7 +12,7 @@ page-my-kts {
     }
   }
   .single-column{
-    overflow: scroll;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -22,33 +22,6 @@ page-my-kts {
       width: 33%;
       position: relative;
     }
-  }
-
-  // Links
-
-  .kts-link{
-    background: white;
-    color: $color-text-primary;
-    cursor: pointer;
-    min-height: 37px;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 300;
-    padding: 0 0 0 20px;
-    margin: 10px 15px 10px 15px;
-    @include md{
-      margin: 10px 5px 10px 10px;
-    }
-    box-shadow: 0 0 10px 5px #CCC;
-    @include md{
-      box-shadow: 0 0 4px 2px #CCCCCC;
-    }
-  }
-  .link-arrow{
-    margin: 0 10px 0 0;
   }
 
 
@@ -70,7 +43,7 @@ page-my-kts {
   .notifications-desktop{
     padding: 10px 5px;
     width: 100%;
-    overflow: scroll;
+    overflow-y: auto;
   }
 
 

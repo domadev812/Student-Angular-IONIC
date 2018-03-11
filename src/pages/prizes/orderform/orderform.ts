@@ -78,7 +78,7 @@ export class OrderFormPage {
   ngOnInit() {       
     this.ktsSelectSettings = MultiSelectUtil.selectOptions({text: 'Select State'});
     this.prizeId = this.navParams.get('prizeId');            
-    this.address = new Model.Address(null);
+    this.address = new Model.Address();
     this.getCurrentUser();
     this.getAddress();
   }
@@ -133,14 +133,12 @@ export class OrderFormPage {
     if (!this.address.id) {
       this.addressService.createAddress(this.address).subscribe((res: Model.Address) => {      
         alert('Address is created successfully.');
-        this.navCtrl.push('OrderReviewPage', { prizeId: this.prizeId, address: this.address, 
-                                               prize_points: prizePoints, user_balance: balancePoints });
+        this.navCtrl.push('OrderReviewPage', { prizeId: this.prizeId, prize_points: prizePoints, user_balance: balancePoints });
       }, err => console.log('There was an error', err));    
     } else {
       this.addressService.updateAddress(this.address).subscribe((res: Model.Address) => {      
         alert('Address is updated successfully.'); 
-        this.navCtrl.push('OrderReviewPage', { prizeId: this.prizeId, address: this.address, 
-                                               prize_points: prizePoints, user_balance: balancePoints });
+        this.navCtrl.push('OrderReviewPage', { prizeId: this.prizeId, prize_points: prizePoints, user_balance: balancePoints });
       }, err => console.log('There was an error', err));    
     }
   }

@@ -5,9 +5,11 @@ export class User extends BaseUser {
   hometown: string;
   bio: string;
 
-  constructor(data) {
+  constructor(data = null) {
     super();
-    this.setData(data);
+    if (data) {      
+      this.setData(data);
+    }
   }
 
   setData(data) {

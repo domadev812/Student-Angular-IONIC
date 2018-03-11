@@ -1,6 +1,6 @@
 .page-wrapper
   .content-wrapper
-    form.form-group(#contactForm="ngForm" (ngSubmit)="sendMessage(contactForm.valid)" novalidate)
+    form.form-group(#contactForm="ngForm", (ngSubmit)="sendMessage(contactForm.valid)", novalidate)
       .header-nav
         h1.headers
           | Contact Us
@@ -13,23 +13,23 @@
             | FULL NAME
             .invalid-validation([hidden]="fullname.valid || (fullname.pristine && !contactForm.submitted)")
               | Full name is required
-          input.kts-input(type="text" name="fullname" [(ngModel)]="fullName" #fullname="ngModel" required) 
+          input.kts-input(type="text", name="fullname", [(ngModel)]="fullName", #fullname="ngModel", required) 
         .item-info
           .input-label
             | PHONE NUMBER
             .invalid-validation([hidden]="phone.valid || (phone.pristine && !contactForm.submitted)")
               | Phone number is required
-          input.kts-input(type="text" name="phone" [(ngModel)]="phoneNumber" #phone="ngModel" required) 
+          input.kts-input(type="text", name="phone", [(ngModel)]="phoneNumber", #phone="ngModel", required) 
         .item-info
           .input-label
             | CATEGORY OF INQUIRY
             .invalid-validation([hidden]="selectedCategory.length > 0 ||!contactForm.submitted")
               | Category is required
           angular2-multiselect(
-            name = 'category'
-            [data]='categoryList'
-            [(ngModel)]='selectedCategory'
-            [settings]='ktsSelectSettings'
+            name = 'category',
+            [data]='categoryList',
+            [(ngModel)]='selectedCategory',
+            [settings]='ktsSelectSettings',
             (onSelect)='onCategorySelect($event)'            
           )
         .item-info
@@ -37,5 +37,5 @@
             | MESSAGE
             .invalid-validation([hidden]="message_content.valid || (message_content.pristine && !contactForm.submitted)")
               | Message is required
-          textarea.kts-textarea(rows='10' name="message_content" [(ngModel)]="message" #message_content="ngModel" required)          
+          textarea.kts-textarea(rows='10', name="message_content", [(ngModel)]="message", #message_content="ngModel", required)          
           

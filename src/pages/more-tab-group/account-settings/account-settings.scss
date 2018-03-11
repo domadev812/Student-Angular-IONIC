@@ -1,3 +1,102 @@
 page-account-settings {
+  .page-wrapper {
+    background: none;
+    &:before {
+      background-image: linear-gradient(to bottom, #E3EAEF , #EEDEE7);
+      opacity: .4;
+    }
+  }
+  .header-nav {  
+    display: none;
+    @extend .space-between;
+    @include md {
+      flex-wrap: wrap; 
+      align-items: center;
+    }
+    .headers {
+      font-size: 24px;
+      margin: 0;
+      font-weight: normal;
+      @include md{
+        font-size: 36px;
+      }
+    }
+    .send-button {
+      width: 135px;
+      height: 35px;
+      font-size: 18px;                     
+      @include md-max{  
+        width: auto;            
+        font-size: 16px;
+        color: $color-primary;       
+        background: none;
+        box-shadow: none;
+        font-weight: normal;  
+      }
+    }            
+  }
+  .content-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 1080px;
+    max-width: 1080px;
+    margin: 10px 25px;    
+    @include md{
+      margin: 20px 15px;    
+    }
+  }
+  .form-content {
+    overflow-y: auto;
+    margin-top: 50px;
+    @include md{
+      margin-top: 70px;
+    }
+  }
+  .info-section-header {
+    font-size: 10px;	
+    font-weight: 800;	
+    line-height: 12px;
+    padding: 13px 0 13px 1px;
+    @include md{
 
+    }  
+  }
+  .item-info {
+    margin-bottom: 15px;
+  }
+  .input-label {
+    @extend .input-label;
+    @extend .center-y;
+    color: #232d3b;
+    font-weight: 300;
+    font-size: 12px;
+    padding-left: 2px;
+  }
+  .input-label-comment {
+    @extend .input-label;
+    font-size: 14px;
+    margin-top: 20px;
+    font-weight: normal;
+    flex-direction: column;
+    align-items: left !important;
+    .invalid-validation {
+      margin-left: 0;
+      @include md{
+        margin-left: 10px;
+      }
+    }
+    @include md{
+      margin-top: 30px;
+      flex-direction: unset;      
+      align-items: center !important;
+    }
+  }
+  .kts-input {
+    @extend .kts-input;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    height: 37px;
+  }
 }

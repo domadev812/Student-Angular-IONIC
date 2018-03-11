@@ -1,6 +1,6 @@
 .page-wrapper
   .content-wrapper
-    form.form-group(#orderForm="ngForm" (ngSubmit)="gotoNext(orderForm.valid)" novalidate)
+    form.form-group(#orderForm="ngForm", (ngSubmit)="gotoNext(orderForm.valid)", novalidate)
       .header-nav
         h1.headers
           | Order Form
@@ -13,7 +13,7 @@
             | FULL NAME
             .invalid-validation([hidden]="fullname.valid || (fullname.pristine && !orderForm.submitted)")
               | Full name is required
-          input.kts-input(type="text" name="fullname" [(ngModel)]="address.full_name" #fullname="ngModel" required) 
+          input.kts-input(type="text", name="fullname", [(ngModel)]="address.full_name", #fullname="ngModel", required) 
         .item-info
           .input-label
             | PHONE NUMBER
@@ -21,19 +21,19 @@
               | Phone number is required
             .invalid-validation([hidden]="!address.phone_number || address.phone_number === '' || validationPhone() || (phone.pristine && !orderForm.submitted)")
                 | Phone number is not correct
-          input.kts-input(type="text" name="phone" [(ngModel)]="address.phone_number" #phone="ngModel" required) 
+          input.kts-input(type="text", name="phone", [(ngModel)]="address.phone_number", #phone="ngModel", required) 
         .item-info
           .input-label
             | STREET ADDRESS
             .invalid-validation([hidden]="street.valid || (street.pristine && !orderForm.submitted)")
               | Street address is required
-          input.kts-input(type="text" name="street" [(ngModel)]="address.address_one" #street="ngModel" required)
+          input.kts-input(type="text", name="street", [(ngModel)]="address.address_one", #street="ngModel", required)
         .item-info
           .input-label
             | CITY
             .invalid-validation([hidden]="city.valid || (city.pristine && !orderForm.submitted)")
               | City is required
-          input.kts-input(type="text" name="city" [(ngModel)]="address.city" #city="ngModel" required) 
+          input.kts-input(type="text", name="city", [(ngModel)]="address.city", #city="ngModel", required) 
         .row-state-zip     
           .item-info
             .input-label
@@ -41,10 +41,10 @@
               .invalid-validation([hidden]="selectedState.length > 0 ||!orderForm.submitted")
                 | State is required
             angular2-multiselect(
-              name = 'state'
-              [data]='stateList'
-              [(ngModel)]='selectedState'
-              [settings]='ktsSelectSettings'
+              name = 'state',
+              [data]='stateList',
+              [(ngModel)]='selectedState',
+              [settings]='ktsSelectSettings',
               (onSelect)='onStateSelect($event)'            
             )
           .item-info
@@ -54,5 +54,4 @@
                 | Zip code is required
               .invalid-validation([hidden]="!address.zip_code || address.zip_code === '' || selectedState.length === 0 || validationZipCode() || (zipcode.pristine && !orderForm.submitted)")
                 | Zip code is not correct.
-            input.kts-input(type="text" name="zipcode" [(ngModel)]="address.zip_code" #zipcode="ngModel" [disabled]="this.selectedState.length === 0" required)  
-          
+            input.kts-input(type="text", name="zipcode", [(ngModel)]="address.zip_code", #zipcode="ngModel", [disabled]="this.selectedState.length === 0", required)  

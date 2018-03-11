@@ -3,7 +3,7 @@ import { ENV } from '../config/config.dev';
 export class BaseUser {
   email: string;
   username: string;
-  first_name: string; 
+  first_name: string;
   last_name: string;
   id: string;
   password: string;
@@ -20,29 +20,35 @@ export class BaseUser {
   fullName: Function;
   graduation_year: number;
   points: number;
+  careers: any[];
+  // points = 0;
+
   constructor() {
-    
+
   }
 
   setData(data) {
-    this.email = data.email || this.email;
-    this.username = data.username || this.username;
-    this.first_name = data.first_name || this.first_name;
-    this.last_name = data.last_name || this.last_name;
-    this.id = data.id || this.id;
-    this.password = data.password || this.password;
-    this.organization_id = data.organization_id || this.organization_id;
-    this.organization_name = data.organization_name || this.organization_name;
-    this.birthday = data.birthday || this.birthday;
-    this.ethnicity_id = data.ethnicity_id || this.ethnicity_id;
-    this.gender = data.gender || this.gender;
-    this.phone_number = data.phone_number || this.phone_number;
-    data.images ? this.profile_image = data.images[0] : this.profile_image = null;
-    this.reset_pass_exp = data.reset_pass_exp || this.reset_pass_exp;
-    this.reset_pass_token = data.reset_pass_token || this.reset_pass_token;
-    this.roles = data.roles || this.roles;
-    this.graduation_year = data.graduation_year || this.graduation_year;
-    this.points = data.points || this.points;
+    if (data) {
+      this.email = data.email || this.email;
+      this.username = data.username || this.username;
+      this.first_name = data.first_name || this.first_name;
+      this.last_name = data.last_name || this.last_name;
+      this.id = data.id || this.id;
+      this.password = data.password || this.password;
+      this.organization_id = data.organization_id || this.organization_id;
+      this.organization_name = data.organization_name || this.organization_name;
+      this.birthday = data.birthday || this.birthday;
+      this.ethnicity_id = data.ethnicity_id || this.ethnicity_id;
+      this.gender = data.gender || this.gender;
+      this.phone_number = data.phone_number || this.phone_number;
+      data.images ? this.profile_image = data.images[0] : this.profile_image = null;
+      this.reset_pass_exp = data.reset_pass_exp || this.reset_pass_exp;
+      this.reset_pass_token = data.reset_pass_token || this.reset_pass_token;
+      this.roles = data.roles || this.roles;
+      this.graduation_year = data.graduation_year || this.graduation_year;
+      this.points = data.points || this.points;
+      this.careers = data.careers || this.careers;
+    }
   }
 
   getName(): string | undefined {

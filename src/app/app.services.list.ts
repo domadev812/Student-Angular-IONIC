@@ -10,3 +10,4 @@ export * from '../_services/opportunities.service';
 export * from '../_services/organization.service';
 export * from '../_services/prizes.service';
 export * from '../_services/address.service';
+export * from '../_services/keycard.service';

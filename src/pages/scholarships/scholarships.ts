@@ -35,7 +35,7 @@ export class ScholarshipsPage {
     this.getScholarships();
   }
 
-
+  
   onFilterChange(event): void {
     //TODO: CALL API WITH FILTER WHEN BACKEND IS READY
     // this.reset();

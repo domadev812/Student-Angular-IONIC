@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="230px" height="210px" viewBox="0 0 230 210" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Present Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Present-Icon" transform="translate(0.000000, 5.000000)">
+            <path d="M10.5537203,31 L219.44628,31 C225.274938,31 230,35.6930585 230,41.4822396 L230,77 L0,77 L0,41.4822396 C-7.13804829e-16,35.6930585 4.72506151,31 10.5537203,31 Z" id="Shape" fill="#55C0E9" fill-rule="nonzero"></path>
+            <path d="M13,77 L218,77 L218,195.858144 C218,200.907051 213.931831,205 208.913491,205 L22.0934719,205 C17.0751315,205 13.0069628,200.907051 13.0069628,195.858144 L13.0069628,77 L13,77 Z" id="Shape" fill="#2C9DBF" fill-rule="nonzero"></path>
+            <path d="M61.9269163,14.2475914 C60.3734389,17.9863911 60.7912616,22.2545645 63.0402754,25.6208608 C65.2892892,28.987157 69.0717002,31.0058417 73.1191486,30.9999873 L118,31 L101.84821,9.3072441 C91.1456377,-5.06594768 68.8171343,-2.30887 61.9269163,14.2475914 Z" id="Shape" stroke="#FFFFFF" stroke-width="10"></path>
+            <path d="M171.069298,14.2475823 C172.627031,17.9863054 172.210751,22.256529 169.960278,25.6239735 C167.709806,28.9914179 163.923698,31.0093422 159.873631,30.9999675 L115,31 L131.156746,9.30723815 C141.876597,-5.06594444 164.176965,-2.30886852 171.069298,14.2475823 Z" id="Shape" stroke="#FFFFFF" stroke-width="10"></path>
+            <path d="M116,31 L116,205" id="Shape" stroke="#FFFFFF" stroke-width="10"></path>
+            <path d="M218,113 L13,113" id="Shape" stroke="#FFFFFF" stroke-width="10"></path>
+            <path d="M117,31 L142,65" id="Shape" stroke="#FFFFFF" stroke-width="10"></path>
+            <path d="M125,17 L88,67" id="Shape" stroke="#FFFFFF" stroke-width="10"></path>
+        </g>
+    </g>
+</svg>

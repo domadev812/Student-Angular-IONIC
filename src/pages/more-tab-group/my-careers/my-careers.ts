@@ -30,8 +30,11 @@ export class MyCareersPage {
 
   getCurrentUser(): void {    
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
-      this.currentUser = res;
+      this.currentUser = res;      
       // TODO: Remove once careers part is completed
+      if (!this.currentUser.careers) {
+        this.currentUser.careers = [];
+      }
       if (this.currentUser.careers.length === 0) {
         this.currentUser.careers = [
           {id: 1, name: 'Career1'},
@@ -40,8 +43,7 @@ export class MyCareersPage {
           {id: 4, name: 'Career4'},
           {id: 5, name: 'Career5'},
         ];
-      }
-      console.log(this.currentUser.careers);      
+      }        
     });
   }
 }

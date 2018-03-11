@@ -1,6 +1,6 @@
-ion-footer( no-border mode="ios" )
+ion-footer( no-border, mode="ios" )
   .tabs-nav-wrapper
-    .nav-link((click)="goToPage('MyKtsPage', $event)", [ngClass]="activeLink('my-kts')")
+    .nav-link((click)="goToPage('MyKtsPage', $event)" [ngClass]="activeLink('my-kts')")
       .nav-link-icon([inlineSVG]="navIcon('my-kts', 'icon/my-kts')")
       //- .nav-link-icon([inlineSVG]="'icon/my-kts-selected.svg'")
       .nav-link-title() My KTS

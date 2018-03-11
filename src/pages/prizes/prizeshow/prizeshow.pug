@@ -1,0 +1,19 @@
+ion-content.page-wrapper
+  .prizes-page-wrapper
+    .prizes-page-background
+      .prizes-page-prize-image
+    .prizes-page-prize-wrapper
+      .prizes-page-prize-logo
+        img.prizes-org-image(src="https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg")
+      .prizes-page-content-button-wrapper
+        .prize-page-content-wrapper
+          .prizes-page-prize-title
+            | {{prize.title}}
+          .prizes-page-prize-org
+            | {{prize.organization.name}}
+          .line-div  
+            .prizes-page-break-line
+          .prizes-page-prize-points
+            | {{prize.points}} Points
+        button.kts-primary-btn.select-prize((click)="goToRedeemPage(prize.id)") 
+          | Select Prize

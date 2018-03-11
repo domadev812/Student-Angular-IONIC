@@ -6,6 +6,7 @@ import { Prize as ApiPrize } from '../_models/prize.model';
 import { Opportunity as ApiOpportunity } from '../_models/opportunity.model';
 import { Organization as ApiOrganization } from '../_models/organization.model';
 import { Address as ApiAddress } from '../_models/address.model';
+import { Keycard as ApiKeycard } from '../_models/keycard.model';
 
 
 export module Model {
@@ -25,6 +26,8 @@ export module Model {
     export const Address = ApiAddress;
     export type Opportunity = ApiOpportunity;
     export const Opportunity = ApiOpportunity;
+    export type Keycard = ApiKeycard;
+    export const Keycard = ApiKeycard;
 
     export function initializeArray<T>(array: T[], type: string): any[] {
         let newArray: T[] = [];

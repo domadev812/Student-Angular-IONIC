@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CurrentUserService {
-  public currentUser: Model.User;
+  private currentUser: Model.User;
   private currentUserPromise: Promise<Model.User>;
   private notify = new Subject<any>();
 
@@ -54,7 +54,7 @@ export class CurrentUserService {
         } else if (token) {
           let decodedToken = this.jwtHelper.decodeToken(token);
           let userId = decodedToken.id;
-          authProvider.getUser(userId).subscribe((user: Model.User) => {
+          authProvider.getCurrentUser().subscribe((user: Model.User) => {
             this.load(user);
             if (user) {
               this.currentUser = user;

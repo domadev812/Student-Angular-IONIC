@@ -12,9 +12,9 @@ export class UserProgress {
   }
 
   setData(data) {
-    this.prizes = Model.initializeArray(data.prizes, 'Prize') || this.prizes;
-    this.scholarships = Model.initializeArray(data.scholarships, 'Scholarship') || this.scholarships;
-    this.internships = Model.initializeArray(data.internships, 'Opportunity') || this.internships;
-    this.other_opportunities = Model.initializeArray(data.other_opportunities, 'Opportunity') || this.other_opportunities;
+    this.prizes = Model.initializeArray(data.prizes, 'Prize');
+    this.scholarships = Model.initializeArray(data.scholarships, 'Scholarship');
+    this.internships = Model.initializeArray(data.internships, 'Opportunity');
+    this.other_opportunities = Model.initializeArray(data.other_opportunities, 'Opportunity');
   }
 }

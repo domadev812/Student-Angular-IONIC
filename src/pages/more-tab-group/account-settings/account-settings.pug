@@ -1,0 +1,50 @@
+.page-wrapper
+  .content-wrapper
+    form.form-group(#userSettings="ngForm", (ngSubmit)="saveUser(userSettings.valid)", novalidate)
+      .header-nav
+        h1.headers
+          | ACCOUNT SETTINGS
+        .button-group
+            button.kts-primary-btn.send-button(type="submit")
+              | Save
+      .form-content.scroll-content
+        .info-section-header
+          | ACCOUNT INFO
+        .item-info
+          .input-label
+            | USER NAME
+          input.kts-input(type="text", readonly, [(ngModel)]="user.username", [ngModelOptions]="{standalone: true}")
+        .item-info
+          .input-label
+            | EMAIL
+          input.kts-input(type="text", readonly, [(ngModel)]="user.email", [ngModelOptions]="{standalone: true}")         
+        .info-section-header
+          | PERSONAL INFO
+        .item-info
+          .input-label
+            | FIRST NAME
+          input.kts-input(type="text", [(ngModel)]="user.first_name", [ngModelOptions]="{standalone: true}")
+        .item-info
+          .input-label
+            | LAST NAME
+          input.kts-input(type="text", [(ngModel)]="user.last_name", [ngModelOptions]="{standalone: true}")
+        .item-info
+          .input-label
+            | BIRTHDAY
+          input.kts-input(type="text", readonly, [(ngModel)]="user.birthday", [ngModelOptions]="{standalone: true}")   
+        .item-info
+          .input-label
+            | GENDER
+          input.kts-input(type="text", readonly, [(ngModel)]="user.gender", [ngModelOptions]="{standalone: true}") 
+        .info-section-header
+          | SCHOOL INFO        
+        .item-info
+          .input-label
+            | SCHOOL
+          input.kts-input(type="text", readonly, [(ngModel)]="user.organization_name", [ngModelOptions]="{standalone: true}")
+        .item-info
+          .input-label
+            | GRADUATION YEAR
+          input.kts-input(type="text", [(ngModel)]="user.graduation_year", [ngModelOptions]="{standalone: true}")
+       
+          

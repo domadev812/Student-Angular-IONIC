@@ -42,8 +42,8 @@ export class AuthService {
     this.app.getRootNav().setRoot('LoginPage');
   }
 
-  getUser(id: string): Observable<Model.User> {
-    return this.http.get('/users/' + id)
+  getCurrentUser(): Observable<Model.User> {
+    return this.http.get('/users/me')
     .map((response: Response) => {
       const user = new Model.User(response.json().data);
       if (user.email) {

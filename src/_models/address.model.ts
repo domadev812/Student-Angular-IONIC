@@ -11,7 +11,7 @@ export class Address {
   phone_number: string;
   updated_at: Date;      
   created_at: Date;      
-  constructor(data) {
+  constructor(data = null) {
     if (data) {
       this.id = data.id;
       this.user_id = data.user_id;

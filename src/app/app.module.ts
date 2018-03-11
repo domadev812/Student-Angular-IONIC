@@ -43,7 +43,8 @@ import { MyApp } from './app.component';
     Services.OpportunitiesService,    
     Services.AddressService,
     Services.OrganizationService,
-    Services.PrizesService
+    Services.PrizesService,
+    Services.KeycardService,
   ]
 })
 export class AppModule { }

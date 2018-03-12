@@ -7,8 +7,9 @@ page-tools {
     .headers {
       font-size: 24px;
       font-weight: normal;
-      margin: 0;
+      margin: 0 0 0 36px;      
       @include md{
+        margin: 0;      
         font-size: 36px;        
       }
     }
@@ -16,9 +17,9 @@ page-tools {
   .tool-wrapper {
     position: relative;
     z-index: 2;
-    width: 500px;
-    max-width: 500px;
-    margin: 10px 15px;    
+    width: 540px;
+    max-width: 540px;
+    margin: 10px 0px;    
     @include md{
       margin: 20px 15px;    
     }
@@ -50,12 +51,9 @@ page-tools {
       li {
         padding: 12px 20px 12px 36px;
         border-bottom: 1px solid #F0F1F6;
-      }
-    }
-    .link-arow {
-      width: 17px;
-      @include md {
-        width: 25px;
+        .arrow-icon{
+          color: #CFD2E6;
+        }
       }
     }
   }  

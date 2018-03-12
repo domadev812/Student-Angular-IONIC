@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, App  } from 'ionic-angular';
 import { NavigationService } from '../../../app/app.services.list';
 
 @IonicPage()
@@ -19,7 +19,9 @@ export class ToolsPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public navService: NavigationService
+    public navService: NavigationService,
+    public viewCtrl: ViewController,
+    private app: App
   ) {
   }
   
@@ -27,7 +29,26 @@ export class ToolsPage {
     this.navService.currentPage = 'ToolsPage';
   }
 
-  gotoPage(url: string): void {
+  openURL(url: string): void {
     window.open(url, '_blank');
+  }
+
+  goToPage(page: string, event: any): void {
+    this.app.getActiveNavs()[0].setRoot(page);
+    this.dismissIfPopover();
+  }
+
+  dismissIfPopover() {
+    if (this.viewCtrl.isOverlay) {
+      this.viewCtrl.dismiss();
+    }
+  }
+
+  goBack() {
+    if (this.navCtrl.canGoBack()) {
+      this.navCtrl.pop();
+    } else {
+      this.goToPage('MyKtsPage', null);
+    }
   }
 }

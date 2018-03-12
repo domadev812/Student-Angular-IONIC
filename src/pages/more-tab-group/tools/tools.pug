@@ -1,12 +1,13 @@
 .page-wrapper
   .tool-wrapper    
     .header-nav
+      ion-icon.arrow-back-icon(ios="ios-arrow-back", md="ios-arrow-back", (click)="goBack()")
       h1.headers
         | Tools 
     .scroll-content.tool-content    
         ul
           li(*ngFor="let tool of toolsList;")                    
-            a.kts-card-item.tool-item((click)="gotoPage(tool.url)")
+            a.kts-card-item.tool-item((click)="openURL(tool.url)")
               .tool-name
                 | {{tool.name}}
               ion-icon.arrow-icon(ios="ios-arrow-forward", md="ios-arrow-forward")

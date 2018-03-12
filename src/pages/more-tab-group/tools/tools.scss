@@ -1,27 +1,39 @@
 @import "../../../theme/variables.scss";
 page-tools {
   .header-nav {  
-    @extend .space-between;
+    @extend .justify-start;
     flex-wrap: wrap; 
-    align-items: center;    
+    align-items: center; 
+    padding-left: 10px; 
+    @include md{    
+      padding-left: 0;
+    }  
     .headers {
       font-size: 24px;
-      font-weight: normal;
-      margin: 0 0 0 36px;      
-      @include md{
+      font-weight: normal;      
+      margin: 0 0 0 15px;
+      @include md{          
+        font-size: 36px;  
         margin: 0;      
-        font-size: 36px;        
+      }
+    }
+    .arrow-back-icon {
+      font-size: 30px;
+      color: #232D3B;
+      @include md{
+        display: none;
       }
     }
   }  
   .tool-wrapper {
     position: relative;
     z-index: 2;
-    width: 540px;
-    max-width: 540px;
+    width: 100%;
     margin: 10px 0px;    
     @include md{
-      margin: 20px 15px;    
+      margin: 20px 15px; 
+      width: 540px;
+      max-width: 540px;   
     }
   }
   .tool-content {

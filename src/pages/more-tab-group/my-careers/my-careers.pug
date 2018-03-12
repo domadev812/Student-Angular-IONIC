@@ -5,14 +5,14 @@
         .search-comment 
           | You have selected careers! Now you can search:
         .button-group
-          .kts-primary-btn.category-button
+          .kts-primary-btn.category-button((click)="gotoCareesPage('internship')")
             | Internships
-          .kts-primary-btn.category-button
+          .kts-primary-btn.category-button((click)="gotoCareesPage('scholarship')")
             | Scholarships    
       selected-careers-widget.mobile-version([careers]="currentUser.careers")             
       .select-careers    
         .title
-          | Start selecting careers
+          | {{title}}
         a.kts-card-item.career-type
           .type-name
             | Select based on personality traits.

@@ -10,6 +10,7 @@ import { Model } from '../../../app/app.models';
 })
 export class MyCareersPage {
   currentUser: Model.User;
+  title: string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -25,6 +26,7 @@ export class MyCareersPage {
   
   ngOnInit() {
     this.currentUser = new Model.User();
+    this.title = 'Start Selecting Careers';
     this.getCurrentUser();
   }
 
@@ -43,7 +45,19 @@ export class MyCareersPage {
           {id: 4, name: 'Career4'},
           {id: 5, name: 'Career5'},
         ];
-      }        
+      }
+      
+      if (this.currentUser.careers.length > 0) {
+        this.title = 'Edit My Careers';
+      }
     });
+  }
+
+  gotoCareesPage(type: string): void {
+    if (type === 'internship') {
+      this.navCtrl.push('CareersPage');
+    } else {
+      this.navCtrl.push('ScholarshipsPage');
+    }
   }
 }

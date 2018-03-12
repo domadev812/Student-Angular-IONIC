@@ -81,7 +81,7 @@ page-my-careers {
   .button-group {
     display: flex;
     justify-content: space-between;
-    margin-top: 3px;
+    margin-top: 10px;
     @include md{ 
       margin-top: 15px;
     }
@@ -101,8 +101,8 @@ page-my-careers {
     text-align: left;
     margin-bottom: 15px; 
     @include md{
-      font-size: 24px;  
-      margin-bottom: 5px;         
+      font-size: 20px;  
+      margin-bottom: 10px;         
     }
   }
   .career-type {

@@ -8,6 +8,13 @@ import { NavigationService } from '../../../app/app.services.list';
   templateUrl: 'tools.html',
 })
 export class ToolsPage {
+  // TODO: Change url values once project is done.
+  toolsList = [{name: 'Resumen Builder', url: 'https://www.google.com'},
+           {name: 'ACT Prep', url: 'https://www.google.com'},
+           {name: 'Career Cluster Test', url: 'https://www.google.com'},
+           {name: 'Personality Index Test', url: 'https://www.google.com'},
+           {name: 'FAFSA', url: 'https://www.google.com'},
+           {name: 'Article/Link of the Month', url: 'https://www.google.com'}];
 
   constructor(
     public navCtrl: NavController,
@@ -20,4 +27,7 @@ export class ToolsPage {
     this.navService.currentPage = 'ToolsPage';
   }
 
+  gotoPage(url: string): void {
+    window.open(url, '_blank');
+  }
 }

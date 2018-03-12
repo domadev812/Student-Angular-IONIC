@@ -1,0 +1,12 @@
+.page-wrapper
+  .tool-wrapper    
+    .header-nav
+      h1.headers
+        | Tools 
+    .scroll-content.tool-content    
+        ul
+          li(*ngFor="let tool of toolsList;")                    
+            a.kts-card-item.tool-item((click)="gotoPage(tool.url)")
+              .tool-name
+                | {{tool.name}}
+              ion-icon.arrow-icon(ios="ios-arrow-forward", md="ios-arrow-forward")

@@ -1,3 +1,4 @@
+import { Organization } from './organization.model';
 
 export class Opportunity {
   id: number;
@@ -6,11 +7,9 @@ export class Opportunity {
   type: string;
   details: string;
   updated_at: Date;
-  organization: any;
-  organization_id: number;
-  organization_name: string;
+  organization: Organization;
+  organization_id: number;  
   link: string;
-
 
   constructor(data: any = null) {
     if (data) {
@@ -22,8 +21,9 @@ export class Opportunity {
       this.details = data.details;
       this.organization = data.organization;
       this.organization_id = data.organization_id;
-      this.link = data.link;
-      this.organization_name = data.organization_name;
+      this.link = data.link;      
+    } else {
+      this.organization = new Organization();
     }
   }
 }

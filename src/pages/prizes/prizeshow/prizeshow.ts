@@ -11,7 +11,7 @@ import { Model } from '../../../app/app.models';
 export class PrizeShowPage {
   public prizeId: string;
   public prize: Model.Prize = new Model.Prize({});
-
+  public prizePoints: string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,7 +28,10 @@ export class PrizeShowPage {
 
   ngOnInit() {
     this.prizeId = this.navParams.get('prizeId');
-    this.prizeId = '2';
+    //TODO: Remove or Update once project is done.
+    if (!this.prizeId) {
+      this.prizeId = '1';
+    }
     this.prizesService.getPrize(this.prizeId).subscribe((res: Model.Prize) => {
       if (res) {
         this.prize = res;
@@ -36,8 +39,9 @@ export class PrizeShowPage {
     }, err => console.log('There was an error', err));
   }
 
-
   goToRedeemPage(prizeId: string): void {
-    this.navCtrl.push('PrizeRedeemPage', { prizeId: prizeId });
+    let prizePoints = this.navParams.get('prize_points');    
+    let balancePoints = this.navParams.get('user_balance');
+    this.navCtrl.push('OrderFormPage', {prizeId: prizeId, prize_points: prizePoints, user_balance: balancePoints});    
   }
 }

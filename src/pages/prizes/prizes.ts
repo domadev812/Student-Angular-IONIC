@@ -65,6 +65,6 @@ export class PrizesPage {
   }
 
   goToDetailPage(prizeId: string, points: number): void {    
-    this.navCtrl.push('OrderFormPage', {prizeId: prizeId, prize_points: points, user_balance: this.balancePoints});
+    this.navCtrl.push('PrizeShowPage', {prizeId: prizeId, prize_points: points, user_balance: this.balancePoints});
   }
 }

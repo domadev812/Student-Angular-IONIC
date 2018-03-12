@@ -17,6 +17,9 @@ export class CareersPage {
   currentType = 'Internship'; //other option is 'Other'
   input = '';
   infinite: any;
+  my_internship: boolean;
+  my_opportunity: boolean;
+  my_filter: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -41,12 +44,17 @@ export class CareersPage {
   onOpportunityFilterChange(event): void {
     //TODO: CALL API WITH FILTER WHEN BACKEND IS READY
     console.log('got opportunity filter', event);
+    this.my_opportunity = event.myOpportunities; 
+    this.my_filter = this.my_opportunity;   
+    this.getOpportunities();
   }
-
 
   onInternshipFilterChange(event): void {
     //TODO: CALL API WITH FILTER WHEN BACKEND IS READY
     console.log('got internship filters', event);
+    this.my_internship = event.myInternships;
+    this.my_filter = this.my_internship;
+    this.getOpportunities();
   }
 
   reset(): void {
@@ -65,7 +73,7 @@ export class CareersPage {
   search(type, event): void {
     this.reset();
     this.input = event.target.value;
-    this.opportunitiesService.getOpportunities(type, this.input).subscribe((res: Model.Opportunity[]) => {
+    this.opportunitiesService.getOpportunities(type, this.my_filter, this.input).subscribe((res: Model.Opportunity[]) => {
       this.opportunitiesList = res;
       this.offset = res.length;
     }, err => {
@@ -77,16 +85,19 @@ export class CareersPage {
     if (iternship) {
       this.pageToggle = true;
       this.currentType = 'Internship';
+      this.my_filter = this.my_internship;
     } else {
       this.pageToggle = false;
       this.currentType = 'Other';
+      this.my_filter = this.my_opportunity; 
     }
     this.getOpportunities();
   }
 
+
   getOpportunities(): void {
     this.reset();
-    this.opportunitiesService.getOpportunities(this.currentType).subscribe((res: Model.Opportunity[]) => {
+    this.opportunitiesService.getOpportunities(this.currentType, this.my_filter).subscribe((res: Model.Opportunity[]) => {
       this.opportunitiesList = res;
       this.offset = res.length;
     }, err => {
@@ -94,8 +105,9 @@ export class CareersPage {
     });
   }
 
+
   doInfinite(infiniteScroll: any): void {
-    this.opportunitiesService.getOpportunities(this.currentType, this.input, this.offset, this.limit)
+    this.opportunitiesService.getOpportunities(this.currentType, this.my_filter, this.input, this.offset, this.limit)
       .subscribe((res: Model.Opportunity[]) => {
         this.opportunitiesList = this.opportunitiesList.concat(res);
         this.offset = this.offset + res.length;
@@ -107,7 +119,8 @@ export class CareersPage {
       });
   }
 
-  goToDetailPage(opportunityId: string): void {    
-    this.navCtrl.push('OpportunityDetailPage', {opportunityId: opportunityId});
-  }
+
+
+
+
 }

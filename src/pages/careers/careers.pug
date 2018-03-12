@@ -17,7 +17,7 @@
         .lp-tab.lp-tab--right((click)="toggle(false)", [ngClass]="{'active-tab': !pageToggle}")
           | OTHER OPPORTUNITIES
       ion-content.lp-list
-        .lp-item(*ngFor="let opportunity of opportunitiesList; let i = index")
+        .lp-item(*ngFor="let opportunity of opportunitiesList; let i = index", (click)="goToDetailPage(opportunity.id)")
           .lp-item-image
             img(src="https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg")
           .lp-item-info-col

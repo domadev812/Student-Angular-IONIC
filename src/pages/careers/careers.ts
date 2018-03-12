@@ -56,7 +56,6 @@ export class CareersPage {
     if (this.infinite) this.infinite.enable(true);
   }
 
-
   openFilterModal(): void {
     let filter = this.pageToggle ? 'internships' : 'opportunities';
     let modal = this.modalCtrl.create('FilterPage', {filter: filter});
@@ -85,7 +84,6 @@ export class CareersPage {
     this.getOpportunities();
   }
 
-
   getOpportunities(): void {
     this.reset();
     this.opportunitiesService.getOpportunities(this.currentType).subscribe((res: Model.Opportunity[]) => {
@@ -95,7 +93,6 @@ export class CareersPage {
       console.log('There was an error', err);
     });
   }
-
 
   doInfinite(infiniteScroll: any): void {
     this.opportunitiesService.getOpportunities(this.currentType, this.input, this.offset, this.limit)
@@ -110,8 +107,7 @@ export class CareersPage {
       });
   }
 
-
-
-
-
+  goToDetailPage(opportunityId: string): void {    
+    this.navCtrl.push('OpportunityDetailPage', {opportunityId: opportunityId});
+  }
 }

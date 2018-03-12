@@ -10,13 +10,19 @@ export class ScholarshipsService {
 
   constructor(private http: Http) { }
   
-  getScholarships(search: string = '', offset = 0, limit = 20): Observable<Model.Scholarship[]> {
+  getScholarships(my_filter: boolean, school_id: number, search: string = '', offset = 0, limit = 20): Observable<Model.Scholarship[]> {
+    let filter_condition = '';
+    if (my_filter) {
+      filter_condition = '&my_filter=true';
+    }
+    if (school_id > 0) {
+      filter_condition += '&school_id=' + school_id;
+    }
     if (search.length > 0)  search = '&search=' + search;
-    return this.http.get('/scholarships?offset=' + offset + '&limit=' + limit + search)
+    return this.http.get('/scholarships?offset=' + offset + '&limit=' + limit + search + filter_condition)
       .map((response: Response) => {
         const json = response.json();        
         if (json && json.data) {
-          console.log('this is scholarship', json.data);
           return Model.initializeArray(json.data, 'Scholarship');
         } else {
           Observable.throw({ message: 'Internal Server Error' });

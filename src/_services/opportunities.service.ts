@@ -10,10 +10,12 @@ export class OpportunitiesService {
 
   constructor(private http: Http) { }
   
-  getOpportunities(type: string = '', search: string = '', offset = 0, limit = 20): Observable<Model.Opportunity[]> {
+  getOpportunities(type: string = '', my_filter: boolean, search: string = '', offset = 0, limit = 20): Observable<Model.Opportunity[]> {
+    let filter_condition = '';
     if (search.length > 0)  search = '&search=' + search;
+    if (my_filter) filter_condition = '&my_filter=true';
     if (type.length > 0)  type = '&type=' + type;
-    return this.http.get('/opportunities?offset=' + offset + '&limit=' + limit + search + type)
+    return this.http.get('/opportunities?offset=' + offset + '&limit=' + limit + search + type + filter_condition)
       .map((response: Response) => {
         const json = response.json();
         if (json && json.data) {

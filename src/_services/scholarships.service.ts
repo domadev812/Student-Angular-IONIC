@@ -15,7 +15,7 @@ export class ScholarshipsService {
     if (my_filter) {
       filter_condition = '&my_filter=true';
     }
-    if (school_id > 0) {
+    if (school_id) {
       filter_condition += '&school_id=' + school_id;
     }
     if (search.length > 0)  search = '&search=' + search;

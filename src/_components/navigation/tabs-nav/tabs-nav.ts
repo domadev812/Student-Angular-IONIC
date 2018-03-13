@@ -40,7 +40,7 @@ export class TabsNavComponent {
    }
 
    navPush(page: string)  {
-    this.app.getActiveNavs()[0].push(page);
+    this.app.getActiveNavs()[0].push(page, {}, {duration: 1});
    }
 
 }

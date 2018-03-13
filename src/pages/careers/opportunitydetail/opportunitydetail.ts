@@ -25,11 +25,10 @@ export class OpportunityDetailPage {
   }
 
   ngOnInit(): void { 
-    this.opportunity = new Model.Opportunity();       
-    this.opportunityId = this.navParams.get('opportunityId');        
-    this.opportunityId = '180';
+    this.opportunity = new Model.Opportunity();           
+    this.opportunityId = this.navParams.get('opportunityId');  
     this.opportunitiesService.getOpportunity(this.opportunityId).subscribe((res: Model.Opportunity) => {
-      this.opportunity = res;  
+      this.opportunity = res;        
     }, err => console.log('There was an error', err));
   }
 

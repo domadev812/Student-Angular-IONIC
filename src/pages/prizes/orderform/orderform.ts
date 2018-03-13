@@ -131,13 +131,11 @@ export class OrderFormPage {
     let prizePoints = this.navParams.get('prize_points');    
     let balancePoints = this.navParams.get('user_balance');
     if (!this.address.id) {
-      this.addressService.createAddress(this.address).subscribe((res: Model.Address) => {      
-        alert('Address is created successfully.');
+      this.addressService.createAddress(this.address).subscribe((res: Model.Address) => {              
         this.navCtrl.push('OrderReviewPage', { prizeId: this.prizeId, prize_points: prizePoints, user_balance: balancePoints });
       }, err => console.log('There was an error', err));    
     } else {
-      this.addressService.updateAddress(this.address).subscribe((res: Model.Address) => {      
-        alert('Address is updated successfully.'); 
+      this.addressService.updateAddress(this.address).subscribe((res: Model.Address) => {              
         this.navCtrl.push('OrderReviewPage', { prizeId: this.prizeId, prize_points: prizePoints, user_balance: balancePoints });
       }, err => console.log('There was an error', err));    
     }

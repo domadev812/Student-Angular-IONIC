@@ -16,7 +16,7 @@ export class ScholarshipsPage {
   input = '';
   infinite: any;
   my_filter: boolean;
-  filter_school: number;
+  school_id: number;
   subscription: Subscription;
   constructor(
     public navCtrl: NavController,
@@ -34,22 +34,18 @@ export class ScholarshipsPage {
 
   ngOnInit() {     
     this.subscription = this.filterService.newScholarshipEvent.subscribe(event => this.onFilterChange(event));
-    this.filterService.scholarshipFilterChange();
-    this.filter_school = 0;
-    // this.getScholarships();
+    this.filterService.scholarshipFilterChange();    
   }
   
   ngOnDestroy() {    
     this.subscription.unsubscribe();
   }
 
-  onFilterChange(event): void {       
+  onFilterChange(event): void {    
     this.my_filter = event.myScholarships;
     if (event.scholarshipUniversity) {
-      this.filter_school = event.scholarshipUniversity.id;
-    } else {
-      this.filter_school = 0;
-    }    
+      this.school_id = event.scholarshipUniversity.id;
+    }   
     this.getScholarships();     
   }
 
@@ -67,7 +63,7 @@ export class ScholarshipsPage {
 
   getScholarships(): void {
     this.reset();
-    this.scholarshipsService.getScholarships(this.my_filter, this.filter_school).subscribe((res: Model.Scholarship[]) => {
+    this.scholarshipsService.getScholarships(this.my_filter, this.school_id).subscribe((res: Model.Scholarship[]) => {
       this.scholarshipsList = res;
       this.offset = res.length;
     }, err => console.log('There was an error', err));
@@ -76,14 +72,14 @@ export class ScholarshipsPage {
   searchScholarships(event): void {
     this.reset();
     this.input = event.target.value;
-    this.scholarshipsService.getScholarships(this.my_filter, this.filter_school, this.input).subscribe((res: Model.Scholarship[]) => {
+    this.scholarshipsService.getScholarships(this.my_filter, this.school_id, this.input).subscribe((res: Model.Scholarship[]) => {
       this.scholarshipsList = res;
       this.offset = res.length;
     }, err => console.log('There was an error', err));
   }
   
   doInfinite(infiniteScroll: any): void {
-    this.scholarshipsService.getScholarships(this.my_filter, this.filter_school, 
+    this.scholarshipsService.getScholarships(this.my_filter, this.school_id, 
                                              this.input, this.offset, this.limit).subscribe((res: Model.Scholarship[]) => {
       this.scholarshipsList = this.scholarshipsList.concat(res);
         this.infinite = infiniteScroll;

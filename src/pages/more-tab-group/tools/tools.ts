@@ -45,6 +45,7 @@ export class ToolsPage {
   }
 
   goBack() {
+    console.log('this is previous', this.navCtrl.getPrevious());
     if (this.navCtrl.canGoBack()) {
       this.navCtrl.pop();
     } else {

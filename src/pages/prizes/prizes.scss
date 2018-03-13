@@ -13,8 +13,10 @@ page-prizes {
     margin-left: 20px;
     font-size: 14px;
     color: #E21E3E;
+    padding-bottom: 10px;
     @include md{
       font-size: 24px;
+      padding-bottom: 0;
     }
   }
   .lp-list {    

@@ -28,10 +28,6 @@ export class PrizeShowPage {
 
   ngOnInit() {
     this.prizeId = this.navParams.get('prizeId');
-    //TODO: Remove or Update once project is done.
-    if (!this.prizeId) {
-      this.prizeId = '1';
-    }
     this.prizesService.getPrize(this.prizeId).subscribe((res: Model.Prize) => {
       if (res) {
         this.prize = res;

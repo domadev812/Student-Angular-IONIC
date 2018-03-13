@@ -35,7 +35,7 @@ export class MorePage {
   }
 
   goToPage(page: string, event: any): void {
-    this.app.getActiveNavs()[0].setRoot(page);
+    this.app.getActiveNavs()[0].push(page);
     this.dismissIfPopover();
   }
 

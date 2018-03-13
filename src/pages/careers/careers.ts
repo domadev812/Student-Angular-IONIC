@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { NavigationService, FilterService, OpportunitiesService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
+import { Subscription } from 'rxjs/Subscription';
 
 @IonicPage()
 @Component({
@@ -20,6 +21,8 @@ export class CareersPage {
   my_internship: boolean;
   my_opportunity: boolean;
   my_filter: boolean;
+  internshipSubscription: Subscription;
+  opportunitySubscription: Subscription;
 
   constructor(
     public navCtrl: NavController,
@@ -36,25 +39,33 @@ export class CareersPage {
   }
 
   ngOnInit() {
-    this.getOpportunities();
-    this.filterService.newInternshipEvent.subscribe(event => this.onInternshipFilterChange(event));
-    this.filterService.newOpportunityEvent.subscribe(event => this.onOpportunityFilterChange(event));
+    this.internshipSubscription = this.filterService.newInternshipEvent.subscribe(event => this.onInternshipFilterChange(event));
+    this.opportunitySubscription = this.filterService.newOpportunityEvent.subscribe(event => this.onOpportunityFilterChange(event));
+    this.filterService.internshipFilterChange();
+    this.filterService.opportunityFilterChange();
+  }
+
+  ngOnDestroy() {    
+    this.internshipSubscription.unsubscribe();
+    this.opportunitySubscription.unsubscribe();
   }
 
   onOpportunityFilterChange(event): void {
     //TODO: CALL API WITH FILTER WHEN BACKEND IS READY
-    console.log('got opportunity filter', event);
     this.my_opportunity = event.myOpportunities; 
     this.my_filter = this.my_opportunity;   
-    this.getOpportunities();
+    if (!this.pageToggle) {
+      this.getOpportunities();
+    }
   }
 
   onInternshipFilterChange(event): void {
     //TODO: CALL API WITH FILTER WHEN BACKEND IS READY
-    console.log('got internship filters', event);
     this.my_internship = event.myInternships;
     this.my_filter = this.my_internship;
-    this.getOpportunities();
+    if (this.pageToggle) {
+      this.getOpportunities();
+    }
   }
 
   reset(): void {
@@ -94,7 +105,6 @@ export class CareersPage {
     this.getOpportunities();
   }
 
-
   getOpportunities(): void {
     this.reset();
     this.opportunitiesService.getOpportunities(this.currentType, this.my_filter).subscribe((res: Model.Opportunity[]) => {
@@ -104,7 +114,6 @@ export class CareersPage {
       console.log('There was an error', err);
     });
   }
-
 
   doInfinite(infiniteScroll: any): void {
     this.opportunitiesService.getOpportunities(this.currentType, this.my_filter, this.input, this.offset, this.limit)
@@ -119,8 +128,7 @@ export class CareersPage {
       });
   }
 
-
-
-
-
+  goToDetailPage(opportunityId: string): void {    
+    this.navCtrl.push('OpportunityDetailPage', {opportunityId: opportunityId});
+  }
 }

@@ -18,6 +18,7 @@ page-tools {
       }
     }
     .arrow-back-icon {
+      cursor: pointer;
       font-size: 30px;
       color: #232D3B;
       @include md{

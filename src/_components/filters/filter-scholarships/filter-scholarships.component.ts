@@ -8,6 +8,7 @@ import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 })
 export class FilterScholarshipsComponent {
   myScholarships: any;
+  scholarshipUniversity: any;
   universityList: Object[] = [];
   selectedUniversity: Object[] = [];
   ktsSelectSettings: Object = {};
@@ -20,9 +21,13 @@ export class FilterScholarshipsComponent {
 
   ngOnInit() {
     this.myScholarships = this.filterService.myScholarships;
+    this.scholarshipUniversity = this.filterService.scholarshipUniversity;
     this.ktsSelectSettings = MultiSelectUtil.selectOptions({text: ' '});
     this.multiselectService.getDropdownSchools().subscribe((res) => {
-      this.universityList = res;
+      this.universityList = res;      
+      if (this.scholarshipUniversity) {
+        this.selectedUniversity.push(this.scholarshipUniversity);
+      }
     }, err => {
       console.log('err', err);
     });
@@ -37,6 +42,8 @@ export class FilterScholarshipsComponent {
     this.filterService.scholarshipUniversity = item;
     this.filterService.scholarshipFilterChange();
   }
-
-
+  onUniversityDeSelect(item): void {    
+    this.filterService.scholarshipUniversity = null;
+    this.filterService.scholarshipFilterChange();
+  }
 }

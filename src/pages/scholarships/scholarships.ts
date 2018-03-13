@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { NavigationService, FilterService, ScholarshipsService} from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
+import { Subscription } from 'rxjs/Subscription';
 
 @IonicPage()
 @Component({
@@ -16,6 +17,7 @@ export class ScholarshipsPage {
   infinite: any;
   my_filter: boolean;
   filter_school: number;
+  subscription: Subscription;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -30,19 +32,24 @@ export class ScholarshipsPage {
     this.navService.currentPage = 'ScholarshipsPage';
   }
 
-  ngOnInit() {
-    this.filterService.newScholarshipEvent.subscribe(event => this.onFilterChange(event));
+  ngOnInit() {     
+    this.subscription = this.filterService.newScholarshipEvent.subscribe(event => this.onFilterChange(event));
+    this.filterService.scholarshipFilterChange();
     this.filter_school = 0;
-    this.getScholarships();
+    // this.getScholarships();
   }
   
-  onFilterChange(event): void {   
+  ngOnDestroy() {    
+    this.subscription.unsubscribe();
+  }
+
+  onFilterChange(event): void {       
     this.my_filter = event.myScholarships;
     if (event.scholarshipUniversity) {
       this.filter_school = event.scholarshipUniversity.id;
     } else {
       this.filter_school = 0;
-    }
+    }    
     this.getScholarships();     
   }
 
@@ -74,8 +81,7 @@ export class ScholarshipsPage {
       this.offset = res.length;
     }, err => console.log('There was an error', err));
   }
-
-
+  
   doInfinite(infiniteScroll: any): void {
     this.scholarshipsService.getScholarships(this.my_filter, this.filter_school, 
                                              this.input, this.offset, this.limit).subscribe((res: Model.Scholarship[]) => {

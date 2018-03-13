@@ -10,5 +10,6 @@
   angular2-multiselect( [data]="universityList", 
                         [(ngModel)]="selectedUniversity", 
                         [settings]="ktsSelectSettings",
-                        (onSelect)="onUniversitySelect($event)"
+                        (onSelect)="onUniversitySelect($event)",
+                        (onDeSelect)="onUniversityDeSelect($event)"
                       )

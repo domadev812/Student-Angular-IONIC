@@ -1,7 +1,7 @@
 import { User as ApiUser } from '../_models/user.model';
 import { UserProgress as ApiUserProgress } from '../_models/user-progress.model';
 import { Scholarship as ApiScholarship } from '../_models/scholarship.model';
-import { Notifications as ApiNotifications } from '../_models/notifications.model';
+import { Notification as ApiNotification } from '../_models/notification.model';
 import { Prize as ApiPrize } from '../_models/prize.model';
 import { Opportunity as ApiOpportunity } from '../_models/opportunity.model';
 import { Organization as ApiOrganization } from '../_models/organization.model';
@@ -16,8 +16,8 @@ export module Model {
     export const UserProgress = ApiUserProgress;
     export type Scholarship = ApiScholarship;
     export const Scholarship = ApiScholarship;
-    export type Notifications = ApiNotifications;
-    export const Notifications = ApiNotifications;
+    export type Notification = ApiNotification;
+    export const Notification = ApiNotification;
     export type Organization = ApiOrganization;
     export const Organization = ApiOrganization;
     export type Prize = ApiPrize;

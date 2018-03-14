@@ -10,25 +10,25 @@ export class NotificationsService {
 
   constructor(private http: Http) { }
 
-  getNotifications(): Observable<Model.Notifications[]> {
+  getNotifications(): Observable<Model.Notification[]> {
     return this.http.get('/notifications')
       .map((response: Response) => {
         const json = response.json();
         
         if (json && json.data) {
-          return Model.initializeArray(json.data, 'Notifications');
+          return Model.initializeArray(json.data, 'Notification');
         } else {
           Observable.throw({ message: 'Internal Server Error' });
         }
       });
   }
 
-  getNotification(id: string): Observable<Model.Notifications> {
+  getNotification(id: string): Observable<Model.Notification> {
     return this.http.get('/notifications/' + id)
       .map((response: Response) => {
         const json = response.json();        
         if (json && json.data) {
-          return new Model.Notifications(json.data);
+          return new Model.Notification(json.data);
         } else {
           Observable.throw({ message: 'Internal Server Error' });
         }

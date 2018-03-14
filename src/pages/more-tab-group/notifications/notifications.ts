@@ -10,7 +10,7 @@ import { Model } from '../../../app/app.models';
 })
 export class NotificationsPage {
 
-  notifications: Array<Model.Notifications> = new Array<Model.Notifications>();
+  notifications: Array<Model.Notification> = new Array<Model.Notification>();
 
   constructor(
     public navCtrl: NavController,
@@ -29,7 +29,7 @@ export class NotificationsPage {
   }
 
   getNotifications() {
-    this.notificationService.getNotifications().subscribe((res: Model.Notifications[]) => {
+    this.notificationService.getNotifications().subscribe((res: Model.Notification[]) => {
       this.notifications = res;
     }, err => console.log('There was an error', err));
   }

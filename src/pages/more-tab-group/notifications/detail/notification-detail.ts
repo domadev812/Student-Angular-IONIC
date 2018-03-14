@@ -10,7 +10,7 @@ import { Model } from '../../../../app/app.models';
 })
 export class NotificationDetailPage {
   public notificationId: string;
-  public notification: Model.Notifications;
+  public notification: Model.Notification;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -26,12 +26,11 @@ export class NotificationDetailPage {
   }
 
   ngOnInit() {
-    this.notification = new Model.Notifications();
+    this.notification = new Model.Notification();
     this.notificationId = this.navParams.get('notificationId');
     // TODO: Remove below line once project is done.
     this.notificationId = '58';
-    this.notificationService.getNotification(this.notificationId).subscribe((res: Model.Notifications) => {
-      console.log(res);
+    this.notificationService.getNotification(this.notificationId).subscribe((res: Model.Notification) => {      
       if (res) {
         this.notification = res;
       }
@@ -50,7 +49,6 @@ export class NotificationDetailPage {
   }
 
   goBack() {
-    console.log('this is previous', this.navCtrl.getPrevious());
     if (this.navCtrl.canGoBack()) {
       this.navCtrl.pop();
     } else {

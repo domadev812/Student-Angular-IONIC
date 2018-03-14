@@ -10,18 +10,28 @@ export class NotificationsService {
 
   constructor(private http: Http) { }
 
-  getNotifications(search: string = '', offset = 0, limit = 20): Observable<Model.Notifications[]> {
-    if (search.length > 0) search = '&search=' + search;
-    return this.http.get('/notifications?offset=' + offset + '&limit=' + limit + search)
+  getNotifications(): Observable<Model.Notifications[]> {
+    return this.http.get('/notifications')
       .map((response: Response) => {
         const json = response.json();
+        
         if (json && json.data) {
-          return Model.initializeArray(json.data, 'Notification');
+          return Model.initializeArray(json.data, 'Notifications');
         } else {
           Observable.throw({ message: 'Internal Server Error' });
         }
       });
   }
 
-
+  getNotification(id: string): Observable<Model.Notifications> {
+    return this.http.get('/notifications/' + id)
+      .map((response: Response) => {
+        const json = response.json();        
+        if (json && json.data) {
+          return new Model.Notifications(json.data);
+        } else {
+          Observable.throw({ message: 'Internal Server Error' });
+        }
+      });
+  }
 }

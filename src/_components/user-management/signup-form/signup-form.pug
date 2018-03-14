@@ -85,15 +85,6 @@ form(*ngIf="formOneDone", [formGroup]="signupForm2")
     | BIRTHDAY
   my-date-picker( formControlName="birthday", [options]="myDatePickerOptions", (dateChanged)="onDateChanged($event)", [(ngModel)]="startBirthday")
   ion-label.kts-input-label.kts-input-label(stacked)
-    | ETHNICITY
-  angular2-multiselect( 
-    formControlName="ethnicity",
-    [data]="ethnicityList",
-    [(ngModel)]="selectedEthnicity",
-    (onSelect)="onEthnicitySelect($event)",
-    [settings]="ktsSelectSettings" 
-  )
-  ion-label.kts-input-label.kts-input-label(stacked)
     | GENDER
   angular2-multiselect( 
     formControlName="gender",

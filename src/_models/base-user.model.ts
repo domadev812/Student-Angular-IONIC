@@ -10,7 +10,6 @@ export class BaseUser {
   organization_id: number;
   organization_name: string;
   birthday: Date;
-  ethnicity_id: string;
   gender: string;
   phone_number: string;
   profile_image: string;
@@ -37,8 +36,7 @@ export class BaseUser {
       this.password = data.password || this.password;
       this.organization_id = data.organization_id || this.organization_id;
       this.organization_name = data.organization_name || this.organization_name;
-      this.birthday = data.birthday || this.birthday;
-      this.ethnicity_id = data.ethnicity_id || this.ethnicity_id;
+      this.birthday = data.birthday || this.birthday;      
       this.gender = data.gender || this.gender;
       this.phone_number = data.phone_number || this.phone_number;
       data.images ? this.profile_image = data.images[0] : this.profile_image = null;

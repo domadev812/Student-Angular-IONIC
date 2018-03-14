@@ -4,17 +4,27 @@ page-notifications {
     height: 100%;
     z-index: 2;
     position: relative;
+    .mobile-header-wrapper {
+      @include md {
+        display: flex;
+        flex-direction: column;
+        margin-left: 60px;
+        font-size: 36px;
+        line-height: 43px;
+        padding: 15px 0 20px 0px;
+        }
+      }
     .kts-card-wrapper{
       display: flex;
       flex-direction: column;
       max-width: 715px;
       width: auto;
-      padding: 30px;
+      padding: 30px 30px 15px 30px;
       margin: 0 15px;
       @include md{
         box-shadow: 0 0 4px 2px $color-shadow;
         border-radius: 6px;
-        padding: 24px 40px 0 40px;
+        padding: 35px 40px 20px 40px;
         margin: 0 60px;
       }
       display: flex;
@@ -42,9 +52,12 @@ page-notifications {
     .kts-card-link{
       font-size: 14px;
       line-height: 17px;
+      display: flex;
+      justify-content: space-between;
       @include md{
         font-size: 18px;
         line-height: 19px;
+        
       }
       color: $color-primary;
       text-decoration: none;
@@ -59,6 +72,11 @@ page-notifications {
     }
     .kts-card-data{
       width: 80%;
+      padding-bottom: 15px;
+      @include md{
+        padding-bottom: 20px;
+      }
+      
     }
     h2, h3{
       margin: 0;
@@ -79,10 +97,13 @@ page-notifications {
       font-weight: 400;
       color: $color-sub-header;
     }
-    .link {
+    .link-arrow {
       text-decoration: none;
+      padding-bottom: 10px;
+      width: 22px;
+      @include md {
+        width: 25px
+      }
     }
-
-
   }
 }

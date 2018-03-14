@@ -1,13 +1,17 @@
 .page-wrapper
   .notifications-page-wrapper
+    .mobile-header-wrapper
+      | Notifications
+      .kts-header-mobile
     .kts-card
       .kts-card-wrapper
         //- a.kts-card-link( *ngFor="let notification of notifications", (click)="goToPage"($event))
-        //-   .kts-card-data
-        //-     h2.kts-card-item-header
-        //-       | {{notification.title}}
-        //-     h3.kts-card-item-info
-        //-       | {{notification.orgainzation}}
-        //-   img.link-arow(src="../../assets/icon/link-arrow.svg") 
+        a.kts-card-link( *ngFor="let notification of notifications")
+          .kts-card-data
+            h2.kts-card-item-header
+              | {{notification.subject}}
+            h3.kts-card-item-info
+              | {{notification.organization_name}}
+          img.link-arrow(src="../../assets/icon/link-arrow.svg") 
 
       

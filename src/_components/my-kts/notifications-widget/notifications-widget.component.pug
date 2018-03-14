@@ -2,12 +2,12 @@
   .notifications-title-row
     h1.notifications-header 
       | Notifications
-    a.notifications-link(href="")
+    a.notifications-link((click)="goToNotifications()")
       | View all
-  a.notificaitons-items
+  a.notificaitons-items(*ngFor="let notification of notifications")
     .notifications-data
       h2.single-notification-header
-        | Test title
+        | {{notification.subject}}
       h3.single-notification-organization
-        | Test Organization
+        | {{notification.organization_name}}
     img.link-arow(src="../../assets/icon/link-arrow.svg")

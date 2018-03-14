@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, NotificationsService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
@@ -10,9 +10,7 @@ import { Model } from '../../../app/app.models';
 })
 export class NotificationsPage {
 
-  notifications: Array<Model.Notifications>;
-  limit: 20;
-  offset: 0;
+  notifications: Array<Model.Notifications> = new Array<Model.Notifications>();
 
   constructor(
     public navCtrl: NavController,
@@ -27,16 +25,13 @@ export class NotificationsPage {
   }
 
   ngOnInit() {
-    this.notifications = new Array<Model.Notifications>();
     this.getNotifications();
   }
 
   getNotifications() {
-    this.notificationService.getNotifications().subscribe((res) => {
-      this.notifications = res.map(notification => notification);
-    }, (errors) => {
-      alert('Server Error');
-    });
+    this.notificationService.getNotifications().subscribe((res: Model.Notifications[]) => {
+      this.notifications = res;
+    }, err => console.log('There was an error', err));
   }
 
   goToPage(page, param, event) {

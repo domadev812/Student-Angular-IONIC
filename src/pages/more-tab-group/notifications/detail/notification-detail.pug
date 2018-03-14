@@ -5,12 +5,16 @@
       h1.headers
         | Notification        
     .notification-detail-content.scroll-content
+      //- .title
+        | {{notification.subject}}
       .title
-        | Meeting About Scholarships
+        | Meeting About Scholarships      
       .organization
-        | Lone Peak High School
+        | {{notification.organization_name}}
       .detail-comment
         | Details
+      //- .detail-content
+        | {{notification.body}}
       .detail-content
         | Under the direction and guidance of the Assistant Director of Human Resources, will provide assistance and support in developing, implementing, 
         | and overseeing all aspects of the HR function, specifically, recruiting, as well as, employee/labor relations, liability, worker's compensation, employee

@@ -4,15 +4,18 @@ page-notification-detail {
     @extend .justify-start;
     flex-wrap: wrap; 
     align-items: center;
+    padding-left: 10px; 
     @include md{
       display: none !important;
+      padding-left: 0;
     }
     .headers {
       font-size: 24px;
       font-weight: normal;
-      margin: 0;
+      margin: 0 0 0 15px;
       @include md{
         font-size: 36px;
+        margin: 0;     
       }
     }
   }  
@@ -21,16 +24,18 @@ page-notification-detail {
     z-index: 2;
     width: 1080px;
     max-width: 1080px;
-    margin: 10px 15px;    
+    margin: 10px 0;    
     @include md{
       margin: 20px 15px;    
     }
   }
   .notification-detail-content {
-    margin-top: 40px;
+    margin-top: 60px;
     color: #232D3B;
+    padding: 0 25px;
     @include md{
       margin-top: 10px;
+      padding: 0;
     }
     .title {
       font-size: 20px;

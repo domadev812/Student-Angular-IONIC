@@ -19,8 +19,7 @@ declare namespace API {
     id: string
     password: string
     organization_id: number;
-    birthday: Date;
-    ethnicity_id: string;
+    birthday: Date;    
     gender: string;
     phone_number: string
     hometown: string

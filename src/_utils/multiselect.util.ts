@@ -23,8 +23,7 @@ export module MultiSelectUtil {
     constructor(public itemName: string, public id: string) { }
 
     static model_values: any = {
-      School: 'name',
-      Ethnicity: 'name'
+      School: 'name'
     };
 
     static buildFromData(data: any, model_name: string): SelectItem[] {

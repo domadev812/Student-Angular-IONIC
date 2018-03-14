@@ -8,8 +8,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class MultiselectService {
-  public schoolsSelect: MultiSelectUtil.SelectItem[];
-  public ethnicitiesSelect: MultiSelectUtil.SelectItem[];
+  public schoolsSelect: MultiSelectUtil.SelectItem[];  
   
   constructor(private http: Http) {
 
@@ -31,21 +30,4 @@ export class MultiselectService {
       });
     }
   }
-
-  getDropdownEthnicities(): Observable<MultiSelectUtil.SelectItem[]> {
-    if (this.ethnicitiesSelect) {
-      return Observable.of(this.ethnicitiesSelect);
-    }
-    return this.http.get('/ethnicities')
-      .map((response: Response) => {
-        const json = response.json();
-        if (json && json.data) {
-          this.ethnicitiesSelect = MultiSelectUtil.SelectItem.buildFromData(json.data, 'Ethnicity');
-          return this.ethnicitiesSelect;
-        } else {
-          Observable.throw({ message: 'Internal Server Error' });
-        }
-      });
-  }
-
 }

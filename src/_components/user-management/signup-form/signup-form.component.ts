@@ -33,11 +33,6 @@ export class SignupFormComponent {
   selectedYear: Object[] = [];
   genderList: Object[] = [];
   selectedGender: Object[] = [];
-  ethnicityList: Object[] = [];
-  selectedEthnicity: Object[] = [];
-  
-
-  
 
   constructor(
     public navCtrl: NavController,
@@ -66,7 +61,6 @@ export class SignupFormComponent {
 
     this.signupForm2 = this.formBuilder.group({
       birthday: [''],
-      ethnicity: ['', Validators.compose([Validators.minLength(2), Validators.required])],
       gender: ['']
     });
 
@@ -77,16 +71,9 @@ export class SignupFormComponent {
       console.log('err', err);
     });
 
-    this.multiselectService.getDropdownEthnicities().subscribe((res) => {
-      this.ethnicityList = res;
-    }, err => {
-      console.log('err', err);
-    });
-
     this.ktsSelectSettings = MultiSelectUtil.selectOptions({text: ' '});
     this.yearList = MultiSelectUtil.gradYearList;
     this.genderList = MultiSelectUtil.genderList;
-
 
   }
 
@@ -104,10 +91,6 @@ export class SignupFormComponent {
 
   onDateChanged(event: IMyDateModel): void {
     this.user.birthday = new Date(event.jsdate);
-  }
-
-  onEthnicitySelect(item: any): void {
-    this.user.ethnicity_id = item.id;
   }
 
   onGenderSelect(item: any): void {

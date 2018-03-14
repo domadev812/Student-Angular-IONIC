@@ -2,7 +2,7 @@ page-account-settings {
   .page-wrapper {
     background: none;
     &:before {
-      background-image: linear-gradient(to bottom, #E3EAEF , #EEDEE7);
+      @extend .kts-gradient;
       opacity: .4;
     }
   }

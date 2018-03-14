@@ -4,7 +4,7 @@ notifications-widget {
     flex-direction: column;
     padding: 24px 20px 0 20px;
     @include md{
-      padding: 24px 40px 0 40px;
+      padding: 24px 40px 24px 40px;
     }
     display: flex;
     background: white;

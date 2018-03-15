@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, ScholarshipsService} from '../../../app/app.services.list';
+import { NavigationService, ScholarshipsService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 
 @IonicPage()
@@ -8,15 +8,16 @@ import { Model } from '../../../app/app.models';
   selector: 'page-scholarshipdetail',
   templateUrl: 'scholarshipdetail.html',
 })
-export class ScholarshipDetailPage {  
+export class ScholarshipDetailPage {
   public scholarshipId: string;
   public scholarship: Model.Scholarship;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public navService: NavigationService,     
-    public scholarshipsService: ScholarshipsService,    
+    public navService: NavigationService,
+    public scholarshipsService: ScholarshipsService,
+    public alert: AlertService
   ) {
   }
 
@@ -25,22 +26,24 @@ export class ScholarshipDetailPage {
   }
 
   ngOnInit() {
-    this.scholarship = new Model.Scholarship(null);        
-    this.scholarshipId = this.navParams.get('scholarshipId');        
-    this.scholarshipId = '8';
+    this.scholarship = new Model.Scholarship(null);
+    this.scholarshipId = this.navParams.get('scholarshipId');
     this.scholarshipsService.getScholarship(this.scholarshipId).subscribe((res: Model.Scholarship) => {
-      this.scholarship = res;    
-      console.log(this.scholarship);  
-    }, err => console.log('There was an error', err));
+      this.scholarship = res;
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 
   applyScholarship(): void {
     if (this.scholarship.in_app) {
-      this.navCtrl.push('ScholarshipApplyPage', {scholarshipId: this.scholarshipId});
+      this.navCtrl.push('ScholarshipApplyPage', { scholarshipId: this.scholarshipId });
     } else {
       this.scholarshipsService.applyScholarship(this.scholarshipId, {}).subscribe((res: boolean) => {
-        alert('Opportunity is applied successfully');     
-      }, err => console.log('There was an error', err));
+        this.alert.toast('Opportunity is applied to successfully');
+      }, err => {
+        this.alert.handleError(err);
+      });
     }
   }
 }

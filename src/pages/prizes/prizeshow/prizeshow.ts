@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, PrizesService, AuthService, CurrentUserService } from '../../../app/app.services.list';
+import { NavigationService, PrizesService, AuthService, CurrentUserService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 
 @IonicPage()
@@ -19,6 +19,7 @@ export class PrizeShowPage {
     public prizesService: PrizesService,
     public authProvider: AuthService,
     public currentUserService: CurrentUserService,
+    public alert: AlertService
   ) {
   }
 
@@ -32,12 +33,14 @@ export class PrizeShowPage {
       if (res) {
         this.prize = res;
       }
-    }, err => console.log('There was an error', err));
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 
   goToRedeemPage(prizeId: string): void {
-    let prizePoints = this.navParams.get('prize_points');    
+    let prizePoints = this.navParams.get('prize_points');
     let balancePoints = this.navParams.get('user_balance');
-    this.navCtrl.push('OrderFormPage', {prizeId: prizeId, prize_points: prizePoints, user_balance: balancePoints});    
+    this.navCtrl.push('OrderFormPage', { prizeId: prizeId, prize_points: prizePoints, user_balance: balancePoints });
   }
 }

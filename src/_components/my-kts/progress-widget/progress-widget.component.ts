@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Service from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 import { NavController } from 'ionic-angular';
+import { AlertService } from '../../../_services/alert.service';
 
 @Component({
   selector: 'progress-widget',
@@ -19,22 +20,23 @@ export class ProgressWidgetComponent implements OnInit {
     private currentUserService: Service.CurrentUserService,
     private authService: Service.AuthService,
     public navCtrl: NavController,
-  ) {}
+    public alert: AlertService
+  ) { }
 
-   ngOnInit() {
-     this.currentUserService.getUserProgress().subscribe((res) => {
-        this.userProgress = res;
-        this.prizesAmount = this.userProgress.prizes.length;
-        this.opportunitiesAmount = this.userProgress.other_opportunities.length + this.userProgress.internships.length;
-        this.scholarshipsAmount = this.userProgress.scholarships.length;
-      }, (erros) => {
-        alert('Server error');
-      });
-    }
-    
-    goToProgress() {
-      this.navCtrl.push('ProgressTrackerPage');
-    }
+  ngOnInit() {
+    this.currentUserService.getUserProgress().subscribe((res) => {
+      this.userProgress = res;
+      this.prizesAmount = this.userProgress.prizes.length;
+      this.opportunitiesAmount = this.userProgress.other_opportunities.length + this.userProgress.internships.length;
+      this.scholarshipsAmount = this.userProgress.scholarships.length;
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
+
+  goToProgress() {
+    this.navCtrl.push('ProgressTrackerPage');
+  }
+}
 
 

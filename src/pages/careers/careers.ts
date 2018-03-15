@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { NavigationService, FilterService, OpportunitiesService } from '../../app/app.services.list';
+import { NavigationService, FilterService, OpportunitiesService, AlertService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -30,7 +30,8 @@ export class CareersPage {
     public navService: NavigationService,
     public modalCtrl: ModalController,
     public filterService: FilterService,
-    public opportunitiesService: OpportunitiesService
+    public opportunitiesService: OpportunitiesService,
+    public alert: AlertService
   ) {
   }
 
@@ -77,7 +78,7 @@ export class CareersPage {
 
   openFilterModal(): void {
     let filter = this.pageToggle ? 'internships' : 'opportunities';
-    let modal = this.modalCtrl.create('FilterPage', {filter: filter});
+    let modal = this.modalCtrl.create('FilterPage', { filter: filter });
     modal.present();
   }
 
@@ -88,7 +89,7 @@ export class CareersPage {
       this.opportunitiesList = res;
       this.offset = res.length;
     }, err => {
-      console.log('There was an error', err);
+      this.alert.handleError(err);
     });
   }
 
@@ -111,7 +112,7 @@ export class CareersPage {
       this.opportunitiesList = res;
       this.offset = res.length;
     }, err => {
-      console.log('There was an error', err);
+      this.alert.handleError(err);
     });
   }
 
@@ -124,11 +125,11 @@ export class CareersPage {
         if (res.length < this.limit) infiniteScroll.enable(false);
         infiniteScroll.complete();
       }, err => {
-        console.log('There was an error', err);
+        this.alert.handleError(err);
       });
   }
 
-  goToDetailPage(opportunityId: string): void {    
-    this.navCtrl.push('OpportunityDetailPage', {opportunityId: opportunityId});
+  goToDetailPage(opportunityId: string): void {
+    this.navCtrl.push('OpportunityDetailPage', { opportunityId: opportunityId });
   }
 }

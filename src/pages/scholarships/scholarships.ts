@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { NavigationService, FilterService, ScholarshipsService} from '../../app/app.services.list';
+import { NavigationService, FilterService, ScholarshipsService, AlertService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -24,7 +24,8 @@ export class ScholarshipsPage {
     public navService: NavigationService,
     public modalCtrl: ModalController,
     public filterService: FilterService,
-    public scholarshipsService: ScholarshipsService
+    public scholarshipsService: ScholarshipsService,
+    public alert: AlertService
   ) {
   }
 
@@ -32,25 +33,25 @@ export class ScholarshipsPage {
     this.navService.currentPage = 'ScholarshipsPage';
   }
 
-  ngOnInit() {     
+  ngOnInit() {
     this.subscription = this.filterService.newScholarshipEvent.subscribe(event => this.onFilterChange(event));
-    this.filterService.scholarshipFilterChange();    
+    this.filterService.scholarshipFilterChange();
   }
-  
-  ngOnDestroy() {    
+
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  onFilterChange(event): void {    
+  onFilterChange(event): void {
     this.my_filter = event.myScholarships;
     if (event.scholarshipUniversity) {
       this.school_id = event.scholarshipUniversity.id;
-    }   
-    this.getScholarships();     
+    }
+    this.getScholarships();
   }
 
   presentModal() {
-    let modal = this.modalCtrl.create('FilterPage', {filter: 'scholarships'});
+    let modal = this.modalCtrl.create('FilterPage', { filter: 'scholarships' });
     modal.present();
   }
 
@@ -66,7 +67,9 @@ export class ScholarshipsPage {
     this.scholarshipsService.getScholarships(this.my_filter, this.school_id).subscribe((res: Model.Scholarship[]) => {
       this.scholarshipsList = res;
       this.offset = res.length;
-    }, err => console.log('There was an error', err));
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 
   searchScholarships(event): void {
@@ -75,20 +78,24 @@ export class ScholarshipsPage {
     this.scholarshipsService.getScholarships(this.my_filter, this.school_id, this.input).subscribe((res: Model.Scholarship[]) => {
       this.scholarshipsList = res;
       this.offset = res.length;
-    }, err => console.log('There was an error', err));
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
-  
+
   doInfinite(infiniteScroll: any): void {
-    this.scholarshipsService.getScholarships(this.my_filter, this.school_id, 
-                                             this.input, this.offset, this.limit).subscribe((res: Model.Scholarship[]) => {
-      this.scholarshipsList = this.scholarshipsList.concat(res);
+    this.scholarshipsService.getScholarships(this.my_filter, this.school_id,
+      this.input, this.offset, this.limit).subscribe((res: Model.Scholarship[]) => {
+        this.scholarshipsList = this.scholarshipsList.concat(res);
         this.infinite = infiniteScroll;
         infiniteScroll.complete();
         if (res.length < this.limit) infiniteScroll.enable(false);
-    }, err => console.log('There was an error', err));
+      }, err => {
+        this.alert.handleError(err);
+      });
   }
 
-  goToDetailPage(scholarshipId: string): void {    
-    this.navCtrl.push('ScholarshipDetailPage', {scholarshipId: scholarshipId});
+  goToDetailPage(scholarshipId: string): void {
+    this.navCtrl.push('ScholarshipDetailPage', { scholarshipId: scholarshipId });
   }
 }

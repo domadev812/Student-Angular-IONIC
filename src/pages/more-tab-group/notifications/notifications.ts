@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, NotificationsService } from '../../../app/app.services.list';
+import { NavigationService, NotificationsService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 
 @IonicPage()
@@ -16,7 +16,8 @@ export class NotificationsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,
-    public notificationService: NotificationsService
+    public notificationService: NotificationsService,
+    public alert: AlertService
   ) {
   }
 
@@ -31,7 +32,9 @@ export class NotificationsPage {
   getNotifications() {
     this.notificationService.getNotifications().subscribe((res: Model.Notification[]) => {
       this.notifications = res;
-    }, err => console.log('There was an error', err));
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 
   goToPage(page, param, event) {

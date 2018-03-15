@@ -40,11 +40,12 @@ import { MyApp } from './app.component';
     Services.ScholarshipsService,
     Services.ContactUsService,
     Services.NotificationsService,
-    Services.OpportunitiesService,    
+    Services.OpportunitiesService,
     Services.AddressService,
     Services.OrganizationService,
     Services.PrizesService,
     Services.KeycardService,
+    Services.AlertService,
   ]
 })
 export class AppModule { }

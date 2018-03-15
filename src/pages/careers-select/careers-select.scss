@@ -1,0 +1,76 @@
+page-careers-select {
+  .filter-list-page-wrapper {
+    background: rgba(255, 255, 255, 0.35);
+    @include md {
+      background: transparent;
+    }
+
+  }
+  .career-filter-item {
+    height: 35px;
+    border-radius: 18px;
+    background-color: #E9E9F0;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    &.selected {
+      background-color: $color-primary;
+      color: #fff;
+    }
+    ion-icon {
+      font-size: 22px;
+      font-weight: 600;
+    }
+  }
+  .selected-careers-wrapper {
+    padding: 10px;
+    @include md {
+      height: 127px;
+      border-radius: 7px;
+      background-color: #FFFFFF;
+      box-shadow: 0 0 5px 0 rgba(64,64,64,0.35);
+    }
+    .selected-carrers-header-row {
+      .selected-careers-count {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      .selected-careers-save {
+        
+      }
+    }
+  }
+
+  .careers-fields-item {
+    @extend .space-between;
+    align-items: center;
+    padding: 5px 20px;
+    height: 35px;
+    border-radius: 18px;
+    background-color: #E9E9F0;
+    margin-bottom: 10px;
+    @include md {
+      background-color: #FFFFFF;
+      border-radius: 0;
+      margin-bottom: 2px;
+    }
+    .careers-fields-item-title {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 16px;
+    }
+    .select {
+      display: none;
+      color: $color-primary;
+      font-size: 11px;
+      line-height: 13px;
+      cursor: pointer;
+      @include md {
+        display: block;
+      }
+    }
+  }
+
+  
+
+}

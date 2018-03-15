@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, PrizesService, AddressService } from '../../../app/app.services.list';
+import { NavigationService, PrizesService, AddressService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 
 @IonicPage()
@@ -8,7 +8,7 @@ import { Model } from '../../../app/app.models';
   selector: 'page-orderreview',
   templateUrl: 'orderreview.html',
 })
-export class OrderReviewPage {  
+export class OrderReviewPage {
   public prizeId: string;
   public prizePoints: number;
   public balancePoints: number;
@@ -18,9 +18,10 @@ export class OrderReviewPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public navService: NavigationService,    
+    public navService: NavigationService,
     public prizesService: PrizesService,
     public addressService: AddressService,
+    public alert: AlertService
   ) {
   }
 
@@ -29,35 +30,37 @@ export class OrderReviewPage {
   }
 
   ngOnInit() {
-    this.address = new Model.Address();        
-    this.prizeId = this.navParams.get('prizeId');            
-    this.prizePoints = this.navParams.get('prize_points');      
+    this.address = new Model.Address();
+    this.prizeId = this.navParams.get('prizeId');
+    this.prizePoints = this.navParams.get('prize_points');
     if (!this.prizePoints) {
       this.prizePoints = 0;
-    } 
-    this.balancePoints = this.navParams.get('user_balance');    
+    }
+    this.balancePoints = this.navParams.get('user_balance');
     if (!this.balancePoints) {
       this.balancePoints = 0;
     }
     this.redeemedPoints = this.balancePoints - this.prizePoints;
-    this.getAddress();      
+    this.getAddress();
   }
 
-  getAddress(): void {    
+  getAddress(): void {
     this.addressService.getAddress().subscribe((res: Model.Address[]) => {
       if (res.length > 0) {
-        this.address = res[0];                
-      }   
-    }, err => console.log('There was an error', err));
+        this.address = res[0];
+      }
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 
   placeOrder(): void {
     this.prizesService.redeemPrize(this.prizeId).subscribe((res: boolean) => {
-      alert('Prize is redeemed successfully'); 
-      this.navCtrl.push('PrizesPage');    
-    }, err => {      
-      alert(err.message);
-      this.navCtrl.push('PrizesPage');    
+      this.alert.toast('Prize is redeemed successfully');
+      this.navCtrl.push('PrizesPage');
+    }, err => {
+      this.alert.handleError(err);
+      this.navCtrl.push('PrizesPage');
     });
   }
 }

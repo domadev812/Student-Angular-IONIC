@@ -9,7 +9,7 @@ import { Model } from '../app/app.models';
 export class ScholarshipsService {
 
   constructor(private http: Http) { }
-  
+
   getScholarships(my_filter: boolean, school_id: number, search: string = '', offset = 0, limit = 20): Observable<Model.Scholarship[]> {
     let filter_condition = '';
     if (my_filter) {
@@ -18,10 +18,10 @@ export class ScholarshipsService {
     if (school_id) {
       filter_condition += '&school_id=' + school_id;
     }
-    if (search.length > 0)  search = '&search=' + search;
+    if (search.length > 0) search = '&search=' + search;
     return this.http.get('/scholarships?offset=' + offset + '&limit=' + limit + search + filter_condition)
       .map((response: Response) => {
-        const json = response.json();        
+        const json = response.json();
         if (json && json.data) {
           return Model.initializeArray(json.data, 'Scholarship');
         } else {
@@ -30,24 +30,24 @@ export class ScholarshipsService {
       });
   }
 
-  getScholarship(id: any): Observable<Model.Scholarship> {     
+  getScholarship(id: any): Observable<Model.Scholarship> {
     return this.http.get('/scholarships/' + id)
       .map((response: Response) => {
         const json = response.json();
         if (json && json.data) {
-          return new Model.Scholarship(json.data);          
+          return new Model.Scholarship(json.data);
         } else {
           Observable.throw({ message: 'Internal Server Error' });
         }
       });
   }
 
-  applyScholarship(id: any, data: Object): Observable<boolean> {     
+  applyScholarship(id: any, data: Object): Observable<boolean> {
     return this.http.post('/scholarships/' + id + '/apply', data)
       .map((response: Response) => {
         const json = response.json();
         if (json && json.data) {
-          return true;         
+          return true;
         } else {
           Observable.throw({ message: 'Internal Server Error' });
         }

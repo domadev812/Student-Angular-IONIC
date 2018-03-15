@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as Service from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
-import { AuthService } from '../../app/app.services.list';
+import { AuthService, AlertService } from '../../app/app.services.list';
 
 @IonicPage()
 @Component({
@@ -11,9 +11,9 @@ import { AuthService } from '../../app/app.services.list';
 })
 export class KeyRedemptionPage {
 
-    confirmation = false;
-    points = 0;
-    keycode = '';
+  confirmation = false;
+  points = 0;
+  keycode = '';
 
   constructor(
     private navCtrl: NavController,
@@ -21,7 +21,8 @@ export class KeyRedemptionPage {
     private authService: Service.AuthService,
     private currentUserService: Service.CurrentUserService,
     private navService: Service.NavigationService,
-    private keycardService: Service.KeycardService
+    private keycardService: Service.KeycardService,
+    public alert: AlertService
   ) {
   }
 
@@ -44,14 +45,10 @@ export class KeyRedemptionPage {
       this.updatePoints();
       this.keycode = '';
     }, err => {
-      this.confirmation = err.message;
-      setTimeout(() => {
-        this.confirmation = false;
-        this.updatePoints();
-      }, 3000);
+      this.alert.handleError(err);
     });
   }
-  
+
   goToPage(page: string): void {
     this.navCtrl.push(page);
   }

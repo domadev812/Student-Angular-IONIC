@@ -348,6 +348,10 @@
   padding-bottom: 10px;
   border-bottom: 1px solid #E9E9F0;
   margin-bottom: 30px;
+  &::before {
+    content: url('../assets/icon/filter_icon.svg');
+    margin-right: 15px;
+  }
 }
 .filter-item {
   @extend .center-y;
@@ -388,6 +392,29 @@
   z-index: 999999;
   @include md {
     display: none;
+  }
+  &:before {
+    margin-right: 5px;
+    content: '';
+    height: 13px;
+    width: 13px;
+    background-image: url('../../assets/icon/filter_icon.svg');
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+}
+
+.platform-mobileweb {
+  &.platform-ios {
+    .floating-filter-btn {
+      bottom: 130px!important;
+    }
+  }
+  &.platform-android {
+    .floating-filter-btn {
+      bottom: calc(20px + (#{$nav-height-mobile})) !important;
+    }
   }
 }
 

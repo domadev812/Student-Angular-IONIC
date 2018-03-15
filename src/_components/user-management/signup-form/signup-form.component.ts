@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Model } from '../../../app/app.models';
-import { AuthService, NavigationService, MultiselectService} from '../../../app/app.services.list';
+import { AuthService, NavigationService, MultiselectService, AlertService } from '../../../app/app.services.list';
 import { ToastController, LoadingController, NavController, Platform } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { PasswordValidation } from '../../../app/app.validators.list';
-import {IMyDpOptions, IMyDateModel} from 'mydatepicker';
+import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
 import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 
 
@@ -42,13 +42,14 @@ export class SignupFormComponent {
     private loadingCtrl: LoadingController,
     public formBuilder: FormBuilder,
     public navService: NavigationService,
-    public platform: Platform
+    public platform: Platform,
+    public alert: AlertService
   ) { }
 
   ngOnInit(): void {
     this.isMobile = this.platform.is('mobile');
 
-    
+
     this.signupForm = this.formBuilder.group({
       username: ['', Validators.compose([Validators.minLength(4), Validators.maxLength(20), Validators.required])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
@@ -57,7 +58,7 @@ export class SignupFormComponent {
       email: ['', Validators.compose([Validators.maxLength(100), Validators.required])],
       school: [[], Validators.required],
       graduation_year: [[], Validators.required]
-      });
+    });
 
     this.signupForm2 = this.formBuilder.group({
       birthday: [''],
@@ -68,21 +69,21 @@ export class SignupFormComponent {
     this.multiselectService.getDropdownSchools().subscribe((res) => {
       this.schoolList = res;
     }, err => {
-      console.log('err', err);
+      this.alert.handleError(err);
     });
 
-    this.ktsSelectSettings = MultiSelectUtil.selectOptions({text: ' '});
+    this.ktsSelectSettings = MultiSelectUtil.selectOptions({ text: ' ' });
     this.yearList = MultiSelectUtil.gradYearList;
     this.genderList = MultiSelectUtil.genderList;
 
   }
 
   invalid(control: FormControl): boolean {
-    return !control.valid  && (control.dirty || this.nextAttempt);
+    return !control.valid && (control.dirty || this.nextAttempt);
   }
 
   valid(control: FormControl): boolean {
-    return control.valid  && (control.dirty || this.nextAttempt);
+    return control.valid && (control.dirty || this.nextAttempt);
   }
 
   onSchoolSelect(item: any): void {
@@ -111,22 +112,23 @@ export class SignupFormComponent {
         content: 'Creating Account...',
       });
       loader.present().then(() => {
-      this.authService
-        .signup(this.user)
-        .subscribe((res) => {
-          this.navCtrl.setRoot(this.navService.HOME);
-          loader.dismiss();
-        }, (err) => {
-          let message = err.message ? `: ${err.message}` : '';       
-          let toast = this.toastCtrl.create({
-            message: 'Sign up Failed' + message,
-            duration: 2000,
-            position: 'top',
-            showCloseButton: true
+        this.authService
+          .signup(this.user)
+          .subscribe((res) => {
+            this.navCtrl.setRoot(this.navService.HOME);
+            loader.dismiss();
+            this.alert.toast('Account Created Successfully');
+          }, (err) => {
+            let message = err.message ? `: ${err.message}` : '';
+            let toast = this.toastCtrl.create({
+              message: 'Sign up Failed' + message,
+              duration: 2000,
+              position: 'top',
+              showCloseButton: true
+            });
+            toast.present();
+            loader.dismiss();
           });
-          toast.present();
-          loader.dismiss(); 
-        });
       });
     } else {
       let toast = this.toastCtrl.create({

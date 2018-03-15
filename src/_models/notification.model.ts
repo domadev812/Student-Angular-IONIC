@@ -1,4 +1,4 @@
-import { Organization } from './organization.model';
+import { Model } from '../app/app.models';
 
 export class Notification {
   id: number;
@@ -7,8 +7,7 @@ export class Notification {
   organization_name: string;
   creator_name: string;
   approved: boolean;
-  // organization: Model.Organization;
-  organization: Organization;
+  organization: Model.Organization;
 
   constructor(data = null) {
     if (data) {
@@ -18,12 +17,7 @@ export class Notification {
       this.organization_name = data.organization_name;
       this.creator_name = data.creator_name;
       this.approved = data.approved;
-      if (data.organization) {
-        this.organization = new Organization(data.organization);
-      } else {
-        this.organization = new Organization();
-      }      
-      // this.organizations = Model.initializeArray(data.resource[0].organization || {}, 'Organization');
+      this.organization = new Model.Organization(data.organization || {});
     }
   }
 }

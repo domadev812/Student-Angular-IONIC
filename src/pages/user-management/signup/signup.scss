@@ -7,4 +7,7 @@ page-signup {
   .split-page-wrapper-inner {
     background: linear-gradient(180deg, #F2F6F8 0%, #F8F0F5 100%);
   }
+  .split-page--right {
+    overflow-y: overlay;
+  }
 }

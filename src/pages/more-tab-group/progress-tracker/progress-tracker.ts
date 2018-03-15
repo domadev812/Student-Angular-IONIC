@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, CurrentUserService } from '../../../app/app.services.list';
+import { NavigationService, CurrentUserService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 import { Scholarship } from '../../../_models/scholarship.model';
 
@@ -20,7 +20,8 @@ export class ProgressTrackerPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,
-    public currentUserService: CurrentUserService
+    public currentUserService: CurrentUserService,
+    public alert: AlertService
   ) {
   }
 
@@ -46,7 +47,7 @@ export class ProgressTrackerPage {
         if (res.scholarships) this.scholarships = res.scholarships;
       }
     }, err => {
-      console.log('There was an error', err);
+      this.alert.handleError(err);
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AuthService, NavigationService } from '../../../app/app.services.list';
+import { AuthService, NavigationService, AlertService } from '../../../app/app.services.list';
 import { ToastController, LoadingController, NavController } from 'ionic-angular';
 @Component({
   selector: 'login-form',
@@ -13,9 +13,10 @@ export class LoginFormComponent {
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
     public navCtrl: NavController,
-    public navService: NavigationService
+    public navService: NavigationService,
+    public alert: AlertService
   ) {
-  
+
   }
 
   login(): void {
@@ -26,17 +27,18 @@ export class LoginFormComponent {
       this.authService
         .login(this.email, this.password)
         .subscribe((response) => {
-          if (response == true) {
-              if (this.redirectUrl) {
-                window.location.href = this.redirectUrl;
-                loader.dismiss();
-              } else {
-                this.navCtrl.setRoot(this.navService.HOME);
-                loader.dismiss();  
-              }
+          if (response === true) {
+            this.alert.toast('You have successfully logged in.');
+            if (this.redirectUrl) {
+              window.location.href = this.redirectUrl;
+              loader.dismiss();
+            } else {
+              this.navCtrl.setRoot(this.navService.HOME);
+              loader.dismiss();
+            }
           }
         }, (err) => {
-          let message = err.message ? `: ${err.message}` : '';        
+          let message = err.message ? `: ${err.message}` : '';
           let toast = this.toastCtrl.create({
             message: 'Login Failed' + message,
             duration: 2000,
@@ -44,9 +46,9 @@ export class LoginFormComponent {
             showCloseButton: true
           });
           toast.present();
-          loader.dismiss();        
+          loader.dismiss();
         });
-     });
+    });
   }
 
 }

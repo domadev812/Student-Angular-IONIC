@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FilterService, MultiselectService } from '../../../app/app.services.list';
+import { FilterService, MultiselectService, AlertService } from '../../../app/app.services.list';
 import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 
 @Component({
@@ -15,21 +15,22 @@ export class FilterScholarshipsComponent {
 
   constructor(
     public filterService: FilterService,
-    private multiselectService: MultiselectService) {
+    private multiselectService: MultiselectService,
+    public alert: AlertService) {
 
   }
 
   ngOnInit() {
     this.myScholarships = this.filterService.myScholarships;
     this.scholarshipUniversity = this.filterService.scholarshipUniversity;
-    this.ktsSelectSettings = MultiSelectUtil.selectOptions({text: ' '});
+    this.ktsSelectSettings = MultiSelectUtil.selectOptions({ text: ' ' });
     this.multiselectService.getDropdownSchools().subscribe((res) => {
-      this.universityList = res;      
+      this.universityList = res;
       if (this.scholarshipUniversity) {
         this.selectedUniversity.push(this.scholarshipUniversity);
       }
     }, err => {
-      console.log('err', err);
+      this.alert.handleError(err);
     });
   }
 
@@ -42,7 +43,7 @@ export class FilterScholarshipsComponent {
     this.filterService.scholarshipUniversity = item;
     this.filterService.scholarshipFilterChange();
   }
-  onUniversityDeSelect(item): void {    
+  onUniversityDeSelect(item): void {
     this.filterService.scholarshipUniversity = null;
     this.filterService.scholarshipFilterChange();
   }

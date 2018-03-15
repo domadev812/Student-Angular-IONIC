@@ -1,7 +1,9 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, ContactUsService } from '../../app/app.services.list';
+import { NavigationService, ContactUsService, CurrentUserService, AuthService, AlertService } from '../../app/app.services.list';
 import { MultiSelectUtil } from '../../_utils/multiselect.util';
+import { Model } from '../../app/app.models';
+
 @IonicPage()
 @Component({
   selector: 'page-contact-us',
@@ -11,7 +13,7 @@ export class ContactUsPage {
   fullName: string;
   phoneNumber: string;
   message: string;
-  categoryList: Object[] = [{ itemName: 'Prize Problems', id: 1 }, 
+  categoryList: Object[] = [{ itemName: 'Prize Problems', id: 1 },
                             { itemName: 'Scholarships', id: 2 },
                             { itemName: 'Internships', id: 3 },
                             { itemName: 'Opportunities', id: 4 },
@@ -20,15 +22,23 @@ export class ContactUsPage {
                             { itemName: 'Other', id: 7 }];
   selectedCategory: Object[] = [];
   ktsSelectSettings: Object = {};
-  constructor(public navCtrl: NavController, 
+
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,
     public contactUsService: ContactUsService,
+    public alert: AlertService,
+    public currentUserService: CurrentUserService,
+    public authProvider: AuthService
   ) {
   }
 
-  ngOnInit() {   
-    this.ktsSelectSettings = MultiSelectUtil.selectOptions({text: ' '});     
+  ngOnInit() {
+    this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
+      this.fullName = (res.first_name || '') + ' ' + (res.last_name || '');
+      if (res.phone_number) this.phoneNumber = res.phone_number;
+    });
+    this.ktsSelectSettings = MultiSelectUtil.selectOptions({ text: ' ' });
   }
 
   ionViewCanEnter() {
@@ -40,16 +50,18 @@ export class ContactUsPage {
       return;
     }
     let data = {
-      name : this.fullName,
+      name: this.fullName,
       phone_number: this.phoneNumber,
       category: this.selectedCategory[0]['itemName'],
       message: this.message
     };
     this.contactUsService.sendData(data).subscribe((res: boolean) => {
-      alert('Send message successfully.');      
-    }, err => console.log('There was an error', err));    
+      this.alert.toast('Message sent successfully.');
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 
-  onCategorySelect(item): void {    
+  onCategorySelect(item): void {
   }
 }

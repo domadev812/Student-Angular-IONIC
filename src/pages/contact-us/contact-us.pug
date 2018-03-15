@@ -13,7 +13,7 @@
             | FULL NAME
             .invalid-validation([hidden]="fullname.valid || (fullname.pristine && !contactForm.submitted)")
               | Full name is required
-          input.kts-input(type="text", name="fullname", [(ngModel)]="fullName", #fullname="ngModel", required) 
+          input.kts-input(type="text", name="fullname", [(ngModel)]="fullName", #fullname="ngModel", required, disabled="true") 
         .item-info
           .input-label
             | PHONE NUMBER

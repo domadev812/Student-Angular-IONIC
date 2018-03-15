@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, PrizesService, AuthService, CurrentUserService } from '../../app/app.services.list';
+import { NavigationService, PrizesService, AuthService, CurrentUserService, AlertService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
 @IonicPage()
 @Component({
@@ -14,15 +14,16 @@ export class PrizesPage {
   infinite: any;
   balancePoints = 0;
   imageTest = ['https://image.ibb.co/b8di2n/logo1.png',
-               'https://image.ibb.co/itpsTS/logo2.png',
-               'https://image.ibb.co/iGWZa7/logo3.png'];
+    'https://image.ibb.co/itpsTS/logo2.png',
+    'https://image.ibb.co/iGWZa7/logo3.png'];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,
-    public prizesService: PrizesService,    
-    public authProvider: AuthService,    
-    public currentUserService: CurrentUserService, 
+    public prizesService: PrizesService,
+    public authProvider: AuthService,
+    public currentUserService: CurrentUserService,
+    public alert: AlertService
   ) {
   }
 
@@ -37,13 +38,15 @@ export class PrizesPage {
 
   reset(): void {
     this.limit = 20;
-    this.offset = 0;    
+    this.offset = 0;
     if (this.infinite) this.infinite.enable(true);
   }
 
   getCurrentUser(): void {
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
       this.balancePoints = res.points;
+    }, err => {
+      this.alert.handleError(err);
     });
   }
 
@@ -51,20 +54,24 @@ export class PrizesPage {
     this.reset();
     this.prizesService.getPrizes().subscribe((res: Model.Prize[]) => {
       this.prizesList = res;
-      this.offset = res.length;      
-    }, err => console.log('There was an error', err));
+      this.offset = res.length;
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 
   doInfinite(infiniteScroll: any): void {
     this.prizesService.getPrizes(this.offset, this.limit).subscribe((res: Model.Prize[]) => {
       this.prizesList = this.prizesList.concat(res);
-        this.infinite = infiniteScroll;
-        infiniteScroll.complete();
-        if (res.length < this.limit) infiniteScroll.enable(false);
-    }, err => console.log('There was an error', err));
+      this.infinite = infiniteScroll;
+      infiniteScroll.complete();
+      if (res.length < this.limit) infiniteScroll.enable(false);
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 
-  goToDetailPage(prizeId: string, points: number): void {    
-    this.navCtrl.push('PrizeShowPage', {prizeId: prizeId, prize_points: points, user_balance: this.balancePoints});
+  goToDetailPage(prizeId: string, points: number): void {
+    this.navCtrl.push('PrizeShowPage', { prizeId: prizeId, prize_points: points, user_balance: this.balancePoints });
   }
 }

@@ -13,6 +13,7 @@ export class CareersSelectPage {
   public type: string;
   public careersList: Array<Model.Career>;
   public filterCareersList: Array<Model.Career>;
+  public selectedCareers: Array<Model.Career>;
   subscription: Subscription;
 
   constructor(
@@ -25,7 +26,8 @@ export class CareersSelectPage {
 
   ngOnInit() { 
     this.filterCareersList = new Array<Model.Career>();
-       
+    this.selectedCareers = new Array<Model.Career>();
+
     this.type = this.navParams.get('type');
     if (!this.type) {
       this.type = 'categories';
@@ -45,5 +47,9 @@ export class CareersSelectPage {
       let careerGroup = career.careerGroup.find(career_group => career_group.id === event.id);
       return careerGroup ? true : false;
     });    
+  }
+
+  selectCareer(career: Model.Career): void {
+    this.selectedCareers.push(career);
   }
 }

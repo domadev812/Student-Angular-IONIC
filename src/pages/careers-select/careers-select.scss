@@ -1,13 +1,18 @@
 page-careers-select {
+  color: #232D3B;
   .filter-list-page-wrapper {
     background: rgba(255, 255, 255, 0.35);
     @include md {
       background: transparent;
     }
   }
+  .web-filter-col {
+    padding-right: 0 !important;
+  }
   .filter-content {
     overflow-y: auto;
     height: calc(100vh - 170px);
+    padding-right: 15px;
   }
   .filter-item {
     margin-bottom: 25px;
@@ -35,7 +40,7 @@ page-careers-select {
     }
   }  
   .selected-careers-wrapper {
-    padding: 10px;
+    padding: 10px 20px;
     @include md {
       height: 127px;
       border-radius: 7px;
@@ -43,16 +48,62 @@ page-careers-select {
       box-shadow: 0 0 5px 0 rgba(64,64,64,0.35);
     }
     .selected-carrers-header-row {
+      display: flex;
+      justify-content: space-between;
       .selected-careers-count {
         font-size: 20px;
         line-height: 24px;
       }
       .selected-careers-save {
-        
+        width: 100px;
+        height: 25px;
+        font-size: 14px; 
+        text-align: center;
+        line-height: 25px; 
+        @include md-max{  
+          width: auto;            
+          font-size: 16px;
+          color: $color-primary;       
+          background: none;
+          box-shadow: none;
+          font-weight: normal;  
+        }
+      }
+    }
+    .selected-careers {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      .selected-item {
+        display: flex;
+        margin:0 10px 10px 0;
+        border-radius: 18px;        
+        height: 25px;
+        line-height: 25px;
+        padding: 0 10px;
+        background: #596577;
+        color: #FFF;
+      }
+      .career-title {        
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .close {
+        font-size: 25px;
+        margin-left: 15px;
+        margin-top: -1px;
+        font-weight: 300;
       }
     }
   }
-
+  .careers-fields-header {
+    margin-top: 20px;
+    margin-left: 5px;
+    font-size: 20px;    
+  }
+  .lp-list {
+    margin-top: 10px;
+  }
   .careers-fields-item {
     @extend .space-between;
     align-items: center;

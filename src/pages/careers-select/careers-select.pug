@@ -7,15 +7,21 @@
         .selected-carrers-header-row
           .selected-careers-count
             | Selected carrer fields: 0/5
-          .kts-btn.selected-careers-save
+          .kts-primary-btn.selected-careers-save
             | Save
+        .selected-careers
+          .selected-item(*ngFor="let career of selectedCareers")
+            .career-title
+              | {{career.title}}
+            span.close
+              | &times;          
       .careers-fields-header
         | Select 5 careers fields
       ion-content.lp-list.careers-fields-list(no-padding)
         .careers-fields-item(*ngFor="let career of filterCareersList")
           .careers-fields-item-title
             | {{career.title}}
-          button.select
+          button.select((click)="selectCareer(career)")
             | Select       
   .floating-filter-btn()
     | Refine

@@ -12,31 +12,10 @@
       .careers-fields-header
         | Select 5 careers fields
       ion-content.lp-list.careers-fields-list(no-padding)
-        .careers-fields-item
+        .careers-fields-item(*ngFor="let career of careersList")
           .careers-fields-item-title
-            | Developer
+            | {{career.title}}
           button.select
-            | Select
-        .careers-fields-item
-          .careers-fields-item-title
-            | Developer
-          button.select
-            | Select
-        .careers-fields-item
-          .careers-fields-item-title
-            | Developer
-          button.select
-            | Select
-        .careers-fields-item
-          .careers-fields-item-title
-            | Developer
-          button.select
-            | Select
-        .careers-fields-item
-          .careers-fields-item-title
-            | Developer
-          button.select
-            | Select
-
+            | Select       
   .floating-filter-btn()
     | Refine

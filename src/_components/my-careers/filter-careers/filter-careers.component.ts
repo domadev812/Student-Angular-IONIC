@@ -45,6 +45,10 @@ export class FilterCareersWidgetComponent {
   }
 
   filterCategory(category: any): void {
-    this.selectedCategory = new Model.CareerGroup(category);
+    if (this.selectedCategory.id === category.id) {
+      return;
+    }
+    this.selectedCategory = new Model.CareerGroup(category);    
+    this.filterCareersService.categoryChange(this.selectedCategory);
   }
 }

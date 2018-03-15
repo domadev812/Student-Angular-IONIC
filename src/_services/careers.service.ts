@@ -21,4 +21,16 @@ export class CareersService {
         }
       });
   }  
+
+  getCareers(): Observable<Model.Career[]> {
+    return this.http.get('/careers')
+      .map((response: Response) => {
+        const json = response.json();           
+        if (json && json.data) {
+          return Model.initializeArray(json.data, 'Career');
+        } else {
+          Observable.throw({ message: 'Internal Server Error' });
+        }
+      });
+  }
 }

@@ -8,4 +8,9 @@ import 'rxjs/add/observable/throw';
 export class FilterCareersService {
   selectedCategory: any;
   type: string;
+  categoryEvent: EventEmitter<any> = new EventEmitter<any>();
+  categoryChange(selectedCategory): void {
+    this.selectedCategory = selectedCategory;    
+    this.categoryEvent.emit(this.selectedCategory);
+  }
 }

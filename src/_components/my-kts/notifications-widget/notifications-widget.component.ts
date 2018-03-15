@@ -10,7 +10,7 @@ import { Model } from '../../../app/app.models';
 })
 export class NotificationsWidgetComponent implements OnInit {
 
-  notifications: Array<Model.Notifications> = new Array<Model.Notifications>();
+  notifications: Array<Model.Notification> = new Array<Model.Notification>();
 
   constructor(
     public navCtrl: NavController,
@@ -26,7 +26,7 @@ export class NotificationsWidgetComponent implements OnInit {
 
 
   getNotifications() {
-    this.notificationService.getNotifications().subscribe((res: Model.Notifications[]) => {
+    this.notificationService.getNotifications().subscribe((res: Model.Notification[]) => {
       this.notifications = res;
       console.log(this.notifications);
     }, err => console.log('There was an error', err));

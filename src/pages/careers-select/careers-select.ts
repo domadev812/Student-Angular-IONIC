@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FilterCareersService, AlertService, CareersService } from '../../app/app.services.list';
+import { FilterCareersService, AlertService, CareersService, CurrentUserService, AuthService } from '../../app/app.services.list';
 import { Subscription } from 'rxjs/Subscription';
 import { Model } from '../../app/app.models';
 
@@ -22,7 +22,9 @@ export class CareersSelectPage {
     public navParams: NavParams,
     public filterCareersService: FilterCareersService,
     public alert: AlertService,
-    public careerService: CareersService) {
+    public careerService: CareersService,
+    public currentUserService: CurrentUserService,
+    public authProvider: AuthService) {
   }
 
   ngOnInit() { 
@@ -41,7 +43,16 @@ export class CareersSelectPage {
       this.careersList = res.filter(career => career.careerGroup.length > 0);                   
     }, err => {
       this.alert.handleError(err);
+    }); 
+    this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {            
+      if (res.careers) {
+        this.selectedCareers = res.careers;
+      }      
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onCategoryChange(event): void {

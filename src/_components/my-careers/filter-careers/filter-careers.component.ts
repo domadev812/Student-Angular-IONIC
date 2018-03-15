@@ -27,8 +27,7 @@ export class FilterCareersWidgetComponent {
       this.getPersonalityList();
     } else {
       this.filterTitle = 'Select a career type';
-      this.selectedCategory = new Model.CareerGroup();
-      this.selectedCategory.id = 3;
+      this.selectedCategory = new Model.CareerGroup();      
       this.getCareerGroupList();
     }    
   }
@@ -43,5 +42,9 @@ export class FilterCareersWidgetComponent {
     }, err => {
       this.alert.handleError(err);
     });
+  }
+
+  filterCategory(category: any): void {
+    this.selectedCategory = new Model.CareerGroup(category);
   }
 }

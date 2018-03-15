@@ -14,7 +14,8 @@ export class CareersSelectPage {
   public careersList: Array<Model.Career>;
   public filterCareersList: Array<Model.Career>;
   public selectedCareers: Array<Model.Career>;
-  subscription: Subscription;
+  public subscription: Subscription;
+  public disableFlag: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -27,6 +28,7 @@ export class CareersSelectPage {
   ngOnInit() { 
     this.filterCareersList = new Array<Model.Career>();
     this.selectedCareers = new Array<Model.Career>();
+    this.disableFlag = true;
 
     this.type = this.navParams.get('type');
     if (!this.type) {
@@ -49,7 +51,27 @@ export class CareersSelectPage {
     });    
   }
 
-  selectCareer(career: Model.Career): void {
-    this.selectedCareers.push(career);
+  removeSelectedCareer(index: number): void {
+    this.selectedCareers.splice(index, 1);
+  }
+
+  selectCareer(selectedCareer: Model.Career): void {
+    if (this.selectedCareers.length === 5) {
+      return;
+    }
+    let duplicate = this.selectedCareers.find(career => career.id === selectedCareer.id);
+    if (duplicate) {
+      return;
+    }
+    this.selectedCareers.push(selectedCareer);
+  }
+
+  saveCareers() {
+    let career_ids = this.selectedCareers.map(career => career.id);
+    this.careerService.addUserCareers(career_ids).subscribe((res: boolean) => {  
+      alert('Add user careers successfully');
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 }

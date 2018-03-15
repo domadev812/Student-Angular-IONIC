@@ -69,6 +69,11 @@ page-careers-select {
           font-weight: normal;  
         }
       }
+      .btn-disabled{
+        background: #E8BDC4;
+        box-shadow: none;
+        cursor: default;
+      }
     }
     .selected-careers {
       display: flex;
@@ -89,6 +94,7 @@ page-careers-select {
         font-weight: 500;
       }
       .close {
+        cursor: pointer;
         font-size: 25px;
         margin-left: 15px;
         margin-top: -1px;

@@ -6,14 +6,14 @@
       .selected-careers-wrapper
         .selected-carrers-header-row
           .selected-careers-count
-            | Selected carrer fields: 0/5
-          .kts-primary-btn.selected-careers-save
+            | Selected carrer fields: {{selectedCareers.length}}/5
+          button.kts-primary-btn.selected-careers-save([disabled]="selectedCareers.length !==5", (click)="saveCareers()")
             | Save
         .selected-careers
-          .selected-item(*ngFor="let career of selectedCareers")
+          .selected-item(*ngFor="let career of selectedCareers; let i = index")
             .career-title
               | {{career.title}}
-            span.close
+            span.close((click)="removeSelectedCareer(i)")
               | &times;          
       .careers-fields-header
         | Select 5 careers fields

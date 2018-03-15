@@ -33,4 +33,16 @@ export class CareersService {
         }
       });
   }
+
+  addUserCareers(ids: any[]): Observable<boolean> {
+    return this.http.post('/add-careers', {career_ids: ids})
+      .map((response: Response) => {
+        const json = response.json();
+        if (json && json.data) {
+          return true;         
+        } else {
+          Observable.throw({ message: 'Internal Server Error' });
+        }
+      });
+  }
 }

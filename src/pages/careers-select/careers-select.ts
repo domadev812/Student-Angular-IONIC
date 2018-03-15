@@ -34,13 +34,16 @@ export class CareersSelectPage {
     this.subscription = this.filterCareersService.categoryEvent.subscribe(event => this.onCategoryChange(event));
     
     this.careerService.getCareers().subscribe((res: Model.Career[]) => {  
-      this.careersList = res;       
+      this.careersList = res.filter(career => career.careerGroup.length > 0);                   
     }, err => {
       this.alert.handleError(err);
     });
   }
 
   onCategoryChange(event): void {
-    console.log(event);
+    this.filterCareersList = this.careersList.filter(career => {
+      let careerGroup = career.careerGroup.find(career_group => career_group.id === event.id);
+      return careerGroup ? true : false;
+    });    
   }
 }

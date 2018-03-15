@@ -12,7 +12,7 @@
       .careers-fields-header
         | Select 5 careers fields
       ion-content.lp-list.careers-fields-list(no-padding)
-        .careers-fields-item(*ngFor="let career of careersList")
+        .careers-fields-item(*ngFor="let career of filterCareersList")
           .careers-fields-item-title
             | {{career.title}}
           button.select

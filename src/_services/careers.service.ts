@@ -10,27 +10,15 @@ export class CareersService {
 
   constructor(private http: Http) { }
 
-  getOpportunity(id: any): Observable<Model.Opportunity> {     
-    return this.http.get('/opportunity/' + id)
+  getCareerGroups(): Observable<Model.CareerGroup[]> {
+    return this.http.get('/career-group')
       .map((response: Response) => {
-        const json = response.json();
+        const json = response.json();           
         if (json && json.data) {
-          return new Model.Opportunity(json.data);          
+          return Model.initializeArray(json.data, 'CareerGroup');
         } else {
           Observable.throw({ message: 'Internal Server Error' });
         }
       });
-  }
-
-  applyOpportunity(id: any): Observable<boolean> {     
-    return this.http.post('/opportunities/' + id + '/apply', {})
-      .map((response: Response) => {
-        const json = response.json();
-        if (json && json.data) {
-          return true;         
-        } else {
-          Observable.throw({ message: 'Internal Server Error' });
-        }
-      });
-  }
+  }  
 }

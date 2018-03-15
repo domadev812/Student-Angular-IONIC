@@ -1,0 +1,7 @@
+.filter-header
+  | {{filterTitle}}
+.filter-content
+  button.filter-item.career-filter-item(tappable, *ngFor="let category of categoryList; let i = index", [ngClass]="{'selected': category.id === selectedCategory.id}")
+    | {{category.title}}
+    ion-icon(ios="md-checkmark", md="md-checkmark", *ngIf="category.id === selectedCategory.id")
+  

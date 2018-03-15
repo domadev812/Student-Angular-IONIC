@@ -37,16 +37,7 @@ export class MyCareersPage {
       if (!this.currentUser.careers) {
         this.currentUser.careers = [];
       }
-      if (this.currentUser.careers.length === 0) {
-        this.currentUser.careers = [
-          { id: 1, name: 'Career1' },
-          { id: 2, name: 'Career2' },
-          { id: 3, name: 'Career3' },
-          { id: 4, name: 'Career4' },
-          { id: 5, name: 'Career5' },
-        ];
-      }
-
+      
       if (this.currentUser.careers.length > 0) {
         this.title = 'Edit My Careers';
       }
@@ -59,5 +50,9 @@ export class MyCareersPage {
     } else {
       this.navCtrl.push('ScholarshipsPage');
     }
+  }
+
+  gotoSelectCareers(type: string): void {    
+    this.navCtrl.push('CareersSelectPage', {type: type});    
   }
 }

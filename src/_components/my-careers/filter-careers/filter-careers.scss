@@ -1,3 +1,51 @@
 filter-careers {
-  
+  .filter-content {
+    overflow-y: auto;
+    height: calc(100vh - 170px);
+    padding-right: 15px;
+    @include md-max{  
+      height: calc(100vh - 130px);
+    }
+  }
+  .filter-header {
+    margin: 20px 0 10px;
+    @include md-max{  
+      font-size: 14px;
+      font-weight: normal;
+      border-bottom: none;
+    }
+    &:before{
+      @include md-max{  
+        content: '';
+      }
+    } 
+  }
+  .filter-item {
+    margin-bottom: 25px;
+    @include md-max{  
+      margin-bottom: 15px;
+    }
+  }  
+  .career-filter-item {
+    height: 40px;
+    border-radius: 18px;
+    background-color: #E9E9F0;
+    font-size: 14px;
+    font-weight: 500;
+    height: auto;
+    min-height: 35px;
+    text-align: left;
+    cursor: pointer;
+    &.selected {
+      background-color: $color-primary;
+      color: #fff;
+    }
+    ion-icon {
+      font-size: 22px;
+      font-weight: 600;
+    }
+    @include md-max{  
+      font-size: 12px;
+    }
+  }  
 }

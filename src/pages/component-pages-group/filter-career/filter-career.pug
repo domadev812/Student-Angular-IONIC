@@ -1,0 +1,10 @@
+#page-filter-career
+  .header-nav    
+    .header-title
+      ion-icon.arrow-back-icon(tappable, ios="ios-arrow-back", md="ios-arrow-back")
+      h1.headers
+        | Career Field
+    .button-group
+      button.kts-primary-btn.next-button((click)="done()", [hidden]="!filterCareersService.selectedCategory")
+        | Next 
+  filter-careers

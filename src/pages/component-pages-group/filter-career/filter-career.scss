@@ -1,0 +1,43 @@
+page-filter-career {
+  padding: 10px 0 10px 10px;
+  background: #fff;
+  .header-nav {  
+    @extend .space-between;
+    flex-wrap: wrap; 
+    align-items: center; 
+    padding-left: 10px; 
+    padding-right: 10px;
+    @include md{    
+      padding-left: 0;
+    }
+    .header-title {
+      display: flex;
+      align-items: center;      
+    }  
+    .next-button {         
+      width: auto;            
+      font-size: 16px;
+      color: $color-primary;       
+      background: none;
+      box-shadow: none;
+      font-weight: normal;  
+    }
+    .headers {
+      font-size: 24px;
+      font-weight: normal;      
+      margin: 0 0 0 15px;
+      @include md{          
+        font-size: 36px;  
+        margin: 0;      
+      }
+    }
+    .arrow-back-icon {
+      cursor: pointer;
+      font-size: 30px;
+      color: #232D3B;
+      @include md{
+        display: none;
+      }
+    }
+  }  
+}

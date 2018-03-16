@@ -1,47 +1,83 @@
 page-careers-select {
   color: #232D3B;
+  .page-wrapper {
+    @include md-max {
+      flex-direction: column;
+    }
+    &:before {
+      @include md-max{  
+        background-image: none;
+      }
+    }
+  }
+  .header-nav {  
+    @extend .space-between;
+    flex-wrap: wrap; 
+    align-items: center; 
+    padding-left: 10px; 
+    padding-right: 10px;
+    margin-top: 10px;
+    @include md{    
+      padding-left: 0;
+      display: none !important;
+    }
+    .header-title {
+      display: flex;
+      align-items: center;      
+    } 
+    .headers {
+      font-size: 24px;
+      font-weight: normal;      
+      margin: 0 0 0 15px;
+      @include md{          
+        font-size: 36px;  
+        margin: 0;      
+      }
+    }
+    .arrow-back-icon {
+      cursor: pointer;
+      font-size: 30px;
+      color: #232D3B;
+      @include md{
+        display: none;
+      }
+    }
+  }  
   .filter-list-page-wrapper {
     background: rgba(255, 255, 255, 0.35);
     @include md {
       background: transparent;
     }
   }
+  .mobile-version {
+    display: flex;
+    @include md {
+      display: none !important;
+    }
+  }
+  .desktop-flex-version {
+    display: none !important;
+    @include md {
+      display: flex !important;
+    }
+  }
+  .desktop-block-version {
+    display: none !important;
+    @include md {
+      display: block !important;
+    }
+  }
   .web-filter-col {
     padding-right: 0 !important;
-  }
-  .filter-content {
-    overflow-y: auto;
-    height: calc(100vh - 170px);
-    padding-right: 15px;
-  }
-  .filter-item {
-    margin-bottom: 25px;
-  }
+  }  
   .scroll-content {
     bottom: 140px;
   }
-  .career-filter-item {
-    height: 40px;
-    border-radius: 18px;
-    background-color: #E9E9F0;
-    font-size: 14px;
-    font-weight: 500;
-    height: auto;
-    min-height: 35px;
-    text-align: left;
-    cursor: pointer;
-    &.selected {
-      background-color: $color-primary;
-      color: #fff;
-    }
-    ion-icon {
-      font-size: 22px;
-      font-weight: 600;
-    }
-  }  
+  
   .selected-careers-wrapper {
-    padding: 10px 20px;
+    padding: 10px 0px;
     @include md {
+      padding: 10px 20px;
       height: 127px;
       border-radius: 7px;
       background-color: #FFFFFF;
@@ -51,23 +87,17 @@ page-careers-select {
       display: flex;
       justify-content: space-between;
       .selected-careers-count {
-        font-size: 20px;
-        line-height: 24px;
-      }
-      .selected-careers-save {
-        width: 100px;
-        height: 25px;
-        font-size: 14px; 
-        text-align: center;
-        line-height: 25px; 
-        @include md-max{  
-          width: auto;            
-          font-size: 16px;
-          color: $color-primary;       
-          background: none;
-          box-shadow: none;
-          font-weight: normal;  
+        font-size: 14px;
+        line-height: 17px;
+        @include md {
+          font-size: 20px;
+          line-height: 24px;
         }
+      }  
+      .selected-careers-save {
+        @include md-max {
+          display: none;
+        }    
       }
       .btn-disabled{
         background: #E8BDC4;
@@ -78,7 +108,10 @@ page-careers-select {
     .selected-careers {
       display: flex;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 10px;
+      @include md {
+        margin-top: 20px;
+      }
       .selected-item {
         display: flex;
         margin:0 10px 10px 0;
@@ -102,10 +135,29 @@ page-careers-select {
       }
     }
   }
+  .selected-careers-save {
+    width: 100px;
+    height: 25px;
+    font-size: 14px; 
+    text-align: center;
+    line-height: 25px;         
+    @include md-max{  
+      width: auto;            
+      font-size: 16px;
+      color: $color-primary;       
+      background: none;
+      box-shadow: none;
+      font-weight: normal;  
+    }
+  }
   .careers-fields-header {
-    margin-top: 20px;
-    margin-left: 5px;
-    font-size: 20px;    
+    margin-top: 10px;
+    font-size: 14px;
+    @include md {
+      margin-top: 20px;
+      margin-left: 5px;
+      font-size: 20px;    
+    }
   }
   .lp-list {
     margin-top: 10px;
@@ -139,7 +191,7 @@ page-careers-select {
       }
     }
   }
-
-  
-
+  .platform-mobileweb.platform-android .floating-filter-btn, .floating-filter-btn {
+    bottom: 20px !important;
+  }
 }

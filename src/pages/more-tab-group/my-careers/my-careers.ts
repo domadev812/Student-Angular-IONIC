@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, AuthService, CurrentUserService } from '../../../app/app.services.list';
+import { NavigationService, AuthService, CurrentUserService, CareersService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 
 @IonicPage()
@@ -17,6 +17,7 @@ export class MyCareersPage {
     public navService: NavigationService,
     public authProvider: AuthService,
     public currentUserService: CurrentUserService,
+    public careersService: CareersService,
   ) {
   }
 
@@ -41,6 +42,7 @@ export class MyCareersPage {
       if (this.currentUser.careers.length > 0) {
         this.title = 'Edit My Careers';
       }
+      this.careersService.setUserCareers(this.currentUser.careers);
     });
   }
 

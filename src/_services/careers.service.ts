@@ -7,6 +7,7 @@ import { Model } from '../app/app.models';
 
 @Injectable()
 export class CareersService {
+  userCareers: Model.Career[];
 
   constructor(private http: Http) { }
 
@@ -44,5 +45,13 @@ export class CareersService {
           Observable.throw({ message: 'Internal Server Error' });
         }
       });
+  }
+
+  setUserCareers(careers: Model.Career[]) {
+    this.userCareers = careers.map(career => career);
+  }
+
+  getUserCareers(): Model.Career[] {
+    return this.userCareers ? this.userCareers : [];
   }
 }

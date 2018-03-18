@@ -20,7 +20,6 @@ export class FilterCareerPage {
 
   ionViewCanEnter() {
     this.navService.currentPage = 'FilterCareerPage';
-    console.log(this.filterCareersService.selectedCategory);
   }
   
   goToPage(page: string, event: any): void {

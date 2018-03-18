@@ -34,7 +34,6 @@ export class MyCareersPage {
   getCurrentUser(): void {
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
       this.currentUser = res;
-      // TODO: Remove once careers part is completed
       if (!this.currentUser.careers) {
         this.currentUser.careers = [];
       }

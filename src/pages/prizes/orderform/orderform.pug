@@ -20,8 +20,8 @@
             .invalid-validation([hidden]="phone.valid || (phone.pristine && !orderForm.submitted)")
               | Phone number is required
             .invalid-validation([hidden]="!address.phone_number || address.phone_number === '' || validationPhone() || (phone.pristine && !orderForm.submitted)")
-                | Phone number is not correct
-          input.kts-input(type="text", name="phone", [(ngModel)]="address.phone_number", #phone="ngModel", required) 
+                | Phone number is not correct(+1 888-888-8888, 888-888-8888)
+          input.kts-input(type="text", name="phone", [(ngModel)]="address.phone_number", #phone="ngModel", placeholder="Phone format (+1 888-888-8888, 888-888-8888)", required) 
         .item-info
           .input-label
             | STREET ADDRESS

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, AuthService, CurrentUserService, CareersService } from '../../../app/app.services.list';
+import { Component, ViewChild, NgZone } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { NavigationService, AuthService, CurrentUserService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 
 @IonicPage()
@@ -9,15 +9,21 @@ import { Model } from '../../../app/app.models';
   templateUrl: 'my-careers.html',
 })
 export class MyCareersPage {
+  @ViewChild(Content)
+  content: Content;
+
   currentUser: Model.User;
-  title: string;
+  sub_title: string;
+
+  isScrolled = false;
+  title = 'My Careers';
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,
     public authProvider: AuthService,
     public currentUserService: CurrentUserService,
-    public careersService: CareersService,
+    public zone: NgZone
   ) {
   }
 
@@ -27,21 +33,30 @@ export class MyCareersPage {
 
   ngOnInit() {
     this.currentUser = new Model.User();
-    this.title = 'Start Selecting Careers';
+    this.sub_title = 'Start Selecting Careers';
     this.getCurrentUser();
   }
 
   getCurrentUser(): void {
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
       this.currentUser = res;
+      // TODO: Remove once careers part is completed
       if (!this.currentUser.careers) {
         this.currentUser.careers = [];
       }
-      
-      if (this.currentUser.careers.length > 0) {
-        this.title = 'Edit My Careers';
+      if (this.currentUser.careers.length === 0) {
+        this.currentUser.careers = [
+          { id: 1, name: 'Career1' },
+          { id: 2, name: 'Career2' },
+          { id: 3, name: 'Career3' },
+          { id: 4, name: 'Career4' },
+          { id: 5, name: 'Career5' },
+        ];
       }
-      this.careersService.setUserCareers(this.currentUser.careers);
+
+      if (this.currentUser.careers.length > 0) {
+        this.sub_title = 'Edit My Careers';
+      }
     });
   }
 
@@ -53,7 +68,21 @@ export class MyCareersPage {
     }
   }
 
-  gotoSelectCareers(type: string): void {    
-    this.navCtrl.push('CareersSelectPage', {type: type});    
+  onPageScroll(data) {
+    this.zone.run(() => {
+      if (data.scrollTop > 0) {
+        this.isScrolled = true;
+      } else {
+        this.isScrolled = false;
+      }
+    });
+  }
+  
+  ngAfterViewInit() {
+    if (this.content.ionScroll) {
+      this.content.ionScroll.subscribe((data) => {
+        this.onPageScroll(data);
+      });
+    }
   }
 }

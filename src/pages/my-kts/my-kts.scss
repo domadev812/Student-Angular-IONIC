@@ -3,49 +3,50 @@ page-my-kts {
     padding: 10px 0 0 0;
     width: 1080px;
     max-width: 1080px;
-    display: flex;
-    flex-direction: column;
     z-index: 2;
     @include md{
       margin: 10px 10px 0 0;
-      flex-direction: row;
     }
   }
   .single-column{
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
     @include md{
       padding: 10px 0 0 0;
-      width: 33%;
-      position: relative;
     }
   }
-
+  .header-wrapper{
+    position: fixed;
+  }
 
   // Notifications
   .notifications-mobile{
-    margin: 10px 15px 10px 15px;
+    margin: 10px 25px 0 25px;
     @include md{
       display: none;
     }
   }
   .right-column{
-    margin-left: 1%;
-    width: 66%;
-    display: none;
+    padding-left: 1%;
     @include md{
-      display: flex;
+      margin: -10px 0 0 0;
     }
   }
   .notifications-desktop{
     padding: 10px 5px;
     width: 100%;
     overflow-y: auto;
+    display: none;
+    @include md{
+      display: inline;
+    }
   }
 
+  .kts-link{
+    margin: 20px 15px 20px 15px;
+    @include md{
+      margin: 20px 8px 20px 12px;
+    }
+  }
 
   // Social Media
   .social-media{

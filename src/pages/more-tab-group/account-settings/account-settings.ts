@@ -34,6 +34,11 @@ export class AccountSettingsPage {
   ngOnInit() {
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
       this.user = res;
+      if (this.user.gender === 'M') {
+        this.user.gender = 'Male';
+      } else if (this.user.gender === 'F') {
+        this.user.gender = 'Female';
+      } else (this.user.gender = 'Perfer Not To Say');
     });
   }
 

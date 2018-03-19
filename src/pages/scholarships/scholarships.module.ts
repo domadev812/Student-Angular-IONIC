@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ScholarshipsPage } from './scholarships';
-import { FiltersModule } from '../../_components/filters/filters.group.module';
+import { FiltersModule, MobileHeaderModule } from '../../app/app.modules.list';
 
 @NgModule({
   declarations: [
@@ -9,7 +9,8 @@ import { FiltersModule } from '../../_components/filters/filters.group.module';
   ],
   imports: [
     IonicPageModule.forChild(ScholarshipsPage),
-    FiltersModule
+    FiltersModule,
+    MobileHeaderModule,
   ],
 })
 export class ScholarshipsPageModule {}

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { Component, ViewChild, NgZone } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Content } from 'ionic-angular';
 import { NavigationService, FilterService, ScholarshipsService, AlertService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
 import { Subscription } from 'rxjs/Subscription';
@@ -10,6 +10,9 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: 'scholarships.html',
 })
 export class ScholarshipsPage {
+  @ViewChild(Content)
+  content: Content;
+
   scholarshipsList: Model.Scholarship[];
   limit = 20;
   offset = 0;
@@ -18,6 +21,9 @@ export class ScholarshipsPage {
   my_filter: boolean;
   school_id: number;
   subscription: Subscription;
+  isScrolled = false;
+  title = 'Scholarhips';
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -25,7 +31,8 @@ export class ScholarshipsPage {
     public modalCtrl: ModalController,
     public filterService: FilterService,
     public scholarshipsService: ScholarshipsService,
-    public alert: AlertService
+    public alert: AlertService,
+    public zone: NgZone,
   ) {
   }
 
@@ -41,6 +48,24 @@ export class ScholarshipsPage {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
+  onPageScroll(data) {
+    this.zone.run(() => {
+      if (data.scrollTop > 0) {
+        this.isScrolled = true;
+      } else {
+        this.isScrolled = false;
+      }
+    });
+  }
+  
+  ngAfterViewInit() {
+    if (this.content.ionScroll) {
+      this.content.ionScroll.subscribe((data) => {
+        this.onPageScroll(data);
+      });
+    }
+  } 
 
   onFilterChange(event): void {
     this.my_filter = event.myScholarships;

@@ -1,35 +1,3 @@
 page-careers {
-  .mobile-header-wrapper {
-    @extend .space-between;
-    align-items: center;
-    padding: 10px;
-    @include md {
-      display: none!important;
-    }
-  }
-  .points-btn {
-    @extend .center;
-    position: relative;
-    height: 23px;
-    width: 46px;
-    border-radius: 3px;
-    background: linear-gradient(135deg, #EE2F5B 0%, #BE65A6 100%);
-    color: #FFFFFF;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    &::after {
-      @extend .center;
-      position: absolute;
-      border-radius: 50%;
-      top: -6px;
-      right: -6px;
-      content: '+';
-      height: 12px;
-      width: 12px;
-      font-size: 13px;
-      border: 2px solid #FFFFFF;
-      background-color: #C75A97;
-    }
-  }
+  
 }

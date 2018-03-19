@@ -15,7 +15,7 @@ export module MultiSelectUtil {
     //TODO: populate with real data
     { 'id': 1, 'itemName': 'Male' },
     { 'id': 2, 'itemName': 'Female' },
-    { 'id': 3, 'itemName': 'Other' },
+    { 'id': 3, 'itemName': 'Prefer Not To Say' },
   ];
 
 
@@ -36,13 +36,13 @@ export module MultiSelectUtil {
 
   export function selectOptions(options: SelectOptions): SelectOptions {
     return {
-        text: options.text || 'MAKE SELECTION',
-        enableCheckAll: options.enableCheckAll || false,
-        enableSearchFilter: options.enableSearchFilter || true,
-        classes: options.classes || 'kts-multiselect',
-        unSelectAllText: options.unSelectAllText || 'UnSelect All',
-        singleSelection: options.singleSelection || true
-      };
+      text: options.text || 'MAKE SELECTION',
+      enableCheckAll: options.enableCheckAll || false,
+      enableSearchFilter: options.enableSearchFilter || true,
+      classes: options.classes || 'kts-multiselect',
+      unSelectAllText: options.unSelectAllText || 'UnSelect All',
+      singleSelection: options.singleSelection || true
+    };
   }
 
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1429px" height="223px" viewBox="0 0 1429 223" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Gift background</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50.8270264%" y1="-45.4948848%" x2="50%" y2="98.4753667%" id="linearGradient-1">
+            <stop stop-color="#EA355B" offset="0%"></stop>
+            <stop stop-color="#EA355B" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Gift-background">
+            <polygon id="Rectangle-35" fill="#613392" points="1428 223 0 223 0 -1.42108547e-14 1428 7.06736257e-14"></polygon>
+            <polygon id="Rectangle-36" fill="url(#linearGradient-1)" points="0 0 1429 0 1429 123 0 58.1725327"></polygon>
+            <polygon id="Rectangle-36" fill="url(#linearGradient-1)" points="0 1.78402526e-15 1235.19188 1.42145077e-14 1344 1.42145077e-14 0 228"></polygon>
+        </g>
+    </g>
+</svg>

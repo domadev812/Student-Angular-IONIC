@@ -35,7 +35,7 @@ export class MorePage {
   }
 
   goToPage(page: string, event: any): void {
-    this.app.getActiveNavs()[0].push(page);
+    this.app.getActiveNavs()[0].push(page, {}, {duration: 1});
     this.dismissIfPopover();
   }
 
@@ -47,7 +47,7 @@ export class MorePage {
 
   close() {
     if (this.navCtrl.canGoBack()) {
-      this.navCtrl.pop();
+      this.navCtrl.pop({duration: 1});
     } else {
       this.goToPage('MyKtsPage', null);
     }

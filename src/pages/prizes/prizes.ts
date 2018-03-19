@@ -1,21 +1,30 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, NgZone } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { NavigationService, PrizesService, AuthService, CurrentUserService, AlertService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
+
 @IonicPage()
 @Component({
   selector: 'page-prizes',
   templateUrl: 'prizes.html',
 })
+
 export class PrizesPage {
+  @ViewChild(Content)
+  content: Content;
+
   prizesList: Model.Prize[];
   limit = 24;
   offset = 0;
   infinite: any;
   balancePoints = 0;
+  isScrolled = false;
+  title = 'Prizes';
+
   imageTest = ['https://image.ibb.co/b8di2n/logo1.png',
     'https://image.ibb.co/itpsTS/logo2.png',
     'https://image.ibb.co/iGWZa7/logo3.png'];
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -23,7 +32,8 @@ export class PrizesPage {
     public prizesService: PrizesService,
     public authProvider: AuthService,
     public currentUserService: CurrentUserService,
-    public alert: AlertService
+    public alert: AlertService,
+    public zone: NgZone,
   ) {
   }
 
@@ -35,6 +45,24 @@ export class PrizesPage {
     this.getCurrentUser();
     this.getPrizes();
   }
+
+  onPageScroll(data) {
+    this.zone.run(() => {
+      if (data.scrollTop > 0) {
+        this.isScrolled = true;
+      } else {
+        this.isScrolled = false;
+      }
+    });
+  }
+  
+  ngAfterViewInit() {
+    if (this.content.ionScroll) {
+      this.content.ionScroll.subscribe((data) => {
+        this.onPageScroll(data);
+      });
+    }
+  } 
 
   reset(): void {
     this.limit = 20;

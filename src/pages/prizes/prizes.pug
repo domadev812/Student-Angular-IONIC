@@ -1,5 +1,7 @@
 .page-wrapper
   .content-wrapper
+    ion-col.lp-list-col(col-12 col-md-8)
+      mobile-header([isScrolled]="isScrolled", [title]="title")
     .balance-points
       | Balance: {{balancePoints}} points
     ion-content.lp-list

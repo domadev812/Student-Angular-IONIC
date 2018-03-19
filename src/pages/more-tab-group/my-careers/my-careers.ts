@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, AuthService, CurrentUserService, CareersService } from '../../../app/app.services.list';
+import { NavigationService, AuthService, CurrentUserService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 
 @IonicPage()
@@ -17,7 +17,6 @@ export class MyCareersPage {
     public navService: NavigationService,
     public authProvider: AuthService,
     public currentUserService: CurrentUserService,
-    public careersService: CareersService,
   ) {
   }
 
@@ -34,14 +33,23 @@ export class MyCareersPage {
   getCurrentUser(): void {
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
       this.currentUser = res;
+      // TODO: Remove once careers part is completed
       if (!this.currentUser.careers) {
         this.currentUser.careers = [];
       }
-      
+      if (this.currentUser.careers.length === 0) {
+        this.currentUser.careers = [
+          { id: 1, name: 'Career1' },
+          { id: 2, name: 'Career2' },
+          { id: 3, name: 'Career3' },
+          { id: 4, name: 'Career4' },
+          { id: 5, name: 'Career5' },
+        ];
+      }
+
       if (this.currentUser.careers.length > 0) {
         this.title = 'Edit My Careers';
       }
-      this.careersService.setUserCareers(this.currentUser.careers);
     });
   }
 
@@ -51,9 +59,5 @@ export class MyCareersPage {
     } else {
       this.navCtrl.push('ScholarshipsPage');
     }
-  }
-
-  gotoSelectCareers(type: string): void {    
-    this.navCtrl.push('CareersSelectPage', {type: type});    
   }
 }

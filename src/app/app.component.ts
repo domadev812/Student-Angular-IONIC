@@ -24,9 +24,18 @@ export class MyApp {
 
   ngOnInit() {
     //this is so we don't set root if there is already a page link -- will change to more complex with auth
-    if (!window.location.hash) {
+    // if (!window.location.hash) {
+    //   this.app.getActiveNavs()[0].setRoot('LoginPage');
+    // }
+
+    //this is temporary so I don't have to login
+    if (localStorage.getItem('Token')) {
+      this.app.getActiveNavs()[0].setRoot('MyKtsPage');
+    } else {
       this.app.getActiveNavs()[0].setRoot('LoginPage');
     }
+
+    
 
 
 
@@ -36,15 +45,12 @@ export class MyApp {
       window.onresize = () => {
         this.setNav();
       };
+      
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-          // let status bar overlay webview
-    this.statusBar.overlaysWebView(false);
-
-    // set status bar to white
-    this.statusBar.backgroundColorByHexString('#ffffff');
+      this.statusBar.overlaysWebView(false);
       this.splashScreen.hide();
 
 

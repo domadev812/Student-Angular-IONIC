@@ -13,13 +13,13 @@
       .select-careers    
         .title
           | {{title}}
-        a.kts-card-item.career-type((click)="gotoSelectCareers('personality')")
+        a.kts-card-item.career-type
           .type-name
             | Select based on personality traits.
-          img.link-arow(src="../../assets/icon/link-arrow.svg") 
-        a.kts-card-item.career-type((click)="gotoSelectCareers('categories')")
+          img.link-arow(src="assets/icon/link-arrow.svg") 
+        a.kts-card-item.career-type
           .progress-card-data
             | Select based on career categories
-          img.link-arow(src="../../assets/icon/link-arrow.svg") 
+          img.link-arow(src="assets/icon/link-arrow.svg") 
     .right-column      
       selected-careers-widget.desktop-version([careers]="currentUser.careers")        

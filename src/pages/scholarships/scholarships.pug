@@ -3,6 +3,7 @@
     ion-col.web-filter-col(col-4)
       filter-scholarships
     ion-col.lp-list-col(col-12, col-md-8)
+      mobile-header([isScrolled]="isScrolled", [title]="title")
       ion-searchbar.kts-searchbar( (ionInput)="searchScholarships($event)", [debounce]="400", placeholder="Search all scholarships...", mode="ios")
       ion-content.lp-list
         .lp-item( *ngFor="let scholarship of scholarshipsList; let i = index", (click)="goToDetailPage(scholarship.id)")

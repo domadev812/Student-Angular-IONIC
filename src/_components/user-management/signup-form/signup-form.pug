@@ -81,11 +81,19 @@ form(*ngIf="!formOneDone", [formGroup]="signupForm" )
 
 
 form(*ngIf="formOneDone", [formGroup]="signupForm2")
-  ion-label.kts-input-label.kts-input-label(stacked)
+  ion-label.kts-input-label.kts-input-label.label-with-validation(stacked)
     | BIRTHDAY
+    .invalid-validation(*ngIf="invalid2(signupForm2.controls.birthday)")
+      | Please choose a valid date
+    .valid-validation(*ngIf="valid2(signupForm2.controls.birthday)")
+      ion-icon(ios="md-checkmark", md="md-checkmark")
   my-date-picker( formControlName="birthday", [options]="myDatePickerOptions", (dateChanged)="onDateChanged($event)", [(ngModel)]="startBirthday")
-  ion-label.kts-input-label.kts-input-label(stacked)
+  ion-label.kts-input-label.kts-input-label.label-with-validation(stacked)
     | GENDER
+    .invalid-validation(*ngIf="invalid2(signupForm2.controls.gender)")
+      | Please choose a gender
+    .valid-validation(*ngIf="valid2(signupForm2.controls.gender)")
+      ion-icon(ios="md-checkmark", md="md-checkmark")
   angular2-multiselect( 
     formControlName="gender",
     [data]="genderList",

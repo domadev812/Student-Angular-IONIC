@@ -3,12 +3,8 @@
     ion-col.web-filter-col(col-4)
       filter-internships(*ngIf="pageToggle")
       filter-opportunities(*ngIf="!pageToggle")
-    ion-col.lp-list-col(col-12, col-md-8)
-      .mobile-header-wrapper
-        .kts-header-mobile
-          | Careers
-        .points-btn()
-          | 35pts
+    ion-col.lp-list-col(col-12 col-md-8)
+      mobile-header([isScrolled]="isScrolled", [title]="title")
       ion-searchbar.kts-searchbar(*ngIf="pageToggle", (ionInput)="search('Internship', $event)", [debounce]="400", placeholder="Search Internships...", mode="ios")
       ion-searchbar.kts-searchbar(*ngIf="!pageToggle", (ionInput)="search('Other', $event)", [debounce]="400", placeholder="Search opportunities...", mode="ios")
       .lp-tabs-wrapper

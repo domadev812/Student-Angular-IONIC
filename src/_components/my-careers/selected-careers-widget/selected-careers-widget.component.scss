@@ -43,8 +43,11 @@ selected-careers-widget {
       padding-left: 20px;   
       li {
         text-align: left;
-        font-size: 20px;
+        font-size: 16px;
         margin-bottom: 15px;
+        @include md{
+          font-size: 20px;
+        }
       }   
     }
   }

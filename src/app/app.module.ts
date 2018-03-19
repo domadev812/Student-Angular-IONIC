@@ -46,8 +46,6 @@ import { MyApp } from './app.component';
     Services.PrizesService,
     Services.KeycardService,
     Services.AlertService,
-    Services.FilterCareersService,
-    Services.CareersService,
   ]
 })
 export class AppModule { }

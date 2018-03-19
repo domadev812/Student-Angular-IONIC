@@ -2,13 +2,13 @@ progress-widget {
   .progress-tracker{
     display: flex;
     flex-direction: column;
-    margin: 10px 15px 10px 15px;
+    margin: 50px 15px 10px 15px;
     @include md{
       margin: 0 5px 10px 10px;
     }
     padding: 0 20px;
     height: 200px;
-    background-image: url("../../assets/imgs/prog-back.svg");
+    background-image: url("../assets/imgs/progress.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

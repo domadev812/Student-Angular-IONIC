@@ -15,16 +15,22 @@ import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 export class SignupFormComponent {
   user: Model.User = new Model.User({});
   text: string;
-  nextAttempt: boolean;
+  nextAttempt = false;
+  submitAttempt = false;
   confirmPassword: string;
   signupForm: FormGroup;
   signupForm2: FormGroup;
   formOneDone: boolean;
   isMobile: boolean;
-  startBirthday = { date: { year: 2000, month: 1, day: 1 } };
+  startBirthday = { };
   myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
-    showTodayBtn: false
+    showTodayBtn: false,
+    disableSince: {
+      year: new Date().getFullYear(),
+      month: new Date().getMonth() + 1,
+      day: new Date().getDate() + 1
+    }
   };
   ktsSelectSettings: Object = {};
   schoolList: Object[] = [];
@@ -48,23 +54,21 @@ export class SignupFormComponent {
 
   ngOnInit(): void {
     this.isMobile = this.platform.is('mobile');
-
-
+    
     this.signupForm = this.formBuilder.group({
       username: ['', Validators.compose([Validators.minLength(4), Validators.maxLength(20), Validators.required])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      email: ['', Validators.compose([Validators.maxLength(100), Validators.required])],
+      email: ['', Validators.compose([Validators.maxLength(100), Validators.required, Validators.pattern(/^[^@]+@[^@]+\.[^@][^@]/)])],
       school: [[], Validators.required],
       graduation_year: [[], Validators.required]
     });
 
     this.signupForm2 = this.formBuilder.group({
-      birthday: [''],
-      gender: ['']
+      birthday: ['', Validators.required],
+      gender: ['', Validators.required]
     });
-
 
     this.multiselectService.getDropdownSchools().subscribe((res) => {
       this.schoolList = res;
@@ -86,6 +90,14 @@ export class SignupFormComponent {
     return control.valid && (control.dirty || this.nextAttempt);
   }
 
+  invalid2(control: FormControl): boolean {
+    return !control.valid  && (control.dirty || this.submitAttempt);
+  }
+
+  valid2(control: FormControl): boolean {
+    return control.valid  && (control.dirty || this.submitAttempt);
+  }
+
   onSchoolSelect(item: any): void {
     this.user.organization_id = item.id;
   }
@@ -96,8 +108,13 @@ export class SignupFormComponent {
 
   onGenderSelect(item: any): void {
     this.user.gender = item.itemName;
-  }
+    if (this.user.gender === 'Male') {
+      this.user.gender = 'M';
+    } else if (this.user.gender === 'Female') {
+      this.user.gender = 'F';
+    } else (this.user.gender = 'O');
 
+  }
 
   next(isValid: boolean): void {
     this.nextAttempt = true;
@@ -107,6 +124,7 @@ export class SignupFormComponent {
   }
 
   signup(isValid: boolean): void {
+    this.submitAttempt = true;
     if (isValid) {
       let loader = this.loadingCtrl.create({
         content: 'Creating Account...',

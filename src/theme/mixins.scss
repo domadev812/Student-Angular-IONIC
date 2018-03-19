@@ -37,7 +37,16 @@
   @media (max-width: 767px) {
     @content
   }
-}  
+};
+
+@mixin iphone-x{
+  @media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) { 
+      @content
+    }
+}
 
 
 @mixin aspect-ratio($width, $height) {

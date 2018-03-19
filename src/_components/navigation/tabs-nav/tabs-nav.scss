@@ -10,6 +10,10 @@ tabs-nav {
     align-items: center;
     padding: 5px 20px 0 20px;
     border-top: 1px solid rgb(231, 231, 231);
+    @include iphone-x {
+      height: 75px;
+      padding-bottom: 25px !important;
+    };
     .nav-link {
       @extend .center;
       flex-direction: column;

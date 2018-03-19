@@ -1,6 +1,7 @@
 body {
   box-sizing: border-box!important;
 }
+
 //this will prevent validation border from showing on item inputs
 .item-inner {
   box-shadow: none !important;
@@ -120,5 +121,12 @@ input:-webkit-autofill {
     top: 11px;
     //TODO: change background image for search icon
     // background-image: url('https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg');
+  }
+}
+
+//this is here to push content down from status bar on iphone x
+.ion-page {
+  @include iphone-x {
+    margin-top: env(safe-area-inset-top)!important;
   }
 }

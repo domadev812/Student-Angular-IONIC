@@ -1,18 +1,18 @@
 ion-footer( no-border, mode="ios" )
   .tabs-nav-wrapper
-    .nav-link((click)="goToPage('MyKtsPage', $event)" [ngClass]="activeLink('my-kts')")
+    button.nav-link(tappable, (click)="goToPage('MyKtsPage', $event)", [ngClass]="activeLink('my-kts')")
       .nav-link-icon([inlineSVG]="navIcon('my-kts', 'icon/my-kts')")
       //- .nav-link-icon([inlineSVG]="'icon/my-kts-selected.svg'")
       .nav-link-title() My KTS
-    .nav-link( (click)="goToPage('PrizesPage', $event)", [ngClass]="activeLink('prizes')")
+    button.nav-link(tappable, (click)="goToPage('PrizesPage', $event)", [ngClass]="activeLink('prizes')")
       .nav-link-icon([inlineSVG]="navIcon('prizes', 'icon/prizes')")
       .nav-link-title Prizes
-    .nav-link( (click)="goToPage('ScholarshipsPage', $event)", [ngClass]="activeLink('scholarships')")
+    button.nav-link(tappable, (click)="goToPage('ScholarshipsPage', $event)", [ngClass]="activeLink('scholarships')")
       .nav-link-icon([inlineSVG]="navIcon('scholarships', 'icon/scholarships')")
       .nav-link-title Scholarships
-    .nav-link( (click)="goToPage('CareersPage', $event)", [ngClass]="activeLink('careers')")
+    button.nav-link(tappable, (click)="goToPage('CareersPage', $event)", [ngClass]="activeLink('careers')")
       .nav-link-icon([inlineSVG]="navIcon('careers', 'icon/careers')")
       .nav-link-title Careers
-    .nav-link( (click)="navPush('MorePage')", [ngClass]="activeLink('more')")
+    button.nav-link(tappable, (click)="navPush('MorePage')", [ngClass]="activeLink('more')")
       .nav-link-icon([inlineSVG]="moreIcon()")
       .nav-link-title More

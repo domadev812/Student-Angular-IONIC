@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { Component, ViewChild, NgZone } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Content } from 'ionic-angular';
 import { NavigationService, FilterService, OpportunitiesService, AlertService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
 import { Subscription } from 'rxjs/Subscription';
@@ -11,6 +11,9 @@ import { Subscription } from 'rxjs/Subscription';
 })
 
 export class CareersPage {
+  @ViewChild(Content)
+  content: Content;
+
   limit = 20;
   offset = 0;
   pageToggle = true;
@@ -23,6 +26,9 @@ export class CareersPage {
   my_filter: boolean;
   internshipSubscription: Subscription;
   opportunitySubscription: Subscription;
+  scrolledDown: boolean;
+  isScrolled = false;
+  title = 'Careers';
 
   constructor(
     public navCtrl: NavController,
@@ -31,7 +37,8 @@ export class CareersPage {
     public modalCtrl: ModalController,
     public filterService: FilterService,
     public opportunitiesService: OpportunitiesService,
-    public alert: AlertService
+    public alert: AlertService,
+    public zone: NgZone,
   ) {
   }
 
@@ -49,7 +56,29 @@ export class CareersPage {
   ngOnDestroy() {    
     this.internshipSubscription.unsubscribe();
     this.opportunitySubscription.unsubscribe();
+    this.scrolledDown = true;
+    this.getOpportunities();
+    this.filterService.newInternshipEvent.subscribe(event => this.onInternshipFilterChange(event));
+    this.filterService.newOpportunityEvent.subscribe(event => this.onOpportunityFilterChange(event));
   }
+
+  onPageScroll(data) {
+    this.zone.run(() => {
+      if (data.scrollTop > 0) {
+        this.isScrolled = true;
+      } else {
+        this.isScrolled = false;
+      }
+    });
+  }
+  
+  ngAfterViewInit() {
+    if (this.content.ionScroll) {
+      this.content.ionScroll.subscribe((data) => {
+        this.onPageScroll(data);
+      });
+    }
+  } 
 
   onOpportunityFilterChange(event): void {
     //TODO: CALL API WITH FILTER WHEN BACKEND IS READY

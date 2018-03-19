@@ -8,7 +8,7 @@ page-prizeshow {
       height: 120px;
       width: 100%;
       z-index: 1;
-      background-image: url('../../assets/imgs/Gift Background.svg');
+      background-image: url('../assets/imgs/gift_background.svg');
       background-repeat: no-repeat;
       background-size: cover;
       @include md{
@@ -20,7 +20,7 @@ page-prizeshow {
 
     .prizes-page-prize-image{
       margin-top: 9px;
-      background-image: url('../../assets/imgs/Present Icon.svg');
+      background-image: url('../assets/imgs/present_icon.svg');
       width: 135px;
       height: 120px;
       position: absolute;

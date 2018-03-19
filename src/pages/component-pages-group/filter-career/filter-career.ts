@@ -21,12 +21,17 @@ export class FilterCareerPage {
   ionViewCanEnter() {
     this.navService.currentPage = 'FilterCareerPage';
   }
-  
+
   goToPage(page: string, event: any): void {
     this.navCtrl.setRoot(page);
   }
 
   done() {
     this.viewCtrl.dismiss();
+  }
+
+  goBack() {
+    this.filterCareersService.selectedCategory = null;
+    this.navCtrl.push('MyCareersPage');
   }
 }

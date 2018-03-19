@@ -1,11 +1,11 @@
 .page-wrapper((resize)="getSize($event)")
   .header-nav
     .header-title
-      ion-icon.arrow-back-icon(tappable, ios="ios-arrow-back", md="ios-arrow-back")
+      ion-icon.arrow-back-icon(tappable, ion-item, ios="ios-arrow-back", md="ios-arrow-back", (click)="goMyCareers()")
       h1.headers
         | Choose Careers
     .button-group
-      button.kts-primary-btn.selected-careers-save((click)="saveCareers()", [hidden]="selectedCareers.length !==5")
+      button.kts-primary-btn.selected-careers-save(ion-item, [hidden]="selectedCareers.length !==5", (click)="saveCareers()")
         | Save 
   .filter-list-page-wrapper
     ion-col.web-filter-col(col-4)

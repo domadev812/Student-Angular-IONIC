@@ -26,14 +26,18 @@ export class CareersSelectPage {
     public careerService: CareersService,
     public currentUserService: CurrentUserService,
     public authProvider: AuthService) {
+      this.getOS();
+      if (this.isMobile) {
+        this.presentModal();
+      }
   }
 
-  ngOnInit() { 
+  ngOnInit() {     
     this.filterCareersList = new Array<Model.Career>();
     this.selectedCareers = new Array<Model.Career>();    
     this.isMobile = false;
     
-    this.type = this.navParams.get('type');
+    this.type = this.navParams.get('type');    
     if (!this.type) {
       this.type = 'categories';
     }    
@@ -44,12 +48,7 @@ export class CareersSelectPage {
       this.careersList = res.filter(career => career.careerGroup.length > 0);                   
     }, err => {
       this.alert.handleError(err);
-    });
-
-    this.getOS();
-    if (this.isMobile) {
-      this.presentModal();
-    }
+    });    
   }
 
   ngOnDestroy() {
@@ -85,7 +84,8 @@ export class CareersSelectPage {
   saveCareers() {   
     let career_ids = this.selectedCareers.map(career => career.id);
     this.careerService.addUserCareers(career_ids).subscribe((res: boolean) => {  
-      alert('Add user careers successfully');
+      this.alert.toast('Add user careers successfully');
+      this.navCtrl.push('MyCareersPage');      
     }, err => {
       this.alert.handleError(err);
     });
@@ -103,10 +103,5 @@ export class CareersSelectPage {
   presentModal() {
     let modal = this.modalCtrl.create('FilterCareerPage');
     modal.present();
-  }
-
-  goMyCareers() {    
-    this.filterCareersService.selectedCategory = null;
-    this.navCtrl.push('MyCareersPage');
   }
 }

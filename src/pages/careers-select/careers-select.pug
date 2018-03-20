@@ -1,7 +1,7 @@
 .page-wrapper((resize)="getSize($event)")
   .header-nav
     .header-title
-      ion-icon.arrow-back-icon(tappable, ion-item, ios="ios-arrow-back", md="ios-arrow-back", (click)="goMyCareers()")
+      ion-icon.arrow-back-icon(tappable, ion-item, ios="ios-arrow-back", md="ios-arrow-back", (click)="presentModal()")
       h1.headers
         | Choose Careers
     .button-group

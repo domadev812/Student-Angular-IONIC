@@ -20,22 +20,25 @@ export class FilterCareersWidgetComponent {
 
   ngOnInit() {
     this.selectedCategory = this.filterCareersService.selectedCategory; 
-    this.type = this.filterCareersService.type;    
-
+    this.type = this.filterCareersService.type; 
+    if (!this.selectedCategory) {
+      this.selectedCategory = new Model.CareerGroup();      
+    }       
     if (this.type === 'personality') {
       this.filterTitle = 'Select a personality type';
       this.getPersonalityList();
     } else {
-      this.filterTitle = 'Select a career type';
-      if (!this.selectedCategory) {
-        this.selectedCategory = new Model.CareerGroup();      
-      }
+      this.filterTitle = 'Select a career type';      
       this.getCareerGroupList();
     }    
   }
 
   getPersonalityList(): void {
-
+    this.careerService.getPersonalities().subscribe((res: Model.CareerGroup[]) => {      
+      this.categoryList = res;             
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 
   getCareerGroupList(): void {

@@ -1,35 +1,26 @@
 page-progress-tracker {
-  width: 100vw;
-  height: 100%;
-  z-index: 2;
-  position: relative;
-  .progress-row {
-    .progress-col-1 {
-      @include md {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      }
-    }
-    .progress-col-2 {
-      margin-top: -9px;
-      @include md {
-        margin-top: 0px;
+    width: 100vw;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+    .progress-row {
+      .progress-col-1 {
+        @include md {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-end;
+        }
+      }
+      .progress-col-2 {
+        margin-top: -9px;
+        @include md {
+          margin-top: 0px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          }
       }
     }
-  }
-  .kts-header-mobile {
-    margin-left: 20px;
-  }
-  .lp-list {
-    .scroll-content {
-      padding-top: 0;
-      padding-bottom: 100px;
-    }
-  }
   .progress-tracker-wrapper {
       width: 100vw;
       z-index: 1;

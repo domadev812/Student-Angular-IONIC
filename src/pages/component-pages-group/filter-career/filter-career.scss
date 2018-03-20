@@ -1,12 +1,12 @@
 page-filter-career {
-  padding: 10px 0 10px 10px;
-  background: #fff;
+  padding: 0;
+  background: linear-gradient(to bottom, #f4f7f9 , #FFF);  
   .header-nav {  
     @extend .space-between;
     flex-wrap: wrap; 
     align-items: center; 
-    padding-left: 10px; 
-    padding-right: 10px;
+    padding: 10px 15px 0;
+    background: linear-gradient(to top, #f4f7f9 , #FFF);  
     @include md{    
       padding-left: 0;
     }

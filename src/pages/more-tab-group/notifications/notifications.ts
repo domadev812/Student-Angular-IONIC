@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit, NgZone  } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, NotificationsService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 
@@ -9,20 +9,15 @@ import { Model } from '../../../app/app.models';
   templateUrl: 'notifications.html',
 })
 export class NotificationsPage {
-  @ViewChild(Content)
-  content: Content;
 
   notifications: Array<Model.Notification> = new Array<Model.Notification>();
-  isScrolled = false;
-  title = 'Notification';
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,
     public notificationService: NotificationsService,
-    public alert: AlertService,
-    public zone: NgZone
+    public alert: AlertService
   ) {
   }
 
@@ -46,21 +41,4 @@ export class NotificationsPage {
     this.navCtrl.push(page, param);
   }
 
-  onPageScroll(data) {
-    this.zone.run(() => {
-      if (data.scrollTop > 0) {
-        this.isScrolled = true;
-      } else {
-        this.isScrolled = false;
-      }
-    });
-  }
-  
-  ngAfterViewInit() {
-    if (this.content.ionScroll) {
-      this.content.ionScroll.subscribe((data) => {
-        this.onPageScroll(data);
-      });
-    }
-  }
 }

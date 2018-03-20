@@ -1,9 +1,10 @@
 filter-careers {
   .filter-content {
     overflow-y: auto;
-    height: calc(100vh - 170px);
+    height: calc(100vh - 170px);    
     padding-right: 15px;
     @include md-max{  
+      padding-left: 15px;
       height: calc(100vh - 130px);
     }
   }
@@ -13,6 +14,7 @@ filter-careers {
       font-size: 14px;
       font-weight: normal;
       border-bottom: none;
+      margin-left: 2px;
     }
     &:before{
       @include md-max{  

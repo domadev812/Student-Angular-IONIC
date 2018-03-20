@@ -1,5 +1,5 @@
-import { Component, ViewChild, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, CurrentUserService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 import { Scholarship } from '../../../_models/scholarship.model';
@@ -10,25 +10,18 @@ import { Scholarship } from '../../../_models/scholarship.model';
   templateUrl: 'progress-tracker.html',
 })
 export class ProgressTrackerPage {
-  @ViewChild(Content)
-  content: Content;
-
   userProgress: Model.UserProgress;
   scholarships: Array<Model.Scholarship>;
   prizes: Array<Model.Prize>;
   internships: Array<Model.Opportunity>;
   opportunities: Array<Model.Opportunity>;
 
-  isScrolled = false;
-  title = 'Progress';
-
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,
     public currentUserService: CurrentUserService,
-    public alert: AlertService,
-    public zone: NgZone
+    public alert: AlertService
   ) {
   }
 
@@ -62,21 +55,4 @@ export class ProgressTrackerPage {
     this.navCtrl.push(page, param);
   }
 
-  onPageScroll(data) {
-    this.zone.run(() => {
-      if (data.scrollTop > 0) {
-        this.isScrolled = true;
-      } else {
-        this.isScrolled = false;
-      }
-    });
-  }
-  
-  ngAfterViewInit() {
-    if (this.content.ionScroll) {
-      this.content.ionScroll.subscribe((data) => {
-        this.onPageScroll(data);
-      });
-    }
-  }
 }

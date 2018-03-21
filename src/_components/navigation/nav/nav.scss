@@ -95,5 +95,38 @@ nav {
     }
   }
 
+  .pts-button-wrapper{    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 45px;    
+  }
+  .points-btn {
+    @extend .center;
+    position: relative;
+    height: 23px;
+    width: auto;
+    padding: 0 10px 0 4px;
+    border-radius: 3px;
+    background: linear-gradient(135deg, #EE2F5B 0%, #BE65A6 100%);
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    &::after {
+      @extend .center;
+      position: absolute;
+      border-radius: 50%;
+      top: -10px;
+      right: -10px;
+      content: '+';
+      height: 15px;
+      width: 15px;
+      line-height: 15px;
+      font-size: 18px;
+      border: 2px solid #FFFFFF;
+      background-color: #C75A97;
+    }
+  }
 
 }

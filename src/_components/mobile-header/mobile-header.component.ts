@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Content } from 'ionic-angular';
+import { Content,  NavController } from 'ionic-angular';
+import { Subscription } from 'rxjs/Subscription';
+import { CurrentUserService, AuthService, AlertService } from '../../app/app.services.list';
+import { Model } from '../../app/app.models';
 
 @Component({
   selector: 'mobile-header',
@@ -11,7 +14,38 @@ export class MobileHeaderComponent {
   @Input() isScrolled = true;
   @Input() title;
 
-  constructor() {
+  pointsSubscription: Subscription;
+  points: number;
+  constructor(public navCtrl: NavController,
+              public currentUserService: CurrentUserService,
+              public authProvider: AuthService,
+              public alert: AlertService) {
   }
 
+  ngOnInit() {
+    this.pointsSubscription = this.currentUserService.pointsEvent.subscribe(event => this.pointsChanged(event));     
+    this.getCurrentUser();   
+  }
+
+  ngOnDestroy() { 
+    this.pointsSubscription.unsubscribe();    
+  }
+  
+  getCurrentUser(): void {
+    this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
+      this.points = res.points;      
+    }, err => {
+      this.alert.handleError(err);
+    });
+  }
+
+  gotoEarnPage(): void {
+    this.navCtrl.push('KeyRedemptionPage');
+  }
+
+  pointsChanged(points: number): void {    
+    if (points) {
+      this.points = points;
+    }
+  }
 }

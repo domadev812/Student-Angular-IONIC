@@ -389,10 +389,6 @@ h1, h2, h3, h4, h5, h6, p{
   padding-bottom: 10px;
   border-bottom: 1px solid #E9E9F0;
   margin-bottom: 30px;
-  &::before {
-    content: url('../assets/icon/filter_icon.svg');
-    margin-right: 15px;
-  }
 }
 .filter-item {
   @extend .center-y;

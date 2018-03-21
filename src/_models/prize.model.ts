@@ -5,6 +5,7 @@ export class Prize {
   title: string;
   points: number;
   description: string;
+  organization_name: string;
   organization: Model.Organization;
 
   constructor(data) {
@@ -12,6 +13,7 @@ export class Prize {
       this.id = data.id;
       this.title = data.title;
       this.description = data.description;
+      this.organization_name = data.organization_name;
       this.points = data.points;
       this.organization = new Model.Organization(data.organization || {});
     }

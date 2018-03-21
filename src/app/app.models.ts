@@ -7,8 +7,7 @@ import { Opportunity as ApiOpportunity } from '../_models/opportunity.model';
 import { Organization as ApiOrganization } from '../_models/organization.model';
 import { Address as ApiAddress } from '../_models/address.model';
 import { Keycard as ApiKeycard } from '../_models/keycard.model';
-import { CareerGroup as ApiCareerGroup } from '../_models/career-group.model';
-import { Career as ApiCareer } from '../_models/career.model';
+
 
 export module Model {
     export type User = ApiUser;
@@ -29,10 +28,6 @@ export module Model {
     export const Opportunity = ApiOpportunity;
     export type Keycard = ApiKeycard;
     export const Keycard = ApiKeycard;
-    export type CareerGroup = ApiCareerGroup;
-    export const CareerGroup = ApiCareerGroup;
-    export type Career = ApiCareer;
-    export const Career = ApiCareer;
 
     export function initializeArray<T>(array: T[], type: string): any[] {
         let newArray: T[] = [];

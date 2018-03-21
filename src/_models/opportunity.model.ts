@@ -7,8 +7,9 @@ export class Opportunity {
   type: string;
   details: string;
   updated_at: Date;
+  organization_name: string;
   organization: Organization;
-  organization_id: number;  
+  organization_id: number;
   link: string;
 
   constructor(data: any = null) {
@@ -20,8 +21,9 @@ export class Opportunity {
       this.updated_at = data.updated_at;
       this.details = data.details;
       this.organization = data.organization;
+      this.organization_name = data.organization_name;
       this.organization_id = data.organization_id;
-      this.link = data.link;      
+      this.link = data.link;
     } else {
       this.organization = new Organization();
     }

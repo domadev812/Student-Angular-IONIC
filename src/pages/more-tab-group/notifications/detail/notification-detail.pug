@@ -1,30 +1,33 @@
 .page-wrapper-simple
   .notification-detail-wrapper    
-    .header-nav
+    //- .header-nav
       ion-icon.arrow-back-icon(ios="ios-arrow-back", md="ios-arrow-back", (click)="goBack()")
       h1.headers
         | Notification        
-    .notification-detail-content.scroll-content
-      //- .title
-        | {{notification.subject}}
-      .title
-        | Meeting About Scholarships      
-      .organization
-        | {{notification.organization_name}}
-      .detail-comment
-        | Details
-      //- .detail-content
-        | {{notification.body}}
-      .detail-content
-        | Under the direction and guidance of the Assistant Director of Human Resources, will provide assistance and support in developing, implementing, 
-        | and overseeing all aspects of the HR function, specifically, recruiting, as well as, employee/labor relations, liability, worker's compensation, employee
-        | benefits and wellness, training, on boarding, engagement, and unemployment. Position requires demonstration, of competency for all on-the-job activities
-        | that may have a direct or indirect affect on product safety, legality and/or quality.
-        br
-        | Under the direction and guidance of the Assistant Director of Human Resources, will provide assistance and support in developing, implementing, 
-        | and overseeing all aspects of the HR function, specifically, recruiting, as well as, employee/labor relations, liability, worker's compensation, employee
-        | benefits and wellness, training, on boarding, engagement, and unemployment. Position requires demonstration, of competency for all on-the-job activities
-        | that may have a direct or indirect affect on product safety, legality and/or quality.
+    ion-col.lp-list-col(col-12 col-md-8)
+      mobile-header([isScrolled]="isScrolled", [title]="title")
+    ion-content.lp-list
+      .notification-detail-content
+        //- .title
+          | {{notification.subject}}
+        .title
+          | Meeting About Scholarships      
+        .organization
+          | {{notification.organization_name}}
+        .detail-comment
+          | Details
+        //- .detail-content
+          | {{notification.body}}
+        .detail-content
+          | Under the direction and guidance of the Assistant Director of Human Resources, will provide assistance and support in developing, implementing, 
+          | and overseeing all aspects of the HR function, specifically, recruiting, as well as, employee/labor relations, liability, worker's compensation, employee
+          | benefits and wellness, training, on boarding, engagement, and unemployment. Position requires demonstration, of competency for all on-the-job activities
+          | that may have a direct or indirect affect on product safety, legality and/or quality.
+          br
+          | Under the direction and guidance of the Assistant Director of Human Resources, will provide assistance and support in developing, implementing, 
+          | and overseeing all aspects of the HR function, specifically, recruiting, as well as, employee/labor relations, liability, worker's compensation, employee
+          | benefits and wellness, training, on boarding, engagement, and unemployment. Position requires demonstration, of competency for all on-the-job activities
+          | that may have a direct or indirect affect on product safety, legality and/or quality.
       
           
     

@@ -4,6 +4,9 @@ page-notifications {
     height: 100%;
     z-index: 2;
     position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     .mobile-header-wrapper {
       @include md {
         display: flex;
@@ -12,20 +15,53 @@ page-notifications {
         font-size: 36px;
         line-height: 43px;
         padding: 15px 0 20px 0px;
+      }
+    }
+    .lp-list {
+      .scroll-content {
+        padding-bottom: 100px;
+      }
+    }
+    .kts-header-mobile {
+      margin-left: 10px;
+    }
+    .notification-page-title {
+      display: none;
+      width: 800px;
+      @include md {
+        padding-top: 10px;
+        display: block;
+        z-index: 1;
+        font-size: 36px;
+        @include lg {
+          padding-top: 10px;          
+          display: block;
+          position: absolute;
+        }
+        @include xl {          
+          display: block;
+          position: absolute;
         }
       }
+    }    
+    .kts-card {
+      display: flex;
+      justify-content: center;
+      padding: 0 10px;
+    }
     .kts-card-wrapper{
       display: flex;
       flex-direction: column;
       max-width: 715px;
-      width: auto;
-      padding: 30px 30px 15px 30px;
-      margin: 0 15px;
+      width: 800px;
+      max-width: 800px;
+      padding: 30px 20px 15px 30px;
+      margin: 0;
       @include md{
         box-shadow: 0 0 4px 2px $color-shadow;
         border-radius: 6px;
-        padding: 35px 40px 20px 40px;
-        margin: 0 60px;
+        padding: 35px 25px 20px 40px; 
+        margin-top: 50px;       
       }
       display: flex;
       background: white;

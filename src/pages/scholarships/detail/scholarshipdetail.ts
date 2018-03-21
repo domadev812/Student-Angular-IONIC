@@ -40,7 +40,7 @@ export class ScholarshipDetailPage {
       this.navCtrl.push('ScholarshipApplyPage', { scholarshipId: this.scholarshipId });
     } else {
       this.scholarshipsService.applyScholarship(this.scholarshipId, {}).subscribe((res: boolean) => {
-        this.alert.toast('Opportunity is applied to successfully');
+        this.alert.toast('Scholarship is applied to successfully');
       }, err => {
         this.alert.handleError(err);
       });

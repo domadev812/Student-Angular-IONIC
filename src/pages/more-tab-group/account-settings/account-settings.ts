@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NavigationService, CurrentUserService, AuthService, AlertService } from '../../../app/app.services.list';
+import { NavigationService, CurrentUserService, AuthService, AlertService, OrganizationService } from '../../../app/app.services.list';
 import { BaseUser } from '../../../_models/base-user.model';
 import { Model } from '../../../app/app.models';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
@@ -21,6 +21,7 @@ export class AccountSettingsPage {
     public navService: NavigationService,
     public authProvider: AuthService,
     public currentUserService: CurrentUserService,
+    public organizationService: OrganizationService,
     public alert: AlertService
 
   ) {
@@ -33,7 +34,12 @@ export class AccountSettingsPage {
 
   ngOnInit() {
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
-      this.user = res;
+      this.user = res;   
+      
+      if (this.user.organization_id) {
+        this.getOrganization(this.user.organization_id);
+      }   
+
       if (this.user.gender === 'M') {
         this.user.gender = 'Male';
       } else if (this.user.gender === 'F') {
@@ -42,13 +48,13 @@ export class AccountSettingsPage {
     });
   }
 
-
   saveUser(userSettings: boolean): void {
     if (!userSettings) {
       return;
     }
     this.userSettings();
   }
+
   userSettings() {
     this.currentUserService.updateUser(this.user, this.user.id).subscribe((res) => {
       this.alert.toast('Information updated.');
@@ -57,4 +63,10 @@ export class AccountSettingsPage {
     });
   }
 
+  getOrganization(organizationId: number): void {
+    this.organizationService.getOrganization(organizationId).subscribe((res) => {      
+    }, err => {
+      this.alert.handleError(err);
+    });
+  }
 }

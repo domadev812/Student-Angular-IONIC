@@ -16,9 +16,7 @@ export class NavigationComponent {
     public popoverCtrl: PopoverController
   ) {}
 
-  ngOnInit() {
-    console.log('Nav Init');
-  }
+
 
   presentPopover(myEvent): void {
     let popover = this.popoverCtrl.create('MorePage', {}, {cssClass: 'more-web-nav-popover'});
@@ -42,4 +40,6 @@ export class NavigationComponent {
   moreIcon(): string {
     return NavUtil.getMoreIcon();
   }
+
+
 }

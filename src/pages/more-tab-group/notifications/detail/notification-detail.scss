@@ -23,14 +23,17 @@ page-notification-detail {
     position: relative;
     z-index: 2;
     width: 1080px;
-    max-width: 1080px;
-    margin: 10px 0;    
-    @include md{
-      margin: 20px 15px;    
+    max-width: 1080px;    
+  }
+  .kts-header-mobile {
+    margin-left: 20px;
+  }
+  .lp-list {
+    .scroll-content {
+      padding-bottom: 100px;
     }
   }
-  .notification-detail-content {
-    margin-top: 60px;
+  .notification-detail-content {    
     color: #232D3B;
     padding: 0 25px;
     @include md{

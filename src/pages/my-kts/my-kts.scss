@@ -10,7 +10,9 @@ page-my-kts {
   }
   .single-column{
     overflow-y: auto;
+    min-height: 1000px;
     @include md{
+      min-height: 550px;
       padding: 10px 0 0 0;
     }
   }
@@ -53,6 +55,9 @@ page-my-kts {
     height: 70px;
     margin: 25px 5px 10px 5px;
     text-align: center;
+    @include md{
+      min-width: 240px;
+    }
   }
   .social-media-header{
     margin: 0 0 20px 0;
@@ -75,5 +80,7 @@ page-my-kts {
     }
     position: relative;
   }
-
+  .fixed-content {
+    z-index: -1;
+  }
 }

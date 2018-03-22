@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { Model } from '../app/app.models';
@@ -13,6 +13,7 @@ export class CurrentUserService {
   private currentUser: Model.User;
   private currentUserPromise: Promise<Model.User>;
   private notify = new Subject<any>();
+  public pointsEvent: EventEmitter<any> = new EventEmitter<any>();
 
   token: string = undefined;
   jwtHelper: JwtHelper = new JwtHelper();
@@ -77,7 +78,7 @@ export class CurrentUserService {
   set(token: string, user: any): boolean {
     window.localStorage.setItem('Token', token);
     let parsedUser = new Model.User(user);
-    this.load(parsedUser);
+    this.load(parsedUser);    
     return this.authenticated();
   }
 
@@ -140,6 +141,14 @@ export class CurrentUserService {
           Observable.throw({ message: 'Internal Server Error', response });
         }
       });
+  }
+
+  pointsChange(): void { 
+    if (this.currentUser) { 
+      this.pointsEvent.emit(this.currentUser.points);
+    } else {
+      this.pointsEvent.emit(null);
+    }
   }
 }
 

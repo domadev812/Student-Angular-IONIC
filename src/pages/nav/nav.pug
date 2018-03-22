@@ -1,0 +1,27 @@
+.kts-navbar.center-x
+  .navbar-inner
+    .large-nav
+      .nav-container
+        .nav-wrapper.nav-wrapper--left()
+          img.center(src="assets/icon/kts-logo-nav.png")
+        .nav-wrapper.nav-wrapper--center
+        .nav-wrapper.nav-wrapper--right
+          .nav-link((click)="goToPage('MyKtsPage', $event)", [ngClass]="activeLink('my-kts')")
+            .nav-link-icon([inlineSVG]="navIcon('my-kts', 'icon/my-kts')")
+            .nav-link-title() My KTS
+          .nav-link( (click)="goToPage('PrizesPage', $event)", [ngClass]="activeLink('prizes')")
+            .nav-link-icon([inlineSVG]="navIcon('prizes', 'icon/prizes')")
+            .nav-link-title Prizes
+          .nav-link( (click)="goToPage('ScholarshipsPage', $event)", [ngClass]="activeLink('scholarships')")
+            .nav-link-icon([inlineSVG]="navIcon('scholarships', 'icon/scholarships')")
+            .nav-link-title Scholarships
+          .nav-link( (click)="goToPage('CareersPage', $event)", [ngClass]="activeLink('careers')")
+            .nav-link-icon([inlineSVG]="navIcon('careers', 'icon/careers')")
+            .nav-link-title Careers
+          .nav-link( (click)="presentPopover($event)", [ngClass]="activeLink('more')")
+            .nav-link-icon([inlineSVG]="moreIcon()")
+            .nav-link-title More
+          .nav-link
+            .pts-button-wrapper
+              .points-btn((click)="goToPage('KeyRedemptionPage', $event)")
+                | {{points}} pts

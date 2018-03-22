@@ -1,26 +1,19 @@
 import { Component } from '@angular/core';
 import { App, PopoverController } from 'ionic-angular';
-import { AuthService, NavigationService, CurrentUserService } from '../../../app/app.services.list';
+import { NavigationService } from '../../../app/app.services.list';
 import { NavUtil } from '../../../_utils/nav.util';
-import { Model } from '../../../app/app.models';
+
 
 @Component({
   selector: 'nav',
   templateUrl: 'nav.html'
 })
 export class NavigationComponent {
-  points: number;
-
-  constructor(private app: App,
-              private authService: AuthService,
-              public navService: NavigationService,
-              public popoverCtrl: PopoverController,
-              public currentUserService: CurrentUserService,
+  constructor(
+    private app: App,
+    public navService: NavigationService,
+    public popoverCtrl: PopoverController
   ) {}
-
-  ngOnInit() {
-    this.getCurrentUser();
-  }
 
   presentPopover(myEvent): void {
     let popover = this.popoverCtrl.create('MorePage', {}, {cssClass: 'more-web-nav-popover'});
@@ -45,9 +38,5 @@ export class NavigationComponent {
     return NavUtil.getMoreIcon();
   }
 
-  getCurrentUser(): void {
-    this.currentUserService.getCurrentUser(this.authService).then((res: Model.User) => {      
-      this.points = res.points;      
-    }, err => {});
-  }
+
 }

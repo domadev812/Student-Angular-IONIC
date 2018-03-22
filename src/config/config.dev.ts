@@ -1,5 +1,4 @@
 //this is DEV MODE
-
 const base_url = 'https://staging.api.kts.slatedev.com/api'; // staging server
 export const ENV = {
   BASE_URL: base_url,

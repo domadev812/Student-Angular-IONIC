@@ -18,7 +18,6 @@ export class ProgressWidgetComponent implements OnInit {
 
   constructor(
     private currentUserService: Service.CurrentUserService,
-    private authService: Service.AuthService,
     public navCtrl: NavController,
     public alert: AlertService
   ) { }

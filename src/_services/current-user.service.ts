@@ -52,8 +52,6 @@ export class CurrentUserService {
         if (this.currentUser && !force) {
           resolve(this.currentUser);
         } else if (token) {
-          let decodedToken = this.jwtHelper.decodeToken(token);
-          let userId = decodedToken.id;
           authProvider.getCurrentUser().subscribe((user: Model.User) => {
             this.load(user);
             if (user) {
@@ -76,7 +74,7 @@ export class CurrentUserService {
     return this.currentUser !== null;
   }
 
-  set(token: string, user: API.IUser): boolean {
+  set(token: string, user: any): boolean {
     window.localStorage.setItem('Token', token);
     let parsedUser = new Model.User(user);
     this.load(parsedUser);

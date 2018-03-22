@@ -1,6 +1,3 @@
-import { Model } from '../app/app.models';
-
-
 export module MultiSelectUtil {
 
   export const gradYearList = [

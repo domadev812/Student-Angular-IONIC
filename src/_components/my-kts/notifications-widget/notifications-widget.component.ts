@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Content } from 'ionic-angular';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { NavigationService, NotificationsService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 

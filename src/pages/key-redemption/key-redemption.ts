@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController } from 'ionic-angular';
 import * as Service from '../../app/app.services.list';
-import { Model } from '../../app/app.models';
-import { AuthService, AlertService } from '../../app/app.services.list';
+import { AlertService } from '../../app/app.services.list';
 
 @IonicPage()
 @Component({
@@ -17,7 +16,6 @@ export class KeyRedemptionPage {
 
   constructor(
     private navCtrl: NavController,
-    private navParams: NavParams,
     private authService: Service.AuthService,
     private currentUserService: Service.CurrentUserService,
     private navService: Service.NavigationService,
@@ -35,7 +33,7 @@ export class KeyRedemptionPage {
   }
 
   updatePoints(): void {
-    let user = this.currentUserService.getCurrentUser(this.authService).then((res) => {
+    this.currentUserService.getCurrentUser(this.authService).then((res) => {
       this.points = res.points;
     }).catch((a) => console.log(a));
   }

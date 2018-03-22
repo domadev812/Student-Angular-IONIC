@@ -2,21 +2,22 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { ProgressWidgetComponent } from './progress-widget/progress-widget.component';
 import { NotificationsWidgetComponent } from './notifications-widget/notifications-widget.component';
-import { NotificationsService } from '../../app/app.services.list';
+import { GetStartedBannerComponent } from './get-started-banner/get-started-banner.component';
 
 
 @NgModule({
-  declarations: [ProgressWidgetComponent,
+  declarations: [
+    ProgressWidgetComponent,
     NotificationsWidgetComponent,
-    NotificationsWidgetComponent,
-
+    GetStartedBannerComponent
   ],
   imports: [
     IonicModule
   ],
-  exports: [ProgressWidgetComponent,
+  exports: [
+    ProgressWidgetComponent,
     NotificationsWidgetComponent,
-    NotificationsWidgetComponent,
+    GetStartedBannerComponent
   ]
 })
 export class MyKtsModule { }

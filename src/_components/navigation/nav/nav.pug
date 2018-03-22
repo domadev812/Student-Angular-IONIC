@@ -21,7 +21,7 @@
           .nav-link( (click)="presentPopover($event)", [ngClass]="activeLink('more')")
             .nav-link-icon([inlineSVG]="moreIcon()")
             .nav-link-title More
-          .nav-link
-            .pts-button-wrapper
-              .points-btn((click)="goToPage('KeyRedemptionPage', $event)")
-                | {{points}} pts
+          //- button.nav-user-link( )
+          .nav-link.pts-button-wrapper
+            .points-btn()
+              | 35pts

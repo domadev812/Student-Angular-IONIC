@@ -3,7 +3,6 @@ import { Model } from '../../../app/app.models';
 import { AuthService, NavigationService, MultiselectService, AlertService } from '../../../app/app.services.list';
 import { ToastController, LoadingController, NavController, Platform } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { PasswordValidation } from '../../../app/app.validators.list';
 import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
 import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 

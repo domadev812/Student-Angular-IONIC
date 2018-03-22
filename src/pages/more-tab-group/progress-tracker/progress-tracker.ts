@@ -2,7 +2,6 @@ import { Component, ViewChild, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { NavigationService, CurrentUserService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
-import { Scholarship } from '../../../_models/scholarship.model';
 
 @IonicPage()
 @Component({

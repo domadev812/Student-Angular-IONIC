@@ -1,3 +1,4 @@
+get-started-banner(*ngIf="(showBanner() == 'desktop') && userHasNoCareer")
 .page-wrapper
   ion-content.content-wrapper
     ion-row
@@ -5,6 +6,9 @@
         .fixed-content
           ion-col.lp-list-col.header-wrapper(col-12 col-md-8)
             mobile-header([isScrolled]="isScrolled", [title]="title")
+            .negative-margin(*ngIf="isScrolled")
+            get-started-banner(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
+        .spacer-100(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
         progress-widget
         notifications-widget.notifications-mobile
         a.about-KTS.kts-link((click)="goToPage('AboutUsPage')")

@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, CurrentUserService, AuthService, AlertService, OrganizationService } from '../../../app/app.services.list';
-import { BaseUser } from '../../../_models/base-user.model';
 import { Model } from '../../../app/app.models';
-import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
-import { User } from '../../../_models/user.model';
 
 
 @IonicPage()

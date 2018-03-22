@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Content } from 'ionic-angular';
 
 @Component({
   selector: 'selected-careers-widget',

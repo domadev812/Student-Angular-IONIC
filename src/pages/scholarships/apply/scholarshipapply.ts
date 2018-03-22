@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  NavigationService, ScholarshipsService, MultiselectService,
-  AuthService, CurrentUserService, OrganizationService, AlertService
+import { 
+  NavigationService,
+  ScholarshipsService,
+  AuthService,
+  CurrentUserService,
+  OrganizationService,
+  AlertService
 } from '../../../app/app.services.list';
-import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 import { Model } from '../../../app/app.models';
 
 @IonicPage()
@@ -25,7 +28,6 @@ export class ScholarshipApplyPage {
     public currentUserService: CurrentUserService,
     public scholarshipsService: ScholarshipsService,
     public organizationService: OrganizationService,
-    private multiselectService: MultiselectService,
     public alert: AlertService
   ) {
   }

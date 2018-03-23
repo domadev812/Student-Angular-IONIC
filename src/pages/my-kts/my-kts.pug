@@ -1,33 +1,33 @@
 get-started-banner(*ngIf="(showBanner() == 'desktop') && userHasNoCareer")
 .page-wrapper
-  ion-content.content-wrapper
-    ion-row
-      ion-col.single-column(col-12 col-md-4)
-        .fixed-content
-          ion-col.lp-list-col.header-wrapper(col-12 col-md-8)
-            mobile-header([isScrolled]="isScrolled", [title]="title")
-            .negative-margin(*ngIf="isScrolled")
-            get-started-banner(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
-        .spacer-100(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
-        progress-widget
-        notifications-widget.notifications-mobile
-        a.about-KTS.kts-link((click)="goToPage('AboutUsPage')")
-          | About KTS
-          img.link-arrow(src="../../assets/icon/link-arrow.svg")
-        a.contact-us.kts-link((click)="goToPage('ContactUsPage')")
-          | Contact Us
-          img.link-arrow(src="../../assets/icon/link-arrow.svg")
-        a.my-careers.kts-link((click)="goToPage('MyCareersPage')")
-          | My Careers
-          img.link-arrow(src="../../assets/icon/link-arrow.svg")
-        .social-media
-          h2.social-media-header
-            | Check out Keys to Success on these platforms! 
-          a.socmed-icon(href="https://www.facebook.com/KeystoSuccessUtah/")
-            img(src="../../assets/icon/facebook-icon.svg", alt="facebook")
-          a.socmed-icon(href="https://www.instagram.com/ktsutah/?hl=en")
-            img(src="../../assets/icon/instagramicon.svg", alt="instagram")
-          a.socmed-icon(href="https://twitter.com/ktsutah?lang=en")
-            img(src="../../assets/icon/twitter_icon.svg", alt="twitter")        
-      ion-col.right-column(col-12 col-md-8)
-        notifications-widget.notifications-desktop
+  .content-wrapper
+    ion-col.lp-list-col(col-12 col-md-8)
+      mobile-header([isScrolled]="isScrolled", [title]="title")
+    ion-content.lp-list
+      ion-row
+        ion-col.single-column(col-12 col-md-4)
+          .fixed-content          
+            get-started-banner(*ngIf="showBanner() == 'mobile' && userHasNoCareer")   
+          .spacer-100(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
+          progress-widget
+          notifications-widget.notifications-mobile
+          a.about-KTS.kts-link((click)="goToPage('AboutUsPage')")
+            | About KTS
+            img.link-arrow(src="../../assets/icon/link-arrow.svg")
+          a.contact-us.kts-link((click)="goToPage('ContactUsPage')")
+            | Contact Us
+            img.link-arrow(src="../../assets/icon/link-arrow.svg")
+          a.my-careers.kts-link((click)="goToPage('MyCareersPage')")
+            | My Careers
+            img.link-arrow(src="../../assets/icon/link-arrow.svg")
+          .social-media
+            h2.social-media-header
+              | Check out Keys to Success on these platforms! 
+            a.socmed-icon(href="https://www.facebook.com/KeystoSuccessUtah/")
+              img(src="../../assets/icon/facebook-icon.svg", alt="facebook")
+            a.socmed-icon(href="https://www.instagram.com/ktsutah/?hl=en")
+              img(src="../../assets/icon/instagramicon.svg", alt="instagram")
+            a.socmed-icon(href="https://twitter.com/ktsutah?lang=en")
+              img(src="../../assets/icon/twitter_icon.svg", alt="twitter")        
+        ion-col.right-column(col-12 col-md-8)
+          notifications-widget.notifications-desktop

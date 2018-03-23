@@ -30,6 +30,7 @@ export class ScholarshipDetailPage {
     this.scholarshipId = this.navParams.get('scholarshipId');
     this.scholarshipsService.getScholarship(this.scholarshipId).subscribe((res: Model.Scholarship) => {
       this.scholarship = res;
+      console.log(this.scholarship);
     }, err => {
       this.alert.handleError(err);
     });

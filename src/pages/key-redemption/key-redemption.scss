@@ -1,6 +1,6 @@
 page-key-redemption{
-    .content-wrapper{
-        padding-top: 20px;
+    background: linear-gradient(to bottom, #f4f7f9 , #FFF);  
+    .content-wrapper{        
         width: 1080px;
         max-width: 1080px;
         display: flex;
@@ -10,14 +10,20 @@ page-key-redemption{
     .inner-wrapper{
         width: 100%;
         padding: 0 22px;
+        margin-top: 0;
         @include md{
             width: 50%;
+            margin-top: 20px;
         }
     }
     .kts-header{
         align-self: flex-start;
-        margin: 0 0 1em 18px;
+        margin: 0 0 1em;
         color: $color-text-primary;
+        width: 100%;
+        padding-top: 10px;
+        padding-left: 18px;
+        background: linear-gradient(to top, #f4f7f9 , #FFF);  
         @include md{
             display: none;
         }

@@ -308,13 +308,20 @@ h1, h2, h3, h4, h5, h6, p{
   }
 }
 .lp-list {
+  $search-and-tab-height: 34px;
+  $search-and-tab-height-mobile: 60px;
+
+  height: calc(100vh - #{$search-and-tab-height-mobile} - #{$nav-height-mobile});
   width: 100%;
+  @include md {
+    height: calc(100vh - #{$search-and-tab-height} - #{$nav-height});
+  }
   .scroll-content {
     padding: 20px 7px;
-    @include md{
+    margin-bottom: 65px;
+    @include md {
       padding: 20px 7px 20px 12px;
     }
-    padding-bottom: 200px;
   }
   .lp-item {
     @extend .center-y;

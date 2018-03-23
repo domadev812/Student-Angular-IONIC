@@ -7,6 +7,7 @@ import { Model } from '../app/app.models';
 
 @Injectable()
 export class CareersService {
+  careersEvent: EventEmitter<any> = new EventEmitter<any>();
   userCareers: Model.Career[];
 
   constructor(private http: Http) { }
@@ -50,7 +51,7 @@ export class CareersService {
   addUserCareers(ids: any[]): Observable<boolean> {
     return this.http.post('/add-careers', {career_ids: ids})
       .map((response: Response) => {
-        const json = response.json();
+        const json = response.json();        
         if (json && json.data) {
           return true;         
         } else {
@@ -65,5 +66,9 @@ export class CareersService {
 
   getUserCareers(): Model.Career[] {
     return this.userCareers ? this.userCareers : [];
+  }
+
+  careersChange(): void {
+    this.careersEvent.emit(this.userCareers);
   }
 }

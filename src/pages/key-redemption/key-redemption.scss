@@ -1,5 +1,4 @@
-page-key-redemption{
-    background: linear-gradient(to bottom, #f4f7f9 , #FFF);  
+page-key-redemption{    
     .content-wrapper{        
         width: 1080px;
         max-width: 1080px;
@@ -23,7 +22,6 @@ page-key-redemption{
         width: 100%;
         padding-top: 10px;
         padding-left: 18px;
-        background: linear-gradient(to top, #f4f7f9 , #FFF);  
         @include md{
             display: none;
         }

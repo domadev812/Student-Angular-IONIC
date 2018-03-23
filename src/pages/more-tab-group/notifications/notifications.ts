@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, NgZone  } from '@angular/core';
+import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { NavigationService, NotificationsService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
@@ -55,7 +55,7 @@ export class NotificationsPage {
       }
     });
   }
-  
+
   ngAfterViewInit() {
     if (this.content.ionScroll) {
       this.content.ionScroll.subscribe((data) => {
@@ -63,4 +63,11 @@ export class NotificationsPage {
       });
     }
   }
+  goToNotificationDetail(id: string): void {
+    let selectedNot = this.notifications.find(x => x.id === id);
+    let route = selectedNot.getRoute();
+    let resourceId = selectedNot.resource_id;
+    this.navCtrl.push(route, { resourceId: resourceId });
+  }
+
 }

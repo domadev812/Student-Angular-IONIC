@@ -4,7 +4,7 @@
       | Notifications
     a.notifications-link((click)="goToNotifications()")
       | View all
-  a.notificaitons-items(*ngFor="let notification of notifications")
+  a.notificaitons-items(*ngFor="let notification of notifications", (click)="goToNotificationDetail(notification.id)")
     .notifications-data
       h2.single-notification-header
         | {{notification.subject}}

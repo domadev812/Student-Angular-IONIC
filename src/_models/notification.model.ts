@@ -1,13 +1,17 @@
 import { Model } from '../app/app.models';
 
 export class Notification {
-  id: number;
+  id: string;
   subject: string;
   body: string;
   organization_name: string;
   creator_name: string;
   approved: boolean;
   organization: Model.Organization;
+  type: string;
+  resource: any;
+  resource_id: string;
+  types: ITypes;
 
   constructor(data = null) {
     if (data) {
@@ -18,6 +22,32 @@ export class Notification {
       this.creator_name = data.creator_name;
       this.approved = data.approved;
       this.organization = new Model.Organization(data.organization || {});
+      this.type = data.type;
+      this.resource = data.resource;
+      this.resource_id = this.getResourceId();
+      this.types = {
+        scholarships: 'ScholarshipDetailPage',
+        opportunities: 'OpportunityDetailPage',
+        all: 'NotificationDetailPage',
+      };
     }
   }
+
+  getResourceId(): string {
+    if (this.type === 'all') {
+      return this.resource.id;
+    } else {
+      return this.resource[0].id;
+    }
+  }
+
+  getRoute(): string {
+    return this.types[this.type];
+  }
+}
+
+interface ITypes {
+  scholarships: any;
+  opportunities: any;
+  all: any;
 }

@@ -65,7 +65,7 @@ export class PrizesPage {
   } 
 
   reset(): void {
-    this.limit = 20;
+    this.limit = 24;
     this.offset = 0;
     if (this.infinite) this.infinite.enable(true);
   }
@@ -90,6 +90,7 @@ export class PrizesPage {
 
   doInfinite(infiniteScroll: any): void {
     this.prizesService.getPrizes(this.offset, this.limit).subscribe((res: Model.Prize[]) => {
+      this.offset += res.length;
       this.prizesList = this.prizesList.concat(res);
       this.infinite = infiniteScroll;
       infiniteScroll.complete();

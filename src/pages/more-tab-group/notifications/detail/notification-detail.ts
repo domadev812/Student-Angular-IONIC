@@ -33,10 +33,8 @@ export class NotificationDetailPage {
 
   ngOnInit() {
     this.notification = new Model.Notification();
-    this.notificationId = this.navParams.get('notificationId');
-    // TODO: Remove below line once project is done.
-    this.notificationId = '58';
-    this.notificationService.getNotification(this.notificationId).subscribe((res: Model.Notification) => {      
+    this.notificationId = this.navParams.get('resourceId');
+    this.notificationService.getNotification(this.notificationId).subscribe((res: Model.Notification) => {
       if (res) {
         this.notification = res;
       }

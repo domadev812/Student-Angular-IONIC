@@ -27,7 +27,7 @@ export class OpportunityDetailPage {
 
   ngOnInit(): void {
     this.opportunity = new Model.Opportunity();
-    this.opportunityId = this.navParams.get('opportunityId');
+    this.opportunityId = this.navParams.get('resourceId');
     this.opportunitiesService.getOpportunity(this.opportunityId).subscribe((res: Model.Opportunity) => {
       this.opportunity = res;
     }, err => {

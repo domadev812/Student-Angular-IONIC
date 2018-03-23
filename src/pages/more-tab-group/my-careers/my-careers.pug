@@ -13,7 +13,7 @@
                 | Internships
               .kts-primary-btn.category-button((click)="gotoCareesPage('scholarship')")
                 | Scholarships    
-          selected-careers-widget.mobile-version([careers]="currentUser.careers")             
+          selected-careers-widget.mobile-version
           .select-careers    
             .title
               | {{sub_title}}
@@ -26,4 +26,4 @@
                 | Select based on career categories
               img.link-arow(src="assets/icon/link-arrow.svg") 
         .right-column      
-          selected-careers-widget.desktop-version([careers]="currentUser.careers")        
+          selected-careers-widget.desktop-version        

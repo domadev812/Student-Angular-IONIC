@@ -39,16 +39,16 @@ export class MyCareersPage {
   }
 
   getCurrentUser(): void {
-    this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
+    this.currentUserService.getCurrentUser(this.authProvider, true).then((res: Model.User) => {
       this.currentUser = res;
       if (!this.currentUser.careers) {
         this.currentUser.careers = [];
-      }
-      
+      }      
       if (this.currentUser.careers.length > 0) {
         this.sub_title = 'Edit My Careers';
       }
       this.careersService.setUserCareers(this.currentUser.careers);
+      this.careersService.careersChange();
     });
   }
 

@@ -10,12 +10,17 @@ import { Model } from '../../../app/app.models';
 export class NotificationsWidgetComponent implements OnInit {
 
   notifications: Array<Model.Notification> = new Array<Model.Notification>();
+  limit = '5';
+  offset = '0';
+  type: string;
+  resourceId: string;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public navService: NavigationService,
-    public notificationService: NotificationsService
+    public notificationService: NotificationsService,
+
   ) {
   }
 
@@ -23,13 +28,20 @@ export class NotificationsWidgetComponent implements OnInit {
     this.getNotifications();
   }
 
-
   getNotifications() {
-    this.notificationService.getNotifications().subscribe((res: Model.Notification[]) => {
+    this.notificationService.getNotifications(this.limit, this.offset).subscribe((res: Model.Notification[]) => {
       this.notifications = res;
     }, err => console.log('There was an error', err));
   }
   goToNotifications(): void {
     this.navCtrl.push('NotificationsPage');
+  }
+
+
+  goToNotificationDetail(id: string): void {
+    let selectedNot = this.notifications.find(x => x.id === id);
+    let route = selectedNot.getRoute();
+    let resourceId = selectedNot.resource_id;
+    this.navCtrl.push(route, { resourceId: resourceId });
   }
 }

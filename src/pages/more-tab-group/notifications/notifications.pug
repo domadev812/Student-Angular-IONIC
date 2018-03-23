@@ -7,13 +7,10 @@
     ion-content.lp-list
       .kts-card
         .kts-card-wrapper
-          //- a.kts-card-link( *ngFor="let notification of notifications", (click)="goToPage"($event))
-          a.kts-card-link( *ngFor="let notification of notifications")
+          a.kts-card-link( *ngFor="let notification of notifications", (click)="goToNotificationDetail(notification.id)")
             .kts-card-data
               h2.kts-card-item-header
                 | {{notification.subject}}
               h3.kts-card-item-info
                 | {{notification.organization_name}}
-            img.link-arrow(src="assets/icon/link-arrow.svg") 
-
-      
+            img.link-arrow(src="assets/icon/link-arrow.svg")   

@@ -1,44 +1,33 @@
 page-my-kts {
-  .content-wrapper{    
-    width: 1200px;
-    max-width: 1200px;
+  .content-wrapper{
+    padding: 10px 0 0 0;
+    width: 1080px;
+    max-width: 1080px;
     z-index: 2;
-    margin: 10px 0;
     @include md{
-      margin: 0px;
+      margin: 10px 10px 0 0;
     }
-  }
-  .lp-list {
-    .scroll-content {      
-      padding-top: 0;
-      padding-bottom: 100px;
-      @include md{
-        padding-top: 20px;
-        padding-bottom: 50px;
-      }
-    }
-  }
-  .kts-header-mobile {
-    margin-left:15px;
   }
   .single-column{
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 100%;    
-    min-height: auto;
-    height: auto;
-    @include md{      
+    width: 100%;
+    height: 100%;
+    min-height: 1000px;
+    @include md{
+      min-height: 550px;
       padding: 10px 0 0 0;
     }
   }
   .header-wrapper{
     position: fixed;
-  } 
+  }
+
   // Notifications
   .notifications-mobile{
-    margin: 10px 0 0;
+    margin: 10px 0px 10px 0px;
     @include md{
       display: none;
     }
@@ -58,13 +47,10 @@ page-my-kts {
       display: inline;
     }
   }
-
   .kts-link{
-    margin: 20px 15px 20px 15px;
-    @include md{
-      margin: 20px 8px 20px 12px;
-    }
+    z-index: 1;
   }
+
   // Social Media
   .social-media{
     height: 70px;
@@ -95,10 +81,11 @@ page-my-kts {
     }
     position: relative;
   }
+  // Banner
+  .spacer-110 {
+    height: 110px;
+  }
   .negative-margin {
     margin: -7px;
-  }
-  .fixed-content {
-    z-index: -1;
   }
 }

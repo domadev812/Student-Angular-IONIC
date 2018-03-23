@@ -58,14 +58,14 @@ export class ScholarshipsPage {
       }
     });
   }
-  
+
   ngAfterViewInit() {
     if (this.content.ionScroll) {
       this.content.ionScroll.subscribe((data) => {
         this.onPageScroll(data);
       });
     }
-  } 
+  }
 
   onFilterChange(event): void {
     this.my_filter = event.myScholarships;
@@ -121,6 +121,6 @@ export class ScholarshipsPage {
   }
 
   goToDetailPage(scholarshipId: string): void {
-    this.navCtrl.push('ScholarshipDetailPage', { scholarshipId: scholarshipId });
+    this.navCtrl.push('ScholarshipDetailPage', { resourceId: scholarshipId });
   }
 }

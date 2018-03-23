@@ -1,5 +1,5 @@
 .my-carrers-wrapper
-  .no-careers(*ngIf="length === 0")
+  .no-careers(*ngIf="careers.length === 0")
     .content-title.mobile-version
       | My Careers
     img.no-prize(src='assets/imgs/no_prize.svg')
@@ -7,11 +7,11 @@
       | Careers Selected
     .carrers-count
       | 0/5
-  .exist-careers(*ngIf="length > 0")  
+  .exist-careers(*ngIf="careers.length > 0")  
     .content-title
       | My Careers
     .career-list      
       ol
-        li.career-item(*ngFor="let career of _careers")
+        li.career-item(*ngFor="let career of careers")
           | {{career.title}}
 

@@ -53,7 +53,7 @@ export class CareersPage {
     this.filterService.opportunityFilterChange();
   }
 
-  ngOnDestroy() {    
+  ngOnDestroy() {
     this.internshipSubscription.unsubscribe();
     this.opportunitySubscription.unsubscribe();
     this.scrolledDown = true;
@@ -71,19 +71,19 @@ export class CareersPage {
       }
     });
   }
-  
+
   ngAfterViewInit() {
     if (this.content.ionScroll) {
       this.content.ionScroll.subscribe((data) => {
         this.onPageScroll(data);
       });
     }
-  } 
+  }
 
   onOpportunityFilterChange(event): void {
     //TODO: CALL API WITH FILTER WHEN BACKEND IS READY
-    this.my_opportunity = event.myOpportunities; 
-    this.my_filter = this.my_opportunity;   
+    this.my_opportunity = event.myOpportunities;
+    this.my_filter = this.my_opportunity;
     if (!this.pageToggle) {
       this.getOpportunities();
     }
@@ -130,7 +130,7 @@ export class CareersPage {
     } else {
       this.pageToggle = false;
       this.currentType = 'Other';
-      this.my_filter = this.my_opportunity; 
+      this.my_filter = this.my_opportunity;
     }
     this.getOpportunities();
   }
@@ -159,6 +159,6 @@ export class CareersPage {
   }
 
   goToDetailPage(opportunityId: string): void {
-    this.navCtrl.push('OpportunityDetailPage', { opportunityId: opportunityId });
+    this.navCtrl.push('OpportunityDetailPage', { resourceId: opportunityId });
   }
 }

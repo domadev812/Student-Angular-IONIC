@@ -82,9 +82,10 @@ export class CareersSelectPage {
   }
 
   saveCareers() {   
-    let career_ids = this.selectedCareers.map(career => career.id);
+    let career_ids = this.selectedCareers.map(career => career.id);    
     this.careerService.addUserCareers(career_ids).subscribe((res: boolean) => {  
       this.alert.toast('Add user careers successfully');
+      this.filterCareersService.selectedCategory = null;
       this.navCtrl.push('MyCareersPage');      
     }, err => {
       this.alert.handleError(err);

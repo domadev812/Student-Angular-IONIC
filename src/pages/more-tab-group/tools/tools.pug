@@ -6,7 +6,7 @@
         | Tools 
     .scroll-content.tool-content    
         ul
-          li(*ngFor="let tool of toolsList;")                    
+          li(*ngFor="let tool of toolsList;", [ngClass]="{'desktop-version': !tool.is_mobile}")                    
             a.kts-card-item.tool-item((click)="openURL(tool.url)")
               .tool-name
                 | {{tool.name}}

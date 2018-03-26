@@ -37,6 +37,11 @@ page-tools {
       max-width: 540px;   
     }
   }
+  .desktop-version {
+    @include md-max{
+      display: none;
+    }
+  }
   .tool-content {
     margin-top: 60px;
     background: none;

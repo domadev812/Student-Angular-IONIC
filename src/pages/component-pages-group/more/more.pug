@@ -14,6 +14,12 @@
     ion-col.more-item(col-12, (click)="goToPage('ToolsPage', $event)")
       | Tools
       ion-icon.arrow-icon(ios="ios-arrow-forward", md="ios-arrow-forward")
+    ion-col.more-item(col-12, (click)="goToPage('SponsorsPage', $event)")
+      | Sponsors
+      ion-icon.arrow-icon(ios="ios-arrow-forward", md="ios-arrow-forward")
+    ion-col.more-item(col-12, (click)="openUtahURL($event)")
+      | Explore Utah Futures
+      ion-icon.arrow-icon(ios="ios-arrow-forward", md="ios-arrow-forward")
     .more-spacer
     ion-col.more-item(col-12, (click)="goToPage('AccountSettingsPage', $event)")
       | Account Settings

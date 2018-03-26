@@ -39,6 +39,10 @@ export class MorePage {
     this.dismissIfPopover();
   }
 
+  openUtahURL(event: any): void  {
+    window.open('https://www.utahfutures.org/', '_blank');
+  }
+
   dismissIfPopover() {
     if (this.viewCtrl.isOverlay) {
       this.viewCtrl.dismiss();

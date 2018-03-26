@@ -1,0 +1,8 @@
+.page-wrapper
+  .content-wrapper
+    ion-col.lp-list-col(col-12 col-md-8)
+      mobile-header([isScrolled]="isScrolled", [title]="title")
+    ion-content.lp-list
+      ion-row(wrap)
+        ion-col.sponsor-col(col-12, col-md-6, *ngFor="let sponsor of sponsorsLogoList; let i = index")
+          .logo([ngStyle]="{'background-image': 'url(../../../assets/imgs/sponsors/' + sponsor.img_name + ')'}")

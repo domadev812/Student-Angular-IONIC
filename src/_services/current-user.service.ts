@@ -7,6 +7,7 @@ import { Http, Response } from '@angular/http';
 import { AuthService } from '../app/app.services.list';
 import { JwtHelper } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
+import { FCM } from '@ionic-native/fcm';
 
 @Injectable()
 export class CurrentUserService {
@@ -17,6 +18,7 @@ export class CurrentUserService {
 
   token: string = undefined;
   jwtHelper: JwtHelper = new JwtHelper();
+  fcm: FCM = new FCM;
 
   notifyObservable$ = this.notify.asObservable();
   constructor(private http?: Http) {
@@ -143,7 +145,34 @@ export class CurrentUserService {
       });
   }
 
-  pointsChange(): void { 
+  setRegistrationToken(registration_token: string): Observable<boolean> {
+    return this.http.post(`/users/${this.currentUser.id}/register`, {registration_token: registration_token})
+      .map((response: Response) => {
+        const json = response.json();
+        if (json && json.data) {
+          this.watchNotifications();
+          return true;
+        } else {
+          Observable.throw({ message: 'Internal Server Error', response });
+        }
+      });
+  }
+
+  getRegistrationToken(): Promise<string> {
+    return this.fcm.getToken();
+  }
+
+  watchNotifications() {
+    this.fcm.onNotification().subscribe(data => {
+      if (data.wasTapped) {
+        console.log('Received in background', data);
+      } else {
+        console.log('Received in foreground', data);
+      }
+    });
+  }
+
+  pointsChange(): void {
     if (this.currentUser) { 
       this.pointsEvent.emit(this.currentUser.points);
     } else {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Model } from '../../../app/app.models';
-import { AuthService, NavigationService, MultiselectService, AlertService } from '../../../app/app.services.list';
+import { AuthService, NavigationService, MultiselectService, AlertService, CurrentUserService } from '../../../app/app.services.list';
 import { ToastController, LoadingController, NavController, Platform } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
@@ -48,7 +48,8 @@ export class SignupFormComponent {
     public formBuilder: FormBuilder,
     public navService: NavigationService,
     public platform: Platform,
-    public alert: AlertService
+    public alert: AlertService,
+    public currentUserService: CurrentUserService
   ) { }
 
   ngOnInit(): void {
@@ -131,7 +132,8 @@ export class SignupFormComponent {
       loader.present().then(() => {
         this.authService
           .signup(this.user)
-          .subscribe((res) => {
+          .subscribe(async (res) => {
+            this.currentUserService.setRegistrationToken(await this.currentUserService.getRegistrationToken())
             this.navCtrl.setRoot(this.navService.HOME);
             loader.dismiss();
             this.alert.toast('Account Created Successfully');

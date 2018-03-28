@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, App } from 'ionic-angular';
 import { 
   NavigationService,
   ScholarshipsService,
@@ -28,7 +28,9 @@ export class ScholarshipApplyPage {
     public currentUserService: CurrentUserService,
     public scholarshipsService: ScholarshipsService,
     public organizationService: OrganizationService,
-    public alert: AlertService
+    public alert: AlertService,
+    public viewCtrl: ViewController,
+    public app: App
   ) {
   }
 
@@ -60,5 +62,24 @@ export class ScholarshipApplyPage {
     }, err => {
       // this.alert.handleError(err);
     });
+  }
+
+  goBack() {
+    if (this.navCtrl.canGoBack()) {
+      this.navCtrl.pop();
+    } else {
+      this.goToPage('MyKtsPage', null);
+    }
+  }
+
+  goToPage(page: string, event: any): void {
+    this.app.getActiveNavs()[0].setRoot(page);
+    this.dismissIfPopover();
+  }
+
+  dismissIfPopover() {
+    if (this.viewCtrl.isOverlay) {
+      this.viewCtrl.dismiss();
+    }
   }
 }

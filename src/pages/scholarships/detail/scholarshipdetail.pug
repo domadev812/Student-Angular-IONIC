@@ -2,6 +2,7 @@
   .spinner-container(*ngIf="loading")
     ion-spinner
   .content-wrapper
+    mobile-header([isScrolled]="isScrolled", [title]="title", [isArrowBack]="'true'")
     .left-column    
       .organization
         img.logo(src="{{imageUrlCreate(scholarship.organization_id, scholarship.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='../../assets/icon/scholarship_placeholder.svg'")

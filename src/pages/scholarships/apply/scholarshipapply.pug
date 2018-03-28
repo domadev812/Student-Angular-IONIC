@@ -2,8 +2,10 @@
   .content-wrapper
     form.form-group(#contactForm="ngForm", (ngSubmit)="applyScholarship(contactForm.valid)", novalidate)
       .header-nav
-        h1.headers
-          | Apply
+        .header-title
+          ion-icon.arrow-back-icon(tappable, ios="ios-arrow-back", md="ios-arrow-back", (click)="goBack()")
+          h1.headers
+            | Apply
         .button-group
             button.kts-primary-btn.send-button(type="submit")
               | Submit

@@ -3,6 +3,7 @@
     ion-spinner
   .content-wrapper
     .header-nav
+      ion-icon.arrow-back-icon(tappable, ios="ios-arrow-back", md="ios-arrow-back", (click)="goBack()")
       h1.headers
         | Order Review
     .review-content

@@ -13,6 +13,7 @@ export class MobileHeaderComponent {
 
   @Input() isScrolled = true;
   @Input() title;
+  @Input() isArrowBack = false;
 
   pointsSubscription: Subscription;
   points: number;

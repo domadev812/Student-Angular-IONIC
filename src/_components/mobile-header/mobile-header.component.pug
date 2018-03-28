@@ -1,4 +1,5 @@
 .mobile-header-wrapper.before-scroll-header(*ngIf="!isScrolled")
+  ion-icon.arrow-back-icon(tappable, ios="ios-arrow-back", md="ios-arrow-back", (click)="goBack()", *ngIf="isArrowBack")
   h1.kts-header-mobile
     | {{title}}
 .mobile-header-wrapper.after-scroll-header(*ngIf="isScrolled")

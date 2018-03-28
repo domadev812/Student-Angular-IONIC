@@ -1,4 +1,9 @@
 page-prizeshow { 
+  .page-wrapper {
+    @include md-max{
+      top: 60px;
+    }
+  }
   .prize-page-wrapper {
     width: 100vw;
   }

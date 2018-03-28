@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { PrizeShowPage } from './prizeshow';
+import { MobileHeaderModule } from '../../../app/app.modules.list';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { PrizeShowPage } from './prizeshow';
   ],
   imports: [
     IonicPageModule.forChild(PrizeShowPage),
+    MobileHeaderModule,
   ],
 })
 export class PrizesPageModule { }

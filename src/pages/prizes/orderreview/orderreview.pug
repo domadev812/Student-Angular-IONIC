@@ -1,4 +1,6 @@
 .page-wrapper
+  .spinner-container(*ngIf="loading")
+    ion-spinner
   .content-wrapper
     .header-nav
       h1.headers
@@ -6,9 +8,9 @@
     .review-content
       .left-column    
         .organization
-          img.logo(src="https://image.ibb.co/b8di2n/logo1.png")
+          img.logo(src="{{imageUrlCreate(prize.organization_id, prize.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='../../assets/icon/prize_placeholder.svg'")
           .title
-            | University of Utah Alumni          
+            | {{prize.organization.name}}         
       .right-column
         .review-detail
           .transaction-detail

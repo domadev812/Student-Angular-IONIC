@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AuthService, NavigationService, AlertService, CurrentUserService } from '../../../app/app.services.list';
-import { ToastController, LoadingController, NavController } from 'ionic-angular';
+import { ToastController, LoadingController, NavController, Platform } from 'ionic-angular';
 @Component({
   selector: 'login-form',
   templateUrl: 'login-form.html'
@@ -15,7 +15,8 @@ export class LoginFormComponent {
     public navCtrl: NavController,
     public navService: NavigationService,
     public alert: AlertService,
-    public currentUserService: CurrentUserService
+    public currentUserService: CurrentUserService,
+    public platform: Platform
   ) {
 
   }
@@ -30,7 +31,9 @@ export class LoginFormComponent {
         .subscribe(async (response) => {
           if (response === true) {
             this.alert.toast('You have successfully logged in.');
-            this.currentUserService.setRegistrationToken(await this.currentUserService.getRegistrationToken()).subscribe()
+            if (this.platform.is('android') || this.platform.is('ios')) {
+              this.currentUserService.setRegistrationToken(await this.currentUserService.getRegistrationToken()).subscribe();
+            }
             if (this.redirectUrl) {
               window.location.href = this.redirectUrl;
               loader.dismiss();

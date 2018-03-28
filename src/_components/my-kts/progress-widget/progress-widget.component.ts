@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import * as Service from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 import { NavController } from 'ionic-angular';
-import { AlertService } from '../../../_services/alert.service';
+import { AlertService, AuthService } from '../../../app/app.services.list';
 
 @Component({
   selector: 'progress-widget',
   templateUrl: 'progress-widget.component.html'
 })
 export class ProgressWidgetComponent implements OnInit {
-
   text: string;
   userProgress: Model.UserProgress;
   prizesAmount = 0;
@@ -19,18 +18,19 @@ export class ProgressWidgetComponent implements OnInit {
   constructor(
     private currentUserService: Service.CurrentUserService,
     public navCtrl: NavController,
-    public alert: AlertService
+    public alert: AlertService,
+    public authService: AuthService
   ) { }
 
-  ngOnInit() {
-    this.currentUserService.getUserProgress().subscribe((res) => {
-      this.userProgress = res;
-      this.prizesAmount = this.userProgress.prizes.length;
-      this.opportunitiesAmount = this.userProgress.other_opportunities.length + this.userProgress.internships.length;
-      this.scholarshipsAmount = this.userProgress.scholarships.length;
-    }, err => {
+  async ngOnInit() {
+    try {
+      let user: Model.User = await this.currentUserService.getCurrentUser(this.authService);
+      this.prizesAmount = user.prize_count;
+      this.opportunitiesAmount = user.opportunity_count;
+      this.scholarshipsAmount = user.scholarship_count;
+    } catch (err) {
       this.alert.handleError(err);
-    });
+    }
   }
 
   goToProgress() {

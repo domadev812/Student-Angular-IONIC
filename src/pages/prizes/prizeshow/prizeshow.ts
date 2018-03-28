@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, PrizesService, AuthService, CurrentUserService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
+import { ImageUtil } from '../../../_utils/image.util';
 
 @IonicPage()
 @Component({
@@ -12,6 +13,9 @@ export class PrizeShowPage {
   public prizeId: string;
   public prize: Model.Prize = new Model.Prize({});
   public prizePoints: string;
+  public imageUrlCreate = ImageUtil.createImageUrl;
+  public loading = false;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,12 +32,15 @@ export class PrizeShowPage {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.prizeId = this.navParams.get('prizeId');
     this.prizesService.getPrize(this.prizeId).subscribe((res: Model.Prize) => {
       if (res) {
         this.prize = res;
+        this.loading = false;
       }
     }, err => {
+      this.loading = false;
       this.alert.handleError(err);
     });
   }

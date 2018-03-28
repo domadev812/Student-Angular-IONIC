@@ -80,7 +80,7 @@ export class CurrentUserService {
   set(token: string, user: any): boolean {
     window.localStorage.setItem('Token', token);
     let parsedUser = new Model.User(user);
-    this.load(parsedUser);    
+    this.load(parsedUser);
     return this.authenticated();
   }
 
@@ -146,7 +146,7 @@ export class CurrentUserService {
   }
 
   setRegistrationToken(registration_token: string): Observable<boolean> {
-    return this.http.post(`/users/${this.currentUser.id}/register`, {registration_token: registration_token})
+    return this.http.post(`/users/${this.currentUser.id}/register`, { registration_token: registration_token })
       .map((response: Response) => {
         const json = response.json();
         if (json && json.data) {
@@ -173,7 +173,7 @@ export class CurrentUserService {
   }
 
   pointsChange(): void {
-    if (this.currentUser) { 
+    if (this.currentUser) {
       this.pointsEvent.emit(this.currentUser.points);
     } else {
       this.pointsEvent.emit(null);

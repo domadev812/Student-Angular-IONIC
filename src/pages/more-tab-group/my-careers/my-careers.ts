@@ -14,6 +14,7 @@ export class MyCareersPage {
 
   currentUser: Model.User;
   sub_title: string;
+  loading: boolean;
 
   isScrolled = false;
   title = 'My Careers';
@@ -33,6 +34,7 @@ export class MyCareersPage {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.currentUser = new Model.User();
     this.sub_title = 'Start Selecting Careers';
     this.getCurrentUser();
@@ -41,9 +43,10 @@ export class MyCareersPage {
   getCurrentUser(): void {
     this.currentUserService.getCurrentUser(this.authProvider, true).then((res: Model.User) => {
       this.currentUser = res;
+      this.loading = false;
       if (!this.currentUser.careers) {
         this.currentUser.careers = [];
-      }      
+      }
       if (this.currentUser.careers.length > 0) {
         this.sub_title = 'Edit My Careers';
       }
@@ -60,10 +63,10 @@ export class MyCareersPage {
     }
   }
 
-  gotoSelectCareers(type: string): void {    
-    this.navCtrl.push('CareersSelectPage', {type: type}); 
+  gotoSelectCareers(type: string): void {
+    this.navCtrl.push('CareersSelectPage', { type: type });
   }
-     
+
   onPageScroll(data) {
     this.zone.run(() => {
       if (data.scrollTop > 0) {
@@ -73,7 +76,7 @@ export class MyCareersPage {
       }
     });
   }
-  
+
   ngAfterViewInit() {
     if (this.content.ionScroll) {
       this.content.ionScroll.subscribe((data) => {

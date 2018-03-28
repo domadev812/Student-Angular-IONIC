@@ -1,8 +1,10 @@
 .page-wrapper
+  .spinner-container(*ngIf="loading")
+    ion-spinner
   .content-wrapper
     .left-column    
       .organization
-        img.logo(src="https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg")
+        img.logo(src="{{imageUrlCreate(opportunity.organization.id, opportunity.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='../../assets/icon/opportunity_placeholder.svg'")
         .title
           | {{opportunity.title}}
         .organization-name

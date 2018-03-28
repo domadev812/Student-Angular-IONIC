@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ModalController, Content } from 'i
 import { NavigationService, FilterService, OpportunitiesService, AlertService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
 import { Subscription } from 'rxjs/Subscription';
+import { ImageUtil } from '../../_utils/image.util';
+import { Opportunity } from '../../_models/opportunity.model';
 
 @IonicPage()
 @Component({
@@ -29,6 +31,8 @@ export class CareersPage {
   scrolledDown: boolean;
   isScrolled = false;
   title = 'Careers';
+  public imageUrlCreate = ImageUtil.createImageUrl;
+  loading: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -47,6 +51,7 @@ export class CareersPage {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.internshipSubscription = this.filterService.newInternshipEvent.subscribe(event => this.onInternshipFilterChange(event));
     this.opportunitySubscription = this.filterService.newOpportunityEvent.subscribe(event => this.onOpportunityFilterChange(event));
     this.filterService.internshipFilterChange();
@@ -102,7 +107,6 @@ export class CareersPage {
     this.limit = 20;
     this.offset = 0;
     this.input = '';
-    if (this.infinite) this.infinite.enable(true);
   }
 
   openFilterModal(): void {
@@ -122,8 +126,8 @@ export class CareersPage {
     });
   }
 
-  toggle(iternship: boolean): void {
-    if (iternship) {
+  toggle(internship: boolean): void {
+    if (internship) {
       this.pageToggle = true;
       this.currentType = 'Internship';
       this.my_filter = this.my_internship;
@@ -132,15 +136,18 @@ export class CareersPage {
       this.currentType = 'Other';
       this.my_filter = this.my_opportunity;
     }
+    if (this.infinite) this.infinite.enable(true);
     this.getOpportunities();
   }
 
   getOpportunities(): void {
     this.reset();
     this.opportunitiesService.getOpportunities(this.currentType, this.my_filter).subscribe((res: Model.Opportunity[]) => {
+      this.loading = false;
       this.opportunitiesList = res;
       this.offset = res.length;
     }, err => {
+      this.loading = false;
       this.alert.handleError(err);
     });
   }

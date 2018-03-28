@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, Content } from 'i
 import { NavigationService, FilterService, ScholarshipsService, AlertService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
 import { Subscription } from 'rxjs/Subscription';
+import { ImageUtil } from '../../_utils/image.util';
 
 @IonicPage()
 @Component({
@@ -23,6 +24,8 @@ export class ScholarshipsPage {
   subscription: Subscription;
   isScrolled = false;
   title = 'Scholarhips';
+  public imageUrlCreate = ImageUtil.createImageUrl;
+  loading: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -41,6 +44,7 @@ export class ScholarshipsPage {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.subscription = this.filterService.newScholarshipEvent.subscribe(event => this.onFilterChange(event));
     this.filterService.scholarshipFilterChange();
   }
@@ -90,9 +94,11 @@ export class ScholarshipsPage {
   getScholarships(): void {
     this.reset();
     this.scholarshipsService.getScholarships(this.my_filter, this.school_id).subscribe((res: Model.Scholarship[]) => {
+      this.loading = false;
       this.scholarshipsList = res;
       this.offset = res.length;
     }, err => {
+      this.loading = false;
       this.alert.handleError(err);
     });
   }

@@ -12,7 +12,7 @@ export class Opportunity {
   organization_id: number;
   link: string;
 
-  constructor(data: any = null) {
+  constructor(data = null) {
     if (data) {
       this.id = data.id;
       this.is_active = data.is_active;
@@ -24,8 +24,7 @@ export class Opportunity {
       this.organization_name = data.organization_name;
       this.organization_id = data.organization_id;
       this.link = data.link;
-    } else {
-      this.organization = new Organization();
+      this.organization = new Organization(data.organization || {});
     }
   }
 }

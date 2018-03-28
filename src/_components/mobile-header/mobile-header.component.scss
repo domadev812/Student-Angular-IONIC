@@ -11,17 +11,20 @@ mobile-header {
     }
   }
   
+  .before-scroll-header{
+    height: 65px;
   .kts-header-mobile{
     opacity: 0;
+    margin: 0 0 0 0;
     -webkit-animation: fadeIn .3s ease-in 1 forwards;
     animation: fadeIn .3s ease-in 1 forwards;
   }
+  }
   .after-scroll-header{
-    height: 34px;
+    height: 45px;
     margin-top: -1px;
     text-align: center;
     background: white;
-    border-bottom: 1px solid #EDEDF2;
     .kts-header-mobile-scroll{
       margin-top: 12px;
       font-size: 16px;
@@ -39,12 +42,16 @@ mobile-header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 45px;
-    margin: -38px 0 0 0;
+    height: 30px;
+    margin: -50px 0 3px 0;
     @include md{
       display: none;
     }
+    &.after-scroll{
+      margin: -38px 0 0 0;
+    }
   }
+
   .points-btn {
     @extend .center;
     position: relative;

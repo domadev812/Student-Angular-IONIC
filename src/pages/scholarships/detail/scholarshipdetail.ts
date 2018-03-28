@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, ScholarshipsService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
+import { ImageUtil } from '../../../_utils/image.util';
 
 @IonicPage()
 @Component({
@@ -11,6 +12,8 @@ import { Model } from '../../../app/app.models';
 export class ScholarshipDetailPage {
   public scholarshipId: string;
   public scholarship: Model.Scholarship;
+  public imageUrlCreate = ImageUtil.createImageUrl;
+  public loading: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -26,12 +29,15 @@ export class ScholarshipDetailPage {
   }
 
   ngOnInit() {
-    this.scholarship = new Model.Scholarship(null);
+    this.scholarship = new Model.Scholarship({});
+    this.loading = true;
     this.scholarshipId = this.navParams.get('resourceId');
     this.scholarshipsService.getScholarship(this.scholarshipId).subscribe((res: Model.Scholarship) => {
+      this.loading = false;
       this.scholarship = res;
       console.log(this.scholarship);
     }, err => {
+      this.loading = false;
       this.alert.handleError(err);
     });
   }

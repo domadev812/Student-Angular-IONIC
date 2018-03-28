@@ -7,6 +7,7 @@ import { NavigationService } from '../../../app/app.services.list';
   selector: 'page-tools',
   templateUrl: 'tools.html',
 })
+
 export class ToolsPage {
   // TODO: Change url values once project is done.
   toolsList = [{name: 'Career Cluster Inventory', url: 'https://utahfutures.org/assessments/career-cluster-traditional', is_mobile: true},

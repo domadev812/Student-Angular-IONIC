@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { NavigationService, NotificationsService } from '../../../app/app.services.list';
+import { NavigationService, NotificationsService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 
 @Component({
@@ -12,7 +12,6 @@ export class NotificationsWidgetComponent implements OnInit {
   notifications: Array<Model.Notification> = new Array<Model.Notification>();
   limit = '5';
   offset = '0';
-  type: string;
   resourceId: string;
 
   constructor(
@@ -20,7 +19,7 @@ export class NotificationsWidgetComponent implements OnInit {
     public navParams: NavParams,
     public navService: NavigationService,
     public notificationService: NotificationsService,
-
+    public alert: AlertService,
   ) {
   }
 
@@ -31,7 +30,10 @@ export class NotificationsWidgetComponent implements OnInit {
   getNotifications() {
     this.notificationService.getNotifications(this.limit, this.offset).subscribe((res: Model.Notification[]) => {
       this.notifications = res;
-    }, err => console.log('There was an error', err));
+      this.offset += res.length;
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
   goToNotifications(): void {
     this.navCtrl.push('NotificationsPage');

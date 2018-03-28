@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, OpportunitiesService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
+import { ImageUtil } from '../../../_utils/image.util';
 
 @IonicPage()
 @Component({
@@ -11,6 +12,9 @@ import { Model } from '../../../app/app.models';
 export class OpportunityDetailPage {
   public opportunityId: string;
   public opportunity: Model.Opportunity;
+  public organization: Model.Organization;
+  public imageUrlCreate = ImageUtil.createImageUrl;
+  loading: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -26,11 +30,14 @@ export class OpportunityDetailPage {
   }
 
   ngOnInit(): void {
-    this.opportunity = new Model.Opportunity();
+    this.opportunity = new Model.Opportunity({});
+    this.loading = true;
     this.opportunityId = this.navParams.get('resourceId');
     this.opportunitiesService.getOpportunity(this.opportunityId).subscribe((res: Model.Opportunity) => {
+      this.loading = false;
       this.opportunity = res;
     }, err => {
+      this.loading = false;
       this.alert.handleError(err);
     });
   }

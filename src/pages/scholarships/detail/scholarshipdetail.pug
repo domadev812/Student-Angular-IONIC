@@ -1,8 +1,10 @@
 .page-wrapper
+  .spinner-container(*ngIf="loading")
+    ion-spinner
   .content-wrapper
     .left-column    
       .organization
-        img.logo(src="https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg")
+        img.logo(src="{{imageUrlCreate(scholarship.organization_id, scholarship.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='../../assets/icon/scholarship_placeholder.svg'")
         .title
           | {{scholarship.title}}
         .price

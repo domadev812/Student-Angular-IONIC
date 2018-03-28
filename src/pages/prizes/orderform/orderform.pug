@@ -1,4 +1,6 @@
 .page-wrapper
+  .spinner-container(*ngIf="loading")
+    ion-spinner
   .content-wrapper
     form.form-group(#orderForm="ngForm", (ngSubmit)="gotoNext(orderForm.valid)", novalidate)
       .header-nav

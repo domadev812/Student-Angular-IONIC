@@ -65,6 +65,7 @@ export class OrderFormPage {
   selectedState: Object[] = [];
   ktsSelectSettings: Object = {};
   address: Model.Address;
+  loading: boolean;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -77,6 +78,7 @@ export class OrderFormPage {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.ktsSelectSettings = MultiSelectUtil.selectOptions({ text: 'Select State' });
     this.prizeId = this.navParams.get('prizeId');
     this.address = new Model.Address();
@@ -110,6 +112,7 @@ export class OrderFormPage {
   getAddress(): void {
     this.addressService.getAddress().subscribe((res: Model.Address[]) => {
       if (res.length > 0) {
+        this.loading = false;
         this.address = res[0];
         let savedState = this.stateList.find(state => state['state'] === this.address.state);
         if (savedState) {
@@ -117,6 +120,7 @@ export class OrderFormPage {
         }
       }
     }, err => {
+      this.loading = false;
       this.alert.handleError(err);
     });
   }

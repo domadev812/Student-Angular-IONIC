@@ -15,6 +15,10 @@ export class NotificationsPage {
   notifications: Array<Model.Notification> = new Array<Model.Notification>();
   isScrolled = false;
   title = 'Notifications';
+  limit = '50';
+  offset = '0';
+
+  loading: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -31,13 +35,17 @@ export class NotificationsPage {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.getNotifications();
   }
 
   getNotifications() {
-    this.notificationService.getNotifications().subscribe((res: Model.Notification[]) => {
+    this.notificationService.getNotifications(this.limit, this.offset).subscribe((res: Model.Notification[]) => {
+      this.loading = false;
       this.notifications = res;
+      console.log(this.notifications);
     }, err => {
+      this.loading = false;
       this.alert.handleError(err);
     });
   }

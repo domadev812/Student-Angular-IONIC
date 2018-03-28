@@ -1,3 +1,7 @@
 page-careers {
-  
+  .spinner-container {
+    @include md{
+      padding-left: 400px;
+    }
+  }
 }

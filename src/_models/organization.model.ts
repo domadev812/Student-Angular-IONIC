@@ -1,6 +1,8 @@
 
+import { ImageUtil } from '../_utils/image.util';
+
 export class Organization {
-  id: number;
+  id: string;
   name: string;
   school_id: string;
   type: string;
@@ -9,7 +11,7 @@ export class Organization {
   created_at: Date;
   images: any;
 
-  constructor(data = null) {
+  constructor(data) {
     if (data) {
       this.id = data.id;
       this.name = data.name;
@@ -18,7 +20,7 @@ export class Organization {
       this.url = data.url;
       this.updated_at = data.updated_at;
       this.created_at = data.created_at;
-      this.images = data.images;
+      this.images = data.images || [];
     }
   }
 }

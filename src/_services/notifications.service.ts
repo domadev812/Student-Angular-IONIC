@@ -17,7 +17,7 @@ export class NotificationsService {
     return this.http.get(url)
       .map((response: Response) => {
         const json = response.json();
-        
+
         if (json && json.data) {
           return Model.initializeArray(json.data, 'Notification');
         } else {
@@ -29,7 +29,7 @@ export class NotificationsService {
   getNotification(id: string): Observable<Model.Notification> {
     return this.http.get('/notifications/' + id)
       .map((response: Response) => {
-        const json = response.json();        
+        const json = response.json();
         if (json && json.data) {
           return new Model.Notification(json.data);
         } else {

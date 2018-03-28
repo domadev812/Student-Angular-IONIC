@@ -6,7 +6,7 @@ page-prizes {
     max-width: 1080px;
     margin: 0 5px 10px 5px;    
     @include md{
-      margin: 20px 15px;    
+      margin: 0 15px 0 15px;    
     }
   }
   .balance-points {
@@ -19,16 +19,21 @@ page-prizes {
       padding-bottom: 0;
     }
   }
+  @include md{
+    .lp-list-col{
+      padding: 0 !important;
+    }
+  }
   .lp-list {    
-    margin-top: 0px;
+    margin-top: 10px;
     @include md{
-      margin-top: 5px;
+      margin-top: 0;
     }
     .scroll-content {
-      padding: 0px;
-      padding-bottom: 50px;
+      padding: 0 0 10px 0;
+      height: calc(100vh - 90px);
       @include md{
-        padding-bottom: 100px;
+        height: calc(100vh - 50px);
       }
     }
   }  
@@ -40,7 +45,7 @@ page-prizes {
     background-color: #FFFFFF;
     border-radius: 7px;
     box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35);        
-    padding: 10px 0;
+    padding: 10px 0 5px 0;
   }
   .line {
     background-color: #ebebeb;    
@@ -51,8 +56,7 @@ page-prizes {
     }
   }
   .logo {
-    width: 80%;
-    padding-top: 80%; 
+    padding: 25px;
     margin: auto;    
     background-repeat: no-repeat;
     background-size: contain;

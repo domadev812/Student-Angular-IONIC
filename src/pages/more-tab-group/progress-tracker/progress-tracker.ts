@@ -20,6 +20,7 @@ export class ProgressTrackerPage {
 
   isScrolled = false;
   title = 'Progress';
+  loading: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -32,6 +33,7 @@ export class ProgressTrackerPage {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.getUserProgress();
     this.prizes = new Array<Model.Prize>();
     this.scholarships = new Array<Model.Scholarship>();
@@ -51,14 +53,22 @@ export class ProgressTrackerPage {
         if (res.other_opportunities) this.opportunities = res.other_opportunities;
         if (res.internships) this.internships = res.internships;
         if (res.scholarships) this.scholarships = res.scholarships;
+        this.loading = false;
       }
     }, err => {
+      this.loading = false;
       this.alert.handleError(err);
     });
   }
 
-  goToPage(page, param, event) {
-    this.navCtrl.push(page, param);
+  goToScholarshipDetailPage(scholarshipId: string): void {
+    this.navCtrl.push('ScholarshipDetailPage', { resourceId: scholarshipId });
+  }
+  goToPrizeDetailPage(prizeId: string): void {
+    this.navCtrl.push('PrizeShowPage', { prizeId: prizeId });
+  }
+  goToOpportunityDetailPage(opportunityId: string): void {
+    this.navCtrl.push('OpportunityDetailPage', { resourceId: opportunityId });
   }
 
   onPageScroll(data) {
@@ -70,7 +80,7 @@ export class ProgressTrackerPage {
       }
     });
   }
-  
+
   ngAfterViewInit() {
     if (this.content.ionScroll) {
       this.content.ionScroll.subscribe((data) => {

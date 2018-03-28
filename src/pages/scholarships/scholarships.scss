@@ -1,5 +1,8 @@
 page-scholarships {
 
-
-
+  .spinner-container {
+    @include md{
+      padding-left: 400px;
+    }
+  }
 }

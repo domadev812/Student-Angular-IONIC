@@ -2,9 +2,13 @@ login-form {
   color: #FFFFFF;
   width: 75%;
   max-width: 500px;
-  margin-top: 100px;
+  margin-top: -150px;
   .login-header {
-    margin-bottom: 30px;
+    display: none;
+    @include md {
+      display: block;
+      margin-bottom: 30px;
+    }
   }
   .login-input-label {
     &.password-label {
@@ -20,13 +24,16 @@ login-form {
   .login-button {
     margin-top: 30px;
     background-color: #EC305E;
+    width: 100%;
+    @include md {
     width: 50%;
+    }
   }
   .login-bottom-section {
     margin-top: 70px;
   }
-  @include md {
-    margin-top: 150px;
-  }
+  // @include md {
+  //   margin-top: 150px;
+  // }
   
 }

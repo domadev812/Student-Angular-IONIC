@@ -21,9 +21,6 @@ page-progress-tracker {
       }
     }
   }
-  .kts-header-mobile {
-    margin-left: 20px;
-  }
   .lp-list {
     .scroll-content {
       padding-top: 0;
@@ -46,15 +43,11 @@ page-progress-tracker {
           font-size: 36px;
           width: 725px;
           @include lg {
-            padding-top: 10px;
             width: 930px;
-            display: block;
             position: absolute;
           }
           @include xl {
             width: 1086px;
-            display: block;
-            position: absolute;
           }
         }
       }
@@ -63,10 +56,6 @@ page-progress-tracker {
     padding: 0px;
   @include md{
     padding-top: 10px;
-    @include lg{
-      padding-top: 60px;
-    }
-
   }
     .progress-card-wrapper {
       display: flex;
@@ -74,12 +63,18 @@ page-progress-tracker {
       max-width: 715px;
       width: auto;
       padding: 15px 29px 0px 23px;
-      margin: 17px 20px 3px 9px;
+      margin: 17px 9px 3px 9px;
+      &.first-card{
+        margin: 7px 9px 3px 9px;
+      }
       @include md{
         box-shadow: 0 0 4px 2px $color-shadow;
         border-radius: 6px;
         padding: 24px 40px 17px 40px;
         margin: 10px 6px;
+        &.first-card{
+          margin: 10px 6px;
+        }
         width: 350px;
       }
       @include lg {
@@ -92,6 +87,7 @@ page-progress-tracker {
       background: white;
       border-radius: 8px;
       box-shadow: 0 0 10px 5px $color-shadow;
+
     }
     .progress-title-row{
       display: flex;
@@ -168,4 +164,15 @@ page-progress-tracker {
         width: 25px;
       }
     }
-  }
+    .lp-list-col {
+      @include lg{
+        padding: 70px 0 0 10px !important;
+      }
+    }
+    .scroll-content {
+      height: calc(100vh - 90px);
+      @include md{
+        height: calc(100vh - 50px);
+      }
+    }
+  }  

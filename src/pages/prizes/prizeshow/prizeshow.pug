@@ -1,10 +1,12 @@
 ion-content.page-wrapper
+  .spinner-container(*ngIf="loading")
+    ion-spinner
   .prizes-page-wrapper
     .prizes-page-background
       .prizes-page-prize-image
     .prizes-page-prize-wrapper
       .prizes-page-prize-logo
-        img.prizes-org-image(src="https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg")
+        img.prizes-org-image(src="{{imageUrlCreate(prize.organization_id, prize.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='../../assets/icon/prize_placeholder.svg'")
       .prizes-page-content-button-wrapper
         .prize-page-content-wrapper
           .prizes-page-prize-title

@@ -2,6 +2,7 @@ import { Component, ViewChild, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { NavigationService, PrizesService, AuthService, CurrentUserService, AlertService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';
+import { ImageUtil } from '../../_utils/image.util';
 
 @IonicPage()
 @Component({
@@ -20,10 +21,8 @@ export class PrizesPage {
   balancePoints = 0;
   isScrolled = false;
   title = 'Prizes';
-
-  imageTest = ['https://image.ibb.co/b8di2n/logo1.png',
-    'https://image.ibb.co/itpsTS/logo2.png',
-    'https://image.ibb.co/iGWZa7/logo3.png'];
+  loading: boolean;
+  public imageUrlCreate = ImageUtil.createImageUrl;
 
   constructor(
     public navCtrl: NavController,
@@ -34,6 +33,7 @@ export class PrizesPage {
     public currentUserService: CurrentUserService,
     public alert: AlertService,
     public zone: NgZone,
+
   ) {
   }
 
@@ -42,6 +42,7 @@ export class PrizesPage {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.getCurrentUser();
     this.getPrizes();
   }
@@ -55,14 +56,14 @@ export class PrizesPage {
       }
     });
   }
-  
+
   ngAfterViewInit() {
     if (this.content.ionScroll) {
       this.content.ionScroll.subscribe((data) => {
         this.onPageScroll(data);
       });
     }
-  } 
+  }
 
   reset(): void {
     this.limit = 24;
@@ -81,9 +82,11 @@ export class PrizesPage {
   getPrizes(): void {
     this.reset();
     this.prizesService.getPrizes().subscribe((res: Model.Prize[]) => {
+      this.loading = false;
       this.prizesList = res;
       this.offset = res.length;
     }, err => {
+      this.loading = false;
       this.alert.handleError(err);
     });
   }

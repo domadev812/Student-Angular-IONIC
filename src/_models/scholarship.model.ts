@@ -1,3 +1,4 @@
+import { Organization } from './organization.model';
 
 export class Scholarship {
   id: number;
@@ -6,6 +7,7 @@ export class Scholarship {
   description: string;
   amount: number;
   in_app: boolean;
+  organization: Organization;
   organization_name: string;
 
   constructor(data) {
@@ -17,6 +19,7 @@ export class Scholarship {
       this.amount = data.amount;
       this.in_app = data.in_app;
       this.organization_name = data.organization_name;
+      this.organization = new Organization(data.organization || {});
     }
   }
 }

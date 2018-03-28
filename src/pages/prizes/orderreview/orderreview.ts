@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, PrizesService, AddressService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
+import { ImageUtil } from '../../../_utils/image.util';
 
 @IonicPage()
 @Component({
@@ -14,6 +15,9 @@ export class OrderReviewPage {
   public balancePoints: number;
   public redeemedPoints: number;
   public address: Model.Address;
+  public prize: Model.Prize = new Model.Prize({});
+  public imageUrlCreate = ImageUtil.createImageUrl;
+  public loading: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -30,6 +34,7 @@ export class OrderReviewPage {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.address = new Model.Address();
     this.prizeId = this.navParams.get('prizeId');
     this.prizePoints = this.navParams.get('prize_points');
@@ -42,14 +47,27 @@ export class OrderReviewPage {
     }
     this.redeemedPoints = this.balancePoints - this.prizePoints;
     this.getAddress();
+    this.getPrize();
+  }
+
+  getPrize() {
+    this.prizesService.getPrize(this.prizeId).subscribe((res: Model.Prize) => {
+      if (res) {
+        this.prize = res;
+      }
+    }, err => {
+      this.alert.handleError(err);
+    });
   }
 
   getAddress(): void {
     this.addressService.getAddress().subscribe((res: Model.Address[]) => {
       if (res.length > 0) {
         this.address = res[0];
+        this.loading = false;
       }
     }, err => {
+      this.loading = false;
       this.alert.handleError(err);
     });
   }

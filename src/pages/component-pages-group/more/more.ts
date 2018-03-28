@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, App } from 'ionic-angular';
 import { AuthService, NavigationService } from '../../../app/app.services.list';
 
-
 @IonicPage()
 @Component({
   selector: 'page-more',
@@ -27,7 +26,6 @@ export class MorePage {
   ionViewDidLoad() {
     this.isPopover = this.viewCtrl.isOverlay;
   }
-
 
   logout(): void {
     this.authService.logout();
@@ -56,5 +54,4 @@ export class MorePage {
       this.goToPage('MyKtsPage', null);
     }
   }
-
 }

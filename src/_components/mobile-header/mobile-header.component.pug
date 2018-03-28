@@ -1,9 +1,9 @@
-.mobile-header-wrapper(*ngIf="!isScrolled")
+.mobile-header-wrapper.before-scroll-header(*ngIf="!isScrolled")
   h1.kts-header-mobile
     | {{title}}
 .mobile-header-wrapper.after-scroll-header(*ngIf="isScrolled")
   h1.kts-header-mobile-scroll
     | {{title}}
-.pts-button-wrapper
+.pts-button-wrapper([ngClass]="{'after-scroll': isScrolled}")
   .points-btn((click)="gotoEarnPage()")
     | {{points}} pts

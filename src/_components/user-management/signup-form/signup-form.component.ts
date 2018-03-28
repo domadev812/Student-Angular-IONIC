@@ -21,7 +21,7 @@ export class SignupFormComponent {
   signupForm2: FormGroup;
   formOneDone: boolean;
   isMobile: boolean;
-  startBirthday = { };
+  startBirthday = {};
   myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
     showTodayBtn: false,
@@ -54,7 +54,7 @@ export class SignupFormComponent {
 
   ngOnInit(): void {
     this.isMobile = this.platform.is('mobile');
-    
+
     this.signupForm = this.formBuilder.group({
       username: ['', Validators.compose([Validators.minLength(4), Validators.maxLength(20), Validators.required])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
@@ -91,11 +91,11 @@ export class SignupFormComponent {
   }
 
   invalid2(control: FormControl): boolean {
-    return !control.valid  && (control.dirty || this.submitAttempt);
+    return !control.valid && (control.dirty || this.submitAttempt);
   }
 
   valid2(control: FormControl): boolean {
-    return control.valid  && (control.dirty || this.submitAttempt);
+    return control.valid && (control.dirty || this.submitAttempt);
   }
 
   onSchoolSelect(item: any): void {
@@ -133,7 +133,9 @@ export class SignupFormComponent {
         this.authService
           .signup(this.user)
           .subscribe(async (res) => {
-            this.currentUserService.setRegistrationToken(await this.currentUserService.getRegistrationToken())
+            if (this.platform.is('android') || this.platform.is('ios')) {
+              this.currentUserService.setRegistrationToken(await this.currentUserService.getRegistrationToken());
+            }
             this.navCtrl.setRoot(this.navService.HOME);
             loader.dismiss();
             this.alert.toast('Account Created Successfully');

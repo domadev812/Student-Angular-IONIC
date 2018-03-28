@@ -33,21 +33,13 @@ page-notifications {
         display: block;
         z-index: 1;
         font-size: 36px;
-        @include lg {
-          padding-top: 10px;          
-          display: block;
-          position: absolute;
-        }
-        @include xl {          
-          display: block;
-          position: absolute;
-        }
       }
     }    
     .kts-card {
       display: flex;
       justify-content: center;
       padding: 0 10px;
+      margin: -10px 0 0 0;
     }
     .kts-card-wrapper{
       display: flex;
@@ -60,8 +52,7 @@ page-notifications {
       @include md{
         box-shadow: 0 0 4px 2px $color-shadow;
         border-radius: 6px;
-        padding: 35px 25px 20px 40px; 
-        margin-top: 50px;       
+        padding: 35px 25px 20px 40px;       
       }
       display: flex;
       background: white;
@@ -140,6 +131,10 @@ page-notifications {
       @include md {
         width: 25px
       }
+    }
+
+    .scroll-content {
+      height: 100%;
     }
   }
 }

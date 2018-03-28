@@ -1,4 +1,6 @@
 .page-wrapper
+  .spinner-container(*ngIf="loading")
+    ion-spinner
   .filter-list-page-wrapper
     ion-col.web-filter-col(col-4)
       filter-internships(*ngIf="pageToggle")
@@ -14,8 +16,7 @@
           | OTHER OPPORTUNITIES
       ion-content.lp-list
         .lp-item(*ngFor="let opportunity of opportunitiesList; let i = index", (click)="goToDetailPage(opportunity.id)")
-          .lp-item-image
-            img(src="https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L._SL500_AC_SS350_.jpg")
+          img.lp-item-image(src="{{imageUrlCreate(opportunity.organization_id, opportunity.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='../../assets/icon/opportunity_placeholder.svg'")
           .lp-item-info-col
             .lp-item-title
               | {{opportunity.title}}

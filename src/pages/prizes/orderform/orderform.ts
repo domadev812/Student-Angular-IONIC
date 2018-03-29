@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, App  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, AddressService, AuthService, CurrentUserService, AlertService } from '../../../app/app.services.list';
 import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 import { Model } from '../../../app/app.models';
@@ -73,9 +73,7 @@ export class OrderFormPage {
     public addressService: AddressService,
     public authProvider: AuthService,
     public currentUserService: CurrentUserService,
-    public alert: AlertService,
-    public viewCtrl: ViewController,
-    public app: App
+    public alert: AlertService
   ) {
   }
 
@@ -155,24 +153,5 @@ export class OrderFormPage {
   }
 
   onStateSelect(item): void {
-  }
-
-  goBack() {
-    if (this.navCtrl.canGoBack()) {
-      this.navCtrl.pop();
-    } else {
-      this.goToPage('MyKtsPage', null);
-    }
-  }
-
-  goToPage(page: string, event: any): void {
-    this.app.getActiveNavs()[0].setRoot(page);
-    this.dismissIfPopover();
-  }
-
-  dismissIfPopover() {
-    if (this.viewCtrl.isOverlay) {
-      this.viewCtrl.dismiss();
-    }
   }
 }

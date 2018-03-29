@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, ScholarshipsService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 import { ImageUtil } from '../../../_utils/image.util';
@@ -10,15 +10,11 @@ import { ImageUtil } from '../../../_utils/image.util';
   templateUrl: 'scholarshipdetail.html',
 })
 export class ScholarshipDetailPage {
-  @ViewChild(Content)
-  content: Content;
-
   public scholarshipId: string;
   public scholarship: Model.Scholarship;
   public imageUrlCreate = ImageUtil.createImageUrl;
   public loading: boolean;
-  isScrolled = false;
-  title = 'Scholarhip';
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -39,6 +35,7 @@ export class ScholarshipDetailPage {
     this.scholarshipsService.getScholarship(this.scholarshipId).subscribe((res: Model.Scholarship) => {
       this.loading = false;
       this.scholarship = res;
+      console.log(this.scholarship);
     }, err => {
       this.loading = false;
       this.alert.handleError(err);

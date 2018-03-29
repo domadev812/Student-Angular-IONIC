@@ -1,12 +1,11 @@
-.page-wrapper
+.page-wrapper-simple
   .content-wrapper
     ion-col.lp-list-col(col-12 col-md-8)
       mobile-header([isScrolled]="isScrolled", [title]="title")
     ion-content.lp-list
-      ion-row(wrap)
+      ion-row.margin-top-20(wrap)
         .category-title
           | Title
-        .line
       ion-row(wrap)
         ion-col.sponsor-col(col-12, col-md-6)
           img.normal(src='../../../assets/imgs/sponsors/ken_graff_logo.svg')
@@ -15,7 +14,6 @@
       ion-row.margin-top-50(wrap)
         .category-title
           | Platinum
-        .line
       ion-row(wrap)
         ion-col.sponsor-col(col-12, col-md-6)
           img.normal(src='../../../assets/imgs/sponsors/academy_logo.svg')
@@ -24,7 +22,6 @@
       ion-row.margin-top-50(wrap)
         .category-title
           | Gold
-        .line
       ion-row(wrap)
         ion-col.sponsor-col(col-12, col-md-6)
           img.normal(src='../../../assets/imgs/sponsors/octanner_logo.svg')
@@ -35,7 +32,6 @@
       ion-row.margin-top-50(wrap)
         .category-title
           | Silver
-        .line
       ion-row(wrap)
         ion-col.sponsor-col(col-12, col-md-6)
           img.small(src='../../../assets/imgs/sponsors/alpine_logo.svg') 
@@ -56,7 +52,6 @@
       ion-row.margin-top-50(wrap)
         .category-title
           | Media
-        .line 
       ion-row(wrap)
         ion-col.sponsor-col(col-12, col-md-6)
           img.normal(src='../../../assets/imgs/sponsors/news_expect_more_logo.svg') 

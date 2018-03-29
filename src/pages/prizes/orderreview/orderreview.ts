@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, PrizesService, AddressService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 import { ImageUtil } from '../../../_utils/image.util';
@@ -25,9 +25,7 @@ export class OrderReviewPage {
     public navService: NavigationService,
     public prizesService: PrizesService,
     public addressService: AddressService,
-    public alert: AlertService,
-    public viewCtrl: ViewController,
-    public app: App
+    public alert: AlertService
   ) {
   }
 
@@ -82,24 +80,5 @@ export class OrderReviewPage {
       this.alert.handleError(err);
       this.navCtrl.push('PrizesPage');
     });
-  }
-
-  goBack() {
-    if (this.navCtrl.canGoBack()) {
-      this.navCtrl.pop();
-    } else {
-      this.goToPage('MyKtsPage', null);
-    }
-  }
-
-  goToPage(page: string, event: any): void {
-    this.app.getActiveNavs()[0].setRoot(page);
-    this.dismissIfPopover();
-  }
-
-  dismissIfPopover() {
-    if (this.viewCtrl.isOverlay) {
-      this.viewCtrl.dismiss();
-    }
   }
 }

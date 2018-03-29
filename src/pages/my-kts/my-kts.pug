@@ -6,7 +6,6 @@ get-started-banner(*ngIf="(showBanner() == 'desktop') && userHasNoCareer")
         .fixed-content
           ion-col.lp-list-col.header-wrapper(col-12 col-md-8)
             mobile-header([isScrolled]="isScrolled", [title]="title")
-            .negative-margin(*ngIf="isScrolled")
             get-started-banner(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
         .spacer-110(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
         progress-widget

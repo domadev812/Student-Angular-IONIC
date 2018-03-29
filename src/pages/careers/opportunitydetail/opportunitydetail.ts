@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, OpportunitiesService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 import { ImageUtil } from '../../../_utils/image.util';
@@ -10,17 +10,12 @@ import { ImageUtil } from '../../../_utils/image.util';
   templateUrl: 'opportunitydetail.html',
 })
 export class OpportunityDetailPage {
-  @ViewChild(Content)
-  content: Content;
-
   public opportunityId: string;
   public opportunity: Model.Opportunity;
   public organization: Model.Organization;
   public imageUrlCreate = ImageUtil.createImageUrl;
   loading: boolean;
 
-  isScrolled = false;
-  title = 'Opportunity';
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

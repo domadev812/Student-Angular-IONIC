@@ -1,5 +1,5 @@
-import { Component, ViewChild, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavigationService, PrizesService, AuthService, CurrentUserService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
 import { ImageUtil } from '../../../_utils/image.util';
@@ -10,17 +10,12 @@ import { ImageUtil } from '../../../_utils/image.util';
   templateUrl: 'prizeshow.html',
 })
 export class PrizeShowPage {
-  @ViewChild(Content)
-  content: Content;
-
   public prizeId: string;
   public prize: Model.Prize = new Model.Prize({});
   public prizePoints: string;
   public imageUrlCreate = ImageUtil.createImageUrl;
   public loading = false;
 
-  isScrolled = false;
-  title = 'Prizes';
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,8 +23,7 @@ export class PrizeShowPage {
     public prizesService: PrizesService,
     public authProvider: AuthService,
     public currentUserService: CurrentUserService,
-    public alert: AlertService,
-    public zone: NgZone,
+    public alert: AlertService
   ) {
   }
 

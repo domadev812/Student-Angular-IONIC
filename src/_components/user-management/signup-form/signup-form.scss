@@ -1,27 +1,103 @@
 signup-form {
   color: $color-text-primary;
-  width: 75%;
+  width: 100%;
   max-width: 500px;
-  margin-top: 100px;
-  .signup-header-wrapper {
-    @extend .center-y;
-    justify-content: space-between;
-    .next-button {
-      width: 135px;
-      height: 35px;
-    }
+  height: 100vh;
+  @include md {
+  margin-top: 200px;
   }
-  .signup-bottom-section {
+  .form-position {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 45px 7% 0 7%;
+  
+  .signup-header-wrapper {		
+    display: flex;
+    justify-content: space-between;
+    padding: 0 7%;
+    align-items: center;
+    width: 100%;
+    margin-top: -35px;
+    padding: 0 0 25px 0;
+    @include md {
+      width: 100%;
+      margin-top: 0px;
+      padding: 0px 0 30px 0;
+      align-items: flex-end;
+    }
+    .arrow-left {
+      font-size: 24px;
+      font-weight: bold;
+      margin-right: 10px !important;
+      @include md {
+        margin-left: 8px; 
+        font-size: 33px;
+      }
+    }
+    .signup{
+      font-size: 24px;
+      width: 130px;
+      padding-top: 2px;
+      @include md {
+        font-size: 34px;
+        padding-left: 8px;
+        }
+      }
+    .next {
+      height: 19px;	
+      color: #E41C3D;		
+      font-size: 16px;	
+      line-height: 19px;
+      padding-top: 2px;
+      margin-right: -5px;
+      @extend .center;
+      @include md {
+        height: 35px;
+        width: 135px;
+        border-radius: 7px;
+        padding-top: 0px;
+        background-color: #E41C3D;
+        box-shadow: 0 0 7px 0 rgba(0,0,0,0.35);
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 22px;
+        cursor: pointer;
+        margin-right: 0;
+      }
+    }
+    .submit {
+      height: 19px;	
+      width: 33px;	
+      color: #E41C3D;		
+      font-size: 16px;	
+      line-height: 19px;
+      margin-right: 38px;
+      padding-top: 2px;
+      }
+      .kts-header {
+        font-size: 24px;
+        width: 150px;
+        display: flex;
+        margin-left: -10px;
+        justify-content: space-between;
+        align-content: center;
+        @include md {
+          width: 160px;
+          font-size: 36px;
+        }
+      }
+    }
+    .signup-bottom-section {
     margin-top: 50px;
     margin-bottom: 150px;
     .bottom-link {
       font-weight: 500;
     }
+
+    }
+   
   }
-
-  @include md {
-    margin-top: 150px;
-  }
-
-
 }

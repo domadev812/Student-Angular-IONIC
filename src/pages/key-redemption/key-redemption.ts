@@ -6,13 +6,12 @@ import { AlertService } from '../../app/app.services.list';
 @IonicPage()
 @Component({
   selector: 'page-key-redemption',
-  templateUrl: 'key-redemption.html',
+  templateUrl: 'key-redemption.html'
 })
 export class KeyRedemptionPage {
 
   confirmation = false;
   points = 0;
-  keycode = '';
 
   constructor(
     private navCtrl: NavController,
@@ -33,15 +32,16 @@ export class KeyRedemptionPage {
   }
 
   updatePoints(): void {
-    this.currentUserService.getCurrentUser(this.authService).then((res) => {
+    this.currentUserService.getCurrentUser(this.authService, true).then((res) => {
       this.points = res.points;
+      this.currentUserService.pointsChange();
     }).catch((a) => console.log(a));
   }
 
   submitKeycard(keycode): void {
     this.keycardService.redeemCode(keycode).subscribe((response) => {
       this.updatePoints();
-      this.keycode = '';
+      this.alert.toast('Keycard successfully redeemed');
     }, err => {
       this.alert.handleError(err);
     });

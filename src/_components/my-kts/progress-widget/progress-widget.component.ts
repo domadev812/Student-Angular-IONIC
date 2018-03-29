@@ -25,9 +25,9 @@ export class ProgressWidgetComponent implements OnInit {
   async ngOnInit() {
     try {
       let user: Model.User = await this.currentUserService.getCurrentUser(this.authService);
-      this.prizesAmount = user.prize_count;
-      this.opportunitiesAmount = user.opportunity_count;
-      this.scholarshipsAmount = user.scholarship_count;
+      this.prizesAmount = user.prize_count || 0;
+      this.opportunitiesAmount = user.opportunity_count || 0;
+      this.scholarshipsAmount = user.scholarship_count || 0;
     } catch (err) {
       this.alert.handleError(err);
     }

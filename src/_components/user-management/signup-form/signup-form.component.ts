@@ -123,6 +123,14 @@ export class SignupFormComponent {
     }
   }
 
+  back(): void {
+    this.formOneDone = false;
+  }
+
+  backHome(): void {
+    this.navCtrl.push('LoginPage');
+  }
+
   signup(isValid: boolean): void {
     this.submitAttempt = true;
     if (isValid) {

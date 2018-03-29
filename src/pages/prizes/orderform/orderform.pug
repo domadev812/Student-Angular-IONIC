@@ -4,10 +4,8 @@
   .content-wrapper
     form.form-group(#orderForm="ngForm", (ngSubmit)="gotoNext(orderForm.valid)", novalidate)
       .header-nav
-        .header-title
-          ion-icon.arrow-back-icon(tappable, ios="ios-arrow-back", md="ios-arrow-back", (click)="goBack()")
-          h1.headers
-            | Order Form
+        h1.headers
+          | Order Form
         .button-group
             button.kts-primary-btn.next-button(type="submit")
               | Next

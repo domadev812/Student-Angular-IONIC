@@ -33,7 +33,9 @@ export class KeyRedemptionPage {
 
   updatePoints(): void {
     this.currentUserService.getCurrentUser(this.authService, true).then((res) => {
-      this.points = res.points;
+      if (res.points) {
+        this.points = res.points;
+      }
       this.currentUserService.pointsChange();
     }).catch((a) => console.log(a));
   }

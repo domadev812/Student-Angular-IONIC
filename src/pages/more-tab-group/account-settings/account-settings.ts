@@ -11,7 +11,7 @@ import { Model } from '../../../app/app.models';
 })
 export class AccountSettingsPage {
   user: Model.User = new Model.User({});
-
+  organization_name: string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -32,16 +32,15 @@ export class AccountSettingsPage {
   ngOnInit() {
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
       this.user = res;   
-      
-      if (this.user.organization_id) {
-        this.getOrganization(this.user.organization_id);
-      }   
-
       if (this.user.gender === 'M') {
         this.user.gender = 'Male';
       } else if (this.user.gender === 'F') {
         this.user.gender = 'Female';
       } else (this.user.gender = 'Perfer Not To Say');
+
+      if (this.user.organization && this.user.organization.name) {
+        this.organization_name = this.user.organization.name;
+      }
     });
   }
 
@@ -55,13 +54,6 @@ export class AccountSettingsPage {
   userSettings() {
     this.currentUserService.updateUser(this.user, this.user.id).subscribe((res) => {
       this.alert.toast('Information updated.');
-    }, err => {
-      this.alert.handleError(err);
-    });
-  }
-
-  getOrganization(organizationId: number): void {
-    this.organizationService.getOrganization(organizationId).subscribe((res) => {      
     }, err => {
       this.alert.handleError(err);
     });

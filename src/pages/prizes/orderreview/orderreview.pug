@@ -1,14 +1,15 @@
 .page-wrapper
   .spinner-container(*ngIf="loading")
     ion-spinner
-  .content-wrapper
+  ion-content.content-wrapper
     .header-nav
+      ion-icon.arrow-back-icon(tappable, ios="ios-arrow-back", md="ios-arrow-back", (click)="goBack()")
       h1.headers
         | Order Review
     .review-content
       .left-column    
         .organization
-          img.logo(src="{{imageUrlCreate(prize.organization_id, prize.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='../../assets/icon/prize_placeholder.svg'")
+          img.logo(src="{{imageUrlCreate(prize.organization_id, prize.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='assets/icon/prize_placeholder.svg'")
           .title
             | {{prize.organization.name}}         
       .right-column

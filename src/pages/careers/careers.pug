@@ -11,12 +11,12 @@
       ion-searchbar.kts-searchbar(*ngIf="!pageToggle", (ionInput)="search('Other', $event)", [debounce]="400", placeholder="Search opportunities...", mode="ios")
       .lp-tabs-wrapper
         .lp-tab.lp-tab--left((click)="toggle(true)", [ngClass]="{'active-tab': pageToggle}")
-          | INTERSHIPS
+          | INTERNSHIPS
         .lp-tab.lp-tab--right((click)="toggle(false)", [ngClass]="{'active-tab': !pageToggle}")
           | OTHER OPPORTUNITIES
       ion-content.lp-list
         .lp-item(*ngFor="let opportunity of opportunitiesList; let i = index", (click)="goToDetailPage(opportunity.id)")
-          img.lp-item-image(src="{{imageUrlCreate(opportunity.organization_id, opportunity.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='../../assets/icon/opportunity_placeholder.svg'")
+          img.lp-item-image(src="{{imageUrlCreate(opportunity.organization_id, opportunity.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='assets/icon/opportunity_placeholder.svg'")
           .lp-item-info-col
             .lp-item-title
               | {{opportunity.title}}

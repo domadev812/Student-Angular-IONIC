@@ -81,7 +81,7 @@ page-careers-select {
     padding: 10px 0px;
     @include md {
       padding: 10px 20px;
-      height: 127px;
+      min-height: 127px;
       border-radius: 7px;
       background-color: #FFFFFF;
       box-shadow: 0 0 5px 0 rgba(64,64,64,0.35);

@@ -6,3 +6,12 @@ export module ImageUtil {
 
   }
 }
+
+export function getImage(page: string, iconBaseName: string): string {
+  let link = location.hash.split('/')[1];
+  if (page === link) {
+    return iconBaseName + '-selected.svg';
+  } else {
+    return iconBaseName + '.svg';
+  }
+}

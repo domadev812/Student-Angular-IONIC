@@ -10,8 +10,17 @@ mobile-header {
       opacity: 1;
     }
   }
-  
+  .arrow-back-icon {
+    cursor: pointer;
+    font-size: 30px;
+    color: #232D3B;
+    margin-right: 10px;
+    @include md{
+      display: none;
+    }
+  }
   .before-scroll-header{
+    justify-content: flex-start;
     height: 65px;
   .kts-header-mobile{
     opacity: 0;

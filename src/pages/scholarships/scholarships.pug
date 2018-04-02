@@ -9,7 +9,7 @@
       ion-searchbar.kts-searchbar( (ionInput)="searchScholarships($event)", [debounce]="400", placeholder="Search all scholarships...", mode="ios")
       ion-content.lp-list
         .lp-item( *ngFor="let scholarship of scholarshipsList; let i = index", (click)="goToDetailPage(scholarship.id)")
-          img.lp-item-image(src="{{imageUrlCreate(scholarship.organization_id, scholarship.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='../../assets/icon/scholarship_placeholder.svg'")
+          img.lp-item-image(src="{{imageUrlCreate(scholarship.organization_id, scholarship.organization.images[0])}}" alt="Image not found" onerror="this.onerror=null;this.src='assets/icon/scholarship_placeholder.svg'")
           .lp-item-info-col
             .lp-item-title
               | {{scholarship.title}}

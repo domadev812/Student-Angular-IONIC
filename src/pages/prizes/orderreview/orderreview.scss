@@ -9,12 +9,22 @@ page-orderreview {
     @extend .space-between;
     flex-wrap: wrap; 
     align-items: center;
+    justify-content: flex-start !important;
     .headers {
       font-size: 24px;
       font-weight: normal;
       margin: 0;
       @include md{
         font-size: 36px;
+      }
+    }
+    .arrow-back-icon {
+      cursor: pointer;
+      font-size: 30px;
+      color: #232D3B;
+      margin-right: 10px;
+      @include md{
+        display: none;
       }
     }
   }

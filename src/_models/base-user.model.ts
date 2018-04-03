@@ -9,6 +9,7 @@ export class BaseUser {
   password: string;
   organization_id: number;
   organization_name: string;
+  organization: any;
   birthday: Date;
   gender: string;
   phone_number: string;
@@ -36,6 +37,7 @@ export class BaseUser {
       this.password = data.password || this.password;
       this.organization_id = data.organization_id || this.organization_id;
       this.organization_name = data.organization_name || this.organization_name;
+      this.organization = data.organization || this.organization;
       this.birthday = data.birthday || this.birthday;      
       this.gender = data.gender || this.gender;
       this.phone_number = data.phone_number || this.phone_number;

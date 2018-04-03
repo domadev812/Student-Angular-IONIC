@@ -85,6 +85,7 @@ export class PrizesPage {
       this.loading = false;
       this.prizesList = res;
       this.offset = res.length;
+      console.log(this.prizesList);
     }, err => {
       this.loading = false;
       this.alert.handleError(err);

@@ -29,20 +29,21 @@ export class Notification {
         scholarships: 'ScholarshipDetailPage',
         opportunities: 'OpportunityDetailPage',
         all: 'NotificationDetailPage',
+        careers: 'NotificationDetailPage'
       };
     }
   }
 
   getResourceId(): string {
-    if (this.type === 'all') {
-      return this.resource.id;
+    if (this.type === 'all' || this.type === 'careers') {
+      return this.id;
     } else {
       return this.resource[0].id;
     }
   }
 
   getRoute(): string {
-    return this.types[this.type];
+    return this.types[this.type] || 'NotificationDetailPage';
   }
 }
 
@@ -50,4 +51,5 @@ interface ITypes {
   scholarships: any;
   opportunities: any;
   all: any;
+  careers: any;
 }

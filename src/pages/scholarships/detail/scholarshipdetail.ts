@@ -19,6 +19,9 @@ export class ScholarshipDetailPage {
   public loading: boolean;
   isScrolled = false;
   title = 'Scholarhip';
+  public url: string;
+
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -39,6 +42,8 @@ export class ScholarshipDetailPage {
     this.scholarshipsService.getScholarship(this.scholarshipId).subscribe((res: Model.Scholarship) => {
       this.loading = false;
       this.scholarship = res;
+      this.url = this.scholarship.url;
+
     }, err => {
       this.loading = false;
       this.alert.handleError(err);
@@ -47,7 +52,11 @@ export class ScholarshipDetailPage {
 
   applyScholarship(): void {
     if (this.scholarship.in_app) {
-      this.navCtrl.push('ScholarshipApplyPage', { scholarshipId: this.scholarshipId });
+      if (this.url.toLowerCase().lastIndexOf('http', 0) === 0) {
+        window.open(this.url, '_blank');
+      } else {
+        window.open(`http://${this.url}`, '_blank');
+      }
     } else {
       this.scholarshipsService.applyScholarship(this.scholarshipId, {}).subscribe((res: boolean) => {
         this.alert.toast('Scholarship is applied to successfully');
@@ -57,3 +66,5 @@ export class ScholarshipDetailPage {
     }
   }
 }
+
+

@@ -43,7 +43,6 @@ export class NotificationsPage {
     this.notificationService.getNotifications(this.limit, this.offset).subscribe((res: Model.Notification[]) => {
       this.loading = false;
       this.notifications = res;
-      console.log(this.notifications);
     }, err => {
       this.loading = false;
       this.alert.handleError(err);
@@ -74,7 +73,7 @@ export class NotificationsPage {
   goToNotificationDetail(id: string): void {
     let selectedNot = this.notifications.find(x => x.id === id);
     let route = selectedNot.getRoute();
-    let resourceId = selectedNot.resource_id;
+    let resourceId = selectedNot.getResourceId();
     this.navCtrl.push(route, { resourceId: resourceId });
   }
 

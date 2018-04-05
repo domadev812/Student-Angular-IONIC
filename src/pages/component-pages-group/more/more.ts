@@ -49,7 +49,8 @@ export class MorePage {
 
   close() {
     if (this.navCtrl.canGoBack()) {
-      this.navCtrl.pop({duration: 1});
+      const prev = this.navCtrl.getPrevious();
+      this.navCtrl.setRoot(prev);
     } else {
       this.goToPage('MyKtsPage', null);
     }

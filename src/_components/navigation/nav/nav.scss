@@ -116,6 +116,7 @@ nav {
     color: #FFFFFF;
     font-size: 13px;
     font-weight: bold;
+    white-space: nowrap;
     cursor: pointer;
     &::after {
       @extend .center;

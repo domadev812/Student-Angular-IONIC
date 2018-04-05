@@ -2,13 +2,12 @@ get-started-banner(*ngIf="(showBanner() == 'desktop') && userHasNoCareer")
 .page-wrapper
   ion-content.content-wrapper
     ion-row
-      ion-col.single-column(col-12 col-md-4)
+      ion-col.single-column(col-12, col-md-4)
         .fixed-content
-          ion-col.lp-list-col.header-wrapper(col-12 col-md-8)
+          ion-col.lp-list-col.header-wrapper(col-12, col-md-8)
             mobile-header([isScrolled]="isScrolled", [title]="title")
             get-started-banner(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
         .spacer-110(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
-        messageboard-widget
         progress-widget
         notifications-widget.notifications-mobile
         a.about-KTS.kts-link((click)="goToPage('AboutUsPage')")
@@ -32,5 +31,5 @@ get-started-banner(*ngIf="(showBanner() == 'desktop') && userHasNoCareer")
         .sponsor-logos
           img.ken-garff(src="assets/imgs/KG_color.svg", alt="Ken Garff")
           img.mountain-america(src="assets/imgs/MACU_color.svg", alt="Mountain America Credit Union")  
-      ion-col.right-column(col-12 col-md-8)
+      ion-col.right-column(col-12, col-md-8)
         notifications-widget.notifications-desktop

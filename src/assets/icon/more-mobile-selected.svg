@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="20px" height="16px" viewBox="0 0 20 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-    <title>MoreMenuSelected</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Notifications-Show" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-280.000000, -517.000000)">
-        <g id="Bottom-Nav" transform="translate(0.000000, 505.000000)" stroke="#E62247">
-            <g id="More-Menu" transform="translate(279.000000, 12.000000)">
-                <g id="MoreMenuSelected" transform="translate(1.000000, 0.000000)">
-                    <rect id="Rectangle-20" x="0.5" y="0.5" width="19" height="1" rx="0.5"></rect>
-                    <rect id="Rectangle-20" x="0.5" y="7.5" width="19" height="1" rx="0.5"></rect>
-                    <rect id="Rectangle-20" x="0.5" y="14.5" width="19" height="1" rx="0.5"></rect>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 18"><defs><style>.a,.b,.e{fill:none;}.a{clip-rule:evenodd;}.c{clip-path:url(#a);}.d{clip-path:url(#b);}.e{stroke:#e62649;stroke-miterlimit:10;stroke-width:2px;}.f{clip-path:url(#c);}.g{clip-path:url(#e);}</style><clipPath id="a" transform="translate(-279 -516)"><path class="a" d="M281,517h18a1,1,0,0,1,0,2H281a1,1,0,0,1,0-2Z"/></clipPath><clipPath id="b" transform="translate(-279 -516)"><rect class="b" width="320" height="553"/></clipPath><clipPath id="c" transform="translate(-279 -516)"><path class="a" d="M281,524h18a1,1,0,0,1,0,2H281a1,1,0,0,1,0-2Z"/></clipPath><clipPath id="e" transform="translate(-279 -516)"><path class="a" d="M281,531h18a1,1,0,0,1,0,2H281a1,1,0,0,1,0-2Z"/></clipPath></defs><title>More-selected</title><g class="c"><g class="d"><path class="e" d="M281,517h18a1,1,0,0,1,0,2H281a1,1,0,0,1,0-2Z" transform="translate(-279 -516)"/></g></g><g class="f"><g class="d"><path class="e" d="M281,524h18a1,1,0,0,1,0,2H281a1,1,0,0,1,0-2Z" transform="translate(-279 -516)"/></g></g><g class="g"><g class="d"><path class="e" d="M281,531h18a1,1,0,0,1,0,2H281a1,1,0,0,1,0-2Z" transform="translate(-279 -516)"/></g></g></svg>

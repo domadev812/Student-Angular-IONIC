@@ -1,10 +1,10 @@
-#page-more([ngClass]="{'more-web-view': isPopover}")
+ion-content#page-more([ngClass]="{'more-web-view': isPopover}")
   .more-mobile-header(*ngIf="!isPopover")
     .kts-header-mobile
       | Menu
     .more-close-btn((click)="close()")
       | Close
-  ion-row
+  ion-row.more-row
     ion-col.more-item(col-12, (click)="goToPage('NotificationsPage', $event)")
       | Notifications
       ion-icon.arrow-icon(ios="ios-arrow-forward", md="ios-arrow-forward")

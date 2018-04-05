@@ -48,7 +48,6 @@ import { MyApp } from './app.component';
     Services.AlertService,
     Services.FilterCareersService,
     Services.CareersService,
-    Services.MessageBoardService
   ]
 })
 export class AppModule { }

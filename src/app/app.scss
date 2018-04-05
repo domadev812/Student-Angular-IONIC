@@ -90,6 +90,10 @@ input:-webkit-autofill {
     color: #E9E9F0;
   }
 }
+
+.lazyContainer {
+  -webkit-overflow-scrolling: touch;
+}
 // end of style overrides for angular2-multiselect-dropdown
 
 
@@ -131,3 +135,5 @@ input:-webkit-autofill {
     margin-top: env(safe-area-inset-top)!important;
   }
 }
+
+

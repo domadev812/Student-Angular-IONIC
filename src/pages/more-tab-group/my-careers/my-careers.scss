@@ -13,6 +13,7 @@ page-my-careers {
     margin-left: 20px;
   }
   .lp-list {
+    height: calc(100vh - #{$nav-height-mobile});
     .scroll-content {      
       padding-top: 0;
       padding-bottom: 100px;
@@ -24,6 +25,7 @@ page-my-careers {
   .my-careers-content {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     @include md{
       flex-direction: row;
     }

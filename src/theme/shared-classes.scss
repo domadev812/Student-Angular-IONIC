@@ -228,6 +228,9 @@ h1, h2, h3, h4, h5, h6, p{
     content: '';
     background-image: linear-gradient( to top, rgba(255, 255, 255, 0.01) 65%, rgba(255, 255, 255, 1) );
   }
+  .scroll-content {
+    padding-bottom: 100px;
+  }
 }
 
 .page-wrapper-simple {

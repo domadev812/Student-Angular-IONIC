@@ -9,7 +9,6 @@ import { NavigationService } from '../../../app/app.services.list';
 
 export class LoginPage {
   redirectUrl: string;
-  loading: boolean;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -21,9 +20,10 @@ export class LoginPage {
   }
 
   ionViewDidEnter(): void {
+    
     if (this.navParams.get('redirectUrl')) {
       this.redirectUrl = this.navParams.get('redirectUrl');
     }
   }
-
+  
 }

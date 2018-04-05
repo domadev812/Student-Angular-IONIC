@@ -9,6 +9,7 @@ import { Address as ApiAddress } from '../_models/address.model';
 import { Keycard as ApiKeycard } from '../_models/keycard.model';
 import { CareerGroup as ApiCareerGroup } from '../_models/career-group.model';
 import { Career as ApiCareer } from '../_models/career.model';
+import { MessageBoard as ApiMessageBoard } from '../_models/messageboard.model';
 
 export module Model {
     export type User = ApiUser;
@@ -33,6 +34,8 @@ export module Model {
     export const CareerGroup = ApiCareerGroup;
     export type Career = ApiCareer;
     export const Career = ApiCareer;
+    export type MessageBoard = ApiMessageBoard;
+    export const MessageBoard = ApiMessageBoard;
 
     export function initializeArray<T>(array: T[], type: string): any[] {
         let newArray: T[] = [];

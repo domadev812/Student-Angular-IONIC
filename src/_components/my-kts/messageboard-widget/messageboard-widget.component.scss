@@ -1,0 +1,18 @@
+.message-box {	
+  color: #FFFFFF;		
+  font-size: 14px;	
+  font-style: italic;	
+  font-weight: 500;	
+  line-height: 19px;
+  padding: 17px;
+  @extend .center;
+  justify-content: center;
+  height: 55px;	
+  border-radius: 8px;	
+  background: linear-gradient(227.54deg, #7F88BD 0%, #4B57A3 100%);	
+  box-shadow: 0 0 3px 0 rgba(128,128,128,0.5);
+  margin: 50px 15px 0px 15px;
+  @include md {
+  margin: 10px 10px 17px 10px;
+  }
+}

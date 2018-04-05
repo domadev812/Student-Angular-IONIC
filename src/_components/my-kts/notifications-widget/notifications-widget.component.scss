@@ -2,7 +2,7 @@ notifications-widget {
   .notifications-widget-wrapper{
     display: flex;
     flex-direction: column;
-    padding: 24px 20px 0 20px;
+    padding: 24px 20px 10px 20px;
     margin: 0 15px 0 15px;
     @include md{
       padding: 24px 40px 24px 40px;

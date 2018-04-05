@@ -8,6 +8,7 @@ get-started-banner(*ngIf="(showBanner() == 'desktop') && userHasNoCareer")
             mobile-header([isScrolled]="isScrolled", [title]="title")
             get-started-banner(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
         .spacer-110(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
+        messageboard-widget
         progress-widget
         notifications-widget.notifications-mobile
         a.about-KTS.kts-link((click)="goToPage('AboutUsPage')")

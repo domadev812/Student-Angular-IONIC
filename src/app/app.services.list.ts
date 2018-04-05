@@ -14,3 +14,4 @@ export * from '../_services/keycard.service';
 export * from '../_services/alert.service';
 export * from '../_services/filter-careers.service';
 export * from '../_services/careers.service';
+export * from '../_services/messageboard.service';

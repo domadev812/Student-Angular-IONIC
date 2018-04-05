@@ -24,6 +24,7 @@ export class LoginFormComponent {
   login(): void {
     let loader = this.loadingCtrl.create({
       content: 'Logging in...',
+      spinner: 'none'
     });
     loader.present().then(() => {
       this.authService

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Content,  NavController, ViewController, App } from 'ionic-angular';
+import { NavController, ViewController, App } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 import { CurrentUserService, AuthService, AlertService } from '../../app/app.services.list';
 import { Model } from '../../app/app.models';

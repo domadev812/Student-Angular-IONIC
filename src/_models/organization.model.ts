@@ -1,6 +1,3 @@
-
-import { ImageUtil } from '../_utils/image.util';
-
 export class Organization {
   id: string;
   name: string;

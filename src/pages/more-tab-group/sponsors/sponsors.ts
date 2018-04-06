@@ -1,7 +1,6 @@
-import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { NavigationService, AlertService } from '../../../app/app.services.list';
-import { Model } from '../../../app/app.models';
 
 @IonicPage()
 @Component({
@@ -14,23 +13,23 @@ export class SponsorsPage {
 
   isScrolled = false;
   title = 'Sponsors';
-  sponsorsLogoList = [{img_name: 'academy_logo.svg'},
-                  {img_name: 'alpine_logo.svg'},
-                  {img_name: 'bear_river_logo.svg'},
-                  {img_name: 'bridgerland_logo.svg'},
-                  {img_name: 'davistech_logo.svg'},
-                  {img_name: 'diversified_logo.svg'},
-                  {img_name: 'ivory_homes_logo.svg'},
-                  {img_name: 'ken_graff_logo.svg'},
-                  {img_name: 'mountain_america_logo.svg'},
-                  {img_name: 'news_expect_more_logo.svg'},
-                  {img_name: 'octanner_logo.svg'},
-                  {img_name: 'odgen_weber_logo.svg'},
-                  {img_name: 'permaplate_logo.svg'},
-                  {img_name: 'synthetic_logo.svg'},
-                  {img_name: 'tooele_technical_logo.svg'},
-                  {img_name: 'utah_educational_logo.svg'},
-                  ];
+  sponsorsLogoList = [{ img_name: 'academy-logo.svg' },
+  { img_name: 'alpine-logo.svg' },
+  { img_name: 'bear-river-logo.svg' },
+  { img_name: 'bridgerland-logo.svg' },
+  { img_name: 'davistech-logo.svg' },
+  { img_name: 'diversified-logo.svg' },
+  { img_name: 'ivory-homes-logo.svg' },
+  { img_name: 'ken-garff-logo.svg' },
+  { img_name: 'mountain-america-logo.svg' },
+  { img_name: 'news-expect-more-logo.svg' },
+  { img_name: 'octanner-logo.svg' },
+  { img_name: 'odgen-weber-logo.svg' },
+  { img_name: 'permaplate-logo.svg' },
+  { img_name: 'synthetic-logo.svg' },
+  { img_name: 'tooele-technical-logo.svg' },
+  { img_name: 'utah-educational-logo.svg' },
+  ];
 
   constructor(
     public navCtrl: NavController,
@@ -46,7 +45,7 @@ export class SponsorsPage {
   }
 
   ngOnInit() {
-    
+
   }
 
   onPageScroll(data) {

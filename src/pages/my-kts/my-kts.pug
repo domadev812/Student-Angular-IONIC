@@ -8,6 +8,7 @@ get-started-banner(*ngIf="(showBanner() == 'desktop') && userHasNoCareer")
             mobile-header([isScrolled]="isScrolled", [title]="title")
             get-started-banner(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
         .spacer-110(*ngIf="showBanner() == 'mobile' && userHasNoCareer")
+        messageboard-widget
         progress-widget
         notifications-widget.notifications-mobile
         a.about-KTS.kts-link((click)="goToPage('AboutUsPage')")
@@ -29,7 +30,7 @@ get-started-banner(*ngIf="(showBanner() == 'desktop') && userHasNoCareer")
           a.socmed-icon(href="https://twitter.com/ktsutah?lang=en")
             img(src="assets/icon/twitter_icon.svg", alt="twitter")  
         .sponsor-logos
-          img.ken-garff(src="assets/imgs/KG_color.svg", alt="Ken Garff")
-          img.mountain-america(src="assets/imgs/MACU_color.svg", alt="Mountain America Credit Union")  
-      ion-col.right-column(col-12, col-md-8)
+          img.ken-garff(src="assets/imgs/kg-color.svg", alt="Ken Garff")
+          img.mountain-america(src="assets/imgs/macu-color.svg", alt="Mountain America Credit Union")  
+      ion-col.right-column(col-12 col-md-8)
         notifications-widget.notifications-desktop

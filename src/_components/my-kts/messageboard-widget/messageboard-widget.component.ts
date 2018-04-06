@@ -42,7 +42,6 @@ export class MessageBoardWidgetComponent implements OnInit {
       this.messageBoard = res;
       this.message = res.message;
       this.link = res.link;
-      console.log('here is the response', res);
     }, err => {
       this.alert.handleError(err);
     });

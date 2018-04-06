@@ -38,7 +38,8 @@ page-prizes {
     }
   }  
   .prize-col {
-    padding: 9px 7px !important;    
+    padding: 9px 7px !important;  
+     
   }
   .prize {
     cursor: pointer;
@@ -46,6 +47,9 @@ page-prizes {
     border-radius: 7px;
     box-shadow: 0 0 5px 0 rgba(64, 64, 64, .35);        
     padding: 10px 0 5px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .line {
     background-color: #ebebeb;    
@@ -58,10 +62,13 @@ page-prizes {
   .logo {
     padding: 25px;
     margin: auto;    
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    z-index: 3;  
+    object-fit: contain;
+    z-index: 3; 
+    width:  200px;
+    max-height: 170px;
+    @include md {
+      max-height: 200px;
+    }
   }
   .title {
     padding-left: 10px;

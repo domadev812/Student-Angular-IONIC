@@ -64,6 +64,7 @@ export class MyCareersPage {
   }
 
   gotoSelectCareers(type: string): void {
+    localStorage.setItem('searchBy', type);
     this.navCtrl.push('CareersSelectPage', { type: type });
   }
 

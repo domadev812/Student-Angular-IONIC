@@ -4,7 +4,6 @@ import { NavigationService, FilterService, OpportunitiesService, AlertService } 
 import { Model } from '../../app/app.models';
 import { Subscription } from 'rxjs/Subscription';
 import { ImageUtil } from '../../_utils/image.util';
-import { Opportunity } from '../../_models/opportunity.model';
 
 @IonicPage()
 @Component({

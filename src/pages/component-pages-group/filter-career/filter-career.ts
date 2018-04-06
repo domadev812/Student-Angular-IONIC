@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { NavigationService, FilterCareersService } from '../../../app/app.services.list';
 
@@ -15,22 +15,33 @@ export class FilterCareerPage {
     public navParams: NavParams,
     public navService: NavigationService,
     public filterCareersService: FilterCareersService,
-    public viewCtrl: ViewController) {
+    public viewCtrl: ViewController,
+    private renderer: Renderer2
+  ) {
   }
 
-  ionViewCanEnter() {
+  ionViewCanEnter(): void {
     this.navService.currentPage = 'FilterCareerPage';
+  }
+
+  ionViewDidEnter(): void {
+    let dismissWatch = this.renderer.listen('window', 'resize', (event) => {
+      if (window.innerWidth >= 768) {
+        this.done();
+        dismissWatch();
+      }
+    });
   }
 
   goToPage(page: string, event: any): void {
     this.navCtrl.setRoot(page);
   }
 
-  done() {
+  done(): void {
     this.viewCtrl.dismiss();
   }
 
-  goBack() {
+  goBack(): void {
     this.filterCareersService.selectedCategory = null;
     this.navCtrl.push('MyCareersPage');
   }

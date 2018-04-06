@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="1000px" height="169px" viewBox="0 0 1000 169" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-    <title>MACU_white</title>
+    <title>macu-white</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <polygon id="path-1" points="0.151273707 0.56114496 335.288086 0.56114496 335.288086 168.847966 0.151273707 168.847966"></polygon>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="MACU_white">
+        <g id="macu-white">
             <g id="Group-3">
                 <mask id="mask-2" fill="white">
                     <use xlink:href="#path-1"></use>

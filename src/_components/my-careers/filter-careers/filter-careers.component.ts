@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FilterCareersService, AlertService, CareersService } from '../../../app/app.services.list';
-import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 import { Model } from '../../../app/app.models';
 
 @Component({

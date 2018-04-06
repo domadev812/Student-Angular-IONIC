@@ -52,17 +52,13 @@ export class ScholarshipDetailPage {
 
   applyScholarship(): void {
     if (this.scholarship.in_app) {
+      this.navCtrl.push('ScholarshipApplyPage', { scholarshipId: this.scholarshipId });
+    } else {
       if (this.url.toLowerCase().lastIndexOf('http', 0) === 0) {
         window.open(this.url, '_blank');
       } else {
         window.open(`http://${this.url}`, '_blank');
       }
-    } else {
-      this.scholarshipsService.applyScholarship(this.scholarshipId, {}).subscribe((res: boolean) => {
-        this.alert.toast('Scholarship is applied to successfully');
-      }, err => {
-        this.alert.handleError(err);
-      });
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { NavigationService, NotificationsService, AlertService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';

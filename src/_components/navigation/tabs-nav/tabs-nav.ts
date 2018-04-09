@@ -10,12 +10,12 @@ export class TabsNavComponent {
 
   constructor(
     private app: App,
-    public popoverCtrl: PopoverController ) {
+    public popoverCtrl: PopoverController) {
   }
 
-  
+
   presentPopover(myEvent): void {
-    let popover = this.popoverCtrl.create('MorePage', {}, {cssClass: 'more-web-nav-popover'});
+    let popover = this.popoverCtrl.create('MorePage', {}, { cssClass: 'more-web-nav-popover' });
     popover.present({
       ev: myEvent,
     });
@@ -28,19 +28,19 @@ export class TabsNavComponent {
 
   activeLink(page: string): string {
     return NavUtil.getActiveLink(page);
-   }
- 
- 
-   navIcon(page: string, iconBaseName: string): string {
-     return NavUtil.getNavIcon(page, iconBaseName);
-   }
- 
-   moreIcon(): string {
-     return NavUtil.getMoreIcon('-mobile');
-   }
+  }
 
-   navPush(page: string)  {
-    this.app.getActiveNavs()[0].push(page, {}, {duration: 1});
-   }
+
+  navIcon(page: string, iconBaseName: string): string {
+    return NavUtil.getNavIcon(page, iconBaseName);
+  }
+
+  moreIcon(): string {
+    return NavUtil.getMoreIcon('-mobile');
+  }
+
+  navPush(page: string) {
+    this.app.getActiveNavs()[0].push(page, {}, { duration: 1 });
+  }
 
 }

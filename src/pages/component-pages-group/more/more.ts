@@ -16,7 +16,7 @@ export class MorePage {
     public authService: AuthService,
     public viewCtrl: ViewController,
     private app: App,
-    public navService: NavigationService ) {
+    public navService: NavigationService) {
   }
 
   ionViewCanEnter() {
@@ -33,11 +33,11 @@ export class MorePage {
   }
 
   goToPage(page: string, event: any): void {
-    this.app.getActiveNavs()[0].push(page, {}, {duration: 1});
+    this.app.getActiveNavs()[0].push(page, {}, { duration: 1 });
     this.dismissIfPopover();
   }
 
-  openUtahURL(event: any): void  {
+  openUtahURL(event: any): void {
     window.open('https://www.utahfutures.org/', '_blank');
   }
 
@@ -50,7 +50,7 @@ export class MorePage {
   close() {
     if (this.navCtrl.canGoBack()) {
       const prev = this.navCtrl.getPrevious();
-      this.navCtrl.setRoot(prev);
+      this.app.getActiveNavs()[0].push(prev, {}, { animate: false, duration: 10 });
     } else {
       this.goToPage('MyKtsPage', null);
     }

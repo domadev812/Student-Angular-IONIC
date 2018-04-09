@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FilterCareersService, AlertService, CareersService } from '../../../app/app.services.list';
+import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 import { Model } from '../../../app/app.models';
+import { InAppBrowser, InAppBrowserOptions } from "@ionic-native/in-app-browser";
 
 @Component({
   selector: 'filter-careers',
@@ -12,6 +14,7 @@ export class FilterCareersWidgetComponent {
   type: string;
   filterTitle: string;
   constructor(
+    private inAppBrowser: InAppBrowser,
     public filterCareersService: FilterCareersService,    
     public alert: AlertService,
     public careerService: CareersService) {
@@ -54,5 +57,9 @@ export class FilterCareersWidgetComponent {
     }
     this.selectedCategory = new Model.CareerGroup(category);    
     this.filterCareersService.categoryChange(this.selectedCategory);
+  }
+
+  openWebpage(url: string): void {
+    /*let browser = */this.inAppBrowser.create(url, '_self', {/*options*/});
   }
 }

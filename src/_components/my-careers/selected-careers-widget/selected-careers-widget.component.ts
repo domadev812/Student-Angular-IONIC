@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Content } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 import { CareersService } from '../../../app/app.services.list';
 

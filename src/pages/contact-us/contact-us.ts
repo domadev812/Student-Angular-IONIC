@@ -11,6 +11,7 @@ import { Model } from '../../app/app.models';
 })
 export class ContactUsPage {
   fullName: string;
+  Email: string;
   phoneNumber: string;
   message: string;
   categoryList: Object[] = [{ itemName: 'Prize Problems', id: 1 },
@@ -36,6 +37,7 @@ export class ContactUsPage {
   ngOnInit() {
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
       this.fullName = (res.first_name || '') + ' ' + (res.last_name || '');
+      if (res.email) this.Email = res.email;
       if (res.phone_number) this.phoneNumber = res.phone_number;
     });
     this.ktsSelectSettings = MultiSelectUtil.selectOptions({ text: ' ' });
@@ -51,6 +53,7 @@ export class ContactUsPage {
     }
     let data = {
       name: this.fullName,
+      email: this.Email,
       phone_number: this.phoneNumber,
       category: this.selectedCategory[0]['itemName'],
       message: this.message

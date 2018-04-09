@@ -16,6 +16,12 @@
           input.kts-input(type="text", name="fullname", [(ngModel)]="fullName", #fullname="ngModel", required, disabled="true") 
         .item-info
           .input-label
+            | Email
+            .invalid-validation([hidden]="email.valid || (email.pristine && !contactForm.submitted)")
+              | An email is required
+          input.kts-input(type="text", name="email", [(ngModel)]="Email", #email="ngModel", required) 
+        .item-info
+          .input-label
             | PHONE NUMBER
             .invalid-validation([hidden]="phone.valid || (phone.pristine && !contactForm.submitted)")
               | Phone number is required

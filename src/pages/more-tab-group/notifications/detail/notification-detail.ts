@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams, ViewController, App, Content } fro
 import { NavigationService, NotificationsService } from '../../../../app/app.services.list';
 import { Model } from '../../../../app/app.models';
 
-@IonicPage()
+@IonicPage({
+  segment: 'notificationdetail/:resourceId'
+})
 @Component({
   selector: 'page-notification-detail',
   templateUrl: 'notification-detail.html',

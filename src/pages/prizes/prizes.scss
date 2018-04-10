@@ -34,10 +34,6 @@ page-prizes {
       height: calc(100vh - 90px);
       @include md{
         height: calc(100vh - 50px);
-      
-      }
-      @include iphone-x {
-        height: calc(100vh - 120px);
       }
     }
   }  
@@ -99,5 +95,4 @@ page-prizes {
       padding-left: 13px;
     }
   }
-
 }

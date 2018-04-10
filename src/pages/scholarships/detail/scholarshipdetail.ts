@@ -4,7 +4,9 @@ import { NavigationService, ScholarshipsService, AlertService } from '../../../a
 import { Model } from '../../../app/app.models';
 import { ImageUtil } from '../../../_utils/image.util';
 
-@IonicPage()
+@IonicPage({
+  segment: 'scholarshipdetail/:resourceId'
+})
 @Component({
   selector: 'page-scholarshipdetail',
   templateUrl: 'scholarshipdetail.html',

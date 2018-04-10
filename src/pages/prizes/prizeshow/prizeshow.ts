@@ -4,7 +4,9 @@ import { NavigationService, PrizesService, AuthService, CurrentUserService, Aler
 import { Model } from '../../../app/app.models';
 import { ImageUtil } from '../../../_utils/image.util';
 
-@IonicPage()
+@IonicPage({
+  segment: 'prizeshow/:prizeId'
+})
 @Component({
   selector: 'page-prizeshow',
   templateUrl: 'prizeshow.html',

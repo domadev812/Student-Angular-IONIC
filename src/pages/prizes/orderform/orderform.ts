@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, App  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, App } from 'ionic-angular';
 import { NavigationService, AddressService, AuthService, CurrentUserService, AlertService } from '../../../app/app.services.list';
 import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 import { Model } from '../../../app/app.models';
@@ -80,7 +80,6 @@ export class OrderFormPage {
   }
 
   ngOnInit() {
-    this.loading = true;
     this.ktsSelectSettings = MultiSelectUtil.selectOptions({ text: 'Select State' });
     this.prizeId = this.navParams.get('prizeId');
     this.address = new Model.Address();
@@ -114,7 +113,6 @@ export class OrderFormPage {
   getAddress(): void {
     this.addressService.getAddress().subscribe((res: Model.Address[]) => {
       if (res.length > 0) {
-        this.loading = false;
         this.address = res[0];
         let savedState = this.stateList.find(state => state['state'] === this.address.state);
         if (savedState) {
@@ -122,7 +120,6 @@ export class OrderFormPage {
         }
       }
     }, err => {
-      this.loading = false;
       this.alert.handleError(err);
     });
   }

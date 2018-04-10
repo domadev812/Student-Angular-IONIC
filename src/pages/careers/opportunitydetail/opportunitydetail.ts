@@ -4,7 +4,9 @@ import { NavigationService, OpportunitiesService, AlertService } from '../../../
 import { Model } from '../../../app/app.models';
 import { ImageUtil } from '../../../_utils/image.util';
 
-@IonicPage()
+@IonicPage({
+  segment: 'opportunitydetail/:resourceId'
+})
 @Component({
   selector: 'page-opportunitydetail',
   templateUrl: 'opportunitydetail.html',

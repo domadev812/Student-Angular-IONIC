@@ -4,11 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import { Model } from '../app/app.models';
+import { AuthService, CurrentUserService } from '../app/app.services.list';
 
 @Injectable()
 export class OpportunitiesService {
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private authProvider: AuthService,
+    private currentUserService: CurrentUserService
+  ) { }
   
   getOpportunities(type: string = '', my_filter: boolean, search: string = '', offset = 0, limit = 20): Observable<Model.Opportunity[]> {
     let filter_condition = '';
@@ -43,6 +48,7 @@ export class OpportunitiesService {
       .map((response: Response) => {
         const json = response.json();
         if (json && json.data) {
+          this.currentUserService.getCurrentUser(this.authProvider, true);
           return true;         
         } else {
           Observable.throw({ message: 'Internal Server Error' });

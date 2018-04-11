@@ -4,11 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import { Model } from '../app/app.models';
+import { AuthService, CurrentUserService } from '../app/app.services.list';
 
 @Injectable()
 export class PrizesService {
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private authProvider: AuthService,
+    private currentUserService: CurrentUserService
+  ) { }
 
   getPrizes(offset = 0, limit = 24): Observable<Model.Prize[]> {
     return this.http.get('/prizes/available?offset=' + offset + '&limit=' + limit)
@@ -39,6 +44,7 @@ export class PrizesService {
       .map((response: Response) => {
         const json = response.json();
         if (json && json.data) {
+          this.currentUserService.getCurrentUser(this.authProvider, true);
           return new Model.Prize(json.data);
         } else {
           Observable.throw({ message: 'Internal Server Error' });

@@ -11,6 +11,7 @@ import { Model } from '../../app/app.models';
 })
 export class ContactUsPage {
   fullName: string;
+  email: string;
   phoneNumber: string;
   message: string;
   categoryList: Object[] = [{ itemName: 'Prize Problems', id: 1 },
@@ -51,6 +52,7 @@ export class ContactUsPage {
     }
     let data = {
       name: this.fullName,
+      email: this.email,
       phone_number: this.phoneNumber,
       category: this.selectedCategory[0]['itemName'],
       message: this.message

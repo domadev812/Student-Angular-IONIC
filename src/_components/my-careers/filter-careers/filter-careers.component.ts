@@ -59,10 +59,6 @@ export class FilterCareersWidgetComponent {
   }
 
   openWebpage(url: string): void {
-<<<<<<< HEAD
-    /*let browser = */this.inAppBrowser.create(url, '_self', {/*options*/});
-=======
     this.inAppBrowser.create(url, '_self', {});
->>>>>>> 2098e2d972acc0b355480eaed64e14fcbd0baa5c
   }
 }

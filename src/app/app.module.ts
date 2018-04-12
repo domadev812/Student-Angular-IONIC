@@ -49,10 +49,7 @@ import { MyApp } from './app.component';
     Services.AlertService,
     Services.FilterCareersService,
     Services.CareersService,
-<<<<<<< HEAD
-=======
     Services.MessageBoardService,
->>>>>>> 2098e2d972acc0b355480eaed64e14fcbd0baa5c
     InAppBrowser,
   ]
 })

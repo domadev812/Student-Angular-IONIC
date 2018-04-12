@@ -5,4 +5,9 @@
                                         [ngClass]="{'selected': category.id === selectedCategory.id}", (click)="filterCategory(category)")
     | {{category.title}}
     ion-icon(ios="md-checkmark", md="md-checkmark", *ngIf="category.id === selectedCategory.id")
-  
+  a.kts-link.mt-4((click)="openWebpage('https://utahfutures.org/assessments/career-cluster')", *ngIf="this.type === 'personality'")
+    | Not sure? Take the personality quiz!
+    img.link-arrow(src="assets/icon/link-arrow.svg")
+  a.kts-link.mt-4((click)="openWebpage('https://utahfutures.org/assessments/interest-profiler')", *ngIf="this.type === 'categories'")
+    | Not sure? Take a quiz!
+    img.link-arrow(src="assets/icon/link-arrow.svg")

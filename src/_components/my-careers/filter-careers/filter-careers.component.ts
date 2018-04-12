@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FilterCareersService, AlertService, CareersService } from '../../../app/app.services.list';
 import { Model } from '../../../app/app.models';
+import { InAppBrowser, InAppBrowserOptions } from "@ionic-native/in-app-browser";
 
 @Component({
   selector: 'filter-careers',
@@ -12,6 +13,7 @@ export class FilterCareersWidgetComponent {
   type: string;
   filterTitle: string;
   constructor(
+    private inAppBrowser: InAppBrowser,
     public filterCareersService: FilterCareersService,    
     public alert: AlertService,
     public careerService: CareersService) {
@@ -54,5 +56,13 @@ export class FilterCareersWidgetComponent {
     }
     this.selectedCategory = new Model.CareerGroup(category);    
     this.filterCareersService.categoryChange(this.selectedCategory);
+  }
+
+  openWebpage(url: string): void {
+<<<<<<< HEAD
+    /*let browser = */this.inAppBrowser.create(url, '_self', {/*options*/});
+=======
+    this.inAppBrowser.create(url, '_self', {});
+>>>>>>> 2098e2d972acc0b355480eaed64e14fcbd0baa5c
   }
 }

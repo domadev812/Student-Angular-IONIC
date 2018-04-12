@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import * as Services from './app.services.list';
 import { apiFactory } from '../_factories/api.factory';
 import { NavigationModule } from './app.modules.list';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { MyApp } from './app.component';
 
 @NgModule({
@@ -48,7 +49,11 @@ import { MyApp } from './app.component';
     Services.AlertService,
     Services.FilterCareersService,
     Services.CareersService,
-    Services.MessageBoardService
+<<<<<<< HEAD
+=======
+    Services.MessageBoardService,
+>>>>>>> 2098e2d972acc0b355480eaed64e14fcbd0baa5c
+    InAppBrowser,
   ]
 })
 export class AppModule { }

@@ -26,6 +26,24 @@ export class NotificationsService {
       });
   }
 
+  getParentNotifications(token: string = '', limit: string = '', offset: string = ''): Observable<Model.Notification[]> {
+    token = '?token=' + token;
+    limit = '&limit=' + limit;
+    offset = '&offset=' + offset;
+    let url = '/notifications/parent' + token + limit + offset;
+    return this.http.get(url)
+      .map((response: Response) => {
+        const json = response.json();
+
+        if (json && json.data) {
+          return Model.initializeArray(json.data, 'Notification');
+        } else {
+          Observable.throw({ message: 'Internal Server Error' });
+        }
+      });
+  }
+
+
   getNotification(id: string): Observable<Model.Notification> {
     return this.http.get('/notifications/' + id)
       .map((response: Response) => {

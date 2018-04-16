@@ -1,18 +1,1 @@
-.page-wrapper
-  .spinner-container(*ngIf="loading")
-    ion-spinner
-  .notifications-page-wrapper
-    .notification-page-title
-      | Notifications
-    ion-col.lp-list-col(col-12 col-md-8)
-      mobile-header([isScrolled]="isScrolled", [title]="title")
-    ion-content.lp-list
-      .kts-card
-        .kts-card-wrapper
-          a.kts-card-link( *ngFor="let notification of notifications", (click)="goToNotificationDetail(notification.id)")
-            .kts-card-data
-              h2.kts-card-item-header
-                | {{notification.subject}}
-              h3.kts-card-item-info
-                | {{notification.organization_name}}
-            img.link-arrow(src="assets/icon/link-arrow.svg")   
+notifications-component([isParent]="isParent", [token]="")

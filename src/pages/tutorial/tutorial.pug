@@ -1,0 +1,17 @@
+#tutorial-page
+  .tutorial-page-wrapper 
+    ion-slides(pager='true', centeredSlides="true")
+      ion-slide.slide-one-background.slide-wrapper
+        img.tutorial-first(src='../assets/imgs/tutorial/page-1.png')
+      ion-slide.slide-wrapper
+        img.tutorial(src='../assets/imgs/tutorial/page-2.png')
+      ion-slide.slide-wrapper
+        img.tutorial(src='../assets/imgs/tutorial/page-3.png')
+      ion-slide.slide-wrapper
+        img.tutorial(src='../assets/imgs/tutorial/page-4.png')
+      ion-slide.slide-wrapper
+        img.tutorial(src='../assets/imgs/tutorial/page-5.png')
+      ion-slide.slide-wrapper
+        .get-started-btn.kts-primary-btn((click)="goToMyKts()" type='button')
+          | Get Started!
+        img.tutorial(src='../assets/imgs/tutorial/page-6.png')

@@ -144,7 +144,7 @@ export class SignupFormComponent {
             if (this.platform.is('android') || this.platform.is('ios')) {
               this.currentUserService.setRegistrationToken(await this.currentUserService.getRegistrationToken());
             }
-            this.navCtrl.setRoot(this.navService.HOME);
+            this.navCtrl.setRoot(this.navService.TUTORIAL);
             loader.dismiss();
             this.alert.toast('Account Created Successfully');
           }, (err) => {

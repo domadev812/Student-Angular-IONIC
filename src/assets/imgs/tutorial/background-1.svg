@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="750px" height="1150px" viewBox="0 0 750 1150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 20</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="1.49075255%" y1="1.49075255%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#EE2F55" offset="0%"></stop>
+            <stop stop-color="#BE65A6" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-4.30869106%" y1="109.099589%" x2="100%" y2="16.4681725%" id="linearGradient-2">
+            <stop stop-color="#3DC3EE" offset="0%"></stop>
+            <stop stop-color="#E91373" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-35.4587564%" y1="166.601651%" x2="156.638888%" y2="27.8493453%" id="linearGradient-3">
+            <stop stop-color="#3DC3EE" offset="0%"></stop>
+            <stop stop-color="#E91373" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="71.3159198%" y1="68.5024226%" x2="129.48384%" y2="36.1023782%" id="linearGradient-4">
+            <stop stop-color="#3DC3EE" offset="0%"></stop>
+            <stop stop-color="#E91373" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-20">
+            <rect id="Rectangle-13" fill="url(#linearGradient-1)" x="0" y="0" width="750" height="1150"></rect>
+            <polygon id="Rectangle-9" fill="url(#linearGradient-2)" opacity="0.399999976" points="607.550781 357.929688 750 0 750 1150 0 1150 423.488281 690.253906"></polygon>
+            <polygon id="Rectangle-9" fill="url(#linearGradient-3)" opacity="0.399999976" points="284.534196 948.308369 641.433594 509.5 750 0 750 1150 0 1150"></polygon>
+            <polygon id="Rectangle-9" fill="url(#linearGradient-4)" opacity="0.25" points="435.75 1012 707.824219 491.714844 750 0 750 1150 0 1150"></polygon>
+        </g>
+    </g>
+</svg>

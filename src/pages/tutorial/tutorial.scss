@@ -3,66 +3,24 @@ page-tutorial {
     @extend .center;
     width: 100vw;
     height: 100vh;
-    background-image: url('../assets/imgs/background.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #efd0e3;
+   
+    background: linear-gradient(180deg, rgba(235, 49, 96, 1) 0%, rgba(191, 99, 164, 1) 100%);
   }
 
   .slide-one-background {
-    background-image: url("../assets/imgs/tutorial/background-1.svg");
+    background-image: url("../assets/imgs/tutorial/screen-one-background.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: linear-gradient(180deg, rgba(235, 49, 96, 1) 0%, rgba(191, 99, 164, 1) 100%);
     width: 100vw;
-    height: 110vh;
+    height: 100vh;
   }
-
-  .tutorial-first {
-    margin-top: -95px;
+  .tutoiral {
+    @extend .center;
     object-fit: contain;
     img {
       width: 100%;
-      @include md {
-        padding-top: 20px;
-      }
-    }
-  }
-  .tutorial {
-    object-fit: contain;
-    img {
-      width: 100%;
-      @include md {
-        padding-top: 20px;
-      }
-    }
-  }
-
-  .slide-zoom {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-  }
-
-  .get-started-btn {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    color: #232D3B;
-    z-index: 9999;
-    width: 80%;
-    margin-top: -135px;
-    @include sm {
-      margin-top: -30%;
-      width: 450px;
-    }
-    @include md {
-      margin-top: -250px;
-      width: 450px;
+      
     }
   }
 }

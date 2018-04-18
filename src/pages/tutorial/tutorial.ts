@@ -33,8 +33,4 @@ export class TutorialPage {
     this.navService.currentPage = 'TutorialPage';
   }
 
-  goToMyKts() {
-    this.navCtrl.push('MyKtsPage');
-  }
-
 }

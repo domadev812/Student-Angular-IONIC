@@ -11,13 +11,13 @@ export class NotificationsService {
   constructor(private http: Http) { }
 
   getNotifications(limit: string = '', offset: string = ''): Observable<Model.Notification[]> {
+    console.log('made it to the service!');
     limit = '?limit=' + limit;
     offset = '&offset=' + offset;
     let url = '/notifications' + limit + offset;
     return this.http.get(url)
       .map((response: Response) => {
         const json = response.json();
-
         if (json && json.data) {
           return Model.initializeArray(json.data, 'Notification');
         } else {

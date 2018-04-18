@@ -9,7 +9,6 @@ export module NavUtil {
     'ForgotPasswordPage': true,
     'ResetPage': true,
     'MorePage': true,
-    'TutorialPage': true
   };
 
   export const moreTabPages = [

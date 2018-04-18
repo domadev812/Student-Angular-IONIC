@@ -28,8 +28,10 @@ export class NotificationsWidgetComponent implements OnInit {
   }
 
   getNotifications() {
+    console.log('made it here');
     this.notificationService.getNotifications(this.limit, this.offset).subscribe((res: Model.Notification[]) => {
       this.notifications = res;
+      console.log('here are notifications', this.notifications);
       this.offset += res.length;
     }, err => {
       this.alert.handleError(err);

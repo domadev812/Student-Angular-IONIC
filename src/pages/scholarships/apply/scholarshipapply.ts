@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, App } from 'ionic-angular';
-import { 
+import {
   NavigationService,
   ScholarshipsService,
   AuthService,
@@ -60,7 +60,7 @@ export class ScholarshipApplyPage {
     this.scholarshipsService.applyScholarship(this.scholarshipId, data).subscribe((res: boolean) => {
       this.alert.toast('You have applied to this scholarship.');
     }, err => {
-      // this.alert.handleError(err);
+      this.alert.handleError(err);
     });
   }
 

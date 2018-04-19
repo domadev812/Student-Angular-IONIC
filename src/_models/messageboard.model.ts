@@ -1,3 +1,5 @@
+import { Model } from '../app/app.models';
+
 export class MessageBoard {
   id: string;
   message: string;

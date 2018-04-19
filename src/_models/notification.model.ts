@@ -14,7 +14,7 @@ export class Notification {
   resource_id: string;
   types: ITypes;
 
-  constructor(data) {
+  constructor(data = null) {
     if (data) {
       this.id = data.id || this.id;
       this.subject = data.subject || this.subject;

@@ -184,14 +184,13 @@ h1, h2, h3, h4, h5, h6, p{
 }
 .kts-header-mobile {
   font-size: 24px;
-  line-height: 29px;
-  margin: 10px 0 5px 0;
+  padding-left: 10px;
   font-weight: 400;
 }
 .mobile-header-wrapper {
   @extend .space-between;
   align-items: center;
-  padding: 0 10px;
+  padding-left: 10px;
   @include md {
     display: none!important;
   }
@@ -199,7 +198,6 @@ h1, h2, h3, h4, h5, h6, p{
 .mobile-header-wrapper {
   @extend .space-between;
   align-items: center;
-  padding: 0 10px;
   @include md {
     display: none!important;
   }

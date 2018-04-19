@@ -71,7 +71,7 @@ export class NotificationDetailPage {
       }
     });
   }
-  
+
   ngAfterViewInit() {
     if (this.content.ionScroll) {
       this.content.ionScroll.subscribe((data) => {

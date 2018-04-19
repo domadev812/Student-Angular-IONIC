@@ -23,7 +23,7 @@ export class ScholarshipsPage {
   school_id: number;
   subscription: Subscription;
   isScrolled = false;
-  title = 'Scholarhips';
+  title = 'Scholarships';
   public imageUrlCreate = ImageUtil.createImageUrl;
   loading: boolean;
 

@@ -20,7 +20,7 @@ export class ScholarshipDetailPage {
   public imageUrlCreate = ImageUtil.createImageUrl;
   public loading: boolean;
   isScrolled = false;
-  title = 'Scholarhip';
+  title = 'Scholarship';
   public url: string;
 
 
@@ -56,13 +56,16 @@ export class ScholarshipDetailPage {
     if (this.scholarship.in_app) {
       this.navCtrl.push('ScholarshipApplyPage', { scholarshipId: this.scholarshipId });
     } else {
-      if (this.url.toLowerCase().lastIndexOf('http', 0) === 0) {
-        window.open(this.url, '_blank');
-      } else {
-        window.open(`http://${this.url}`, '_blank');
-      }
+      this.scholarshipsService.applyScholarship(this.scholarshipId, {}).subscribe((res: boolean) => {
+        this.alert.toast('We will let them know you are interested in this scholarship');
+      }, err => {
+        this.alert.handleError(err);
+      });
+    }
+    if (this.url.toLowerCase().lastIndexOf('http', 0) === 0) {
+      window.open(this.url, '_blank');
+    } else {
+      window.open(`http://${this.url}`, '_blank');
     }
   }
 }
-
-

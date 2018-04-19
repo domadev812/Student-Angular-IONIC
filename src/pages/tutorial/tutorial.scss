@@ -24,8 +24,9 @@ page-tutorial {
     margin-top: -95px;
     object-fit: contain;
     img {
-      width: 100%;
+      width: 90%;
       @include md {
+        max-width: 33%;
         padding-top: 20px;
       }
     }
@@ -33,12 +34,25 @@ page-tutorial {
   .tutorial {
     object-fit: contain;
     img {
-      width: 100%;
+      width: 90%;
       @include md {
+        max-width: 33%;
         padding-top: 20px;
       }
     }
   }
+
+  .swiper-slide img {
+    @include sm {
+      width: 80%;
+    }
+    @include md {
+    width: auto;
+    max-width: 33%;
+    height: auto;
+    max-height: 100%;
+    }
+}
 
   .slide-zoom {
     display: flex;
@@ -58,11 +72,11 @@ page-tutorial {
     margin-top: -135px;
     @include sm {
       margin-top: -30%;
-      width: 450px;
+      width: 50%;
     }
     @include md {
-      margin-top: -250px;
-      width: 450px;
+      margin-top: -12%;
+      width: 25%;
     }
   }
 }

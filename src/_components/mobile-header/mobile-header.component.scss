@@ -10,6 +10,27 @@ mobile-header {
       opacity: 1;
     }
   }
+
+  .mobile-header-full-wrapper.before-scroll {
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: white;
+    @include md{
+      display: none;
+    }
+  }
+  .mobile-header-full-wrapper.after-scroll {
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    z-index: 999;
+  }
   .arrow-back-icon {
     cursor: pointer;
     font-size: 30px;
@@ -22,6 +43,7 @@ mobile-header {
   .before-scroll-header{
     justify-content: flex-start;
     height: 65px;
+    
   .kts-header-mobile{
     opacity: 0;
     margin: 0 0 0 0;
@@ -33,7 +55,9 @@ mobile-header {
     height: 45px;
     margin-top: -1px;
     text-align: center;
-    background: white;
+    background-color: white;
+    z-index: 1000;
+    padding-left: 0;
     .kts-header-mobile-scroll{
       margin-top: 12px;
       font-size: 16px;
@@ -53,6 +77,7 @@ mobile-header {
     align-items: center;
     height: 30px;
     margin: -50px 0 3px 0;
+    z-index: 1001;
     @include md{
       display: none;
     }
@@ -69,6 +94,7 @@ mobile-header {
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 3px;
+    margin-right: 10px;
     background: linear-gradient(135deg, #EE2F5B 0%, #BE65A6 100%);
     color: #FFFFFF;
     font-size: 12px;

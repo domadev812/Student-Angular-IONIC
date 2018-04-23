@@ -29,11 +29,11 @@ export class MessageBoardWidgetComponent implements OnInit {
     this.getMessage();
   }
 
-  openURL(link: string): void {
+  openURL(): void {
     if (this.link.toLowerCase().lastIndexOf('http', 0) === 0) {
       window.open(this.link, '_blank');
     } else {
-      window.open(`http://${this.link}`, '_blank');
+      window.open(`http://${this.link}`, '_system');
     }
   }
 

@@ -1,10 +1,15 @@
-.mobile-header-wrapper.before-scroll-header(*ngIf="!isScrolled")
-  ion-icon.arrow-back-icon(tappable, ios="ios-arrow-back", md="ios-arrow-back", (click)="goBack()", *ngIf="isArrowBack")
-  h1.kts-header-mobile
-    | {{title}}
-.mobile-header-wrapper.after-scroll-header(*ngIf="isScrolled")
-  h1.kts-header-mobile-scroll
-    | {{title}}
-.pts-button-wrapper([ngClass]="{'after-scroll': isScrolled}")
-  .points-btn((click)="gotoEarnPage()")
-    | {{points}} pts
+.mobile-header-full-wrapper.before-scroll(*ngIf="!isScrolled")
+  .mobile-header-wrapper.before-scroll-header(*ngIf="!isScrolled")
+    ion-icon.arrow-back-icon(tappable, ios="ios-arrow-back", md="ios-arrow-back", (click)="goBack()", *ngIf="isArrowBack")
+    h1.kts-header-mobile
+      | {{title}}
+  .pts-button-wrapper(*ngIf="!isScrolled")
+    .points-btn((click)="gotoEarnPage()")
+      | {{points}} pts
+.mobile-header-full-wrapper.after-scroll(*ngIf="isScrolled")      
+  .mobile-header-wrapper.after-scroll-header(*ngIf="isScrolled")
+    h1.kts-header-mobile-scroll
+      | {{title}}
+  .pts-button-wrapper(*ngIf="isScrolled")
+    .points-btn((click)="gotoEarnPage()")
+      | {{points}} pts

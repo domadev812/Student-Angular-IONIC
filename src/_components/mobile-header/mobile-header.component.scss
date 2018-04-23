@@ -42,7 +42,7 @@ mobile-header {
   }
   .before-scroll-header{
     justify-content: flex-start;
-    height: 65px;
+    width: 100%;
     
   .kts-header-mobile{
     opacity: 0;
@@ -52,10 +52,13 @@ mobile-header {
   }
   }
   .after-scroll-header{
-    height: 45px;
-    margin-top: -1px;
+    width: 100%;
+    z-index: 1001;
     text-align: center;
-    background-color: white;
+    padding-left: 0;
+    position: fixed;
+    align-items: flex-end;
+    background-color: transparent;
     z-index: 1000;
     padding-left: 0;
     .kts-header-mobile-scroll{
@@ -63,6 +66,7 @@ mobile-header {
       font-size: 16px;
       font-weight: 800;
       color: #232D3B;
+      background-color: transparent;
       width: 100%;
       -webkit-animation: fadeIn .3s ease-in 1 forwards;
       animation: fadeIn .3s ease-in 1 forwards;
@@ -71,18 +75,20 @@ mobile-header {
   }
 
   .pts-button-wrapper{
-    width: 98%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 30px;
-    margin: -50px 0 3px 0;
+    height: 35px;
+    padding-right: 10px;
     z-index: 1001;
+    width: 100%;
+    background-color: transparent;
+
     @include md{
       display: none;
     }
     &.after-scroll{
-      margin: -38px 0 0 0;
+      padding-top: 20px;
     }
   }
 

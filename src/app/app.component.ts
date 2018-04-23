@@ -10,7 +10,6 @@ import { NavUtil } from './app.utils.list';
 })
 export class MyApp {
   showNav = false;
-  isMobile: boolean;
   mobileNav: boolean;
   constructor(
     public platform: Platform, 
@@ -28,6 +27,13 @@ export class MyApp {
     //   this.app.getActiveNavs()[0].setRoot('LoginPage');
     // }
 
+
+    this.app.viewDidEnter.subscribe(event => {
+      const isPage = !event.isOverlay;
+      const currentPage = this.navigationService.currentPage;
+      if (isPage) this.showNav = !NavUtil.NO_NAVBAR_PAGES[currentPage];
+    });
+
     //this is temporary so I don't have to login
     if (localStorage.getItem('Token')) {
       this.app.getActiveNavs()[0].setRoot('MyKtsPage');
@@ -35,18 +41,12 @@ export class MyApp {
       this.app.getActiveNavs()[0].setRoot('LoginPage');
     }
 
-    
-
-
-
     this.platform.ready().then(() => {
       this.setNav();
-      this.isMobile = this.platform.is('mobile'); 
       window.onresize = () => {
         this.setNav();
       };
       
-
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
@@ -54,11 +54,6 @@ export class MyApp {
       this.splashScreen.hide();
 
 
-      this.app.viewDidEnter.subscribe(event => {
-        const isPage = !event.isOverlay;
-        const currentPage = this.navigationService.currentPage;
-        if (isPage) this.showNav = !NavUtil.NO_NAVBAR_PAGES[currentPage];
-      });
     });
 
   }

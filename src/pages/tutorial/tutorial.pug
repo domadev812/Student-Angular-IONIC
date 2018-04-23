@@ -12,6 +12,4 @@
       ion-slide.slide-wrapper
         img.tutorial(src='assets/imgs/tutorial/page-5.png')
       ion-slide.slide-wrapper
-        .get-started-btn.kts-primary-btn((click)="goToMyKts()" type='button')
-          | Get Started!
-        img.tutorial(src='assets/imgs/tutorial/page-6.png')
+        img.tutorial((click)="goToMyKts()", tappable, src='assets/imgs/tutorial/welcome.png')

@@ -8,9 +8,7 @@ import { MessageBoardService } from '../../../_services/messageboard.service';
   selector: 'messageboard-widget',
   templateUrl: 'messageboard-widget.component.html'
 })
-
 export class MessageBoardWidgetComponent implements OnInit {
-
   messageBoard: Model.MessageBoard;
   message: string;
   link: string;
@@ -21,8 +19,7 @@ export class MessageBoardWidgetComponent implements OnInit {
     public navService: NavigationService,
     public messageBoardService: MessageBoardService,
     public alert: AlertService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.messageBoard = new Model.MessageBoard({});
@@ -38,12 +35,17 @@ export class MessageBoardWidgetComponent implements OnInit {
   }
 
   getMessage() {
-    this.messageBoardService.getMessage().subscribe((res: Model.MessageBoard) => {
-      this.messageBoard = res;
-      this.message = res.message;
-      this.link = res.link;
-    }, err => {
-      this.alert.handleError(err);
-    });
+    this.messageBoardService.getMessage().subscribe(
+      (res: Model.MessageBoard) => {
+        if (res) {
+          this.messageBoard = res;
+          this.message = res.message;
+          this.link = res.link;
+        }
+      },
+      err => {
+        this.alert.handleError(err.error);
+      }
+    );
   }
 }

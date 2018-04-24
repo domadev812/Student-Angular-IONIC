@@ -2,32 +2,22 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { NavigationService } from '../../app/app.services.list';
 
-
 @IonicPage()
 @Component({
   selector: 'page-tutorial',
-  templateUrl: 'tutorial.html',
+  templateUrl: 'tutorial.html'
 })
 export class TutorialPage {
   @ViewChild(Slides) slides: Slides;
   sliderOptions = {
     paginationType: 'bullets',
-    pager: true,
+    pager: true
   };
 
-  slideNext() {
+  slideNext() {}
+  onSlideTapped() {}
 
-  }
-  onSlideTapped() {
-    console.log(`Slide tapped: ${this.slides.clickedIndex}`);
-  }
-
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public navService: NavigationService,
-  ) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public navService: NavigationService) {}
 
   ionViewCanEnter() {
     this.navService.currentPage = 'TutorialPage';
@@ -36,5 +26,4 @@ export class TutorialPage {
   goToMyKts() {
     this.navCtrl.push('MyKtsPage');
   }
-
 }

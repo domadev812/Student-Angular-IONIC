@@ -1,2 +1,4 @@
-.message-box((click)="openURL()", tappable)
+.message-box((click)="openURL()", tappable, *ngIf="message")
   | {{message}}
+.message-box(*ngIf="!message")
+  | Welcome to Keys To Success!

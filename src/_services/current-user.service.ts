@@ -18,7 +18,7 @@ export class CurrentUserService {
 
   token: string = undefined;
   jwtHelper: JwtHelper = new JwtHelper();
-  fcm: FCM = new FCM;
+  fcm: FCM = new FCM();
 
   notifyObservable$ = this.notify.asObservable();
   constructor(private http?: Http) {
@@ -29,7 +29,6 @@ export class CurrentUserService {
     return tokenNotExpired('Token');
   }
 
-
   load(user): void {
     if (this.currentUser === undefined || this.token === undefined) {
       this.token = window.localStorage.getItem('Token');
@@ -38,11 +37,7 @@ export class CurrentUserService {
         this.emitUpdate();
       }
     }
-    if (
-      !this.token
-      || this.currentUser === undefined
-      || this.currentUser.roles === undefined
-    ) {
+    if (!this.token || this.currentUser === undefined || this.currentUser.roles === undefined) {
       this.destroy();
     }
   }
@@ -55,18 +50,21 @@ export class CurrentUserService {
         if (this.currentUser && !force) {
           resolve(this.currentUser);
         } else if (token) {
-          authProvider.getCurrentUser().subscribe((user: Model.User) => {
-            this.load(user);
-            if (user) {
-              this.currentUser = user;
-              this.emitUpdate();
-              resolve(user);
-            } else {
-              reject();
+          authProvider.getCurrentUser().subscribe(
+            (user: Model.User) => {
+              this.load(user);
+              if (user) {
+                this.currentUser = user;
+                this.emitUpdate();
+                resolve(user);
+              } else {
+                reject();
+              }
+            },
+            err => {
+              reject(err);
             }
-          }, (err) => {
-            reject(err);
-          });
+          );
         }
       });
     }
@@ -92,17 +90,16 @@ export class CurrentUserService {
   }
 
   updateUser(params: Model.User, id: string): Observable<Model.User> {
-    return this.http.patch('/users/' + id, params)
-      .map((response: Response) => {
-        const json = response.json();
+    return this.http.patch('/users/' + id, params).map((response: Response) => {
+      const json = response.json();
 
-        if (json && json.data) {
-          this.currentUser = new Model.User(json.data);
-          return new Model.User(json.data);
-        } else {
-          Observable.throw({ message: 'Internal Server Error', response });
-        }
-      });
+      if (json && json.data) {
+        this.currentUser = new Model.User(json.data);
+        return new Model.User(json.data);
+      } else {
+        Observable.throw({ message: 'Internal Server Error', response });
+      }
+    });
   }
 
   public emitUpdate() {
@@ -110,43 +107,41 @@ export class CurrentUserService {
   }
 
   public getUserProgress(): Observable<Model.UserProgress> {
-    return this.http.get('/users/progress')
-      .map((response: Response) => {
-        const json = response.json();
-        if (json && json.data) {
-          return new Model.UserProgress(json.data);
-        } else {
-          Observable.throw({ message: 'Internal Server error', response });
-        }
-      });
+    return this.http.get('/users/progress').map((response: Response) => {
+      const json = response.json();
+      if (json && json.data) {
+        return new Model.UserProgress(json.data);
+      } else {
+        Observable.throw({ message: 'Internal Server error', response });
+      }
+    });
   }
 
-  changePassword(params: { password: string, password_confirmation: string, current_password: string }) {
-    return this.http.patch(`/users/${this.currentUser.id}/change-password`, params)
-      .map((response: Response) => {
-        const json = response.json();
-        if (json) {
-          return json;
-        } else {
-          Observable.throw({ message: 'Internal Server Error', response });
-        }
-      });
+  changePassword(params: { password: string; password_confirmation: string; current_password: string }) {
+    return this.http.patch(`/users/${this.currentUser.id}/change-password`, params).map((response: Response) => {
+      const json = response.json();
+      if (json) {
+        return json;
+      } else {
+        Observable.throw({ message: 'Internal Server Error', response });
+      }
+    });
   }
 
   cancelAccount() {
-    return this.http.delete(`/users/${this.currentUser.id}`, {})
-      .map((response: Response) => {
-        const json = response.json();
-        if (json && json.data) {
-          return json;
-        } else {
-          Observable.throw({ message: 'Internal Server Error', response });
-        }
-      });
+    return this.http.delete(`/users/${this.currentUser.id}`, {}).map((response: Response) => {
+      const json = response.json();
+      if (json && json.data) {
+        return json;
+      } else {
+        Observable.throw({ message: 'Internal Server Error', response });
+      }
+    });
   }
 
   setRegistrationToken(registration_token: string): Observable<boolean> {
-    return this.http.post(`/users/${this.currentUser.id}/register`, { registration_token: registration_token })
+    return this.http
+      .post(`/users/${this.currentUser.id}/register`, { registration_token: registration_token })
       .map((response: Response) => {
         const json = response.json();
         if (json && json.data) {
@@ -165,9 +160,9 @@ export class CurrentUserService {
   watchNotifications() {
     this.fcm.onNotification().subscribe(data => {
       if (data.wasTapped) {
-        console.log('Received in background', data);
+        // console.log('Received in background', data);
       } else {
-        console.log('Received in foreground', data);
+        // console.log('Received in foreground', data);
       }
     });
   }
@@ -180,4 +175,3 @@ export class CurrentUserService {
     }
   }
 }
-

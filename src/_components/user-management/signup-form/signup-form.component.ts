@@ -3,7 +3,7 @@ import { Model } from '../../../app/app.models';
 import { AuthService, NavigationService, MultiselectService, AlertService, CurrentUserService } from '../../../app/app.services.list';
 import { ToastController, LoadingController, NavController, Platform } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
+import { IMyDpOptions, IMyDateModel, IMyDate } from 'mydatepicker';
 import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 
 
@@ -25,11 +25,6 @@ export class SignupFormComponent {
   myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
     showTodayBtn: false,
-    disableSince: {
-      year: new Date().getFullYear(),
-      month: new Date().getMonth() + 1,
-      day: new Date().getDate() + 1
-    }
   };
   ktsSelectSettings: Object = {};
   schoolList: Object[] = [];
@@ -79,7 +74,20 @@ export class SignupFormComponent {
     this.ktsSelectSettings = MultiSelectUtil.selectOptions({ text: ' ' });
     this.yearList = MultiSelectUtil.gradYearList;
     this.genderList = MultiSelectUtil.genderList;
+    this.setDate();
+  }
 
+  setDate(): void {
+    let date = new Date();
+    this.signupForm2.patchValue({
+      birthday: {
+        date: {
+          year: date.getFullYear() - 14,
+          month: date.getMonth() + 1,
+          day: date.getDate()
+        }
+      }
+    });
   }
 
   invalid(control: FormControl): boolean {

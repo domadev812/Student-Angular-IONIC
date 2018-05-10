@@ -19,7 +19,7 @@ export class MessageBoardWidgetComponent implements OnInit {
     public navService: NavigationService,
     public messageBoardService: MessageBoardService,
     public alert: AlertService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.messageBoard = new Model.MessageBoard({});
@@ -39,8 +39,12 @@ export class MessageBoardWidgetComponent implements OnInit {
       (res: Model.MessageBoard) => {
         if (res) {
           this.messageBoard = res;
-          this.message = res.message;
           this.link = res.link;
+          if (!res.message) {
+            this.message = 'Welcome To Keys To Success';
+          } else {
+            this.message = res.message;
+          }
         }
       },
       err => {

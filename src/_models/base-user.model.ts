@@ -1,4 +1,5 @@
 import { ENV } from '../config/config.dev';
+import { Organization } from './organization.model';
 
 export class BaseUser {
   email: string;
@@ -9,7 +10,7 @@ export class BaseUser {
   password: string;
   organization_id: number;
   organization_name: string;
-  organization: any;
+  organization: Organization;
   birthday: Date;
   gender: string;
   phone_number: string;
@@ -38,7 +39,7 @@ export class BaseUser {
       this.organization_id = data.organization_id || this.organization_id;
       this.organization_name = data.organization_name || this.organization_name;
       this.organization = data.organization || this.organization;
-      this.birthday = data.birthday || this.birthday;      
+      this.birthday = data.birthday || this.birthday;
       this.gender = data.gender || this.gender;
       this.phone_number = data.phone_number || this.phone_number;
       data.images ? this.profile_image = data.images[0] : this.profile_image = null;

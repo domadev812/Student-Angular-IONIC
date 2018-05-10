@@ -83,7 +83,8 @@
       formControlName="graduation_year",
       [data]="yearList",
       [(ngModel)]="selectedYear",
-      [settings]="ktsSelectSettings"
+      [settings]="ktsSelectSettings",
+      (onSelect)="onGraduationYearSelect($event)"
     )
 
 

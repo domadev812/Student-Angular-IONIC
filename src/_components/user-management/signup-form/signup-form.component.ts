@@ -108,6 +108,11 @@ export class SignupFormComponent {
 
   onSchoolSelect(item: any): void {
     this.user.organization_id = item.id;
+    this.user.organization_name = item.itemName;
+  }
+
+  onGraduationYearSelect(item: any): void {
+    this.user.graduation_year = item.itemName;
   }
 
   onDateChanged(event: IMyDateModel): void {

@@ -1,0 +1,54 @@
+.page-wrapper.organizations
+  #organization.content-wrapper
+    ngx-loading([show]='creating')  
+    form.form-group(#organizationForm="ngForm" (ngSubmit)="saveOrganization(organizationForm.valid)" novalidate)
+      .header-nav
+        h1.headers
+          | {{title}}
+        .button-group
+            button.organization-btn.primary-button.feedback-btn(type="submit", *ngIf="!isSchool") 
+              span
+                | Save
+            button.organization-btn.secondary-button.feedback-btn(type="button" (click)="goBack($event)") 
+              span
+                | Cancel
+      .wrapper-content
+        .logo-image(*ngIf="!isSchool") 
+          .well.my-drop-zone(ng2FileDrop [ngClass]="{'upload-disabled': isSchool,'nv-file-over': hasBaseDropZoneOver}", (fileOver)="fileOverBase($event)", [uploader]="uploader", (onFileDrop)="selectedFile($event)")            
+            img.preview([ngClass]="{'upload-disabled': isSchool}",  [src]="filePreviewPath", *ngIf="filePreviewPath", for='file', (click)='file.click()')
+            .empty-logo(*ngIf="!filePreviewPath")
+              label.add-logo(for="file")
+                | Add Logo  
+            .change-logo(*ngIf="filePreviewPath")
+              label.add-logo(for="file")
+                | Change Logo  
+          input.file-chooser(#file type="file", id="file", ng2FileSelect, [uploader]="uploader", accept="image/x-png,image/gif,image/jpeg", (onFileSelected)="selectedFile($event)", [disabled]="isSchool")
+        .content
+          .item-info(*ngIf="!isSchool")
+            .input-label
+              | NAME
+              .invalid-validation([hidden]="name.valid || (name.pristine && !organizationForm.submitted)")
+                | Name is required
+            input.organization-input([ngClass]="{'input-disabled': isSchool }", [disabled]="isSchool", name="name", [(ngModel)]="organization.name", #name="ngModel", required) 
+          .item-info(*ngIf="isSchool")
+            .input-label
+              | NAME
+              .invalid-validation([hidden]="name.valid || (name.pristine && !organizationForm.submitted)")
+                | Name is required
+            input.input([ngClass]="{'input-disabled': isSchool }", [disabled]="isSchool", name="name", [(ngModel)]="organization.name", #name="ngModel", required) 
+          .item-info(*ngIf="!isSchool")
+            .input-label
+              | WEBSITE
+              .invalid-validation([hidden]="link.valid || (link.pristine && !organizationForm.submitted)")
+                | Website link is required
+              .invalid-validation([hidden]="!organization.url || organization.url === '' || validURL(organization.url) || (link.pristine && !organizationForm.submitted)")
+                | Website link is not correct
+            input.organization-input([ngClass]="{'input-disabled': isSchool }", [disabled]="isSchool", [(ngModel)]="organization.url", name="link", #link="ngModel", required) 
+          .item-info(*ngIf="isSchool")
+            .input-label
+              | WEBSITE
+              .invalid-validation([hidden]="link.valid || (link.pristine && !organizationForm.submitted)")
+                | Website link is required
+              .invalid-validation([hidden]="!organization.url || organization.url === '' || validURL(organization.url) || (link.pristine && !organizationForm.submitted)")
+                | Website link is not correct
+            input.input([ngClass]="{'input-disabled': isSchool }", [disabled]="isSchool", [(ngModel)]="organization.url", name="link", #link="ngModel", required)        

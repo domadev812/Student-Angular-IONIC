@@ -1,0 +1,14 @@
+@import "../../resources.component.scss";
+
+.content-wrapper {
+  min-height: 1050px;
+}
+
+.disabled {
+  background-color: #E6E9F2 !important;
+  color: #333 !important;
+}
+
+.checkboxes {
+  width: 12%;
+}

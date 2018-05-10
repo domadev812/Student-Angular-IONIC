@@ -1,0 +1,74 @@
+.page-wrapper
+  #users.content-wrapper
+    ngx-loading([show]='creating')  
+    form.form-group(#userForm="ngForm" (ngSubmit)="saveUser(userForm.valid)" novalidate)
+      .header-nav
+        h1.headers
+          | {{ title }}
+        .button-group
+          button.users-btn.primary-button(type="submit" [ngClass]="{'btn-disabled': disableFlag, 'feedback-btn': !disableFlag}" [disabled]="disableFlag")
+            span
+              | Save
+          button.users-btn.secondary-button.feedback-btn(type="button" (click)="goBack($event)") 
+            span
+              | Cancel   
+      .wrapper-content 
+        .item-info.names
+          .item-info
+            .input-label
+              | FIRST NAME
+              .invalid-validation([hidden]="firstName.valid || (firstName.pristine && !userForm.submitted)")
+                | First Name is required
+            input.user-input(type="text" name="firstName" [(ngModel)]='user.first_name' (ngModelChange)="onChange($event)" #firstName="ngModel" required) 
+          .item-info
+            .input-label
+              | LAST NAME
+              .invalid-validation([hidden]="lastName.valid || (lastName.pristine && !userForm.submitted)")
+                | Last Name is required
+            input.user-input(type="text" name="lastName" [(ngModel)]='user.last_name' (ngModelChange)="onChange($event)" #lastName="ngModel" required)    
+        .item-info(*ngIf="adminFlag")
+          .input-label
+            | POINTS
+            .invalid-validation([hidden]="points.valid || (points.pristine && !userForm.submitted)")
+              | Points is required
+          input.user-input(type="number" [(ngModel)]="user.points" name="points" #points="ngModel" (ngModelChange)="onChange($event)" required ) 
+        .item-info(*ngIf="!editFlag")
+          .input-label
+            | USER TYPE
+            .invalid-validation([hidden]="selectedType.length > 0 || !userForm.submitted")
+              | Type is required
+          angular2-multiselect(
+            name = 'type'
+            [data]='filteredTypeList'
+            [(ngModel)]='selectedType'
+            [settings]='ktsTypeSettings'
+            (onSelect)='onTypeSelect($event)'
+            (onDeSelect)='onTypeDeSelect($event)'
+          )                           
+        .item-info
+          .input-label
+            | {{organizationTitle}}
+            .invalid-validation([hidden]="selectedOrganization.length > 0 || !userForm.submitted")
+              | {{organizationTitle}} is required
+          angular2-multiselect(
+            name = 'organization'
+            [data]='organizationList'
+            [(ngModel)]='selectedOrganization'
+            [settings]='ktsOrganizationSettings'
+            (onSelect)='onSchoolSelect($event)'
+            (onDeSelect)='onSchoolDeSelect($event)'
+          )
+        .item-info
+          .input-label
+            | EMAIL
+            .invalid-validation([hidden]="email.valid || (email.pristine && !userForm.submitted)")
+              | Email is required
+            .invalid-validation([hidden]="!user.email || user.email === '' || validEmail(user.email) || (email.pristine && !userForm.submitted)")
+              | Incorrect format
+          input.user-input([(ngModel)]="user.email" name="email" #email="ngModel" (ngModelChange)="onChange($event)" [ngClass]="{'input-disabled': editFlag }" [disabled]="editFlag" required ) 
+        .item-info(*ngIf="!editFlag")
+          .input-label
+            | PASSWORD
+            .invalid-validation([hidden]="psw.valid || (psw.pristine && !userForm.submitted)")
+                | Password is required
+          input.user-input(type="password" name="psw" #psw="ngModel"  [(ngModel)]='user.password' (ngModelChange)="onChange($event)" required)

@@ -1,0 +1,39 @@
+#prizesindex
+  .search-bar
+      i.fa.fa-search.search-icon
+      input.search-text(type="text" placeholder="Search prizes..." [(ngModel)]='searchText' (keyup.enter)='searchItems()')
+  ngx-loading([show]='loading')
+  .d-flex.space-between.py-1
+    .table-header.mx-4.col-prize
+      | Prize
+    .table-header.mx-4.col-sponsor
+      | Sponsor
+    .table-header.mx-4.col-delivery
+      | Delivery
+    .table-header.mx-4.col-quantity
+      | Quantity
+    .table-header.mx-4.col-redeemed
+      | Redeemed
+    .table-header.mx-4.col-period
+      | Period
+    .table-header.mx-4.col-edit
+      | &nbsp;
+  .table-content-with-search(#scrollVariable appInfiniteScroller [scrollPercent]="90" [scrollCallback]="myScrollCallBack.bind(this)")
+    .list(*ngFor="let prize of prizes")
+      .d-flex.space-between.bg-white.py-1.pointer((click)='editPrize(prize.id)')
+        .table-data-primary.mx-4.col-prize
+          | {{prize.title}}
+        .table-data.mx-4.col-sponsor
+          | {{prize.organization.name}}
+        .table-data.mx-4.col-delivery
+          | {{prize.delivery_type}}
+        .table-data.mx-4.col-quantity
+          | {{getKeyValue(prize.current_campaign, 'number_available')}}
+        .table-data.mx-4.col-redeemed
+          | {{getKeyValue(prize.current_campaign, 'redeemed')}}
+        .table-data.mx-4.col-period
+          | {{formatDate(getKeyValue(prize.current_campaign, 'activation_start'))}}
+        .table-data.mx-4.col-edit
+          i.fa.fa-pencil.edit-row((click)='editPrize(prize.id)')
+    .infinite-scroll-loading(class="infinite-scroll-loading" *ngIf="infiniteScrollLoading")
+      |Loading ...  

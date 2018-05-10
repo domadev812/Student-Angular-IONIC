@@ -1,0 +1,67 @@
+@import "~assets/stylesheets/style-guide";
+@import "~assets/stylesheets/mixins";
+@import "~assets/stylesheets/shared-classes";
+
+.header-nav {  
+  display: flex;
+  align-items: center;
+  font-family: $font-primary;
+  justify-content: space-between;
+  padding-top: 8px;
+  align-items: flex-end;
+  padding-bottom: 20px;
+  
+}
+.button-group {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  @include space-between;
+  align-items: center;
+  font-family: $font-primary; 
+}
+
+.notifications-btn {
+  margin: 10px 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.message-input {
+  @extend .input;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  margin-left: 0;
+}
+
+.item-info {
+  padding-top: 45px;
+}
+
+.input-label {
+  @extend .input-label;
+  margin-left: 0;
+}
+
+.content-wrapper {
+  min-height: 820px;
+}
+
+.current-message-header {
+  padding-bottom: 20px;
+  height: 17px;	
+  width: 124px;	
+  color: #19233C;	
+  font-size: 14px;	
+  font-weight: bold;	
+  line-height: 17px;
+}
+
+.current-message {
+  font-size: 14px;	
+  font-style: italic;	
+  font-weight: 500;
+  color: #19233C;
+}
+

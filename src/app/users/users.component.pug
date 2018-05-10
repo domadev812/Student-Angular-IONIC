@@ -1,0 +1,22 @@
+.page-wrapper.users(appMouseWheel (mouseWheelUp)="mouseWheelUp()" (mouseWheelDown)="mouseWheelDown()")
+  #users.content-wrapper
+    .header-nav
+      h1.headers
+        | Users
+      .button-group
+          button.users-button.feedback-btn((click)='addNewUser()', *ngIf="canCreateNewUser")
+            span
+              | New User                 
+    .justify-start.newTabs.mb-4
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('student')" [ngClass]="{'sub-nav-item-selected': selectedTab === 'student'}", *ngIf="canViewStudents" )
+        | Students
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('key_contact')" [ngClass]="{'sub-nav-item-selected': selectedTab === 'key_contact'}", *ngIf="canViewKeyContacts")
+        | Key Contacts
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('counselor')" [ngClass]="{'sub-nav-item-selected': selectedTab === 'counselor'}", *ngIf="canViewCounselors")
+        | Counselors
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('community')" [ngClass]="{'sub-nav-item-selected': selectedTab === 'community'}", *ngIf="canViewCommunities")
+        | Community
+    app-students(*ngIf="selectedTab === 'student'")
+    app-keycontacts(*ngIf="selectedTab === 'key_contact'")
+    app-counselors(*ngIf="selectedTab === 'counselor'")
+    app-communities(*ngIf="selectedTab === 'community'")

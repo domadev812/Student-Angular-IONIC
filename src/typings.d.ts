@@ -1,3 +1,4 @@
+/* SystemJS module definition */
 declare var module: NodeModule;
 interface NodeModule {
   id: string;
@@ -13,14 +14,11 @@ declare namespace API {
 
   interface IUser {
     email: string
-    username: string
     first_name: string
     last_name: string
     id: string
     password: string
-    organization_id: number;
-    birthday: Date;    
-    gender: string;
+    password_confirmation: string
     phone_number: string
     hometown: string
     bio: string
@@ -28,33 +26,7 @@ declare namespace API {
     reset_pass_exp: string
     reset_pass_token: string
     roles: string[]
+    unread_count: number
+    is_verified: boolean
   }
-
-}
-
-declare namespace ForgotPassword {
-  interface IForgot{
-    email: string
-  }
-  interface IVerify{
-    email: string,
-    token: string
-  }
-  interface IChangePassword{
-    email: string,
-    token: string,
-    password: string,
-    password_confirmation: string
-  }
-  interface Response{
-    message: string
-  }
-}
-declare namespace Dialog {
-
-  interface IData {
-    id: string,
-    index: number
-  }
-  
 }

@@ -15,7 +15,7 @@ export class ScholarshipDetailPage {
   @ViewChild(Content)
   content: Content;
 
-  public scholarshipId: string;
+  public scholarshipId: number;
   public scholarship: Model.Scholarship;
   public imageUrlCreate = ImageUtil.createImageUrl;
   public loading: boolean;
@@ -44,6 +44,7 @@ export class ScholarshipDetailPage {
     this.scholarshipsService.getScholarship(this.scholarshipId).subscribe((res: Model.Scholarship) => {
       this.loading = false;
       this.scholarship = res;
+      this.scholarshipId = res.id;
       this.url = this.scholarship.url;
 
     }, err => {
@@ -54,7 +55,7 @@ export class ScholarshipDetailPage {
 
   applyScholarship(): void {
     if (this.scholarship.in_app) {
-      this.navCtrl.push('ScholarshipApplyPage', { scholarshipId: this.scholarshipId });
+      this.navCtrl.push('ScholarshipApplyPage', { scholarshipId: `${this.scholarshipId}` });
     } else {
       this.scholarshipsService.applyScholarship(this.scholarshipId, {}).subscribe((res: boolean) => {
         this.alert.toast('We will let them know you are interested in this scholarship');
@@ -62,10 +63,12 @@ export class ScholarshipDetailPage {
         this.alert.handleError(err);
       });
     }
-    if (this.url.toLowerCase().lastIndexOf('http', 0) === 0) {
-      window.open(this.url, '_blank');
-    } else {
-      window.open(`http://${this.url}`, '_blank');
+    if (!this.scholarship.in_app) {
+      if (this.url.toLowerCase().lastIndexOf('http', 0) === 0) {
+        window.open(this.url, '_blank');
+      } else {
+        window.open(`http://${this.url}`, '_blank');
+      }
     }
   }
 }

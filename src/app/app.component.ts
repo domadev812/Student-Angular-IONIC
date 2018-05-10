@@ -1,70 +1,10 @@
 import { Component } from '@angular/core';
-import { Platform, App } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { NavigationService } from './app.services.list';
-import { NavUtil } from './app.utils.list';
 
 @Component({
-  templateUrl: 'app.html'
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class MyApp {
-  showNav = false;
-  mobileNav: boolean;
-  constructor(
-    public platform: Platform, 
-    public statusBar: StatusBar,
-    public splashScreen: SplashScreen,
-    public app: App,
-    public navigationService: NavigationService
-  ) {
-
-  }
-
-  ngOnInit() {
-    //this is so we don't set root if there is already a page link -- will change to more complex with auth
-    // if (!window.location.hash) {
-    //   this.app.getActiveNavs()[0].setRoot('LoginPage');
-    // }
-
-
-    this.app.viewDidEnter.subscribe(event => {
-      const isPage = !event.isOverlay;
-      const currentPage = this.navigationService.currentPage;
-      if (isPage) this.showNav = !NavUtil.NO_NAVBAR_PAGES[currentPage];
-    });
-
-    //this is temporary so I don't have to login
-    if (localStorage.getItem('Token')) {
-      this.app.getActiveNavs()[0].setRoot('MyKtsPage');
-    } else {
-      this.app.getActiveNavs()[0].setRoot('LoginPage');
-    }
-
-    this.platform.ready().then(() => {
-      this.setNav();
-      window.onresize = () => {
-        this.setNav();
-      };
-      
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.statusBar.overlaysWebView(false);
-      this.splashScreen.hide();
-
-
-    });
-
-  }
-
-  setNav(): void {
-    if (window.innerWidth > 768) {
-      this.mobileNav = false;
-    } else {
-      this.mobileNav = true;
-    }
-  }
-
+export class AppComponent {
+  title = 'KTS-Admin';
 }
-

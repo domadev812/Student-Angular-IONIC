@@ -1,0 +1,31 @@
+#internships
+  .search-bar
+    i.fa.fa-search.search-icon
+    input.search-text(type="text" placeholder="Search internships..." [(ngModel)]='searchText' (keyup.enter)='searchItems()')
+  ngx-loading([show]='loading')  
+  .d-flex.space-between.px-4.py-1
+    .table-header.col-resource
+      | Resource
+    .table-header.col-organization
+      | Organization
+    .table-header.col-link
+      | Link
+    .table-header.col-created
+      | Created
+    .table-header.col-edit
+      | &nbsp;
+  .table-content-with-search(#scrollVariable appInfiniteScroller [scrollPercent]="90" [scrollCallback]="myScrollCallBack.bind(this)")
+    .list(*ngFor="let internship of internships")
+      .d-flex.space-between.bg-white.px-4.py-1.pointer((click)='editInternship(internship.id)')
+        .table-data-primary.col-resource
+          | {{internship.title}}
+        .table-data.col-organization
+          | {{internship.organization.name}}
+        .table-data.col-link
+          | {{internship.link}}
+        .table-data.col-created
+          | {{internship.created_at}}
+        .table-data.col-edit
+          i.fa.fa-pencil.edit-row((click)='editInternship(internship.id)')
+    .infinite-scroll-loading(class="infinite-scroll-loading" *ngIf="infiniteScrollLoading")
+      |Loading ...

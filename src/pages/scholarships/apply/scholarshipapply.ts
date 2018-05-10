@@ -59,6 +59,7 @@ export class ScholarshipApplyPage {
     };
     this.scholarshipsService.applyScholarship(this.scholarshipId, data).subscribe((res: boolean) => {
       this.alert.toast('You have applied to this scholarship.');
+      this.navCtrl.push('ScholarshipsPage');
     }, err => {
       this.alert.handleError(err);
     });

@@ -1,0 +1,71 @@
+.page-wrapper
+  #notification.content-wrapper
+    ngx-loading([show]='creating')
+    form.form-group(#notificationForm="ngForm" (ngSubmit)="saveNotification(notificationForm.valid)" novalidate)
+      .header-nav
+        h1.headers
+          | {{title}}
+        .button-group([hidden]="saveBtn")
+            button.notifications-btn.primary-button.feedback-btn(type="submit", *ngIf="!notification.id") 
+              span
+                | Save
+            button.notifications-btn.secondary-button.feedback-btn(type="button" (click)="cancelNotification()") 
+              span
+                | Cancel 
+        .button-group([hidden]="approveBtn")
+            button.notifications-btn.primary-button.feedback-btn(type='button'  (click)='approve()' )
+              span
+                | Approve
+            button.notifications-btn.secondary-button.feedback-btn((click)='reject()' type='button') 
+              span
+                | Reject  
+      .wrapper-content 
+        .item-info
+          .input-label-top
+            | SUBJECT
+            .invalid-validation([hidden]="subject.valid || (subject.pristine && !notificationForm.submitted)")
+              | Subject is required
+          input.notification-input(type="text" name="subject"  [ngClass]="{'disabled': !approved || notification.id}" [(ngModel)]='notification.subject' #subject="ngModel" [disabled]="notification.id  || !approved" required)
+        .item-info
+          .input-label
+            | MESSAGE
+            .invalid-validation([hidden]="message.valid || (message.pristine && !notificationForm.submitted)")
+              | Message is required
+          textarea.notification-textarea(rows="6" name="message" [ngClass]="{'disabled': !approved || notification.id}" [(ngModel)]="notification.body" #message="ngModel" [disabled]="notification.id || !approved" required)
+        .item-info
+          .input-label
+            | Recipient Category
+            .invalid-validation([hidden]="selectedType.length > 0 || !notificationForm.submitted")
+              | Category is required
+          angular2-multiselect(
+            name = 'types'
+            [data]='typeList'
+            [(ngModel)]='selectedType'
+            [settings]='notificationRecipientCategory'
+            (onSelect)='onTypeSelect($event)'
+            (onDeSelect)='onTypeDeSelect($event)'
+          )
+        .item-info(*ngIf="valueListVisibleFlag")
+          .input-label-dropdown
+            | {{valueListTitle}}
+            .invalid-validation([hidden]="selectedValueList.length > 0 || !notificationForm.submitted")
+              | Type is required
+          angular2-multiselect(
+            name = 'typevalues'
+            [data]='typeValueList'
+            [(ngModel)]='selectedValueList'
+            [settings]='ktsSelectSettings'
+            (onSelect)='onValueSelect($event)'
+            (onDeSelect)='onValueDeSelect($event)'
+          )
+        .item-info(*ngIf="careerListVisibleFlag")
+          .input-label-dropdown
+              | CAREERS
+          angular2-multiselect(
+            name = 'careers'
+            [data]='careerList'
+            [(ngModel)]='selectedCareers'
+            [settings]='ktsMultiSettings'
+            (onSelect)='onCareerSelect($event)'
+            (onDeSelect)='onCareerDeSelect($event)'
+          )

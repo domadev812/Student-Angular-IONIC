@@ -1,0 +1,62 @@
+@import "~assets/stylesheets/style-guide";
+@import "~assets/stylesheets/mixins";
+@import "~assets/stylesheets/shared-classes";
+.header-nav {  
+  @include space-between;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  font-family: $font-primary;
+  margin-bottom: 30px;
+}
+.users-btn {
+  margin: 10px 3px;
+  outline: none;
+  cursor: pointer;
+}
+.btn-disabled{
+  background: #E8BDC4;
+  box-shadow: none;
+  cursor: default;
+}
+.input-disabled{
+  background: #E6E9F2;
+}
+.user-input {
+  @extend .input;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  margin-left: 0;
+}
+.user-textarea {
+  @extend .user-input;
+  height: auto;
+}
+.item-info {
+  margin-bottom: 30px;
+  width: 100%;
+}
+.input-label {
+  @extend .input-label;
+  margin-left: 0;
+}
+.delete-user {
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-top: 50px;
+}
+.names{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+  .item-info:nth-child(odd) {
+    margin-right: 5px;
+  }
+  .item-info:nth-child(even) {
+    margin-left: 5px;
+  }
+}
+
+.content-wrapper {
+  min-height: 710px;
+}

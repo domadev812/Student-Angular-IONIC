@@ -1,0 +1,19 @@
+.page-wrapper(appMouseWheel (mouseWheelUp)="mouseWheelUp()" (mouseWheelDown)="mouseWheelDown()")
+  #organizations.content-wrapper
+    .space-between.mb-3
+      h1.headers
+        | Organizations
+      .justify-end
+        .primary-button.center.newBtn.feedback-btn((click)="addOrganization('sponsor')")
+          span
+            | New Sponsor
+    .justify-start.newTabs.mb-4
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('schools')" [ngClass]="{'sub-nav-item-selected': tab === 'schools'}")
+        | KTS Schools
+      .sub-nav-item.center.mr-4.newSubNav((click)="switchTab('sponsors')" [ngClass]="{'sub-nav-item-selected': tab === 'sponsors'}")
+        | KTS Sponsors
+      .sub-nav-item.center.newSubNav((click)="switchTab('communities')" [ngClass]="{'sub-nav-item-selected': tab === 'communities'}")
+        | Community
+    app-schools-table(*ngIf="tab === 'schools'")
+    app-sponsors-table(*ngIf="tab === 'sponsors'")
+    app-communities-table(*ngIf="tab === 'communities'")

@@ -40,7 +40,7 @@ export class ScholarshipApplyPage {
     this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
       this.fullName = res.getName();
       this.gradeYear = res.graduation_year;
-      this.organizationName = res.organization_name;
+      this.organizationName = res.organization.name;
     });
   }
 

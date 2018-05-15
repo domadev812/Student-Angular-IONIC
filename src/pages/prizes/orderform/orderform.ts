@@ -66,6 +66,7 @@ export class OrderFormPage {
   ktsSelectSettings: Object = {};
   address: Model.Address;
   loading: boolean;
+  fullName: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -83,8 +84,10 @@ export class OrderFormPage {
     this.ktsSelectSettings = MultiSelectUtil.selectOptions({ text: 'Select State' });
     this.prizeId = this.navParams.get('prizeId');
     this.address = new Model.Address();
-    this.getCurrentUser();
     this.getAddress();
+    this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
+      this.fullName = res.getName();
+    });
   }
 
   ionViewCanEnter() {
@@ -102,12 +105,6 @@ export class OrderFormPage {
       return false;
     }
     return true;
-  }
-
-  getCurrentUser(): void {
-    this.currentUserService.getCurrentUser(this.authProvider).then((res: Model.User) => {
-      // this.fullName = res.getName();
-    });
   }
 
   getAddress(): void {

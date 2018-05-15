@@ -14,7 +14,24 @@ page-notifications, parent-notifications {
           margin-left: 60px;
           font-size: 36px;
           line-height: 43px;
-          padding: 15px 0 20px 0px;
+          padding: 15px 0 20px 15px;
+        }
+      }
+
+      .notifications-col {
+        @include md {
+        max-width: 100% !important;
+        display: flex;
+        justify-content: center;
+        }
+        .title-header {
+          display: none;
+          @include md {
+            display: block;
+            width: 800px !important;
+            margin: 20px 15px 20px 15px;
+            font-size: 36px;
+          }
         }
       }
       .lp-list {

@@ -2,7 +2,9 @@
   .spinner-container(*ngIf="loading")
     ion-spinner
   .notifications-page-wrapper
-    ion-col.lp-list-col(col-12, col-md-8)
+    ion-col.notifications-col
+      .title-header
+        |{{title}}
       mobile-header([isScrolled]="isScrolled", [title]="title")
     ion-content.lp-list
       .kts-card

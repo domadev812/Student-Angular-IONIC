@@ -3,12 +3,14 @@
     ion-spinner
   .content-wrapper
     ion-col.lp-list-col(col-12 col-md-8)
+      .points-header
+        | Balance: {{ balancePoints }} points
       mobile-header([isScrolled]="isScrolled", [title]="title")
     ion-content.lp-list
       ion-row(wrap)
         ion-col.prize-col(col-6, col-md-3, *ngFor="let prize of prizesList; let i = index", (click)="goToDetailPage(prize.id, prize.points)")
           .prize
-            img.logo(src="{{imageUrlCreate(prize.organization.id, prize.organization.images[0])}}", alt="Image not found", onerror="this.onerror=null;this.src='assets/icon/prize_placeholder.svg'")
+            img.logo(src="{{imageUrlCreate(prize.organization_id, prize.organization_images[0])}}", alt="Image not found", onerror="this.onerror=null;this.src='assets/icon/prize_placeholder.svg'")
             .line
             .title
               | {{prize.title}}

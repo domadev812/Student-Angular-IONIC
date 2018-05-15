@@ -9,19 +9,25 @@ page-prizes {
       margin: 0 15px 0 15px;    
     }
   }
-  .balance-points {
-    margin-left: 20px;
-    font-size: 14px;
-    color: #E21E3E;
-    padding-bottom: 10px;
-    @include md{
-      font-size: 24px;
-      padding-bottom: 0;
-    }
-  }
-  @include md{
+  // .points-header-mobile {
+  //   font-size: 14px;
+  //   color: #E21E3E;
+  //   margin: 5px, 0 0 0;
+  //   @include md{
+  //     display:none;
+  //   }
+  // }
     .lp-list-col{
       padding: 0 !important;
+    }
+
+  .points-header{
+    display: none;
+    @include md {
+      display: flex;
+      font-size: 24px;
+      margin: 10px;
+      color: #E21E3E;
     }
   }
   .lp-list {    

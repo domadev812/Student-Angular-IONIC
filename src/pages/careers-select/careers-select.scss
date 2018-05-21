@@ -86,7 +86,7 @@ page-careers-select {
       background-color: #FFFFFF;
       box-shadow: 0 0 5px 0 rgba(64,64,64,0.35);
     }
-    .selected-carrers-header-row {
+    .selected-careers-header-row {
       display: flex;
       justify-content: space-between;
       .selected-careers-count {
@@ -142,8 +142,7 @@ page-careers-select {
     width: 100px;
     height: 25px;
     font-size: 14px; 
-    text-align: center;
-    line-height: 25px;         
+    text-align: center;      
     @include md-max{  
       width: auto;            
       font-size: 16px;

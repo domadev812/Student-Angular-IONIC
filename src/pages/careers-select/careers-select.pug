@@ -12,9 +12,9 @@
       filter-careers
     ion-col.lp-list-col(col-12, col-md-8)
       .selected-careers-wrapper([ngClass]="{'desktop-block-version':selectedCareers.length ===0}")
-        .selected-carrers-header-row
+        .selected-careers-header-row
           .selected-careers-count
-            | Selected carrer fields: {{selectedCareers.length}}/5
+            | Selected career fields: {{selectedCareers.length}}/5
           button.kts-primary-btn.selected-careers-save([disabled]="selectedCareers.length !==5", (click)="saveCareers()")
             | Save
         .selected-careers

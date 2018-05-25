@@ -6,7 +6,6 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { IMyDpOptions, IMyDateModel, IMyDate } from 'mydatepicker';
 import { MultiSelectUtil } from '../../../_utils/multiselect.util';
 
-
 @Component({
   selector: 'signup-form',
   templateUrl: 'signup-form.html'
@@ -21,10 +20,11 @@ export class SignupFormComponent {
   signupForm2: FormGroup;
   formOneDone: boolean;
   isMobile: boolean;
-  startBirthday = {};
+  startBirthday: any;
   myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
     showTodayBtn: false,
+    yearSelector: true,
   };
   ktsSelectSettings: Object = {};
   schoolList: Object[] = [];
@@ -49,7 +49,6 @@ export class SignupFormComponent {
 
   ngOnInit(): void {
     this.isMobile = this.platform.is('mobile');
-
     this.signupForm = this.formBuilder.group({
       username: ['', Validators.compose([Validators.minLength(4), Validators.maxLength(20), Validators.required])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
@@ -65,6 +64,7 @@ export class SignupFormComponent {
       gender: ['', Validators.required]
     });
 
+
     this.multiselectService.getDropdownSchools().subscribe((res) => {
       this.schoolList = res;
     }, err => {
@@ -72,12 +72,12 @@ export class SignupFormComponent {
     });
 
     this.ktsSelectSettings = MultiSelectUtil.selectOptions({ text: ' ' });
-    this.yearList = MultiSelectUtil.gradYearList;
+    this.yearList = MultiSelectUtil.setGradYear();
     this.genderList = MultiSelectUtil.genderList;
-    this.setDate();
+    this.startBirthday = this.setDate();
   }
 
-  setDate(): void {
+  setDate() {
     let date = new Date();
     this.signupForm2.patchValue({
       birthday: {
@@ -86,9 +86,10 @@ export class SignupFormComponent {
           month: date.getMonth() + 1,
           day: date.getDate()
         }
-      }
+      },
     });
   }
+
 
   invalid(control: FormControl): boolean {
     return !control.valid && (control.dirty || this.nextAttempt);
@@ -116,6 +117,7 @@ export class SignupFormComponent {
   }
 
   onDateChanged(event: IMyDateModel): void {
+    this.setDate();
     this.user.birthday = new Date(event.jsdate);
   }
 
@@ -145,8 +147,13 @@ export class SignupFormComponent {
   }
 
   signup(isValid: boolean): void {
+
     this.submitAttempt = true;
     if (isValid) {
+
+      if (!this.user.birthday) {
+        return;
+      }
       let loader = this.loadingCtrl.create({
         content: 'Creating Account...',
       });

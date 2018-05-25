@@ -1,13 +1,5 @@
 export module MultiSelectUtil {
 
-  export const gradYearList = [
-    //TODO: populate with real data
-    { 'id': 1, 'itemName': '2020' },
-    { 'id': 2, 'itemName': '2019' },
-    { 'id': 3, 'itemName': '2018' },
-    { 'id': 4, 'itemName': '2017' }
-  ];
-
   export const genderList = [
     //TODO: populate with real data
     { 'id': 1, 'itemName': 'Male' },
@@ -15,6 +7,20 @@ export module MultiSelectUtil {
     { 'id': 3, 'itemName': 'Prefer Not To Say' },
   ];
 
+  export function setGradYear() {
+    const gradYearList = [];
+    const month = new Date().getMonth();
+    if (month <= 5) {
+      this.gradYear = new Date().getFullYear() - 1;
+    } else {
+      this.gradYear = new Date().getFullYear();
+    }
+    Array.from(Array(4)).map((_, index) => {
+      const value = index + 1;
+      gradYearList.push({ 'id': value, 'itemName': `${this.gradYear + value}` });
+    });
+    return gradYearList;
+  }
 
   export class SelectItem {
     constructor(public itemName: string, public id: string) { }
